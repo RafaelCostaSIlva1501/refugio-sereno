@@ -7,9 +7,7 @@ const SectionUnlock = () => {
     if (modalSheet === 4) {
         return (
             <>
-            <div className="flex justify-center p-5">
-                <span>?</span>
-            </div>
+            <h2 className="mb-2 bg-white-100 text-center text-xl">?</h2>
             </>
         )
     } else {

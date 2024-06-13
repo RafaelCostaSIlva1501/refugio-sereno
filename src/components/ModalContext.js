@@ -13,7 +13,7 @@ export const ModalProvider = ({ children }) => {
     
     const [deleteIndex, setDeleteIndex] = useState(null)
 
-    const [modalSheet, setModalSheet] = useState(0)
+    const [modalSheet, setModalSheet] = useState(1)
 
     const replaceModalSheet = (value) => setModalSheet(value)
 

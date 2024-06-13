@@ -7,9 +7,7 @@ const SectionInventory = () => {
     if (modalSheet === 3) {
         return (
             <>
-            <div className="flex justify-center p-5">
-                <span>Inventário</span>
-            </div>
+            <h2 className="mb-2 bg-white-100 text-center text-xl">INVENTÁRIO</h2>
             </>
         )
     } else {
