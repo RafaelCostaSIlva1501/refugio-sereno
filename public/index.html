@@ -9,7 +9,7 @@
             content="Web site created using create-react-app"
         />
         <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    
+
         <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -29,44 +29,55 @@
         <script src="https://cdn.tailwindcss.com"></script>
 
         <script>
-          tailwind.config = {
-              theme: {
-                  extend: {
-                      colors: {
-                          black: "#000000",
-      
-                          white: {
-                              100: "#ffffff27",
-                              200: "#ffffff5e",
-                              300: "#ffffff98",
-                              400: "#ffffffcb",
-                              500: "#ffffff",
-                          },
-                      },
-                  },
-              },
-              plugins: [
-                  function({ addUtilities }) {
-                      const newUtilities = {
-                          '.centralize': {
-                              position: 'absolute',
-                              left: '50%',
-                              top: '50%',
-                              transform: 'translate(-50%, -50%)',
-                              width: '100vw',
-                              height: '100vh',
-                          },
-                          '.variant': {
-                            fontVariant: 'small-caps',
-                            letterSpacing: '4px',
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            black: "#000000",
+
+                            white: {
+                                100: "#ffffff27",
+                                200: "#ffffff5e",
+                                300: "#ffffff98",
+                                400: "#ffffffcb",
+                                500: "#ffffff",
+                            },
                         },
-                          
-                      }
-                      addUtilities(newUtilities, ['responsive', 'hover'])
-                  }
-              ],
-          };
-      </script>
+                    },
+                },
+                plugins: [
+                    function ({ addUtilities }) {
+                        const newUtilities = {
+                            ".centralize": {
+                                position: "absolute",
+                                left: "50%",
+                                top: "50%",
+                                transform: "translate(-50%, -50%)",
+                                width: "100vw",
+                                height: "100vh",
+                            },
+                            ".variant": {
+                                fontVariant: "small-caps",
+                                letterSpacing: "4px",
+                            },
+                            ".progressBar": {
+                                "--progress-color": "blue",
+                                "&::-webkit-progress-value": {
+                                    backgroundColor: "var(--progress-color)",
+                                },
+                                "&::-moz-progress-bar": {
+                                    backgroundColor: "var(--progress-color)",
+                                },
+                                "&::-ms-fill": {
+                                    backgroundColor: "var(--progress-color)",
+                                },
+                            },
+                        };
+                        addUtilities(newUtilities, ["responsive", "hover"]);
+                    },
+                ],
+            };
+        </script>
 
         <link
             rel="stylesheet"
