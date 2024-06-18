@@ -2,3 +2,59 @@ body {
   background-color: black;
   color: white;
 }
+
+textarea::-webkit-scrollbar {
+  width: 5px; /* Largura da barra de rolagem */
+}
+
+textarea::-webkit-scrollbar-track {
+  background: #ffffff28; /* Cor do trilho */
+  border-radius: 10px; /* Borda arredondada */
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #ffffff49; /* Cor do polegar */
+  border-radius: 10px; /* Borda arredondada */
+}
+
+textarea::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Cor do polegar ao passar o mouse */
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.agi {
+  top: 195px;
+  left: 232px;
+  font-size: 2rem;
+}
+
+.int {
+  top: 275px;
+  left: 350px;
+  font-size: 2rem;
+}
+
+.vig {
+  top: 420px;
+  left: 317px;
+  font-size: 2rem;
+}
+
+.pre {
+  top: 420px;
+  left: 145px;
+  font-size: 2rem;
+}
+
+.for {
+  top: 275px;
+  left: 112px;
+  font-size: 2rem;
+}
+
+

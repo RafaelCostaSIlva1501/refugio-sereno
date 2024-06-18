@@ -4,7 +4,7 @@ import ModalContext from "./ModalContext";
 const CharacterList = () => {
     const [characters, setCharacters] = useState([]);
 
-    const { openModal, setDeleteIndex, openPopUpDelete } = useContext(ModalContext);
+    const { openModal, setDeleteIndex, openPopUpDelete, setSheetIndex } = useContext(ModalContext);
 
     useEffect(() => {
         const storedCharacters =
@@ -22,6 +22,19 @@ const CharacterList = () => {
             });
         });
     });
+
+    useEffect(() => {
+        const viewSheetBtn = document.querySelectorAll(".viewSheetBtn");
+
+        viewSheetBtn.forEach((element, index) => {
+            element.addEventListener("click", () => {
+                openModal(2)
+                setSheetIndex(index)
+            })
+        })
+
+        
+    })
 
     return (
         <div className="flex flex-col gap-1.5">
@@ -49,7 +62,7 @@ const CharacterList = () => {
                             </p>
 
                             <div className="flex flex-row gap-2">
-                                <button className="flex w-min hover:scale-110 active:scale-95 viewSheetBtn" onClick={() => openModal(2)}>
+                                <button className="flex w-min hover:scale-110 active:scale-95 viewSheetBtn">
                                     <span className="material-symbols-outlined text-blue-500">
                                         visibility
                                     </span>

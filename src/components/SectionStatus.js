@@ -5,39 +5,42 @@ import Progress from "./Progress";
 
 const SectionStatus = () => {
     const { modalSheet } = useContext(ModalContext);
-    
+
     if (modalSheet === 1) {
         return (
             <>
-            <h2 className="mb-2 bg-white-100 text-center text-xl">STATUS</h2>
+                <div className="flex flex-row justify-between w-full mb-2 bg-white-100">
+                    span
+                    <h2 className=" text-center text-xl">STATUS</h2>
+                    span
+                </div>
 
-            <div className="">
-                <Progress 
-                    name="Pontos de Vida" 
-                    maxValue={12} 
-                    value={7} 
-                    color="red"
-                />
+                <div className="">
+                    <Progress
+                        name="Pontos de Vida"
+                        maxValue={12}
+                        value={7}
+                        color="red"
+                    />
 
-                <Progress 
-                    name="Pontos de Sanidade" 
-                    maxValue={90}   
-                    value={14}
-                    color="blue"
-                />
+                    <Progress
+                        name="Pontos de Determinação"
+                        maxValue={90}
+                        value={14}
+                        color="blue"
+                    />
+                </div>
 
-                <Progress
-                     name="Pontos de Esforço"   
-                     maxValue={75} 
-                     value={17}
-                     color="yellow"
-                />
-            </div>
+                <div>
+                    <button></button>
+
+                    
+                </div>
             </>
-        )
+        );
     } else {
-        return null
+        return null;
     }
-}
+};
 
 export default SectionStatus;

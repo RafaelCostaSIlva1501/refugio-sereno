@@ -3,6 +3,8 @@ import React, { createContext, useState } from "react";
 const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
+    let listNewCharacter = JSON.parse(localStorage.getItem("sheet")) || [];
+
     const [modalON, setModalOn] = useState(0);
 
     const openModal = (num) => setModalOn(num);
@@ -13,13 +15,16 @@ export const ModalProvider = ({ children }) => {
     
     const [deleteIndex, setDeleteIndex] = useState(null)
 
-    const [modalSheet, setModalSheet] = useState(1)
+    const [modalSheet, setModalSheet] = useState(0)
+
+    const [sheetIndex, setSheetIndex] = useState(null)
 
     const replaceModalSheet = (value) => setModalSheet(value)
 
     return (
         <ModalContext.Provider
             value={{
+                listNewCharacter,
                 modalON,
                 openModal,
                 deletePopUp,
@@ -28,6 +33,8 @@ export const ModalProvider = ({ children }) => {
                 setDeleteIndex,
                 modalSheet,
                 replaceModalSheet,
+                sheetIndex,
+                setSheetIndex,
             }}
         >
             {children}
