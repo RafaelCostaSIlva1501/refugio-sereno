@@ -8,9 +8,9 @@ const FormCharacter = () => {
 
     if (modalON === 1) {
         return (
-            <section className="flex flex-col h-screen p-2">
+            <section className="flex flex-col gap-2.5 h-screen p-2">
 
-                <header className="flex flex-row justify-end items-center h-11 border-b border-white-200">
+                <header className="flex flex-row justify-end items-center p-1 border-b border-white-200">
                     <button
                         className="w-max flex justify-center items-center"
                         onClick={() => openModal(0)}
@@ -26,7 +26,7 @@ const FormCharacter = () => {
                     <InputSection />
                 </div>
 
-                <div className="flex justify-center items-center grow-0 h-11 border-t border-white-200">
+                <div className="flex justify-center items-center border-t p-1 border-white-200">
 
                     <button class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95">
                         Próximo
