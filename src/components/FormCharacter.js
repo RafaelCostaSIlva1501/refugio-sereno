@@ -10,7 +10,7 @@ const FormCharacter = () => {
         return (
             <section className="flex flex-col gap-2.5 h-screen">
 
-                <header className="flex flex-row justify-end items-center flex-shrink-0 p-1 border-b border-white-200">
+                <header className="flex flex-row justify-end items-center flex-shrink-0 border-b border-white-200">
                     <button
                         className="w-max flex justify-center items-center"
                         onClick={() => openModal(0)}
@@ -23,8 +23,8 @@ const FormCharacter = () => {
                     <InputSection />
                 </main>
 
-                <footer className="flex-shrink-0 border-t p-1 border-white-200">
-                    <button class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95">
+                <footer className="flex-shrink-0 border-t border-white-200">
+                    <button class="w-full border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95">
                         Próximo
                     </button>
                 </footer>
@@ -36,7 +36,3 @@ const FormCharacter = () => {
 };
 
 export default FormCharacter;
-
-/*
-
-*/
