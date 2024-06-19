@@ -153,7 +153,7 @@ const expertises = [
 const InputSection = () => {
     /*const { openModal } = useContext(ModalContext);*/
 
-    const [sectionActive, setSectionActive] = useState(0);
+    const [sectionActive, setSectionActive] = useState(1);
 
     const addCharacter = (index) => {
         if (index === 0) {
@@ -211,13 +211,6 @@ const InputSection = () => {
                 <InputForm text="Nacionalidade:" id="Inacionality" />
                 <InputForm text="Idade:" id="Iage" />
                 <InputForm text="Campanha:" id="Icampaign" />
-
-                <button
-                    class="p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
-                    onClick={() => addCharacter(0)}
-                >
-                    Próximo
-                </button>
             </div>
         );
     } else if (sectionActive === 1) {
@@ -228,13 +221,6 @@ const InputSection = () => {
                 <TextareaForm text="Personalidade:" id="Ipersonality" />
 
                 <TextareaForm text="Aparência:" id="Iappearance" />
-
-                <button
-                    class="p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
-                    onClick={() => addCharacter(1)}
-                >
-                    Próximo
-                </button>
             </div>
         );
     } else if (sectionActive === 2) {
@@ -256,35 +242,15 @@ const InputSection = () => {
                     <InputAttributes id="pre" />
 
                     <InputAttributes id="for" />
-
-                    <button
-                        class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
-                        onClick={() => addCharacter(2)}
-                    >
-                        Próximo
-                    </button>
                 </div>
             </>
         );
     } else if (sectionActive === 3) {
         return (
-            <div className="flex flex-col justify-between h-full max-h-screen">
-
-                <div className="grid grid-cols-2 grow gap-2.5 h-96 p-1 overflow-y-auto scrollbar">
-                    {expertises.map((element, index) => (
-                        <Expertise
-                            key={index}
-                            expertise={element.expertiseName}
-                        />
-                    ))}
-                </div>
-
-                <button
-                    class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
-                    onClick={() => addCharacter(0)}
-                >
-                    Próximo
-                </button>
+            <div className="grid grid-cols-2 gap-2.5 p-1 overflow-y-auto scrollbar">
+                {expertises.map((element, index) => (
+                    <Expertise key={index} expertise={element.expertiseName} />
+                ))}
             </div>
         );
     }
