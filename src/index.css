@@ -1,32 +1,37 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  height: 100vh; /* Fallback para navegadores que não suportam Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
-  background-color: black;
-  color: white;
+    height: 100vh; /* Fallback para navegadores que não suportam Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
+    background-color: black;
+    color: white;
+}
+
+.my-element {
+    height: 100vh; /* Fallback para navegadores que não suportam Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .scrollbar::-webkit-scrollbar {
-  width: 5px; /* Largura da barra de rolagem */
+    width: 5px; /* Largura da barra de rolagem */
 }
 
 .scrollbar::-webkit-scrollbar-track {
-  background: #ffffff28; /* Cor do trilho */
-  border-radius: 10px; /* Borda arredondada */
+    background: #ffffff28; /* Cor do trilho */
+    border-radius: 10px; /* Borda arredondada */
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #ffffff49; /* Cor do polegar */
-  border-radius: 10px; /* Borda arredondada */
+    background: #ffffff49; /* Cor do polegar */
+    border-radius: 10px; /* Borda arredondada */
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Cor do polegar ao passar o mouse */
+    background: #555; /* Cor do polegar ao passar o mouse */
 }
 
 input[type="number"]::-webkit-outer-spin-button,
@@ -36,33 +41,31 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #agi {
-  top: 94px;
-  left: 232px;
-  font-size: 2rem;
+    top: 94px;
+    left: 232px;
+    font-size: 2rem;
 }
 
 #int {
-  top: 174px;
-  left: 350px;
-  font-size: 2rem;
+    top: 174px;
+    left: 350px;
+    font-size: 2rem;
 }
 
 #vig {
-  top: 320px;
-  left: 317px;
-  font-size: 2rem;
+    top: 320px;
+    left: 317px;
+    font-size: 2rem;
 }
 
 #pre {
-  top: 320px;
-  left: 145px;
-  font-size: 2rem;
+    top: 320px;
+    left: 145px;
+    font-size: 2rem;
 }
 
 #for {
-  top: 174px;
-  left: 112px;
-  font-size: 2rem;
+    top: 174px;
+    left: 112px;
+    font-size: 2rem;
 }
-
-
