@@ -8,7 +8,7 @@ const FormCharacter = () => {
 
     if (modalON === 1) {
         return (
-            <section className="flex flex-col gap-2.5 h-screen my-element">
+            <section className="flex flex-col gap-2.5 my-element">
 
                 <header className="flex flex-row justify-end items-center flex-shrink-0 border-b border-white-200">
                     <button
