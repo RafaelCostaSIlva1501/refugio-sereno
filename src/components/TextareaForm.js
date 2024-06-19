@@ -5,7 +5,7 @@ const TextareaForm = (props) => {
             <textarea
                 id={props.id}
                 rows={5}
-                className="p-1 bg-white-100 rounded text-white-300 outline-none resize-none"
+                className="p-1 bg-white-100 rounded text-white-300 outline-none resize-none scrollbar"
             ></textarea>
         </div>
     );

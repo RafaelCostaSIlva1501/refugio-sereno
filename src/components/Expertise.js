@@ -1,10 +1,14 @@
 const Expertise = (props) => {
     return (
-        <div className="flex flex-col justify-between items-center w-max p-1 border border-white-300 rounded-sm">
-            <img src="./img/d20.png" alt="D20" className="w-9"></img>
+        <div className="flex flex-col justify-between items-center justify-self-center self-center w-full border border-white-300 rounded-sm">
+            <div className="flex flex-row justify-center items-center gap-2.5 w-full p-2 border-b ">
+                <span className="text-lg">{props.expertise}</span>
+                <abbr title={props.info}>
+                <span className="material-symbols-outlined flex flex-row justify-center items-center text-md cursor-pointer"> info </span>
+                </abbr>
+            </div>
 
-            <span>{props.expertise}</span>
-
+            <div className="flex justify-center w-full p-2">
             <select className="bg-transparent border border-white-400 rounded-sm text-center outline-none">
                 <option className="bg-black border text-white-500" value={0}>
                     Destreinado
@@ -19,6 +23,7 @@ const Expertise = (props) => {
                     Expert
                 </option>
             </select>
+            </div>
         </div>
     );
 };

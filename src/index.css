@@ -1,23 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  overflow: hidden;
   background-color: black;
   color: white;
 }
 
-textarea::-webkit-scrollbar {
+.scrollbar::-webkit-scrollbar {
   width: 5px; /* Largura da barra de rolagem */
 }
 
-textarea::-webkit-scrollbar-track {
+.scrollbar::-webkit-scrollbar-track {
   background: #ffffff28; /* Cor do trilho */
   border-radius: 10px; /* Borda arredondada */
 }
 
-textarea::-webkit-scrollbar-thumb {
+.scrollbar::-webkit-scrollbar-thumb {
   background: #ffffff49; /* Cor do polegar */
   border-radius: 10px; /* Borda arredondada */
 }
 
-textarea::-webkit-scrollbar-thumb:hover {
+.scrollbar::-webkit-scrollbar-thumb:hover {
   background: #555; /* Cor do polegar ao passar o mouse */
 }
 

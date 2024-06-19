@@ -31,33 +31,129 @@ let character = {
 const expertises = [
     {
         expertiseName: "Acrobacias",
-        attribute: "",
-        training: "",
+        attribute: "agi",
+        info: "Você consegue fazer proezas acrobáticas.",
     },
 
     {
         expertiseName: "Adestramento",
-        attribute: "",
-        trining: "",
+        attribute: "pre",
+        info: "Você sabe lidar com animais.",
     },
 
     {
         expertiseName: "Artes",
-        attribute: "",
-        trining: "",
+        attribute: "pre",
+        info: "Você sabe se expressar com diversas formas de arte, como música, dança, escrita, pintura, atuação e outras",
     },
 
     {
         expertiseName: "Atletismo",
+        attribute: "for",
+        info: "Você pode realizar façanhas atléticas.",
+    },
+
+    {
+        expertiseName: "Atualidades",
+        attribute: "int",
+        info: "Você é um conhecedor de assuntos gerais, como política, esporte e entretenimento, e pode responder dúvidas relativas a esses assuntos.",
+    },
+
+    {
+        expertiseName: "Ciências",
+        attribute: "int",
+        info: "Você estudou diversos campos científicos, como matemática, física, química e biologia, e pode responder dúvidas relativas a esses assuntos. ",
+    },
+
+    {
+        expertiseName: "Crime",
+        attribute: "agi",
+        info: "Você sabe exercer atividades ilícitas",
+    },
+
+    {
+        expertiseName: "",
         attribute: "",
-        trining: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
+    },
+
+    {
+        expertiseName: "",
+        attribute: "",
+        info: "",
     },
 ];
 
 const InputSection = () => {
     /*const { openModal } = useContext(ModalContext);*/
 
-    const [sectionActive, setSectionActive] = useState(3);
+    const [sectionActive, setSectionActive] = useState(0);
 
     const addCharacter = (index) => {
         if (index === 0) {
@@ -172,10 +268,23 @@ const InputSection = () => {
         );
     } else if (sectionActive === 3) {
         return (
-            <div className="grid grid-cols-4 gap-1.5">
-                {expertises.map((element, index) => (
-                    <Expertise key={index} expertise={element.expertiseName} />
-                ))}
+            <div className="flex flex-col justify-between h-full max-h-screen">
+
+                <div className="grid grid-cols-2 grow gap-2.5 h-96 p-1 overflow-y-auto scrollbar">
+                    {expertises.map((element, index) => (
+                        <Expertise
+                            key={index}
+                            expertise={element.expertiseName}
+                        />
+                    ))}
+                </div>
+
+                <button
+                    class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                    onClick={() => addCharacter(0)}
+                >
+                    Próximo
+                </button>
             </div>
         );
     }
