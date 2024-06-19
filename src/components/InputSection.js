@@ -247,7 +247,7 @@ const InputSection = () => {
         );
     } else if (sectionActive === 3) {
         return (
-            <div className="grid grid-cols-2 grow gap-2.5 h-96 p-1 overflow-y-auto scrollbar">
+            <div className="grid grid-cols-2 gap-2.5 p-1">
                 {expertises.map((element, index) => (
                     <Expertise key={index} expertise={element.expertiseName} />
                 ))}
