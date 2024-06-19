@@ -27,32 +27,32 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.agi {
-  top: 195px;
+#agi {
+  top: 94px;
   left: 232px;
   font-size: 2rem;
 }
 
-.int {
-  top: 275px;
+#int {
+  top: 174px;
   left: 350px;
   font-size: 2rem;
 }
 
-.vig {
-  top: 420px;
+#vig {
+  top: 320px;
   left: 317px;
   font-size: 2rem;
 }
 
-.pre {
-  top: 420px;
+#pre {
+  top: 320px;
   left: 145px;
   font-size: 2rem;
 }
 
-.for {
-  top: 275px;
+#for {
+  top: 174px;
   left: 112px;
   font-size: 2rem;
 }

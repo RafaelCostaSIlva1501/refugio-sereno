@@ -1,7 +1,20 @@
-const pericias = [
+const expertise = [
     {
-        pericia: "",
-        atributo:  ""
+        expertise: "Acrobacias",
+        attribute:  "",
+        training: "",
+    },
+
+    {
+        expertise: "Adestramento",
+        attribute:  "",
+        trining: "",
+    },
+
+    {
+        expertise: "Artes",
+        attribute:  "",
+        trining: "",
     },
 ]
 

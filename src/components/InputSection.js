@@ -2,6 +2,8 @@ import React, { useState } from "react";
 /*import ModalContext from "./ModalContext";*/
 import InputForm from "./InputForm";
 import TextareaForm from "./TextareaForm";
+import InputAttributes from "./InputAttributes";
+import Expertise from "./Expertise";
 
 let character = {
     player: "",
@@ -26,10 +28,36 @@ let character = {
     dodge: "",
 };
 
+const expertises = [
+    {
+        expertiseName: "Acrobacias",
+        attribute: "",
+        training: "",
+    },
+
+    {
+        expertiseName: "Adestramento",
+        attribute: "",
+        trining: "",
+    },
+
+    {
+        expertiseName: "Artes",
+        attribute: "",
+        trining: "",
+    },
+
+    {
+        expertiseName: "Atletismo",
+        attribute: "",
+        trining: "",
+    },
+];
+
 const InputSection = () => {
     /*const { openModal } = useContext(ModalContext);*/
 
-    const [sectionActive, setSectionActive] = useState(0);
+    const [sectionActive, setSectionActive] = useState(3);
 
     const addCharacter = (index) => {
         if (index === 0) {
@@ -45,6 +73,8 @@ const InputSection = () => {
             character.age = Iage.value;
             character.campaign = Icampaign.value;
 
+            console.log(character);
+
             setSectionActive(1);
         } else if (index === 1) {
             const Ihistory = document.getElementById("Ihistory");
@@ -58,16 +88,28 @@ const InputSection = () => {
             console.log(character);
 
             setSectionActive(2);
+        } else if (index === 2) {
+            const AGI = document.getElementById("agi");
+            const INT = document.getElementById("int");
+            const VIG = document.getElementById("vig");
+            const PRE = document.getElementById("pre");
+            const FOR = document.getElementById("for");
+
+            character.attributes.agi = AGI.value;
+            character.attributes.int = INT.value;
+            character.attributes.vig = VIG.value;
+            character.attributes.pre = PRE.value;
+            character.attributes.for = FOR.value;
+
+            console.log(character);
+
+            setSectionActive(3);
         }
     };
 
-    /*const addCharacter3 = () => {
-        
-    }*/
-
     if (sectionActive === 0) {
         return (
-            <div className="flex flex-col justify-between gap-1.5 h-full sectionForm">
+            <div className="flex flex-col justify-between gap-1.5 h-full">
                 <InputForm text="Jogador:" id="Iplayer" />
                 <InputForm text="Personagem:" id="Icharacter" />
                 <InputForm text="Nacionalidade:" id="Inacionality" />
@@ -84,7 +126,7 @@ const InputSection = () => {
         );
     } else if (sectionActive === 1) {
         return (
-            <div className="flex flex-col justify-between gap-1.5 h-full sectionForm">
+            <div className="flex flex-col justify-between gap-1.5 h-full">
                 <TextareaForm text="História:" id="Ihistory" />
 
                 <TextareaForm text="Personalidade:" id="Ipersonality" />
@@ -101,50 +143,42 @@ const InputSection = () => {
         );
     } else if (sectionActive === 2) {
         return (
-            <div className="flex flex-col justify-center items-center gap-1.5 h-full sectionForm">
-                <img src="./img/atributos-branco.png" alt="Atributos" className="w-96 h-96"></img>
+            <>
+                <div className="flex flex-col justify-between items-center gap-1.5 h-full">
+                    <img
+                        src="./img/atributos-branco.png"
+                        alt="Atributos"
+                        className="w-96 h-96"
+                    ></img>
 
-                <input type="number" className="absolute w-9 h-9 border-b bg-transparent outline-none text-center agi"></input>
+                    <InputAttributes id="agi" />
 
-                <input className="absolute w-9 h-9 border-b  bg-transparent outline-none text-center int"></input>
+                    <InputAttributes id="int" />
 
-                <input className="absolute w-9 h-9  border-b border-red-100 bg-transparent outline-none text-center vig"></input>
+                    <InputAttributes id="vig" />
 
-                <input className="absolute w-9 h-9 border-b  bg-transparent outline-none text-center pre"></input>
+                    <InputAttributes id="pre" />
 
-                <input className="absolute w-9 h-9 border-b  bg-transparent outline-none text-center for"></input>
+                    <InputAttributes id="for" />
 
+                    <button
+                        class="w-full p-1.5 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                        onClick={() => addCharacter(2)}
+                    >
+                        Próximo
+                    </button>
+                </div>
+            </>
+        );
+    } else if (sectionActive === 3) {
+        return (
+            <div className="grid grid-cols-4 gap-1.5">
+                {expertises.map((element, index) => (
+                    <Expertise key={index} expertise={element.expertiseName} />
+                ))}
             </div>
         );
     }
 };
 
 export default InputSection;
-
-/*const addCharacter = () => {
-        const Iplayer = document.getElementById("Iplayer").value;
-        const Icharacter = document.getElementById("Icharacter").value;
-        const Inacionality = document.getElementById("Inacionality").value;
-        const Iage = document.getElementById("Iage").value;
-        const Icampaign = document.getElementById("Icampaign").value;
-        const Ihistory = document.getElementById("Ihistory").value;
-        const Ipersonality = document.getElementById("Ipersonality").value;
-        const Iappearance = document.getElementById("Iappearance").value;
-
-        let newCharacter = {
-            player: Iplayer,
-            character: Icharacter,
-            campaign: Icampaign,
-            nacionality: Inacionality,
-            age: Iage,
-            history: Ihistory,
-            personality: Ipersonality,
-            appearance: Iappearance,
-        };
-
-        listNewCharacter.push(newCharacter);
-
-        localStorage.setItem("sheet", JSON.stringify(listNewCharacter));
-
-        openModal(0);
-    };*/
