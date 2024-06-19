@@ -155,7 +155,7 @@ const InputSection = () => {
 
     const [sectionActive, setSectionActive] = useState(3);
 
-    const addCharacter = (index) => {
+    /*const addCharacter = (index) => {
         if (index === 0) {
             const Iplayer = document.getElementById("Iplayer");
             const Icharacter = document.getElementById("Icharacter");
@@ -201,7 +201,7 @@ const InputSection = () => {
 
             setSectionActive(3);
         }
-    };
+    };*/
 
     if (sectionActive === 0) {
         return (
