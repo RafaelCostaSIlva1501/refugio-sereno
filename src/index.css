@@ -16,6 +16,10 @@ body {
     height: calc(var(--vh, 1vh) * 100);
 }
 
+abbr {
+  text-decoration: none;
+}
+
 .scrollbar::-webkit-scrollbar {
     width: 5px; /* Largura da barra de rolagem */
 }

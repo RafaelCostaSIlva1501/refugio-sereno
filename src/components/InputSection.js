@@ -34,119 +34,140 @@ const expertises = [
         attribute: "agi",
         info: "Você consegue fazer proezas acrobáticas.",
     },
-
     {
         expertiseName: "Adestramento",
         attribute: "pre",
         info: "Você sabe lidar com animais.",
     },
-
     {
         expertiseName: "Artes",
         attribute: "pre",
-        info: "Você sabe se expressar com diversas formas de arte, como música, dança, escrita, pintura, atuação e outras",
+        info: "Você sabe se expressar com diversas formas de arte, como música, dança, escrita, pintura, atuação entre outras.",
     },
-
     {
         expertiseName: "Atletismo",
         attribute: "for",
         info: "Você pode realizar façanhas atléticas.",
     },
-
     {
         expertiseName: "Atualidades",
         attribute: "int",
         info: "Você é um conhecedor de assuntos gerais, como política, esporte e entretenimento, e pode responder dúvidas relativas a esses assuntos.",
     },
-
     {
         expertiseName: "Ciências",
         attribute: "int",
-        info: "Você estudou diversos campos científicos, como matemática, física, química e biologia, e pode responder dúvidas relativas a esses assuntos. ",
+        info: "Você estudou diversos campos científicos, como matemática, física, química e biologia, e pode responder dúvidas relativas a esses assuntos.",
     },
-
     {
         expertiseName: "Crime",
         attribute: "agi",
         info: "Você sabe exercer atividades ilícitas",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Diplomacia",
+        attribute: "pre",
+        info: "Você convence pessoas com lábia e argumentação.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Enganação",
+        attribute: "pre",
+        info: "Você manipula pessoas com blefes e trapaças.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Fortitude",
+        attribute: "vig",
+        info: "Você usa esta perícia para testes de resistência contra efeitos que exigem vitalidade, como doenças e venenos.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Furtividade",
+        attribute: "agi",
+        info: "Você sabe ser discreto e sorrateiro.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Iniciativa",
+        attribute: "agi",
+        info: "Esta perícia determina sua velocidade de reação. ",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Intimidação",
+        attribute: "pre",
+        info: "Você pode assustar ou coagir outras pessoas.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Intuição",
+        attribute: "int",
+        info: "Esta perícia mede sua empatia e “sexto sentido”.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Investigação",
+        attribute: "int",
+        info: "Você sabe como descobrir pistas e informações.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Luta",
+        attribute: "for",
+        info: "Você usa Luta para fazer ataques corpo a corpo.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Medicina",
+        attribute: "int",
+        info: "Você sabe tratar ferimentos, doenças e venenos.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Ocultismo",
+        attribute: "int",
+        info: "Você estudou o Paranormal",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Percepção",
+        attribute: "pre",
+        info: "Você nota coisas usando os sentidos.",
     },
-
     {
-        expertiseName: "",
-        attribute: "",
-        info: "",
+        expertiseName: "Pilotagem",
+        attribute: "agi",
+        info: "Você sabe operar veículos terrestres e aquáticos, como motos, carros e lanchas.",
+    },
+    {
+        expertiseName: "Pontaria",
+        attribute: "agi",
+        info: "Você usa Pontaria para fazer ataques à distância.",
+    },
+    {
+        expertiseName: "Profissão",
+        attribute: "int",
+        info: "Você sabe exercer uma profissão específica, como advogado, engenheiro, jornalista ou publicitário.",
+    },
+    {
+        expertiseName: "Reflexos",
+        attribute: "agi",
+        info: "Você usa esta perícia para testes de resistência contra efeitos que exigem reação rápida, como armadilhas e explosões.",
+    },
+    {
+        expertiseName: "Religião",
+        attribute: "pre",
+        info: "Você possui conhecimento sobre teologia e as diversas religiões do mundo.",
+    },
+    {
+        expertiseName: "Sobrevivência",
+        attribute: "int",
+        info: "Você pode se guiar em regiões selvagens e evitar perigos da natureza.",
+    },
+    {
+        expertiseName: "Tática",
+        attribute: "int",
+        info: "Você recebeu educação militar",
+    },
+    {
+        expertiseName: "Tecnologia",
+        attribute: "int",
+        info: "Você possui conhecimentos avançados de eletrônica e informática.",
+    },
+    {
+        expertiseName: "Vontade",
+        attribute: "pre",
+        info: "Você usa esta perícia para testes de resistência contra efeitos que exigem determinação, como intimidação e rituais que afetam a mente",
     },
 ];
 
@@ -249,7 +270,7 @@ const InputSection = () => {
         return (
             <div className="grid grid-cols-2 gap-2.5 p-1">
                 {expertises.map((element, index) => (
-                    <Expertise key={index} expertise={element.expertiseName} />
+                    <Expertise key={index} expertise={element.expertiseName} info={element.info} />
                 ))}
             </div>
         );
