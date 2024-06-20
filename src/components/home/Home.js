@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 import CharacterList from "./CharacterList";
+import PopUpDelete from "./PopUpDelete";
 
 const Home = () => {
     const { modalON, openModal } = useContext(ModalContext);
@@ -24,6 +25,8 @@ const Home = () => {
                 <section className="flex flex-col gap-2">
                     <CharacterList />
                 </section>
+
+                <PopUpDelete />
             </main>
         );
     } else {

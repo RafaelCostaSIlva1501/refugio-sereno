@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
-import ButtonStyle from "./ButtonStyle";
+import ButtonStyle from "../styles/ButtonStyle";
 import SectionPerson from "./SectionPerson";
 import SectionStatus from "./SectionStatus";
 import SectionExpertise from "./SectionExpertise";
@@ -15,15 +15,30 @@ const CharacterSheet = () => {
         return (
             <section className="p-2.5 h-screen flex flex-col">
                 <div className="flex flex-row justify-around gap-1.5 my-5 p-1 border-t border-b border-white-200">
-                    <ButtonStyle name="person" onClick={() => replaceModalSheet(0)}/>
+                    <ButtonStyle
+                        name="person"
+                        onClick={() => replaceModalSheet(0)}
+                    />
 
-                    <ButtonStyle name="assignment" onClick={() => replaceModalSheet(1)} />
+                    <ButtonStyle
+                        name="assignment"
+                        onClick={() => replaceModalSheet(1)}
+                    />
 
-                    <ButtonStyle name="casino" onClick={() => replaceModalSheet(2)}/>
+                    <ButtonStyle
+                        name="casino"
+                        onClick={() => replaceModalSheet(2)}
+                    />
 
-                    <ButtonStyle name="backpack" onClick={() => replaceModalSheet(3)}/>
+                    <ButtonStyle
+                        name="backpack"
+                        onClick={() => replaceModalSheet(3)}
+                    />
 
-                    <ButtonStyle name="lock_open" onClick={() => replaceModalSheet(4)}/>
+                    <ButtonStyle
+                        name="lock_open"
+                        onClick={() => replaceModalSheet(4)}
+                    />
                 </div>
 
                 <div className="h-96">
@@ -33,7 +48,6 @@ const CharacterSheet = () => {
                     <SectionInventory />
                     <SectionUnlock />
                 </div>
-
             </section>
         );
     } else {

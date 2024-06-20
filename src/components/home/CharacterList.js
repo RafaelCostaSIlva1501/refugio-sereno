@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
 const CharacterList = () => {
     const [characters, setCharacters] = useState([]);
 
-    const { openModal, setDeleteIndex, openPopUpDelete, setSheetIndex } = useContext(ModalContext);
+    const { openModal, setDeleteIndex, openPopUpDelete, setSheetIndex } =
+        useContext(ModalContext);
 
     useEffect(() => {
         const storedCharacters =
@@ -28,13 +29,11 @@ const CharacterList = () => {
 
         viewSheetBtn.forEach((element, index) => {
             element.addEventListener("click", () => {
-                openModal(2)
-                setSheetIndex(index)
-            })
-        })
-
-        
-    })
+                openModal(2);
+                setSheetIndex(index);
+            });
+        });
+    });
 
     return (
         <div className="flex flex-col gap-1.5">

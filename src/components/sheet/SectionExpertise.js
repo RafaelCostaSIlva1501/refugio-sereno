@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
 const SectionExpertise = () => {
     const { modalSheet } = useContext(ModalContext);

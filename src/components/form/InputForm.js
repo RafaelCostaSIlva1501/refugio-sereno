@@ -1,3 +1,5 @@
+import React from "react";
+
 const InputForm = (props) => {
     return (
         <div className="flex flex-col">

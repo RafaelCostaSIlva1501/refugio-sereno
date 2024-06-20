@@ -1,8 +1,7 @@
 import React from "react";
-import Home from "./components/Home";
-import FormCharacter from "./components/FormCharacter";
-import CharacterSheet from "./components/CharacterSheet";
-import PopUpDelete from "./components/PopUpDelete";
+import Home from "./components/home/Home";
+import FormCharacter from "./components/form/FormCharacter";
+import CharacterSheet from "./components/sheet/CharacterSheet";
 
 import { ModalProvider } from "./components/ModalContext";
 
@@ -13,7 +12,6 @@ function App() {
                 <Home />
                 <FormCharacter />
                 <CharacterSheet />
-                <PopUpDelete />
             </ModalProvider>
         </>
     );

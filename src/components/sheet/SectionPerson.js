@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
 const SectionPerson = () => {
-    const { modalSheet, listNewCharacter, sheetIndex } = useContext(ModalContext);
+    const { modalSheet, listNewCharacter, sheetIndex } =
+        useContext(ModalContext);
 
     if (modalSheet === 0) {
         return (

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
 
@@ -33,8 +33,6 @@ const SectionStatus = () => {
 
                 <div>
                     <button></button>
-
-                    
                 </div>
             </>
         );

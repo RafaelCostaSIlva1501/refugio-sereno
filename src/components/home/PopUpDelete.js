@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import ModalContext from "./ModalContext";
+import ModalContext from "../ModalContext";
 
 const PopUpDelete = () => {
     const { deletePopUp, openPopUpDelete, deleteIndex, setDeleteIndex } =
