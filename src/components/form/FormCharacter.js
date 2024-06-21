@@ -43,6 +43,13 @@ const FormCharacter = () => {
                             />
                             <InputForm text="Idade:" id="Iage" />
                             <InputForm text="Campanha:" id="Icampaign" />
+
+                            <input
+                                type="file"
+                                id="Iimg"
+                                accept="image/*"
+                                className=""
+                            ></input>
                         </div>
                     )}
 
@@ -76,7 +83,7 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 3 && (
-                        <div>
+                        <div className="flex justify-center items-center h-full">
                             <img
                                 src="./img/atributos-branco.png"
                                 alt="Atributos"

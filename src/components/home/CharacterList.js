@@ -44,8 +44,8 @@ const CharacterList = () => {
                         key={index}
                     >
                         <img
-                            src=""
-                            alt=""
+                            src={character.img}
+                            alt="Foto do personagem"
                             className="w-28 h-28 border border-solid border-white-500"
                         ></img>
 

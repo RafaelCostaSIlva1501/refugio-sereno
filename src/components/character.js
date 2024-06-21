@@ -4,6 +4,7 @@ let character = {
     nacionality: "",
     age: 0,
     campaign: "",
+    img: "",
     history: "",
     personality: "",
     appearance: "",

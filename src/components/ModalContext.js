@@ -31,12 +31,23 @@ export const ModalProvider = ({ children }) => {
         const Inacionality = document.getElementById("Inacionality");
         const Iage = document.getElementById("Iage");
         const Icampaign = document.getElementById("Icampaign");
+        const Iimg = document.getElementById("Iimg");
 
         character.player = Iplayer.value;
         character.character = Icharacter.value;
         character.nacionality = Inacionality.value;
         character.age = Iage.value;
         character.campaign = Icampaign.value;
+
+        const file = Iimg.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                character.img = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
 
         console.log(character);
 
@@ -58,9 +69,14 @@ export const ModalProvider = ({ children }) => {
         setSectionActive(2);
     };
 
-    //Atributos
+    //Origens
     const addCharacter3 = () => {
-        /*const AGI = document.getElementById("agi");
+        setSectionActive(3);
+    };
+
+    //Atributos
+    const addCharacter4 = () => {
+        const AGI = document.getElementById("agi");
         const INT = document.getElementById("int");
         const VIG = document.getElementById("vig");
         const PRE = document.getElementById("pre");
@@ -72,18 +88,12 @@ export const ModalProvider = ({ children }) => {
         character.attributes.pre = PRE.value;
         character.attributes.for = FOR.value;
 
-        console.log(character);*/
-
-        setSectionActive(3);
-    };
-
-    //Perícias
-    const addCharacter4 = () => {
         setSectionActive(4);
     };
 
+    //Perícias
     const addCharacter5 = () => {
-        /*const Iacrobacias = document.getElementById("Iacrobacias");
+        const Iacrobacias = document.getElementById("Iacrobacias");
         const Iadestramento = document.getElementById("Iadestramento");
         const Iartes = document.getElementById("Iartes");
         const Iatletismo = document.getElementById("Iatletismo");
@@ -143,9 +153,11 @@ export const ModalProvider = ({ children }) => {
 
         listNewCharacter.push(character);
 
-        localStorage.setItem("sheet", JSON.stringify(listNewCharacter));*/
+        localStorage.setItem("sheet", JSON.stringify(listNewCharacter));
 
         openModal(0);
+
+        setSectionActive(0);
     };
 
     return (
