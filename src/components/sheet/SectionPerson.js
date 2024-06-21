@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import ModalContext from "../ModalContext";
+import character from "../character";
 
 const SectionPerson = () => {
     const { modalSheet, listNewCharacter, sheetIndex } =
@@ -16,7 +17,7 @@ const SectionPerson = () => {
                     <div className="border">
                         <img
                             className="min-w-24 h-24"
-                            src="./img/senhoruaite.webp"
+                            src={character.img}
                             alt=""
                         ></img>
                     </div>
