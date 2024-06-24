@@ -9,7 +9,8 @@ import SectionInventory from "./SectionInventory";
 import SectionUnlock from "./SectionUnlock";
 
 const CharacterSheet = () => {
-    const { modalON, replaceModalSheet } = useContext(ModalContext);
+    const { modalON, replaceModalSheet, listNewCharacter, sheetIndex } =
+        useContext(ModalContext);
 
     if (modalON === 2) {
         return (

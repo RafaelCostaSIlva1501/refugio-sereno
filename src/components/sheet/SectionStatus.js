@@ -4,29 +4,30 @@ import ModalContext from "../ModalContext";
 import Progress from "./Progress";
 
 const SectionStatus = () => {
-    const { modalSheet } = useContext(ModalContext);
+    const { modalSheet, listNewCharacter, sheetIndex } = useContext(ModalContext);
 
     if (modalSheet === 1) {
+        
         return (
             <>
                 <div className="flex flex-row justify-between w-full mb-2 bg-white-100">
-                    span
+                    <span></span>
                     <h2 className=" text-center text-xl">STATUS</h2>
-                    span
+                    <span></span>
                 </div>
 
                 <div className="">
                     <Progress
                         name="Pontos de Vida"
-                        maxValue={12}
-                        value={7}
+                        maxValue={listNewCharacter[sheetIndex].pv[0]}
+                        value={listNewCharacter[sheetIndex].pv[1]}
                         color="red"
                     />
 
                     <Progress
                         name="Pontos de Determinação"
-                        maxValue={90}
-                        value={14}
+                        maxValue={listNewCharacter[sheetIndex].pd[0]}
+                        value={listNewCharacter[sheetIndex].pd[1]}
                         color="blue"
                     />
                 </div>

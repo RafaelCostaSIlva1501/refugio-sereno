@@ -36,7 +36,7 @@ export const ModalProvider = ({ children }) => {
         character.player = Iplayer.value;
         character.character = Icharacter.value;
         character.nacionality = Inacionality.value;
-        character.age = Iage.value;
+        character.age = Number(Iage.value);
         character.campaign = Icampaign.value;
 
         const file = Iimg.files[0];
@@ -71,6 +71,12 @@ export const ModalProvider = ({ children }) => {
 
     //Origens
     const addCharacter3 = () => {
+        const origin = document.querySelector('input[name="origin"]:checked');
+
+        const Iorigin = origin.value;
+
+        character.origin = Iorigin;
+
         setSectionActive(3);
     };
 
@@ -82,12 +88,17 @@ export const ModalProvider = ({ children }) => {
         const PRE = document.getElementById("pre");
         const FOR = document.getElementById("for");
 
-        character.attributes.agi = AGI.value;
-        character.attributes.int = INT.value;
-        character.attributes.vig = VIG.value;
-        character.attributes.pre = PRE.value;
-        character.attributes.for = FOR.value;
+        character.attributes.agi = Number(AGI.value);
+        character.attributes.int = Number(INT.value);
+        character.attributes.vig = Number(VIG.value);
+        character.attributes.pre = Number(PRE.value);
+        character.attributes.for = Number(FOR.value);
 
+        character.pv[0] = Number(VIG.value) + 8
+        character.pv[1] = Number(VIG.value) + 8
+        
+        character.pd[0] = Number(PRE.value) + 2
+        character.pd[1] = Number(PRE.value) + 2
         setSectionActive(4);
     };
 

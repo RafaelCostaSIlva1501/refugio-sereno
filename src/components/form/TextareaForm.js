@@ -4,9 +4,9 @@ const TextareaForm = (props) => {
             <label htmlFor={props.id}>{props.text}</label>
             <textarea
                 id={props.id}
-                rows={5}
+                rows={3}
                 className="p-1 bg-white-100 rounded text-white-300 outline-none resize-none scrollbar"
-            ></textarea>
+            >{props.characterText}</textarea>
         </div>
     );
 };
