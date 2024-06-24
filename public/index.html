@@ -52,14 +52,13 @@
                             },
                             ".progressBar": {
                                 "--progress-color": "blue",
+                                "&::-webkit-progress-bar": {
+                                    backgroundColor: "transparent",
+                                    borderRadius: "5px",
+                                },
                                 "&::-webkit-progress-value": {
                                     backgroundColor: "var(--progress-color)",
-                                },
-                                "&::-moz-progress-bar": {
-                                    backgroundColor: "var(--progress-color)",
-                                },
-                                "&::-ms-fill": {
-                                    backgroundColor: "var(--progress-color)",
+                                    borderRadius: "5px",
                                 },
                             },
                         };
