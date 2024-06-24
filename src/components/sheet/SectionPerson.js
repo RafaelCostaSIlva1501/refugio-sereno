@@ -7,7 +7,7 @@ const SectionPerson = () => {
 
     if (modalSheet === 0) {
         const changeInfo = () => {
-            
+
         }
         return (
             <>
@@ -15,7 +15,7 @@ const SectionPerson = () => {
                     INFORMAÇÕES
                 </h2>
 
-                <div className="flex flex-row justify-center items-center gap-1.5 w-full">
+                <div className="flex flex-row justify-center items-center gap-1.5 w-full text-sm">
 
                     <div className="h-fit border">
                         <img
@@ -25,7 +25,7 @@ const SectionPerson = () => {
                         ></img>
                     </div>
 
-                    <div className="flex flex-col gap-1.5 w-full ">
+                    <div className="flex flex-col justify-between w-full h-36">
                         <span className="border-b">
                             Jogador: {listNewCharacter[sheetIndex].player}
                         </span>

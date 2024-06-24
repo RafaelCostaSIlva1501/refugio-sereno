@@ -9,13 +9,13 @@ import SectionInventory from "./SectionInventory";
 import SectionUnlock from "./SectionUnlock";
 
 const CharacterSheet = () => {
-    const { modalON, replaceModalSheet, listNewCharacter, sheetIndex } =
+    const { modalON, replaceModalSheet } =
         useContext(ModalContext);
 
     if (modalON === 2) {
         return (
-            <section className="p-2.5 h-screen flex flex-col">
-                <div className="flex flex-row justify-around gap-1.5 my-5 p-1 border-t border-b border-white-200">
+            <section className="p-2 h-screen flex flex-col">
+                <div className="flex flex-row justify-around gap-1.5 my-2.5 p-1 border-t border-b border-white-200">
                     <ButtonStyle
                         name="person"
                         onClick={() => replaceModalSheet(0)}
