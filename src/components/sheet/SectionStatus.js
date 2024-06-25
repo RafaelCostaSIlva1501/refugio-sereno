@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
+import Tag from "./Tag";
 
 const SectionStatus = () => {
     const { modalSheet, listNewCharacter, sheetIndex } =
@@ -48,11 +49,9 @@ const SectionStatus = () => {
 
     if (modalSheet === 1) {
         return (
-            <>
-                <div className="flex flex-row justify-between w-full mb-2 bg-white-100">
-                    <span></span>
+            <div className="flex flex-col">
+                <div className="w-full bg-white-100">
                     <h2 className=" text-center text-xl">STATUS</h2>
-                    <span></span>
                 </div>
 
                 <div className="">
@@ -83,10 +82,39 @@ const SectionStatus = () => {
                     />
                 </div>
 
-                <div>
-                    <button></button>
-                </div>
-            </>
+                <hr className="my-1"></hr>
+
+                <section className="flex flex-col">
+                    <div className="flex flex-row justify-center items-center gap-1.5 flex-wrap p-1">
+                        <Tag
+                            title="Defesa:"
+                            value={listNewCharacter[sheetIndex].defense}
+                        />
+                        <Tag
+                            title="Bloqueio:"
+                            value={listNewCharacter[sheetIndex].block}
+                        />
+                        <Tag
+                            title="Esquiva:"
+                            value={listNewCharacter[sheetIndex].dodge}
+                        />
+                    </div>
+                </section>
+
+                <hr className="my-1"></hr>
+
+                <section>
+                    <button className="flex flex-row gap-1 p-1 border hover:bg-white-500 hover:text-black transition">
+                        <span className="material-symbols-outlined">add</span>
+
+                        <span>Adicionar Efeito</span>
+                    </button>
+
+                    <div className="hidden justify-center items-center centralize border">
+                        <div className="border"></div>
+                    </div>
+                </section>
+            </div>
         );
     } else {
         return null;

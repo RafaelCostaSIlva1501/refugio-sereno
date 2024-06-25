@@ -13,7 +13,7 @@ const Progress = (props) => {
                     <button className="flex justify-center items-center px-2 border rounded text-lg" onClick={props.sub1}>-1</button>
 
                     <progress 
-                        className="w-full border border-white-500 rounded progressBar" 
+                        className="w-full border border-white-500 rounded transition progressBar" 
                         value={props.value} 
                         max={props.maxValue}
                         style={{ "--progress-color": props.color }}

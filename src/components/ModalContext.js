@@ -99,6 +99,9 @@ export const ModalProvider = ({ children }) => {
         
         character.pd[0] = Number(PRE.value) + 2
         character.pd[1] = Number(PRE.value) + 2
+
+        character.defense = Number(AGI.value) + 10
+
         setSectionActive(4);
     };
 
@@ -161,6 +164,9 @@ export const ModalProvider = ({ children }) => {
         character.expertises.tatica = Itatica.value;
         character.expertises.tecnologia = Itecnologia.value;
         character.expertises.vontade = Ivontade.value;
+
+        character.block = Ifortitude.value
+        character.dodge = Ireflexos.value
 
         listNewCharacter.push(character);
 

@@ -6,6 +6,7 @@ const TextareaForm = (props) => {
                 id={props.id}
                 rows={4}
                 className="p-1 bg-white-100 rounded text-white-300 outline-none resize-none scrollbar"
+                onInput={props.onInput}
             >{props.characterText}</textarea>
         </div>
     );

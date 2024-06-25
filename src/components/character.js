@@ -48,9 +48,9 @@ let character = {
     },
     pv: [0, 0],
     pd: [0, 0],
-    passive: "",
-    block: "",
-    dodge: "",
+    defense: 0,
+    block: 0,
+    dodge: 0,
 };
 
 export default character;
