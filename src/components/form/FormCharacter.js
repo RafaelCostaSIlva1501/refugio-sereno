@@ -22,8 +22,9 @@ const FormCharacter = () => {
 
     if (modalON === 1) {
         return (
-            <section className="flex flex-col gap-2.5 my-element p-2.5">
-                <header className="flex flex-row justify-end items-center flex-shrink-0 p-1 border-b border-white-200">
+            <section className="flex flex-col justify-between h-full px-1">
+
+                <header className="flex flex-row justify-end items-center p-1 border-b border-white-200">
                     <button
                         className="w-max flex justify-center items-center"
                         onClick={() => openModal(0)}
@@ -32,7 +33,7 @@ const FormCharacter = () => {
                     </button>
                 </header>
 
-                <main className="flex flex-col flex-1 overflow-y-auto scrollbar">
+                <main className="flex flex-col grow h-96 overflow-y-auto scrollbar">
                     {sectionActive === 0 && (
                         <div className="flex flex-col gap-3.5">
                             <InputForm text="Jogador:" id="Iplayer" />
@@ -54,7 +55,7 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 1 && (
-                        <div>
+                        <div className="flex flex-col gap-5">
                             <TextareaForm text="História:" id="Ihistory" />
 
                             <TextareaForm
@@ -67,7 +68,7 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 2 && (
-                        <div className="flex flex-col gap-2.5 p-1">
+                        <div className="flex flex-col h-full gap-2.5 p-1">
                             {origins.map((element, index) => (
                                 <InputOrigins
                                     key={index}
@@ -116,7 +117,7 @@ const FormCharacter = () => {
                     )}
                 </main>
 
-                <footer className="flex-shrink-0 p-1 border-t border-white-200">
+                <footer className="flex p-1 border-t border-white-200">
                     {sectionActive === 0 && (
                         <button
                             className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"

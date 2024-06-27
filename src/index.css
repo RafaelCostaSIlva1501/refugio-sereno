@@ -1,19 +1,27 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
+
+html, body {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    max-width: 100vw;
     height: 100vh;
     max-height: 100vh;
+    margin: 0;
+    padding: 0;
     background-color: black;
     color: white;
 }
 
-.my-element {
-    height: 100vh; /* Fallback para navegadores que não suportam Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+#root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 abbr {
@@ -27,31 +35,31 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #agi {
-    top: 169px;
+    top: 185px;
     left: 232px;
     font-size: 2rem;
 }
 
 #int {
-    top: 249px;
+    top: 265px;
     left: 350px;
     font-size: 2rem;
 }
 
 #vig {
-    top: 394px;
+    top: 409px;
     left: 317px;
     font-size: 2rem;
 }
 
 #pre {
-    top: 394px;
+    top: 409px;
     left: 145px;
     font-size: 2rem;
 }
 
 #for {
-    top: 249px;
+    top: 265px;
     left: 112px;
     font-size: 2rem;
 }
