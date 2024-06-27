@@ -502,8 +502,66 @@ const origins = [
             "Você pode usar Investigação no lugar de Diplomacia ao fazer testes para persuadir e mudar atitude. Quando faz um teste de Investigação para interrogar, pode gastar 2 PE para receber +5 nesse teste.",
         ],
     },
+
+    {
+        origin: [
+            "Cientista Forense",
+            "Você trabalhava coletando provas para a resolução de crimes, seja para a polícia, seja para uma empresa privada de investigação. Usava metódos e técnicas adquiridos através de uma graduação em uma área científica ou médica, além de cursos específicos. Recrutado para a Ordem pelos seus conhecimentos técnicos, seu trabalho não mudou muito - mas o tipo de crime que você investiga sim.",
+        ],
+        expertises: ["Ciências", "Investigação"],
+        power: [
+            "Investigação Científica",
+            "Uma vez por cena de investigação, você pode gastar uma ação livre para procurar pistas, usando Ciências no lugar da perícia que seria usada para tentar encontrar a pista em questão.",
+        ],
+    },
+
+    {
+        origin: [
+            "Dublê",
+            "Você sempre combinou um gosto por alta velocidade, manobras ousadas e esportes radicais com uma total falta de noção do perigo. Sua busca incessante por adrenalina o fez seguir carreira de dublê, uma profissão que lhe permitiu enfrentar o risco das mais diversas formas. Agora à serviço da Ordem, você enfim enfrentará o Medo verdadeiro e poderá colocar sua coragem - e suas peripécias - à prova como nunca.",
+        ],
+        expertises: ["Pilotagem", "Reflexos"],
+        power: [
+            "Destemido",
+            "Quando faz um teste de perícia para o qual uma falha terá como consequência direta dano ou uma condição negativa, você recebe +5 nesse teste.",
+        ],
+    },
+
+    {
+        origin: ["Escritor", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
+
+    {
+        origin: ["Ginasta", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
+
+    {
+        origin: ["Gaudério Abutre", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
+
+    {
+        origin: ["Jornalista", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
+
+    {
+        origin: ["Professor", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
+
+    {
+        origin: ["Revoltado", ""],
+        expertises: ["", ""],
+        power: ["", ""],
+    },
 ];
 
 export default origins;
-
-console.log(origins)

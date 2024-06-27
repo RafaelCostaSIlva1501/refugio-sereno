@@ -3,10 +3,18 @@ import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
 import Tag from "./Tag";
+import conditions from "../conditions";
 
 const SectionStatus = () => {
     const { modalSheet, listNewCharacter, sheetIndex } =
         useContext(ModalContext);
+
+    const [effect, setEffect] = useState(false);
+
+    const openEffects = () => {
+        setEffect(true);
+        console.log("Foi!");
+    };
 
     const [characters, setCharacters] = useState(listNewCharacter);
 
@@ -54,7 +62,7 @@ const SectionStatus = () => {
                     <h2 className=" text-center text-xl">STATUS</h2>
                 </div>
 
-                <div className="">
+                <section className="">
                     <Progress
                         name="Pontos de Vida"
                         maxValue={characters[sheetIndex].pv[0]}
@@ -80,7 +88,7 @@ const SectionStatus = () => {
                         add1={() => addBar("pd", 1)}
                         add5={() => addBar("pd", 5)}
                     />
-                </div>
+                </section>
 
                 <hr className="my-1"></hr>
 
@@ -104,15 +112,52 @@ const SectionStatus = () => {
                 <hr className="my-1"></hr>
 
                 <section>
-                    <button className="flex flex-row gap-1 p-1 border hover:bg-white-500 hover:text-black transition">
+                    <button
+                        className="flex flex-row gap-1 p-1 border hover:bg-white-500 hover:text-black transition"
+                        onClick={() => openEffects()}
+                    >
                         <span className="material-symbols-outlined">add</span>
 
                         <span>Adicionar Efeito</span>
                     </button>
 
-                    <div className="hidden justify-center items-center centralize border">
-                        <div className="border"></div>
-                    </div>
+                    {effect === true && (
+                        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
+                            <div className="border rounded">
+                                <header className="flex justify-between w-full p-1 border-b">
+                                    <button
+                                        className="flex"
+                                       
+                                    >
+                                        <span className="material-symbols-outlined">
+                                            info
+                                        </span>
+                                    </button>
+
+                                    <h2>Condições</h2>
+                                    <button
+                                        className="flex"
+                                        onClick={() => setEffect(false)}
+                                    >
+                                        <span className="material-symbols-outlined">
+                                            close
+                                        </span>
+                                    </button>
+                                </header>
+
+                                <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
+                                    {conditions.map((element, index) => (
+                                        <button
+                                            className="p-0.5 bg-white-200 border border-dashed rounded"
+                                            key={index}
+                                        >
+                                            {element.condition[0]}
+                                        </button>
+                                    ))}
+                                </section>
+                            </div>
+                        </div>
+                    )}
                 </section>
             </div>
         );
