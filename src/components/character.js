@@ -51,6 +51,7 @@ let character = {
     defense: 0,
     block: 0,
     dodge: 0,
+    conditions: [],
 };
 
 export default character;

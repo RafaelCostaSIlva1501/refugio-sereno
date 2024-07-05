@@ -94,13 +94,13 @@ export const ModalProvider = ({ children }) => {
         character.attributes.pre = Number(PRE.value);
         character.attributes.for = Number(FOR.value);
 
-        character.pv[0] = Number(VIG.value) + 8
-        character.pv[1] = Number(VIG.value) + 8
-        
-        character.pd[0] = Number(PRE.value) + 2
-        character.pd[1] = Number(PRE.value) + 2
+        character.pv[0] = Number(VIG.value) + 8;
+        character.pv[1] = Number(VIG.value) + 8;
 
-        character.defense = Number(AGI.value) + 10
+        character.pd[0] = Number(PRE.value) + 2;
+        character.pd[1] = Number(PRE.value) + 2;
+
+        character.defense = Number(AGI.value) + 10;
 
         setSectionActive(4);
     };
@@ -165,8 +165,8 @@ export const ModalProvider = ({ children }) => {
         character.expertises.tecnologia = Itecnologia.value;
         character.expertises.vontade = Ivontade.value;
 
-        character.block = Ifortitude.value
-        character.dodge = Ireflexos.value
+        character.block = Ifortitude.value;
+        character.dodge = Ireflexos.value;
 
         listNewCharacter.push(character);
 
@@ -175,6 +175,208 @@ export const ModalProvider = ({ children }) => {
         openModal(0);
 
         setSectionActive(0);
+    };
+
+    //Benefícios da origem
+    const setExpertises = () => {
+        let origins = character.origin;
+
+        switch (origins) {
+            case "Acadêmico":
+                document.getElementById("Iciencias").value = 5;
+                document.getElementById("Iinvestigacao").value = 5;
+                break;
+            case "Agente de Saúde":
+                document.getElementById("Iintuicao").value = 5;
+                document.getElementById("Imedicina").value = 5;
+                break;
+            case "Amnésico":
+                // Nenhuma perícia específica definida
+                break;
+            case "Artista":
+                document.getElementById("Iartes").value = 5;
+                document.getElementById("Ienganacao").value = 5;
+                break;
+            case "Atleta":
+                document.getElementById("Iacrobacia").value = 5;
+                document.getElementById("Iatletismo").value = 5;
+                break;
+            case "Chef":
+                document.getElementById("Ifortitude").value = 5;
+                document.getElementById("Iprofissao").value = 5;
+                break;
+            case "Criminoso":
+                document.getElementById("Icrime").value = 5;
+                document.getElementById("Ifurtividade").value = 5;
+                break;
+            case "Cultista Arrependido":
+                document.getElementById("Iocultismo").value = 5;
+                document.getElementById("Ireligiao").value = 5;
+                break;
+            case "Desgarrado":
+                document.getElementById("Ifortitude").value = 5;
+                document.getElementById("Isobrevivencia").value = 5;
+                break;
+            case "Engenheiro":
+                document.getElementById("Iprofissao").value = 5;
+                document.getElementById("Itecnologia").value = 5;
+                break;
+            case "Executivo":
+                document.getElementById("Idiplomacia").value = 5;
+                document.getElementById("Iprofissao").value = 5;
+                break;
+            case "Investigador":
+                document.getElementById("Iinvestigacao").value = 5;
+                document.getElementById("Ipercepcao").value = 5;
+                break;
+            case "Lutador":
+                document.getElementById("Iluta").value = 5;
+                document.getElementById("Ireflexos").value = 5;
+                break;
+            case "Magnata":
+                document.getElementById("Idiplomacia").value = 5;
+                document.getElementById("Ipilotagem").value = 5;
+                break;
+            case "Mercenário":
+                document.getElementById("Iiniciativa").value = 5;
+                document.getElementById("Iintimidacao").value = 5;
+                break;
+            case "Militar":
+                document.getElementById("Ipontaria").value = 5;
+                document.getElementById("Itatica").value = 5;
+                break;
+            case "Operário":
+                document.getElementById("Ifortitude").value = 5;
+                document.getElementById("Iprofissao").value = 5;
+                break;
+            case "Policial":
+                document.getElementById("Ipercepcao").value = 5;
+                document.getElementById("Ipontaria").value = 5;
+                break;
+            case "Religioso":
+                document.getElementById("Ireligiao").value = 5;
+                document.getElementById("Ivontade").value = 5;
+                break;
+            case "Servidor Público":
+                document.getElementById("Iintuicao").value = 5;
+                document.getElementById("Ivontade").value = 5;
+                break;
+            case "Teórico da Conspiração":
+                document.getElementById("Iinvestigacao").value = 5;
+                document.getElementById("Iocultismo").value = 5;
+                break;
+            case "T.I.":
+                document.getElementById("Iinvestigacao").value = 5;
+                document.getElementById("Itecnologia").value = 5;
+                break;
+            case "Trabalhador Rural":
+                document.getElementById("Iadestramento").value = 5;
+                document.getElementById("Isobrevivencia").value = 5;
+                break;
+            case "Trambiqueiro":
+                document.getElementById("Icrime").value = 5;
+                document.getElementById("Ienganacao").value = 5;
+                break;
+            case "Universitário":
+                document.getElementById("Iatualidades").value = 5;
+                document.getElementById("Iinvestigacao").value = 5;
+                break;
+            case "Vítima":
+                document.getElementById("Ireflexos").value = 5;
+                document.getElementById("Ivontade").value = 5;
+                break;
+            case "Amigo dos Animais":
+                document.getElementById("Iadestramento").value = 5;
+                document.getElementById("Ipercepcao").value = 5;
+                break;
+            case "Astronauta":
+                document.getElementById("Iciencias").value = 5;
+                document.getElementById("Ifortitude").value = 5;
+                break;
+            case "Chef do Outro Lado":
+                document.getElementById("Iocultismo").value = 5;
+                document.getElementById("Iprofissao").value = 5;
+                break;
+            case "Colegial":
+                document.getElementById("Iatualidades").value = 5;
+                document.getElementById("Itecnologia").value = 5;
+                break;
+            case "Cosplayer":
+                document.getElementById("Iartes").value = 5;
+                document.getElementById("Ivontade").value = 5;
+                break;
+            case "Diplomata":
+                document.getElementById("Iatualidades").value = 5;
+                document.getElementById("Idiplomacia").value = 5;
+                break;
+            case "Explorador":
+                document.getElementById("Ifortitude").value = 5;
+                document.getElementById("Isobrevivencia").value = 5;
+                break;
+            case "Experimento":
+                document.getElementById("Iatletismo").value = 5;
+                document.getElementById("Ifortitude").value = 5;
+                break;
+            case "Fanático por Criaturas":
+                document.getElementById("Iinvestigacao").value = 5;
+                document.getElementById("Iocultismo").value = 5;
+                break;
+            case "Fotógrafo":
+                document.getElementById("Iartes").value = 5;
+                document.getElementById("Ipercepcao").value = 5;
+                break;
+            case "Inventor Paranormal":
+                document.getElementById("Iprofissao").value = 5;
+                document.getElementById("Ivontade").value = 5;
+                break;
+            case "Jovem Mistíco":
+                document.getElementById("Iocultismo").value = 5;
+                document.getElementById("Ireligiao").value = 5;
+                break;
+            case "Legista do Turno da Noite":
+                document.getElementById("Iciencias").value = 5;
+                document.getElementById("Imedicina").value = 5;
+                break;
+            case "Mateiro":
+                document.getElementById("Ipercepcao").value = 5;
+                document.getElementById("Isobrevivencia").value = 5;
+                break;
+            case "Mergulhador":
+                document.getElementById("Iatletismo").value = 5;
+                document.getElementById("Ifortitude").value = 5;
+                break;
+            case "Motorista":
+                document.getElementById("Ipilotagem").value = 5;
+                document.getElementById("Ireflexos").value = 5;
+                break;
+            case "Nerd Entusiasta":
+                document.getElementById("Iciencias").value = 5;
+                document.getElementById("Itecnologia").value = 5;
+                break;
+            case "Psicólogo":
+                document.getElementById("Iintuição").value = 5;
+                document.getElementById("Iprofissao").value = 5;
+                break;
+            case "Profetizado":
+                document.getElementById("Ivontade").value = 5;
+                document.getElementById("IoutraPericia").value = 5;
+                break;
+            case "Repórter Investigativo":
+                document.getElementById("Iatualidades").value = 5;
+                document.getElementById("Iinvestigacao").value = 5;
+                break;
+            case "Cientista Forense":
+                document.getElementById("Iciencias").value = 5;
+                document.getElementById("Iinvestigacao").value = 5;
+                break;
+            case "Dublê":
+                document.getElementById("Ipilotagem").value = 5;
+                document.getElementById("Ireflexos").value = 5;
+                break;
+            default:
+                // Caso a origem não seja reconhecida, pode ser tratado aqui
+                break;
+        }
     };
 
     return (
@@ -198,6 +400,7 @@ export const ModalProvider = ({ children }) => {
                 addCharacter3,
                 addCharacter4,
                 addCharacter5,
+                setExpertises,
             }}
         >
             {children}

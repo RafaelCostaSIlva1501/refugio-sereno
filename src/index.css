@@ -35,31 +35,21 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 #agi {
-    top: 185px;
-    left: 232px;
-    font-size: 2rem;
+    margin: -338px 0px 0px 173px;
 }
 
 #int {
-    top: 265px;
-    left: 350px;
-    font-size: 2rem;
+    margin: -259px 0px 0px 293px;
 }
 
 #vig {
-    top: 409px;
-    left: 317px;
-    font-size: 2rem;
+    margin: -114px 0px 0px 258px;
 }
 
 #pre {
-    top: 409px;
-    left: 145px;
-    font-size: 2rem;
+    margin: -114px 0px 0px 88px;
 }
 
 #for {
-    top: 265px;
-    left: 112px;
-    font-size: 2rem;
+   margin: -259px 0px 0px 54px;
 }

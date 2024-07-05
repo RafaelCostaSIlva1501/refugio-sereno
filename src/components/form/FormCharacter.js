@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ModalContext from "../ModalContext";
 import InputForm from "./InputForm";
 import TextareaForm from "./TextareaForm";
@@ -18,12 +18,18 @@ const FormCharacter = () => {
         addCharacter3,
         addCharacter4,
         addCharacter5,
+        setExpertises
     } = useContext(ModalContext);
+
+    useEffect(() => {
+        if (sectionActive === 4) {
+            setExpertises();
+        }
+    }, [sectionActive, setExpertises]);
 
     if (modalON === 1) {
         return (
             <section className="flex flex-col justify-between h-full px-1">
-
                 <header className="flex flex-row justify-end items-center p-1 border-b border-white-200">
                     <button
                         className="w-max flex justify-center items-center"
@@ -84,22 +90,24 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 3 && (
-                        <div className="flex justify-center items-center h-full">
-                            <img
-                                src="./img/atributos-branco.png"
-                                alt="Atributos"
-                                className="w-96 h-96"
-                            ></img>
+                        <div className="flex flex-column justify-center items-center w-full h-full relative">
+                            <div className="w-96 h-96">
+                                <img
+                                    src="./img/atributos-branco.png"
+                                    alt="Atributos"
+                                    className="w-96 h-96"
+                                ></img>
 
-                            <InputAttributes id="agi" />
+                                <InputAttributes id="agi" />
 
-                            <InputAttributes id="int" />
+                                <InputAttributes id="int" />
 
-                            <InputAttributes id="vig" />
+                                <InputAttributes id="vig" />
 
-                            <InputAttributes id="pre" />
+                                <InputAttributes id="pre" />
 
-                            <InputAttributes id="for" />
+                                <InputAttributes id="for" />
+                            </div>
                         </div>
                     )}
 

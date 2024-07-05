@@ -111,7 +111,7 @@ const SectionStatus = () => {
 
                 <hr className="my-1"></hr>
 
-                <section>
+                <section className="flex flex-col gap-1">
                     <button
                         className="flex flex-row gap-1 p-1 border hover:bg-white-500 hover:text-black transition"
                         onClick={() => openEffects()}
@@ -158,6 +158,10 @@ const SectionStatus = () => {
                             </div>
                         </div>
                     )}
+
+                    <div className="border border-white-500">
+                        
+                    </div>
                 </section>
             </div>
         );

@@ -14,9 +14,9 @@ const CharacterSheet = () => {
 
     if (modalON === 2) {
         return (
-            <section className="flex flex-col gap-1.5 h-screen p-1">
+            <section className="flex flex-col gap-1.5 p-1">
                 
-                <div className="flex flex-row justify-around gap-1.5 p-1 border-t border-b border-white-200">
+                <div className="flex flex-row justify-around gap-1.5 p-1 border-b border-white-200">
                     <ButtonStyle
                         name="person"
                         onClick={() => replaceModalSheet(0)}
