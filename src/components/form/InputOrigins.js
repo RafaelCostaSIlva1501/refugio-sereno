@@ -3,7 +3,7 @@ const InputOrigins = (props) => {
         <div className="flex flex-row gap-5 p-1.5">
             <input type="radio" name="origin" value={props.originTitle}></input>
 
-            <details className="flex flex-col gap-2 w-full p-4 border border-white-500 rounded">
+            <details className="flex flex-col w-full p-4 border border-white-500 rounded">
                 <summary className="text-sm font-bold cursor-pointer">
                     {props.originTitle}
                 </summary>

@@ -91,64 +91,55 @@ const SectionStatus = () => {
                 </section>
 
                 {/*Condições e defesas*/}
-                <section className="flex flex-row flex-1 gap-1">
-                    <div className="flex-1 gap-1 p-1 bg-white-50">
-                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
+                <section className="flex flex-row flex-1 gap-1 min-h-0">
+                    {/*Condições*/}
+                    <section className="flex flex-col flex-1 gap-1 p-1 bg-white-50">
+                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
                             <button
-                                className="ml-auto flex flex-row justify-center gap-1"
-                                onClick={() => openConditions()}
-                            >
-                                <span className="material-symbols-outlined">
-                                    info
-                                </span>
-                            </button>
-
-                            <h2 className="flex-grow text-center text-sm">
-                                CONDIÇÕES
-                            </h2>
-
-                            <button
-                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
+                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
                                 onClick={() => openConditions()}
                             >
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
                             </button>
+
+                            <h2 className="text-sm">CONDIÇÕES</h2>
                         </header>
-                        <div className="scrollbar"></div>
-                    </div>
 
-                    <div className="flex-1 gap-1 p-1 bg-white-50">
-                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
-                            <button
-                                className="ml-auto flex flex-row justify-center gap-1"
-                                onClick={() => openConditions()}
-                            >
-                                <span className="material-symbols-outlined">
-                                    info
-                                </span>
-                            </button>
+                        <div className="flex flex-col gap-1 overflow-y-auto scrollbar">
+                            {listNewCharacter[sheetIndex].conditions.map(
+                                (element, index) => (
+                                    <p
+                                        className="p-1 bg-black-100 "
+                                        key={index}
+                                    >
+                                        <span className="text-red-500 font-semibold">
+                                            {element.condition[0]}: 
+                                        </span> {element.condition[1]}
+                                    </p>
+                                )
+                            )}
+                        </div>
+                    </section>
 
-                            <h2 className="flex-grow text-center text-sm">
-                                DEFESAS
-                            </h2>
-
-                            <button
-                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
-                                onClick={() => openConditions()}
-                            >
+                    {/*Defesas*/}
+                    <section className="flex flex-col flex-1 gap-1 overflow-y-auto p-1 bg-white-50">
+                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
+                            <button className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition">
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
                             </button>
+
+                            <h2 className="text-sm">DEFESAS</h2>
                         </header>
-                        <div className="scrollbar"></div>
-                    </div>
+                        <div className="scrollbar">{}</div>
+                    </section>
 
                     {conditionsModal === true && (
                         <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
-                            <div className="bg-black border rounded">
+                            <div className="bg-black-400 border rounded">
                                 <header className="flex justify-between w-full p-1 border-b">
                                     <button className="flex">
                                         <span className="material-symbols-outlined">
@@ -169,14 +160,24 @@ const SectionStatus = () => {
                                     </button>
                                 </header>
 
-                                <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
-                                    {conditions.map((element, index) => (
-                                        <button
-                                            className="p-0.5 bg-white-200 border border-dashed rounded"
-                                            key={index}
-                                        >
-                                            {element.condition[0]}
-                                        </button>
+                                <section className="flex flex-col gap-1.5 w-80 h-80 overflow-y-auto scrollbar p-2">
+                                    {conditions.map((element) => (
+                                        <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                            <summary className="text-sm font-bold cursor-pointer">
+                                                {element.condition[0]}
+                                            </summary>
+
+                                            <p className="mt-2 text-gray-500">
+                                                {element.condition[1]}
+                                            </p>
+
+                                            <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition">
+                                                <span className="material-symbols-outlined">
+                                                    Add
+                                                </span>
+                                                Adicionar
+                                            </button>
+                                        </details>
                                     ))}
                                 </section>
                             </div>
@@ -185,32 +186,18 @@ const SectionStatus = () => {
                 </section>
 
                 {/*Habilidades*/}
-                <section className="flex flex-1 gap-1">
-                <div className="flex-1 gap-1 p-1 bg-white-50">
-                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
-                            <button
-                                className="ml-auto flex flex-row justify-center gap-1"
-                                onClick={() => openConditions()}
-                            >
-                                <span className="material-symbols-outlined">
-                                    info
-                                </span>
-                            </button>
-
-                            <h2 className="flex-grow text-center text-sm">
-                                HABILIDADES
-                            </h2>
-
-                            <button
-                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
-                                onClick={() => openConditions()}
-                            >
+                <section className="flex flex-1 shrink-0 gap-1">
+                    <div className="flex-1 gap-1 p-1 bg-white-50">
+                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
+                            <button className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition">
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
                             </button>
+
+                            <h2 className="text-sm">HABILIDADES</h2>
                         </header>
-                        <div className="scrollbar"></div>
+                        <div className="overflow-y-auto scrollbar"></div>
                     </div>
                 </section>
             </div>
@@ -223,6 +210,7 @@ const SectionStatus = () => {
 export default SectionStatus;
 
 /*
+{element.condition[0]}
 <section className="flex flex-col bg-white-50">
 <div className="flex flex-row justify-center items-center gap-1.5 flex-wrap p-1">
     <Tag

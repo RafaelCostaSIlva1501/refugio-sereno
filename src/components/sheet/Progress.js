@@ -29,7 +29,7 @@ const Progress = (props) => {
                         </span>
 
                         <progress
-                            className="w-full border border-white-500 rounded transition progressBar"
+                            className="w-full bg-white-100 rounded progressBar transition"
                             value={props.value}
                             max={props.maxValue}
                             style={{ "--progress-color": props.color }}
