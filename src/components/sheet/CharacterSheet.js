@@ -14,7 +14,7 @@ const CharacterSheet = () => {
 
     if (modalON === 2) {
         return (
-            <section className="flex flex-col gap-1.5 p-1">
+            <section className="flex flex-col flex-1 gap-1.5 h-full p-1">
                 
                 <div className="flex flex-row justify-around gap-1.5 p-1 border-b border-white-200">
                     <ButtonStyle
@@ -43,7 +43,7 @@ const CharacterSheet = () => {
                     />
                 </div>
 
-                <div className="h-96">
+                <div className="flex flex-col h-full">
                     <SectionPerson />
                     <SectionStatus />
                     <SectionExpertise />

@@ -2,17 +2,16 @@ import React, { useContext, useState, useEffect } from "react";
 import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
-import Tag from "./Tag";
 import conditions from "../conditions";
 
 const SectionStatus = () => {
     const { modalSheet, listNewCharacter, sheetIndex } =
         useContext(ModalContext);
 
-    const [conditions, setConditions] = useState(false);
+    const [conditionsModal, setConditionsModal] = useState(false);
 
     const openConditions = () => {
-        setConditions(true);
+        setConditionsModal(true);
     };
 
     const [characters, setCharacters] = useState(listNewCharacter);
@@ -56,14 +55,14 @@ const SectionStatus = () => {
 
     if (modalSheet === 1) {
         return (
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col h-full gap-1">
                 {/*Título da sessão */}
-                <div className="w-full bg-white-100">
+                <div className=" w-full bg-white-100">
                     <h2 className="text-center text-xl">STATUS</h2>
                 </div>
 
                 {/*PV e PD (Pontos de vida e determinação)*/}
-                <section className="bg-white-50">
+                <section className="flex flex-col flex-1 bg-white-50">
                     <Progress
                         name="Pontos de Vida"
                         maxValue={characters[sheetIndex].pv[0]}
@@ -91,8 +90,8 @@ const SectionStatus = () => {
                     />
                 </section>
 
-                {/*PV e PD (Pontos de vida e determinação)*/}
-                <section className="flex flex-row gap-1 h-48 ">
+                {/*Condições e defesas*/}
+                <section className="flex flex-row flex-1 gap-1">
                     <div className="flex-1 gap-1 p-1 bg-white-50">
                         <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
                             <button
@@ -117,12 +116,13 @@ const SectionStatus = () => {
                                 </span>
                             </button>
                         </header>
+                        <div className="scrollbar"></div>
                     </div>
 
                     <div className="flex-1 gap-1 p-1 bg-white-50">
-                        <div className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
+                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
                             <button
-                                className="flex flex-row justify-center gap-1 hover:bg-white-500 hover:text-black transition"
+                                className="ml-auto flex flex-row justify-center gap-1"
                                 onClick={() => openConditions()}
                             >
                                 <span className="material-symbols-outlined">
@@ -130,18 +130,87 @@ const SectionStatus = () => {
                                 </span>
                             </button>
 
-                            <h2 className="flex-grow text-center text-xs">
-                                CONDIÇÕES
+                            <h2 className="flex-grow text-center text-sm">
+                                DEFESAS
                             </h2>
 
                             <button
                                 className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
+                                onClick={() => openConditions()}
                             >
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
                             </button>
+                        </header>
+                        <div className="scrollbar"></div>
+                    </div>
+
+                    {conditionsModal === true && (
+                        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
+                            <div className="bg-black border rounded">
+                                <header className="flex justify-between w-full p-1 border-b">
+                                    <button className="flex">
+                                        <span className="material-symbols-outlined">
+                                            info
+                                        </span>
+                                    </button>
+
+                                    <h2>Condições</h2>
+                                    <button
+                                        className="flex"
+                                        onClick={() =>
+                                            setConditionsModal(false)
+                                        }
+                                    >
+                                        <span className="material-symbols-outlined">
+                                            close
+                                        </span>
+                                    </button>
+                                </header>
+
+                                <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
+                                    {conditions.map((element, index) => (
+                                        <button
+                                            className="p-0.5 bg-white-200 border border-dashed rounded"
+                                            key={index}
+                                        >
+                                            {element.condition[0]}
+                                        </button>
+                                    ))}
+                                </section>
+                            </div>
                         </div>
+                    )}
+                </section>
+
+                {/*Habilidades*/}
+                <section className="flex flex-1 gap-1">
+                <div className="flex-1 gap-1 p-1 bg-white-50">
+                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
+                            <button
+                                className="ml-auto flex flex-row justify-center gap-1"
+                                onClick={() => openConditions()}
+                            >
+                                <span className="material-symbols-outlined">
+                                    info
+                                </span>
+                            </button>
+
+                            <h2 className="flex-grow text-center text-sm">
+                                HABILIDADES
+                            </h2>
+
+                            <button
+                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
+                                onClick={() => openConditions()}
+                            >
+                                <span className="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+                        </header>
+                        <div className="scrollbar"></div>
                     </div>
                 </section>
             </div>
