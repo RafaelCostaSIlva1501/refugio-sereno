@@ -9,11 +9,10 @@ const SectionStatus = () => {
     const { modalSheet, listNewCharacter, sheetIndex } =
         useContext(ModalContext);
 
-    const [effect, setEffect] = useState(false);
+    const [conditions, setConditions] = useState(false);
 
-    const openEffects = () => {
-        setEffect(true);
-        console.log("Foi!");
+    const openConditions = () => {
+        setConditions(true);
     };
 
     const [characters, setCharacters] = useState(listNewCharacter);
@@ -57,12 +56,14 @@ const SectionStatus = () => {
 
     if (modalSheet === 1) {
         return (
-            <div className="flex flex-col">
+            <div className="flex flex-col gap-1">
+                {/*Título da sessão */}
                 <div className="w-full bg-white-100">
-                    <h2 className=" text-center text-xl">STATUS</h2>
+                    <h2 className="text-center text-xl">STATUS</h2>
                 </div>
 
-                <section className="">
+                {/*PV e PD (Pontos de vida e determinação)*/}
+                <section className="bg-white-50">
                     <Progress
                         name="Pontos de Vida"
                         maxValue={characters[sheetIndex].pv[0]}
@@ -90,77 +91,57 @@ const SectionStatus = () => {
                     />
                 </section>
 
-                <hr className="my-1"></hr>
+                {/*PV e PD (Pontos de vida e determinação)*/}
+                <section className="flex flex-row gap-1 h-48 ">
+                    <div className="flex-1 gap-1 p-1 bg-white-50">
+                        <header className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
+                            <button
+                                className="ml-auto flex flex-row justify-center gap-1"
+                                onClick={() => openConditions()}
+                            >
+                                <span className="material-symbols-outlined">
+                                    info
+                                </span>
+                            </button>
 
-                <section className="flex flex-col">
-                    <div className="flex flex-row justify-center items-center gap-1.5 flex-wrap p-1">
-                        <Tag
-                            title="Defesa:"
-                            value={listNewCharacter[sheetIndex].defense}
-                        />
-                        <Tag
-                            title="Bloqueio:"
-                            value={listNewCharacter[sheetIndex].block}
-                        />
-                        <Tag
-                            title="Esquiva:"
-                            value={listNewCharacter[sheetIndex].dodge}
-                        />
+                            <h2 className="flex-grow text-center text-sm">
+                                CONDIÇÕES
+                            </h2>
+
+                            <button
+                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
+                                onClick={() => openConditions()}
+                            >
+                                <span className="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
+                        </header>
                     </div>
-                </section>
 
-                <hr className="my-1"></hr>
+                    <div className="flex-1 gap-1 p-1 bg-white-50">
+                        <div className="flex flex-row items-center justify-between w-full p-1 bg-white-100">
+                            <button
+                                className="flex flex-row justify-center gap-1 hover:bg-white-500 hover:text-black transition"
+                                onClick={() => openConditions()}
+                            >
+                                <span className="material-symbols-outlined">
+                                    info
+                                </span>
+                            </button>
 
-                <section className="flex flex-col gap-1">
-                    <button
-                        className="flex flex-row gap-1 p-1 border hover:bg-white-500 hover:text-black transition"
-                        onClick={() => openEffects()}
-                    >
-                        <span className="material-symbols-outlined">add</span>
+                            <h2 className="flex-grow text-center text-xs">
+                                CONDIÇÕES
+                            </h2>
 
-                        <span>Adicionar Efeito</span>
-                    </button>
-
-                    {effect === true && (
-                        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
-                            <div className="border rounded">
-                                <header className="flex justify-between w-full p-1 border-b">
-                                    <button
-                                        className="flex"
-                                       
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            info
-                                        </span>
-                                    </button>
-
-                                    <h2>Condições</h2>
-                                    <button
-                                        className="flex"
-                                        onClick={() => setEffect(false)}
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            close
-                                        </span>
-                                    </button>
-                                </header>
-
-                                <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
-                                    {conditions.map((element, index) => (
-                                        <button
-                                            className="p-0.5 bg-white-200 border border-dashed rounded"
-                                            key={index}
-                                        >
-                                            {element.condition[0]}
-                                        </button>
-                                    ))}
-                                </section>
-                            </div>
+                            <button
+                                className="ml-auto flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black transition"
+                            >
+                                <span className="material-symbols-outlined">
+                                    add
+                                </span>
+                            </button>
                         </div>
-                    )}
-
-                    <div className="border border-white-500">
-                        
                     </div>
                 </section>
             </div>
@@ -171,3 +152,71 @@ const SectionStatus = () => {
 };
 
 export default SectionStatus;
+
+/*
+<section className="flex flex-col bg-white-50">
+<div className="flex flex-row justify-center items-center gap-1.5 flex-wrap p-1">
+    <Tag
+        title="Defesa:"
+        value={listNewCharacter[sheetIndex].defense}
+    />
+    <Tag
+        title="Bloqueio:"
+        value={listNewCharacter[sheetIndex].block}
+    />
+    <Tag
+        title="Esquiva:"
+        value={listNewCharacter[sheetIndex].dodge}
+    />
+</div>
+</section>
+
+{/*Título da sessão 
+<section className="flex flex-col gap-1 bg-white-50">
+<button
+    className="flex flex-row justify-center gap-1 p-1 border hover:bg-white-500 hover:text-black transition"
+    onClick={() => openEffects()}
+>
+    <span className="material-symbols-outlined">add</span>
+
+    <span>Adicionar Efeito</span>
+</button>
+
+{effect === true && (
+    <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
+        <div className="bg-black border rounded">
+            <header className="flex justify-between w-full p-1 border-b">
+                <button className="flex">
+                    <span className="material-symbols-outlined">
+                        info
+                    </span>
+                </button>
+
+                <h2>Condições</h2>
+                <button
+                    className="flex"
+                    onClick={() => setEffect(false)}
+                >
+                    <span className="material-symbols-outlined">
+                        close
+                    </span>
+                </button>
+            </header>
+
+            <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
+                {conditions.map((element, index) => (
+                    <button
+                        className="p-0.5 bg-white-200 border border-dashed rounded"
+                        key={index}
+                    >
+                        {element.condition[0]}
+                    </button>
+                ))}
+            </section>
+        </div>
+    </div>
+)}
+
+<div className="border border-white-500"></div>
+</section>
+*/
