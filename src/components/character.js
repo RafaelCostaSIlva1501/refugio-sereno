@@ -49,32 +49,8 @@ let character = {
     pv: [0, 0],
     pd: [0, 0],
     defenses: [
-        {
-            defense: ["Defesa", 0],
-        },
-
-        {
-            defense: ["Bloqueio", 0],
-        },
-
-        {
-            defense: ["Esquiva", 0],
-        },
     ],
     conditions: [
-        {
-            condition: [
-                "Abalado",
-                "O personagem sofre -D20 em testes. Se ficar abalado novamente, em vez disso fica apavorado. Condição de medo.",
-            ],
-        },
-
-        {
-            condition: [
-                "Atordoado",
-                "O personagem fica desprevenido e não pode fazer ações. Condição mental.",
-            ],
-        },
     ],
 };
 

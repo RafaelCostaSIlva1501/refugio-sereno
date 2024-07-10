@@ -18,7 +18,7 @@ const FormCharacter = () => {
         addCharacter3,
         addCharacter4,
         addCharacter5,
-        setExpertises
+        setExpertises,
     } = useContext(ModalContext);
 
     useEffect(() => {
@@ -39,9 +39,15 @@ const FormCharacter = () => {
                     </button>
                 </header>
 
-                <main className="flex flex-col grow h-96 overflow-y-auto scrollbar">
+                <main className="flex flex-col gap-1 grow h-96 py-1 overflow-y-auto scrollbar">
                     {sectionActive === 0 && (
-                        <div className="flex flex-col gap-3.5">
+                        <div className="flex flex-col gap-1">
+                            <div className=" w-full bg-white-100">
+                                <h2 className="text-center text-xl">
+                                    INFORMAÇÕES
+                                </h2>
+                            </div>
+
                             <InputForm text="Jogador:" id="Iplayer" />
                             <InputForm text="Personagem:" id="Icharacter" />
                             <InputForm
@@ -61,7 +67,13 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 1 && (
-                        <div className="flex flex-col gap-5">
+                        <div className="flex flex-col gap-1">
+                            <div className=" w-full bg-white-100">
+                                <h2 className="text-center text-xl">
+                                    CARACTERÍSTICAS
+                                </h2>
+                            </div>
+
                             <TextareaForm text="História:" id="Ihistory" />
 
                             <TextareaForm
@@ -74,7 +86,11 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 2 && (
-                        <div className="flex flex-col h-full gap-2.5 p-1">
+                        <div className="flex flex-col h-full gap-1">
+                            <div className=" w-full bg-white-100">
+                                <h2 className="text-center text-xl">ORIGENS</h2>
+                            </div>
+
                             {origins.map((element, index) => (
                                 <InputOrigins
                                     key={index}
@@ -90,38 +106,53 @@ const FormCharacter = () => {
                     )}
 
                     {sectionActive === 3 && (
-                        <div className="flex flex-column justify-center items-center w-full h-full relative">
-                            <div className="w-96 h-96">
-                                <img
-                                    src="./img/atributos-branco.png"
-                                    alt="Atributos"
-                                    className="w-96 h-96"
-                                ></img>
-
-                                <InputAttributes id="agi" />
-
-                                <InputAttributes id="int" />
-
-                                <InputAttributes id="vig" />
-
-                                <InputAttributes id="pre" />
-
-                                <InputAttributes id="for" />
+                        <>
+                            <div className=" w-full bg-white-100">
+                                <h2 className="text-center text-xl">
+                                    ATRIBUTOS
+                                </h2>
                             </div>
-                        </div>
+                            <div className="flex flex-column justify-center items-center w-full h-full relative">
+                                <div className="w-96 h-96">
+                                    <img
+                                        src="./img/atributos-branco.png"
+                                        alt="Atributos"
+                                        className="w-96 h-96"
+                                    ></img>
+
+                                    <InputAttributes id="agi" />
+
+                                    <InputAttributes id="int" />
+
+                                    <InputAttributes id="vig" />
+
+                                    <InputAttributes id="pre" />
+
+                                    <InputAttributes id="for" />
+                                </div>
+                            </div>
+                        </>
                     )}
 
                     {sectionActive === 4 && (
-                        <div className="grid grid-cols-2 gap-2.5 p-1">
-                            {expertises.map((element, index) => (
-                                <InputExpertises
-                                    key={index}
-                                    expertise={element.expertiseName}
-                                    info={element.info}
-                                    id={element.id}
-                                />
-                            ))}
-                        </div>
+                        <>
+                            <div className=" w-full bg-white-100">
+                                <h2 className="text-center text-xl">
+                                    PERÍCIAS
+                                </h2>
+                            </div>
+
+                            <div className="grid grid-cols-2 gap-2.5 p-1">
+                                {expertises.map((element, index) => (
+                                    <InputExpertises
+                                        key={index}
+                                        expertise={element.expertiseName}
+                                        info={element.info}
+                                        id={element.id}
+                                    />
+                                ))}
+                            </div>
+                        </>
                     )}
                 </main>
 

@@ -1,7 +1,8 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
+import Tag from "../sheet/Tag";
 import conditions from "../conditions";
 
 const SectionStatus = () => {
@@ -15,13 +16,6 @@ const SectionStatus = () => {
     };
 
     const [characters, setCharacters] = useState(listNewCharacter);
-
-    useEffect(() => {
-        const storedCharacters = JSON.parse(localStorage.getItem("sheet"));
-        if (storedCharacters) {
-            setCharacters(storedCharacters);
-        }
-    }, []);
 
     // Função para subtrair valor de uma barra (pv ou pd)
     const subBar = (bar, num) => {
@@ -50,6 +44,52 @@ const SectionStatus = () => {
         setCharacters(updatedCharacters);
 
         // Atualiza o localStorage com o novo valor
+        localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
+    };
+
+    useEffect(() => {
+        const conditionsBtn = document.querySelectorAll(".conditions-btn");
+        conditionsBtn.forEach((element, i) => {
+            element.addEventListener("click", () => addCondition(i));
+        });
+    });
+
+    const addCondition = (index) => {
+        const conditionsIndex = conditions[index];
+        console.log(conditionsIndex);
+
+        // Cria uma cópia do estado atual
+        const updatedCharacters = [...characters];
+
+        // Adiciona a nova condição ao array de condições
+        updatedCharacters[sheetIndex].conditions.push(conditionsIndex);
+
+        // Atualiza o estado local com as novas condições
+        setCharacters(updatedCharacters);
+
+        // Atualiza o localStorage com o novo estado
+        localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
+
+        // Fecha o modal de condições, se necessário
+        setConditionsModal(false);
+    };
+
+    useEffect(() => {
+        const removeConditionsBtn = document.querySelectorAll(
+            ".remove-conditions-btn"
+        );
+        removeConditionsBtn.forEach((element, i) => {
+            element.addEventListener("dblclick", () => removeCondition(i));
+        });
+    });
+
+    const removeCondition = (index) => {
+        const updatedCharacters = [...characters];
+
+        updatedCharacters[sheetIndex].conditions.splice(index, 1);
+
+        setCharacters(updatedCharacters);
+
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
     };
 
@@ -110,14 +150,16 @@ const SectionStatus = () => {
                         <div className="flex flex-col gap-1 overflow-y-auto scrollbar">
                             {listNewCharacter[sheetIndex].conditions.map(
                                 (element, index) => (
-                                    <p
-                                        className="p-1 bg-black-100 "
-                                        key={index}
-                                    >
-                                        <span className="text-red-500 font-semibold">
-                                            {element.condition[0]}: 
-                                        </span> {element.condition[1]}
-                                    </p>
+                                    <div className="p-1 bg-black-100 cursor-pointer remove-conditions-btn">
+                                        <p key={index}>
+                                            <span className="text-red-500 font-semibold">
+                                                {element.condition[0]}:
+                                            </span>{" "}
+                                            {element.condition[1]}
+                                        </p>
+
+                                        <button className="">Apagar</button>
+                                    </div>
                                 )
                             )}
                         </div>
@@ -134,9 +176,22 @@ const SectionStatus = () => {
 
                             <h2 className="text-sm">DEFESAS</h2>
                         </header>
-                        <div className="scrollbar">{}</div>
+                        <div className="flex flex-row flex-wrap gap-1 overflow-y-auto scrollbar">
+                            {listNewCharacter[sheetIndex].defenses.map(
+                                (element, index) => (
+                                    <>
+                                        <Tag
+                                            key={index}
+                                            title={element.defense[0]}
+                                            value={element.defense[1]}
+                                        />
+                                    </>
+                                )
+                            )}
+                        </div>
                     </section>
 
+                    {/*Modal para adicionar condições*/}
                     {conditionsModal === true && (
                         <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
                             <div className="bg-black-400 border rounded">
@@ -161,7 +216,7 @@ const SectionStatus = () => {
                                 </header>
 
                                 <section className="flex flex-col gap-1.5 w-80 h-80 overflow-y-auto scrollbar p-2">
-                                    {conditions.map((element) => (
+                                    {conditions.map((element, index) => (
                                         <details className="flex flex-col w-full p-4 border border-white-500 rounded">
                                             <summary className="text-sm font-bold cursor-pointer">
                                                 {element.condition[0]}
@@ -171,7 +226,7 @@ const SectionStatus = () => {
                                                 {element.condition[1]}
                                             </p>
 
-                                            <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition">
+                                            <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
                                                 <span className="material-symbols-outlined">
                                                     Add
                                                 </span>
@@ -208,72 +263,3 @@ const SectionStatus = () => {
 };
 
 export default SectionStatus;
-
-/*
-{element.condition[0]}
-<section className="flex flex-col bg-white-50">
-<div className="flex flex-row justify-center items-center gap-1.5 flex-wrap p-1">
-    <Tag
-        title="Defesa:"
-        value={listNewCharacter[sheetIndex].defense}
-    />
-    <Tag
-        title="Bloqueio:"
-        value={listNewCharacter[sheetIndex].block}
-    />
-    <Tag
-        title="Esquiva:"
-        value={listNewCharacter[sheetIndex].dodge}
-    />
-</div>
-</section>
-
-{/*Título da sessão 
-<section className="flex flex-col gap-1 bg-white-50">
-<button
-    className="flex flex-row justify-center gap-1 p-1 border hover:bg-white-500 hover:text-black transition"
-    onClick={() => openEffects()}
->
-    <span className="material-symbols-outlined">add</span>
-
-    <span>Adicionar Efeito</span>
-</button>
-
-{effect === true && (
-    <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
-        <div className="bg-black border rounded">
-            <header className="flex justify-between w-full p-1 border-b">
-                <button className="flex">
-                    <span className="material-symbols-outlined">
-                        info
-                    </span>
-                </button>
-
-                <h2>Condições</h2>
-                <button
-                    className="flex"
-                    onClick={() => setEffect(false)}
-                >
-                    <span className="material-symbols-outlined">
-                        close
-                    </span>
-                </button>
-            </header>
-
-            <section className="flex flex-row justify-center flex-wrap gap-1.5 p-2">
-                {conditions.map((element, index) => (
-                    <button
-                        className="p-0.5 bg-white-200 border border-dashed rounded"
-                        key={index}
-                    >
-                        {element.condition[0]}
-                    </button>
-                ))}
-            </section>
-        </div>
-    </div>
-)}
-
-<div className="border border-white-500"></div>
-</section>
-*/

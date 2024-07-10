@@ -12,29 +12,28 @@ const inputExpertise = (props) => {
             <div className="flex justify-center w-full p-2">
                 <select
                     id={props.id}
-                    className="bg-transparent rounded-sm text-center outline-none"
-                    value={0}
+                    className="bg-transparent border rounded-sm text-center outline-none cursor-pointer"
                 >
                     <option
-                        className="bg-black border text-white-500"
+                        className="bg-black-500 border text-white-500"
                         value={0}
                     >
                         Destreinado
                     </option>
                     <option
-                        className="bg-black border text-white-500"
+                        className="bg-black-500 border text-white-500"
                         value={5}
                     >
                         Treinado
                     </option>
                     <option
-                        className="bg-black border text-white-500"
+                        className="bg-black-500 border text-white-500"
                         value={10}
                     >
                         Veterano
                     </option>
                     <option
-                        className="bg-black border text-white-500"
+                        className="bg-black-500 border text-white-500"
                         value={15}
                     >
                         Expert

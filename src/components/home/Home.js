@@ -11,7 +11,7 @@ const Home = () => {
             <main className="px-2">
                 {/*Botão para criar novo personagem*/}
                 <button
-                    className="flex items-center my-2 p-1.5 border-2 border-solid border-white-500 rounded hover:bg-white-500 hover:text-black transition active:scale-95"
+                    className="flex items-center my-2 p-1.5 border-2 border-solid border-white-500 rounded hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                     onClick={() => openModal(1)}
                 >
                     <span className="material-symbols-outlined">add_box</span>
