@@ -134,7 +134,7 @@ const SectionStatus = () => {
                     />
                 </section>
 
-                {/*Condições e defesas*/}
+                {/*Condições e resistências*/}
                 <section className="flex flex-row flex-1 gap-1 min-h-0">
                     {/*Condições*/}
                     <section className="flex flex-col flex-1 gap-1 p-1 bg-white-50">
@@ -169,7 +169,31 @@ const SectionStatus = () => {
                         </div>
                     </section>
 
-                    {/*Defesas*/}
+                    {/*Modal para adicionar condições*/}
+                    {statusModals === 1 && (
+                        <ContainerModal title="Condições">
+                            {conditions.map((element, index) => (
+                                <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                    <summary className="text-sm font-bold cursor-pointer">
+                                        {element.condition[0]}
+                                    </summary>
+
+                                    <p className="mt-2 text-gray-500">
+                                        {element.condition[1]}
+                                    </p>
+
+                                    <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
+                                        <span className="material-symbols-outlined">
+                                            Add
+                                        </span>
+                                        Adicionar
+                                    </button>
+                                </details>
+                            ))}
+                        </ContainerModal>
+                    )}
+
+                    {/*Resistências*/}
                     <section className="flex flex-col flex-1 gap-1 overflow-y-auto p-1 bg-white-50">
                         <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
                             <button
@@ -181,7 +205,7 @@ const SectionStatus = () => {
                                 </span>
                             </button>
 
-                            <h2 className="text-sm">DEFESAS</h2>
+                            <h2 className="text-sm">RESISTÊNCIAS</h2>
                         </header>
 
                         <div className="flex flex-row flex-wrap gap-1 overflow-y-auto scrollbar">
@@ -262,43 +286,28 @@ const SectionStatus = () => {
                         </div>
                     </section>
 
-                    {/*Modal para adicionar condições*/}
-                    {statusModals === 1 && (
-                        <ContainerModal title="Condições">
-                            {conditions.map((element, index) => (
-                                <details className="flex flex-col w-full p-4 border border-white-500 rounded">
-                                    <summary className="text-sm font-bold cursor-pointer">
-                                        {element.condition[0]}
-                                    </summary>
-
-                                    <p className="mt-2 text-gray-500">
-                                        {element.condition[1]}
-                                    </p>
-
-                                    <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
-                                        <span className="material-symbols-outlined">
-                                            Add
-                                        </span>
-                                        Adicionar
-                                    </button>
-                                </details>
-                            ))}
-                        </ContainerModal>
-                    )}
-
                     {/*Modal para adicionar Resistências*/}
                     {statusModals === 2 && (
                         <ContainerModal title="Resistências">
-                            <ResistencesInput title="Defesa" id="defense"/>
+                            <ResistencesInput title="Defesa" id="defense" />
                             <ResistencesInput title="Esquiva" id="dodge" />
                             <ResistencesInput title="Bloqueio" id="block" />
                             <ResistencesInput title="Mental" id="mental" />
                             <ResistencesInput title="Física" id="physical" />
-                            <ResistencesInput title="Balística" id="ballistics" />
+                            <ResistencesInput
+                                title="Balística"
+                                id="ballistics"
+                            />
                             <ResistencesInput title="Corte" id="cut" />
                             <ResistencesInput title="Impacto" id="impact" />
-                            <ResistencesInput title="Perfuração" id="drilling" />
-                            <ResistencesInput title="Eletrecidade" id="electricity" />
+                            <ResistencesInput
+                                title="Perfuração"
+                                id="drilling"
+                            />
+                            <ResistencesInput
+                                title="Eletrecidade"
+                                id="electricity"
+                            />
                             <ResistencesInput title="Fogo" id="fire" />
                             <ResistencesInput title="Frio" id="impact" />
                             <ResistencesInput title="Química" id="chemical" />
@@ -310,7 +319,10 @@ const SectionStatus = () => {
                 <section className="flex flex-1 shrink-0 gap-1">
                     <div className="flex-1 gap-1 p-1 bg-white-50">
                         <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
-                            <button className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition">
+                            <button
+                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
+                                onClick={() => setStatusModals(3)}
+                            >
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
@@ -321,6 +333,11 @@ const SectionStatus = () => {
                         <div className="overflow-y-auto scrollbar"></div>
                     </div>
                 </section>
+
+                {/*Modal para adicionar Resistências*/}
+                {statusModals === 3 && (
+                    <ContainerModal title="Habilidades"></ContainerModal>
+                )}
             </div>
         );
     } else {
