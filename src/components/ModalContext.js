@@ -24,6 +24,10 @@ export const ModalProvider = ({ children }) => {
 
     const [sectionActive, setSectionActive] = useState(0);
 
+    const [statusModals, setStatusModals] = useState(0);
+
+    const [characters, setCharacters] = useState(listNewCharacter);
+
     //Informações básicas
     const addCharacter1 = () => {
         const Iplayer = document.getElementById("Iplayer");
@@ -100,9 +104,7 @@ export const ModalProvider = ({ children }) => {
         character.pd[0] = Number(PRE.value) + 2;
         character.pd[1] = Number(PRE.value) + 2;
 
-        character.defenses.push({
-            defense: ["Defesa", Number(AGI.value) + 10],
-        });
+        character.resistences.defense = Number(AGI.value) + 10;
 
         setSectionActive(4);
     };
@@ -167,13 +169,9 @@ export const ModalProvider = ({ children }) => {
         character.expertises.tecnologia = Itecnologia.value;
         character.expertises.vontade = Ivontade.value;
 
-        character.defenses.push({
-            defense: ["Bloqueio", Ifortitude.value],
-        });
+        character.resistences.block = Ifortitude.value;
 
-        character.defenses.push({
-            defense: ["Esquiva", Ireflexos.value],
-        });
+        character.resistences.dodge = Ireflexos.value;
 
         listNewCharacter.push(character);
 
@@ -386,6 +384,21 @@ export const ModalProvider = ({ children }) => {
         }
     };
 
+    //Adiciona resistências
+    const changeResistence = (resistenceName, subOrAdd) => {
+        const updatedCharacters = [...characters];
+
+        if (subOrAdd === "sub") {
+            updatedCharacters[sheetIndex].resistences[resistenceName] -= 1;
+        } else if (subOrAdd === "add") {
+            updatedCharacters[sheetIndex].resistences[resistenceName] += 1;
+        }
+
+        setCharacters(updatedCharacters);
+
+        localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
+    };
+
     return (
         <ModalContext.Provider
             value={{
@@ -408,6 +421,11 @@ export const ModalProvider = ({ children }) => {
                 addCharacter4,
                 addCharacter5,
                 setExpertises,
+                statusModals,
+                setStatusModals,
+                changeResistence,
+                characters,
+                setCharacters,
             }}
         >
             {children}

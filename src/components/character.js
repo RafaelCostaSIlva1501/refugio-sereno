@@ -48,10 +48,22 @@ let character = {
     },
     pv: [0, 0],
     pd: [0, 0],
-    defenses: [
-    ],
-    conditions: [
-    ],
+    resistences: {
+        defense: 0,
+        dodge: 0,
+        block: 0,
+        mental: 0,
+        physical: 0,
+        ballistics: 0,
+        cut: 0,
+        impact: 0,
+        drilling: 0,
+        electricity: 0,
+        fire: 0,
+        cold: 0,
+        chemical: 0,
+    },
+    conditions: [],
 };
 
 export default character;

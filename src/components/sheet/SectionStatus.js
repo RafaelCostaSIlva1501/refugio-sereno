@@ -1,21 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
 import Tag from "../sheet/Tag";
 import conditions from "../conditions";
 
+import ContainerModal from "./ContainerModal";
+import ResistencesInput from "./ResistenceInput";
+
 const SectionStatus = () => {
-    const { modalSheet, listNewCharacter, sheetIndex } =
-        useContext(ModalContext);
+    const {
+        modalSheet,
+        listNewCharacter,
+        sheetIndex,
+        characters,
+        setCharacters,
+        statusModals,
+        setStatusModals,
+    } = useContext(ModalContext);
 
-    const [conditionsModal, setConditionsModal] = useState(false);
-
-    const openConditions = () => {
-        setConditionsModal(true);
-    };
-
-    const [characters, setCharacters] = useState(listNewCharacter);
+    const { resistences } = listNewCharacter[sheetIndex];
 
     // Função para subtrair valor de uma barra (pv ou pd)
     const subBar = (bar, num) => {
@@ -71,7 +75,7 @@ const SectionStatus = () => {
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
 
         // Fecha o modal de condições, se necessário
-        setConditionsModal(false);
+        setStatusModals(false);
     };
 
     useEffect(() => {
@@ -137,7 +141,7 @@ const SectionStatus = () => {
                         <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
                             <button
                                 className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
-                                onClick={() => openConditions()}
+                                onClick={() => setStatusModals(1)}
                             >
                                 <span className="material-symbols-outlined">
                                     add
@@ -168,7 +172,10 @@ const SectionStatus = () => {
                     {/*Defesas*/}
                     <section className="flex flex-col flex-1 gap-1 overflow-y-auto p-1 bg-white-50">
                         <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
-                            <button className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition">
+                            <button
+                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
+                                onClick={() => setStatusModals(2)}
+                            >
                                 <span className="material-symbols-outlined">
                                     add
                                 </span>
@@ -176,67 +183,126 @@ const SectionStatus = () => {
 
                             <h2 className="text-sm">DEFESAS</h2>
                         </header>
+
                         <div className="flex flex-row flex-wrap gap-1 overflow-y-auto scrollbar">
-                            {listNewCharacter[sheetIndex].defenses.map(
-                                (element, index) => (
-                                    <>
-                                        <Tag
-                                            key={index}
-                                            title={element.defense[0]}
-                                            value={element.defense[1]}
-                                        />
-                                    </>
-                                )
+                            {resistences.defense > 0 && (
+                                <Tag
+                                    title={"Defesa"}
+                                    value={resistences.defense}
+                                />
+                            )}
+
+                            {resistences.dodge > 0 && (
+                                <Tag
+                                    title={"Esquiva"}
+                                    value={resistences.dodge}
+                                />
+                            )}
+
+                            {resistences.block > 0 && (
+                                <Tag
+                                    title={"Bloqueio"}
+                                    value={resistences.block}
+                                />
+                            )}
+
+                            {resistences.physical > 0 && (
+                                <Tag
+                                    title={"Física"}
+                                    value={resistences.physical}
+                                />
+                            )}
+
+                            {resistences.ballistics > 0 && (
+                                <Tag
+                                    title={"Balística"}
+                                    value={resistences.ballistics}
+                                />
+                            )}
+
+                            {resistences.cut > 0 && (
+                                <Tag title={"Corte"} value={resistences.cut} />
+                            )}
+
+                            {resistences.impact > 0 && (
+                                <Tag
+                                    title={"Impacto"}
+                                    value={resistences.impact}
+                                />
+                            )}
+
+                            {resistences.drilling > 0 && (
+                                <Tag
+                                    title={"Perfuração"}
+                                    value={resistences.drilling}
+                                />
+                            )}
+
+                            {resistences.electricity > 0 && (
+                                <Tag
+                                    title={"Eletrecidade"}
+                                    value={resistences.electricity}
+                                />
+                            )}
+
+                            {resistences.fire > 0 && (
+                                <Tag title={"Fogo"} value={resistences.fire} />
+                            )}
+
+                            {resistences.cold > 0 && (
+                                <Tag title={"Frio"} value={resistences.cold} />
+                            )}
+
+                            {resistences.chemical > 0 && (
+                                <Tag
+                                    title={"Química"}
+                                    value={resistences.chemical}
+                                />
                             )}
                         </div>
                     </section>
 
                     {/*Modal para adicionar condições*/}
-                    {conditionsModal === true && (
-                        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
-                            <div className="bg-black-400 border rounded">
-                                <header className="flex justify-between w-full p-1 border-b">
-                                    <button className="flex">
+                    {statusModals === 1 && (
+                        <ContainerModal title="Condições">
+                            {conditions.map((element, index) => (
+                                <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                    <summary className="text-sm font-bold cursor-pointer">
+                                        {element.condition[0]}
+                                    </summary>
+
+                                    <p className="mt-2 text-gray-500">
+                                        {element.condition[1]}
+                                    </p>
+
+                                    <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
                                         <span className="material-symbols-outlined">
-                                            info
+                                            Add
                                         </span>
+                                        Adicionar
                                     </button>
+                                </details>
+                            ))}
+                        </ContainerModal>
+                    )}
 
-                                    <h2>Condições</h2>
-                                    <button
-                                        className="flex"
-                                        onClick={() =>
-                                            setConditionsModal(false)
-                                        }
-                                    >
-                                        <span className="material-symbols-outlined">
-                                            close
-                                        </span>
-                                    </button>
-                                </header>
-
-                                <section className="flex flex-col gap-1.5 w-80 h-80 overflow-y-auto scrollbar p-2">
-                                    {conditions.map((element, index) => (
-                                        <details className="flex flex-col w-full p-4 border border-white-500 rounded">
-                                            <summary className="text-sm font-bold cursor-pointer">
-                                                {element.condition[0]}
-                                            </summary>
-
-                                            <p className="mt-2 text-gray-500">
-                                                {element.condition[1]}
-                                            </p>
-
-                                            <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
-                                                <span className="material-symbols-outlined">
-                                                    Add
-                                                </span>
-                                                Adicionar
-                                            </button>
-                                        </details>
-                                    ))}
-                                </section>
-                            </div>
-                        </div>
+                    {/*Modal para adicionar Resistências*/}
+                    {statusModals === 2 && (
+                        <ContainerModal title="Resistências">
+                            <ResistencesInput title="Defesa" id="defense"/>
+                            <ResistencesInput title="Esquiva" id="dodge" />
+                            <ResistencesInput title="Bloqueio" id="block" />
+                            <ResistencesInput title="Mental" id="mental" />
+                            <ResistencesInput title="Física" id="physical" />
+                            <ResistencesInput title="Balística" id="ballistics" />
+                            <ResistencesInput title="Corte" id="cut" />
+                            <ResistencesInput title="Impacto" id="impact" />
+                            <ResistencesInput title="Perfuração" id="drilling" />
+                            <ResistencesInput title="Eletrecidade" id="electricity" />
+                            <ResistencesInput title="Fogo" id="fire" />
+                            <ResistencesInput title="Frio" id="impact" />
+                            <ResistencesInput title="Química" id="chemical" />
+                        </ContainerModal>
                     )}
                 </section>
 

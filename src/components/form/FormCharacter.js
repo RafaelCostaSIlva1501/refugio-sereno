@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ModalContext from "../ModalContext";
 import InputForm from "./InputForm";
 import TextareaForm from "./TextareaForm";
@@ -21,6 +21,19 @@ const FormCharacter = () => {
         setExpertises,
     } = useContext(ModalContext);
 
+    const [imageSrc, setImageSrc] = useState("./img/camera.png");
+
+    const showImage = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                setImageSrc(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     useEffect(() => {
         if (sectionActive === 4) {
             setExpertises();
@@ -41,7 +54,7 @@ const FormCharacter = () => {
 
                 <main className="flex flex-col gap-1 grow h-96 py-1 overflow-y-auto scrollbar">
                     {sectionActive === 0 && (
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col justify-between gap-1 h-full">
                             <div className=" w-full bg-white-100">
                                 <h2 className="text-center text-xl">
                                     INFORMAÇÕES
@@ -49,20 +62,43 @@ const FormCharacter = () => {
                             </div>
 
                             <InputForm text="Jogador:" id="Iplayer" />
+
                             <InputForm text="Personagem:" id="Icharacter" />
+
                             <InputForm
                                 text="Nacionalidade:"
                                 id="Inacionality"
                             />
+
                             <InputForm text="Idade:" id="Iage" />
+
                             <InputForm text="Campanha:" id="Icampaign" />
 
-                            <input
-                                type="file"
-                                id="Iimg"
-                                accept="image/*"
-                                className=""
-                            ></input>
+                            <div className="flex flex-col items-center">
+                                <label
+                                    htmlFor="Iimg"
+                                    className="flex flex-col justify-center items-center gap-1 w-max p-1 rounded cursor-pointer"
+                                >
+                                    <img
+                                        src={imageSrc}
+                                        alt="Foto do Personagem"
+                                        id="imgPreview"
+                                        className="w-28 h-28 p-1 border rounded-full bg-white-500"
+                                    ></img>
+
+                                    <h2 className="flex flex-col text-center text-xs">
+                                        ADICIONAR FOTO
+                                    </h2>
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="Iimg"
+                                    accept="image/*"
+                                    className="hidden"
+                                    onChange={showImage}
+                                ></input>
+                            </div>
                         </div>
                     )}
 
