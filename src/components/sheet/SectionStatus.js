@@ -8,6 +8,7 @@ import ResistencesInput from "./ResistenceInput";
 import AddSectionStatus from "./AddSectionStatus";
 
 import conditions from "../conditions";
+import skills from "../skills";
 
 const SectionStatus = () => {
     const {
@@ -22,42 +23,23 @@ const SectionStatus = () => {
 
     const { resistences } = listNewCharacter[sheetIndex];
 
-    // Função para subtrair valor de uma barra (pv ou pd)
-    const subBar = (bar, num) => {
+    const changeBar = (bar, num, subOrAdd) => {
         // Cria uma cópia do estado atual
         const updatedCharacters = [...characters];
-
-        // Subtrai o valor da barra correta
-        updatedCharacters[sheetIndex][bar][1] -= num;
+        
+        //Adiciona ou subtrai o valor da barra
+        if (subOrAdd === "sub") {
+            updatedCharacters[sheetIndex][bar][1] -= num;
+        } else if (subOrAdd === "add") {
+            updatedCharacters[sheetIndex][bar][1] += num;
+        }
 
         // Atualiza o estado local
         setCharacters(updatedCharacters);
 
         // Atualiza o localStorage com o novo valor
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
-    };
-
-    // Função para adicionar valor a uma barra (pv ou pd)
-    const addBar = (bar, num) => {
-        // Cria uma cópia do estado atual
-        const updatedCharacters = [...characters];
-
-        // Adiciona o valor à barra correta
-        updatedCharacters[sheetIndex][bar][1] += num;
-
-        // Atualiza o estado local
-        setCharacters(updatedCharacters);
-
-        // Atualiza o localStorage com o novo valor
-        localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
-    };
-
-    useEffect(() => {
-        const conditionsBtn = document.querySelectorAll(".conditions-btn");
-        conditionsBtn.forEach((element, i) => {
-            element.addEventListener("click", () => addCondition(i));
-        });
-    });
+    }
 
     const addCondition = (index) => {
         const conditionsIndex = conditions[index];
@@ -80,11 +62,9 @@ const SectionStatus = () => {
     };
 
     useEffect(() => {
-        const removeConditionsBtn = document.querySelectorAll(
-            ".remove-conditions-btn"
-        );
-        removeConditionsBtn.forEach((element, i) => {
-            element.addEventListener("dblclick", () => removeCondition(i));
+        const conditionsBtn = document.querySelectorAll(".conditions-btn");
+        conditionsBtn.forEach((element, i) => {
+            element.addEventListener("click", () => addCondition(i));
         });
     });
 
@@ -97,6 +77,15 @@ const SectionStatus = () => {
 
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
     };
+
+    useEffect(() => {
+        const removeConditionsBtn = document.querySelectorAll(
+            ".remove-conditions-btn"
+        );
+        removeConditionsBtn.forEach((element, i) => {
+            element.addEventListener("dblclick", () => removeCondition(i));
+        });
+    });
 
     if (modalSheet === 1) {
         return (
@@ -116,10 +105,10 @@ const SectionStatus = () => {
                             currentValue={characters[sheetIndex].pv[1]}
                             amount={characters[sheetIndex].pv[0]}
                             color="red"
-                            sub5={() => subBar("pv", 5)}
-                            sub1={() => subBar("pv", 1)}
-                            add1={() => addBar("pv", 1)}
-                            add5={() => addBar("pv", 5)}
+                            sub5={() => changeBar("pv", 5, "sub")}
+                            sub1={() => changeBar("pv", 1, "sub")}
+                            add1={() => changeBar("pv", 1, "add")}
+                            add5={() => changeBar("pv", 5, "add")}
                         />
 
                         <Progress
@@ -129,10 +118,10 @@ const SectionStatus = () => {
                             currentValue={characters[sheetIndex].pd[1]}
                             amount={characters[sheetIndex].pd[0]}
                             color="blue"
-                            sub5={() => subBar("pd", 5)}
-                            sub1={() => subBar("pd", 1)}
-                            add1={() => addBar("pd", 1)}
-                            add5={() => addBar("pd", 5)}
+                            sub5={() => changeBar("pd", 5, "sub")}
+                            sub1={() => changeBar("pd", 1, "sub")}
+                            add1={() => changeBar("pd", 1, "add")}
+                            add5={() => changeBar("pd", 5, "add")}
                         />
                     </section>
 
@@ -164,7 +153,7 @@ const SectionStatus = () => {
                             <ContainerModal title="Condições">
                                 {conditions.map((element, index) => (
                                     <details className="flex flex-col w-full p-4 border border-white-500 rounded">
-                                        <summary className="text-sm font-bold cursor-pointer">
+                                        <summary className="text-red-500 text-sm font-bold cursor-pointer">
                                             {element.condition[0]}
                                         </summary>
 
@@ -312,7 +301,34 @@ const SectionStatus = () => {
 
                         {/*Modal para adicionar habilidades*/}
                         {statusModals === 3 && (
-                            <ContainerModal title="Habilidades"></ContainerModal>
+                            <ContainerModal title="Habilidades">
+                                {statusModals === 3 && (
+                                    <ContainerModal title="Habilidades">
+                                        {skills.map((element, index) => (
+                                            <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                                <summary className="text-blue-600 text-sm font-bold cursor-pointer">
+                                                    {element.skill[0]}
+                                                </summary>
+
+                                                <p className="mt-2 text-gray-500">
+                                                    {element.skill[1]}
+                                                </p>
+
+                                                <p className="mt-2 text-gray-500">
+                                                    Pré-requisitos: {element.skill[2]}
+                                                </p>
+
+                                                <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition">
+                                                    <span className="material-symbols-outlined">
+                                                        Add
+                                                    </span>
+                                                    Adicionar
+                                                </button>
+                                            </details>
+                                        ))}
+                                    </ContainerModal>
+                                )}
+                            </ContainerModal>
                         )}
                     </section>
                 </section>
