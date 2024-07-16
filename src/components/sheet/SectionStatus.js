@@ -3,10 +3,11 @@ import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
 import Tag from "../sheet/Tag";
-import conditions from "../conditions";
-
 import ContainerModal from "./ContainerModal";
 import ResistencesInput from "./ResistenceInput";
+import AddSectionStatus from "./AddSectionStatus";
+
+import conditions from "../conditions";
 
 const SectionStatus = () => {
     const {
@@ -105,53 +106,43 @@ const SectionStatus = () => {
                     <h2 className="text-center text-xl">STATUS</h2>
                 </div>
 
-                {/*PV e PD (Pontos de vida e determinação)*/}
-                <section className="flex flex-col flex-1 bg-white-50">
-                    <Progress
-                        name="Pontos de Vida"
-                        maxValue={characters[sheetIndex].pv[0]}
-                        value={characters[sheetIndex].pv[1]}
-                        currentValue={characters[sheetIndex].pv[1]}
-                        amount={characters[sheetIndex].pv[0]}
-                        color="red"
-                        sub5={() => subBar("pv", 5)}
-                        sub1={() => subBar("pv", 1)}
-                        add1={() => addBar("pv", 1)}
-                        add5={() => addBar("pv", 5)}
-                    />
+                <section className="grid grid-rows-3 grid-cols-4 gap-1 h-full">
+                    {/*PV e PD (Pontos de vida e determinação)*/}
+                    <section className="flex flex-col col-span-4 bg-white-50">
+                        <Progress
+                            name="Pontos de Vida"
+                            maxValue={characters[sheetIndex].pv[0]}
+                            value={characters[sheetIndex].pv[1]}
+                            currentValue={characters[sheetIndex].pv[1]}
+                            amount={characters[sheetIndex].pv[0]}
+                            color="red"
+                            sub5={() => subBar("pv", 5)}
+                            sub1={() => subBar("pv", 1)}
+                            add1={() => addBar("pv", 1)}
+                            add5={() => addBar("pv", 5)}
+                        />
 
-                    <Progress
-                        name="Pontos de Determinação"
-                        maxValue={characters[sheetIndex].pd[0]}
-                        value={characters[sheetIndex].pd[1]}
-                        currentValue={characters[sheetIndex].pd[1]}
-                        amount={characters[sheetIndex].pd[0]}
-                        color="blue"
-                        sub5={() => subBar("pd", 5)}
-                        sub1={() => subBar("pd", 1)}
-                        add1={() => addBar("pd", 1)}
-                        add5={() => addBar("pd", 5)}
-                    />
-                </section>
+                        <Progress
+                            name="Pontos de Determinação"
+                            maxValue={characters[sheetIndex].pd[0]}
+                            value={characters[sheetIndex].pd[1]}
+                            currentValue={characters[sheetIndex].pd[1]}
+                            amount={characters[sheetIndex].pd[0]}
+                            color="blue"
+                            sub5={() => subBar("pd", 5)}
+                            sub1={() => subBar("pd", 1)}
+                            add1={() => addBar("pd", 1)}
+                            add5={() => addBar("pd", 5)}
+                        />
+                    </section>
 
-                {/*Condições e resistências*/}
-                <section className="flex flex-row flex-1 gap-1 min-h-0">
                     {/*Condições*/}
-                    <section className="flex flex-col flex-1 gap-1 p-1 bg-white-50">
-                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
-                            <button
-                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
-                                onClick={() => setStatusModals(1)}
-                            >
-                                <span className="material-symbols-outlined">
-                                    add
-                                </span>
-                            </button>
-
-                            <h2 className="text-sm">CONDIÇÕES</h2>
-                        </header>
-
-                        <div className="flex flex-col gap-1 overflow-y-auto scrollbar">
+                    <section className="flex flex-col gap-1 col-span-2 overflow-y-auto p-1 bg-white-50">
+                        {/*Condições*/}
+                        <AddSectionStatus
+                            title="CONDIÇÕES"
+                            OnClick={() => setStatusModals(1)}
+                        >
                             {listNewCharacter[sheetIndex].conditions.map(
                                 (element, index) => (
                                     <div className="p-1 bg-black-100 cursor-pointer remove-conditions-btn">
@@ -166,49 +157,40 @@ const SectionStatus = () => {
                                     </div>
                                 )
                             )}
-                        </div>
+                        </AddSectionStatus>
+
+                        {/*Modal para adicionar condições*/}
+                        {statusModals === 1 && (
+                            <ContainerModal title="Condições">
+                                {conditions.map((element, index) => (
+                                    <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                        <summary className="text-sm font-bold cursor-pointer">
+                                            {element.condition[0]}
+                                        </summary>
+
+                                        <p className="mt-2 text-gray-500">
+                                            {element.condition[1]}
+                                        </p>
+
+                                        <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
+                                            <span className="material-symbols-outlined">
+                                                Add
+                                            </span>
+                                            Adicionar
+                                        </button>
+                                    </details>
+                                ))}
+                            </ContainerModal>
+                        )}
                     </section>
 
-                    {/*Modal para adicionar condições*/}
-                    {statusModals === 1 && (
-                        <ContainerModal title="Condições">
-                            {conditions.map((element, index) => (
-                                <details className="flex flex-col w-full p-4 border border-white-500 rounded">
-                                    <summary className="text-sm font-bold cursor-pointer">
-                                        {element.condition[0]}
-                                    </summary>
-
-                                    <p className="mt-2 text-gray-500">
-                                        {element.condition[1]}
-                                    </p>
-
-                                    <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
-                                        <span className="material-symbols-outlined">
-                                            Add
-                                        </span>
-                                        Adicionar
-                                    </button>
-                                </details>
-                            ))}
-                        </ContainerModal>
-                    )}
-
                     {/*Resistências*/}
-                    <section className="flex flex-col flex-1 gap-1 overflow-y-auto p-1 bg-white-50">
-                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
-                            <button
-                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
-                                onClick={() => setStatusModals(2)}
-                            >
-                                <span className="material-symbols-outlined">
-                                    add
-                                </span>
-                            </button>
-
-                            <h2 className="text-sm">RESISTÊNCIAS</h2>
-                        </header>
-
-                        <div className="flex flex-row flex-wrap gap-1 overflow-y-auto scrollbar">
+                    <section className="flex flex-col gap-1 col-span-2 overflow-y-auto p-1 bg-white-50">
+                        {/*Resistências*/}
+                        <AddSectionStatus
+                            title="RESISTÊNCIAS"
+                            OnClick={() => setStatusModals(2)}
+                        >
                             {resistences.defense > 0 && (
                                 <Tag
                                     title={"Defesa"}
@@ -283,61 +265,57 @@ const SectionStatus = () => {
                                     value={resistences.chemical}
                                 />
                             )}
-                        </div>
+                        </AddSectionStatus>
+
+                        {/*Modal para adicionar resistências*/}
+                        {statusModals === 2 && (
+                            <ContainerModal title="Resistências">
+                                <ResistencesInput title="Defesa" id="defense" />
+                                <ResistencesInput title="Esquiva" id="dodge" />
+                                <ResistencesInput title="Bloqueio" id="block" />
+                                <ResistencesInput title="Mental" id="mental" />
+                                <ResistencesInput
+                                    title="Física"
+                                    id="physical"
+                                />
+                                <ResistencesInput
+                                    title="Balística"
+                                    id="ballistics"
+                                />
+                                <ResistencesInput title="Corte" id="cut" />
+                                <ResistencesInput title="Impacto" id="impact" />
+                                <ResistencesInput
+                                    title="Perfuração"
+                                    id="drilling"
+                                />
+                                <ResistencesInput
+                                    title="Eletrecidade"
+                                    id="electricity"
+                                />
+                                <ResistencesInput title="Fogo" id="fire" />
+                                <ResistencesInput title="Frio" id="cold" />
+                                <ResistencesInput
+                                    title="Química"
+                                    id="chemical"
+                                />
+                            </ContainerModal>
+                        )}
                     </section>
 
-                    {/*Modal para adicionar Resistências*/}
-                    {statusModals === 2 && (
-                        <ContainerModal title="Resistências">
-                            <ResistencesInput title="Defesa" id="defense" />
-                            <ResistencesInput title="Esquiva" id="dodge" />
-                            <ResistencesInput title="Bloqueio" id="block" />
-                            <ResistencesInput title="Mental" id="mental" />
-                            <ResistencesInput title="Física" id="physical" />
-                            <ResistencesInput
-                                title="Balística"
-                                id="ballistics"
-                            />
-                            <ResistencesInput title="Corte" id="cut" />
-                            <ResistencesInput title="Impacto" id="impact" />
-                            <ResistencesInput
-                                title="Perfuração"
-                                id="drilling"
-                            />
-                            <ResistencesInput
-                                title="Eletrecidade"
-                                id="electricity"
-                            />
-                            <ResistencesInput title="Fogo" id="fire" />
-                            <ResistencesInput title="Frio" id="impact" />
-                            <ResistencesInput title="Química" id="chemical" />
-                        </ContainerModal>
-                    )}
+                    {/*Habilidades*/}
+                    <section className="flex flex-col gap-1 col-span-4 overflow-y-auto p-1 bg-white-50">
+                        {/*Habilidades*/}
+                        <AddSectionStatus
+                            title="HABILIDADES"
+                            OnClick={() => setStatusModals(3)}
+                        ></AddSectionStatus>
+
+                        {/*Modal para adicionar habilidades*/}
+                        {statusModals === 3 && (
+                            <ContainerModal title="Habilidades"></ContainerModal>
+                        )}
+                    </section>
                 </section>
-
-                {/*Habilidades*/}
-                <section className="flex flex-1 shrink-0 gap-1">
-                    <div className="flex-1 gap-1 p-1 bg-white-50">
-                        <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
-                            <button
-                                className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition"
-                                onClick={() => setStatusModals(3)}
-                            >
-                                <span className="material-symbols-outlined">
-                                    add
-                                </span>
-                            </button>
-
-                            <h2 className="text-sm">HABILIDADES</h2>
-                        </header>
-                        <div className="overflow-y-auto scrollbar"></div>
-                    </div>
-                </section>
-
-                {/*Modal para adicionar Resistências*/}
-                {statusModals === 3 && (
-                    <ContainerModal title="Habilidades"></ContainerModal>
-                )}
             </div>
         );
     } else {

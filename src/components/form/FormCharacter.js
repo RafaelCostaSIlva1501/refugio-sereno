@@ -195,7 +195,7 @@ const FormCharacter = () => {
                 <footer className="flex p-1 border-t border-white-200">
                     {sectionActive === 0 && (
                         <button
-                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                             onClick={() => addCharacter1()}
                         >
                             Próximo 1/5
@@ -204,7 +204,7 @@ const FormCharacter = () => {
 
                     {sectionActive === 1 && (
                         <button
-                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                             onClick={() => addCharacter2()}
                         >
                             Próximo 2/5
@@ -213,7 +213,7 @@ const FormCharacter = () => {
 
                     {sectionActive === 2 && (
                         <button
-                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                             onClick={() => addCharacter3()}
                         >
                             Próximo 3/5
@@ -222,7 +222,7 @@ const FormCharacter = () => {
 
                     {sectionActive === 3 && (
                         <button
-                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                             onClick={() => addCharacter4()}
                         >
                             Próximo 4/5
@@ -231,7 +231,7 @@ const FormCharacter = () => {
 
                     {sectionActive === 4 && (
                         <button
-                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black transition active:scale-95"
+                            className="w-full p-1 border-2 border-solid border-white-500 rounded text-center hover:bg-white-500 hover:text-black-500 transition active:scale-95"
                             onClick={() => addCharacter5()}
                         >
                             Criar Ficha

@@ -3,9 +3,13 @@ import ModalContext from "../ModalContext";
 
 const Settings = () => {
     const { modalON } = useContext(ModalContext);
-    
+
     if (modalON === 3) {
-        return <section className="centralize"></section>;
+        return (
+            <>
+            CONFIGURAÇÕES
+            </>
+        ) 
     } else {
         return null;
     }

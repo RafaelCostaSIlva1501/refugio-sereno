@@ -4,7 +4,7 @@ import ModalContext from "../ModalContext";
 const ContainerModal = ({ children, title }) => {
     const { setStatusModals } = useContext(ModalContext);
     return (
-        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm">
+        <div className="flex justify-center items-center centralize px-5 backdrop-blur-sm z-50">
             <div className="bg-black-400 border rounded">
                 <header className="flex justify-between w-full p-1 border-b">
                     <button className="flex">
