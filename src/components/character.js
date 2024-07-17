@@ -16,36 +16,119 @@ let character = {
         pre: 0,
         for: 0,
     },
-    expertises: {
-        acrobacias: 0,
-        adestramento: 0,
-        artes: 0,
-        atletismo: 0,
-        atualidades: 0,
-        ciencias: 0,
-        crime: 0,
-        diplomacia: 0,
-        enganacao: 0,
-        fortitude: 0,
-        furtividade: 0,
-        iniciativa: 0,
-        intimidacao: 0,
-        intuicao: 0,
-        investigacao: 0,
-        luta: 0,
-        medicina: 0,
-        ocultismo: 0,
-        percepcao: 0,
-        pilotagem: 0,
-        pontaria: 0,
-        profissao: 0,
-        reflexos: 0,
-        religiao: 0,
-        sobrevivencia: 0,
-        tatica: 0,
-        tecnologia: 0,
-        vontade: 0,
-    },
+    expertises: [
+        {
+            expertise: ["Acrobacias", 0, 0],
+        },
+
+        {
+            expertise: ["Adestramento", 0, 0],
+        },
+
+        {
+            expertise: ["Artes", 0, 0],
+        },
+
+        {
+            expertise: ["Atletismo", 0, 0],
+        },
+
+        {
+            expertise: ["Atualidades", 0, 0],
+        },
+
+        {
+            expertise: ["Ciências", 0, 0],
+        },
+
+        {
+            expertise: ["Crime", 0, 0],
+        },
+
+        {
+            expertise: ["Diplomacia", 0, 0],
+        },
+
+        {
+            expertise: ["Enganação", 0, 0],
+        },
+
+        {
+            expertise: ["Fortitude", 0, 0],
+        },
+
+        {
+            expertise: ["Furtividade", 0, 0],
+        },
+
+        {
+            expertise: ["Iniciativa", 0, 0],
+        },
+
+        {
+            expertise: ["Intimidação", 0, 0],
+        },
+
+        {
+            expertise: ["Intuição", 0, 0],
+        },
+
+        {
+            expertise: ["Investigação", 0, 0],
+        },
+
+        {
+            expertise: ["Luta", 0, 0],
+        },
+
+        {
+            expertise: ["Medicina", 0, 0],
+        },
+
+        {
+            expertise: ["Ocultismo", 0, 0],
+        },
+
+        {
+            expertise: ["Percepção", 0, 0],
+        },
+
+        {
+            expertise: ["Pilotagem", 0, 0],
+        },
+
+        {
+            expertise: ["Pontaria", 0, 0],
+        },
+
+        {
+            expertise: ["Profissão", 0, 0],
+        },
+
+        {
+            expertise: ["Reflexos", 0, 0],
+        },
+
+        {
+            expertise: ["Religião", 0, 0],
+        },
+
+        {
+            expertise: ["Sobrevivência", 0, 0],
+        },
+
+        {
+            expertise: ["Tática", 0, 0],
+        },
+
+        {
+            expertise: ["Tecnologia", 0, 0],
+        },
+
+        {
+            expertise: ["Vontade", 0, 0],
+        },
+    ],
     pv: [0, 0],
     pd: [0, 0],
     resistences: {

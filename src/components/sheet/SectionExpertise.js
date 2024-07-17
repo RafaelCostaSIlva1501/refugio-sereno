@@ -34,8 +34,23 @@ const SectionExpertise = () => {
                     </span>
                 </section>
 
-                <section>
-                    
+                <section className="grid grid-cols-4 justify-center items-center h-full">
+                    {listNewCharacter[sheetIndex].expertises.map(
+                        (element, i) => (
+                            <div className="flex flex-col justify-center w-28 items-center">
+                                <div className="flex flex-row justify-between items-center">
+                                    <img
+                                        src="./img/d20.png"
+                                        alt=""
+                                        className="w-8"
+                                    ></img>
+                                    <span>+{element.expertise[2]}</span>
+                                </div>
+
+                                <span>{element.expertise[0]}</span>
+                            </div>
+                        )
+                    )}
                 </section>
             </>
         );

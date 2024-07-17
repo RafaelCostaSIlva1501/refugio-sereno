@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ModalContext from "../ModalContext";
 import TextareaForm from "../form/TextareaForm";
 const SectionPerson = () => {
-    const { modalSheet, listNewCharacter, sheetIndex, characters,
+    const { modalSheet, listNewCharacter, sheetIndex,
         setCharacters, } =
         useContext(ModalContext);
 
