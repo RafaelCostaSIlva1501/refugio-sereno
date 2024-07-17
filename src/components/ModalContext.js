@@ -6,6 +6,10 @@ const ModalContext = createContext();
 export const ModalProvider = ({ children }) => {
     let listNewCharacter = JSON.parse(localStorage.getItem("sheet")) || [];
 
+    const [sheetIndex, setSheetIndex] = useState(null);
+
+    const [characters, setCharacters] = useState(listNewCharacter);
+
     const [modalON, setModalOn] = useState(0);
 
     const openModal = (num) => setModalOn(num);
@@ -18,15 +22,11 @@ export const ModalProvider = ({ children }) => {
 
     const [modalSheet, setModalSheet] = useState(0);
 
-    const [sheetIndex, setSheetIndex] = useState(null);
-
     const replaceModalSheet = (value) => setModalSheet(value);
 
     const [sectionActive, setSectionActive] = useState(0);
 
     const [statusModals, setStatusModals] = useState(0);
-
-    const [characters, setCharacters] = useState(listNewCharacter);
 
     //Informações básicas
     const addCharacter1 = () => {
@@ -52,8 +52,6 @@ export const ModalProvider = ({ children }) => {
             };
             reader.readAsDataURL(file);
         }
-
-        console.log(character);
 
         setSectionActive(1);
     };
@@ -389,9 +387,9 @@ export const ModalProvider = ({ children }) => {
         const updatedCharacters = [...characters];
 
         if (subOrAdd === "sub") {
-            updatedCharacters[sheetIndex].resistences[resistenceName] -= 1;
+            updatedCharacters[sheetIndex].resistences[resistenceName] -= Number(1);
         } else if (subOrAdd === "add") {
-            updatedCharacters[sheetIndex].resistences[resistenceName] += 1;
+            updatedCharacters[sheetIndex].resistences[resistenceName] += Number(1);
         }
 
         setCharacters(updatedCharacters);

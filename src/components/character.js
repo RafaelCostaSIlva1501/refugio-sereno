@@ -64,6 +64,7 @@ let character = {
         chemical: 0,
     },
     conditions: [],
+    skills: [],
 };
 
 export default character;

@@ -2,18 +2,37 @@ import React, { useContext } from "react";
 import ModalContext from "../ModalContext";
 import TextareaForm from "../form/TextareaForm";
 const SectionPerson = () => {
-    const { modalSheet, listNewCharacter, sheetIndex } =
+    const { modalSheet, listNewCharacter, sheetIndex, characters,
+        setCharacters, } =
         useContext(ModalContext);
-
-    const storedCharacters = JSON.parse(localStorage.getItem("sheet"));
 
     const changeInfo = (outputId, elementArray) => {
         const textareaValue = document.getElementById(outputId).value;
 
-        storedCharacters[sheetIndex][elementArray] = textareaValue;
+        listNewCharacter[sheetIndex][elementArray] = textareaValue;
 
-        localStorage.setItem("sheet", JSON.stringify(storedCharacters));
+        localStorage.setItem("sheet", JSON.stringify(listNewCharacter));
     };
+
+    const showImage = (event) => {
+        const Iimg = document.getElementById("Iimg");
+        const file = Iimg.files[0];
+    
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                listNewCharacter[sheetIndex].img = e.target.result;
+                
+                // Atualiza o estado local
+                setCharacters([...listNewCharacter]);
+    
+                // Atualiza o localStorage com o novo valor
+                localStorage.setItem("sheet", JSON.stringify(listNewCharacter));
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    
 
     if (modalSheet === 0) {
         return (
@@ -23,12 +42,22 @@ const SectionPerson = () => {
                 </h2>
 
                 <div className="flex flex-row justify-center items-center gap-1.5 w-full text-sm">
-                    <div className="h-fit border">
-                        <img
-                            className="min-w-36 h-36"
-                            src={listNewCharacter[sheetIndex].img}
-                            alt="Foto do Personagem"
-                        ></img>
+                    <div className="flex flex-col items-center h-fit border">
+                        <label htmlFor="Iimg" className="cursor-pointer">
+                            <img
+                                src={listNewCharacter[sheetIndex].img}
+                                alt="Foto do Personagem"
+                                className="min-w-36 h-36"
+                            ></img>
+                        </label>
+
+                        <input
+                            type="file"
+                            id="Iimg"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={showImage}
+                        ></input>
                     </div>
 
                     <div className="flex flex-col justify-between w-full h-36">

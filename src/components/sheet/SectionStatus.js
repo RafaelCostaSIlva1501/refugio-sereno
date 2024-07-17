@@ -3,9 +3,9 @@ import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
 import Tag from "../sheet/Tag";
+import AddSectionStatus from "./AddSectionStatus";
 import ContainerModal from "./ContainerModal";
 import ResistencesInput from "./ResistenceInput";
-import AddSectionStatus from "./AddSectionStatus";
 
 import conditions from "../conditions";
 import skills from "../skills";
@@ -23,14 +23,15 @@ const SectionStatus = () => {
 
     const { resistences } = listNewCharacter[sheetIndex];
 
-    const changeBar = (bar, num, subOrAdd) => {
+    // Muda a barra de status
+    const changeBar = (bar, num, change) => {
         // Cria uma cópia do estado atual
         const updatedCharacters = [...characters];
-        
+
         //Adiciona ou subtrai o valor da barra
-        if (subOrAdd === "sub") {
+        if (change === "sub") {
             updatedCharacters[sheetIndex][bar][1] -= num;
-        } else if (subOrAdd === "add") {
+        } else if (change === "add") {
             updatedCharacters[sheetIndex][bar][1] += num;
         }
 
@@ -39,52 +40,140 @@ const SectionStatus = () => {
 
         // Atualiza o localStorage com o novo valor
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
-    }
+    };
 
-    const addCondition = (index) => {
-        const conditionsIndex = conditions[index];
-        console.log(conditionsIndex);
-
+    // Adiciona ou remove as condições
+    const changeCondition = (index, change) => {
         // Cria uma cópia do estado atual
         const updatedCharacters = [...characters];
 
-        // Adiciona a nova condição ao array de condições
-        updatedCharacters[sheetIndex].conditions.push(conditionsIndex);
+        if (change === "remove") {
+            updatedCharacters[sheetIndex].conditions.splice(index, 1);
+        } else if (change === "add") {
+            const conditionsIndex = conditions[index];
+
+            // Adiciona a nova condição ao array de condições
+            updatedCharacters[sheetIndex].conditions.push(conditionsIndex);
+
+            // Fecha o modal de condições, se necessário
+            setStatusModals(false);
+        }
 
         // Atualiza o estado local com as novas condições
         setCharacters(updatedCharacters);
 
         // Atualiza o localStorage com o novo estado
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
-
-        // Fecha o modal de condições, se necessário
-        setStatusModals(false);
     };
 
+    // Adiciona o evento para adicionar as condições
     useEffect(() => {
+        // Chama os elementos com a classe conditions-btn
         const conditionsBtn = document.querySelectorAll(".conditions-btn");
-        conditionsBtn.forEach((element, i) => {
-            element.addEventListener("click", () => addCondition(i));
-        });
-    });
 
-    const removeCondition = (index) => {
+        //Função que chama a função changeSkill (Para adicionar)
+        const handleAddCondition = (index) => {
+            changeCondition(index, "add");
+        };
+        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
+        conditionsBtn.forEach((element, i) => {
+            const boundAddCondition = () => handleAddCondition(i);
+            element.addEventListener("click", boundAddCondition);
+            element.boundAddCondition = boundAddCondition;
+        });
+
+        // Chama os elementos com a classe remove-conditions-btn
+        const removeConditionsBtn = document.querySelectorAll(".remove-conditions-btn");
+        //Função que chama a função changeSkill (Para remover)
+        const handleRemoveCondition = (index) => {
+            changeCondition(index, "remove");
+        };
+        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
+        removeConditionsBtn.forEach((element, i) => {
+            const boundRemoveCondition = () => handleRemoveCondition(i);
+            element.addEventListener("dblclick", boundRemoveCondition);
+            element.boundRemoveCondition = boundRemoveCondition;
+        });
+    
+        // Função de limpeza para remover event listeners
+        return () => {
+            conditionsBtn.forEach((element) => {
+                element.removeEventListener("click", element.boundAddCondition);
+            });
+    
+            removeConditionsBtn.forEach((element) => {
+                element.removeEventListener("dblclick", element.boundRemoveCondition);
+            });
+        };
+    }); 
+
+    // Adiciona ou remove as habilidades
+    const changeSkill = (index, change) => {
+        // Cria uma cópia do estado atual
         const updatedCharacters = [...characters];
 
-        updatedCharacters[sheetIndex].conditions.splice(index, 1);
+        if (change === "remove") {
+            updatedCharacters[sheetIndex].skills.splice(index, 1);
+        } else if (change === "add") {
+            const skillsIndex = skills[index];
 
+            // Adiciona a nova condição ao array de condições
+            updatedCharacters[sheetIndex].skills.push(skillsIndex);
+
+            // Fecha o modal de condições, se necessário
+            setStatusModals(false);
+        }
+
+        // Atualiza o estado local com as novas condições
         setCharacters(updatedCharacters);
 
+        // Atualiza o localStorage com o novo estado
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
     };
 
+    // Adiciona o evento para adicionar as habilidades
     useEffect(() => {
-        const removeConditionsBtn = document.querySelectorAll(
-            ".remove-conditions-btn"
-        );
-        removeConditionsBtn.forEach((element, i) => {
-            element.addEventListener("dblclick", () => removeCondition(i));
+        // Chama os elementos com a classe add-skills-btn
+        const skillBtns = document.querySelectorAll(".add-skills-btn");
+        //Função que chama a função changeSkill (Para adicionar)
+        const handleAddSkill = (index) => {
+            changeSkill(index, "add");
+        };
+        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
+        skillBtns.forEach((element, i) => {
+            const boundAddSkill = () => handleAddSkill(i);
+            element.addEventListener("click", boundAddSkill);
+
+            element.boundAddSkill = boundAddSkill;
         });
+
+        // Chama os elementos com a classe remove-skills-btn
+        const removeSkillBtns = document.querySelectorAll(".remove-skills-btn");
+        //Função que chama a função changeSkill (Para remover)
+        const handleRemoveSkill = (index) => {
+            changeSkill(index, "remove");
+        };
+        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
+        removeSkillBtns.forEach((element, i) => {
+            const boundRemoveSkill = () => handleRemoveSkill(i);
+            element.addEventListener("dblclick", boundRemoveSkill);
+
+            element.boundRemoveSkill = boundRemoveSkill;
+        });
+
+        // Função de limpeza para remover event listeners
+        return () => {
+            skillBtns.forEach((element) => {
+                element.removeEventListener("click", element.boundAddSkill);
+            });
+
+            removeSkillBtns.forEach((element) => {
+                element.removeEventListener(
+                    "dblclick",
+                    element.boundRemoveSkill
+                );
+            });
+        };
     });
 
     if (modalSheet === 1) {
@@ -141,8 +230,6 @@ const SectionStatus = () => {
                                             </span>{" "}
                                             {element.condition[1]}
                                         </p>
-
-                                        <button className="">Apagar</button>
                                     </div>
                                 )
                             )}
@@ -297,7 +384,20 @@ const SectionStatus = () => {
                         <AddSectionStatus
                             title="HABILIDADES"
                             OnClick={() => setStatusModals(3)}
-                        ></AddSectionStatus>
+                        >
+                            {listNewCharacter[sheetIndex].skills.map(
+                                (element, index) => (
+                                    <div className="p-1 bg-black-100 cursor-pointer remove-skills-btn">
+                                        <p key={index}>
+                                            <span className="text-blue-600 font-semibold">
+                                                {element.skill[0]}:
+                                            </span>{" "}
+                                            {element.skill[1]}
+                                        </p>
+                                    </div>
+                                )
+                            )}
+                        </AddSectionStatus>
 
                         {/*Modal para adicionar habilidades*/}
                         {statusModals === 3 && (
@@ -315,10 +415,11 @@ const SectionStatus = () => {
                                                 </p>
 
                                                 <p className="mt-2 text-gray-500">
-                                                    Pré-requisitos: {element.skill[2]}
+                                                    Pré-requisitos:{" "}
+                                                    {element.skill[2]}
                                                 </p>
 
-                                                <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition">
+                                                <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition add-skills-btn">
                                                     <span className="material-symbols-outlined">
                                                         Add
                                                     </span>
