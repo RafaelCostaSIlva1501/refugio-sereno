@@ -13,7 +13,7 @@ const SectionExpertise = () => {
                 </h2>
 
                 <section className="flex flex-row justify-evenly">
-                    <div className="flex flex-col justify-center w-28 items-center">
+                    <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
                             <img
                                 src="./img/d20-attribute.png"
@@ -28,7 +28,7 @@ const SectionExpertise = () => {
                         <span className="text-xs">Agilidade</span>
                     </div>
 
-                    <div className="flex flex-col justify-center w-28 items-center">
+                    <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
                             <img
                                 src="./img/d20-attribute.png"
@@ -43,7 +43,7 @@ const SectionExpertise = () => {
                         <span className="text-xs">Intelecto</span>
                     </div>
 
-                    <div className="flex flex-col justify-center w-28 items-center">
+                    <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
                             <img
                                 src="./img/d20-attribute.png"
@@ -58,7 +58,7 @@ const SectionExpertise = () => {
                         <span className="text-xs">Vigor</span>
                     </div>
 
-                    <div className="flex flex-col justify-center w-28 items-center">
+                    <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
                             <img
                                 src="./img/d20-attribute.png"
@@ -73,7 +73,7 @@ const SectionExpertise = () => {
                         <span className="text-xs">Presença</span>
                     </div>
 
-                    <div className="flex flex-col justify-center w-28 items-center">
+                    <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
                             <img
                                 src="./img/d20-attribute.png"
@@ -93,7 +93,7 @@ const SectionExpertise = () => {
                     <div className="grid grid-cols-4 gap-1 justify-center items-center h-full">
                         {listNewCharacter[sheetIndex].expertises.map(
                             (element, i) => (
-                                <div className="flex flex-col justify-center w-28 items-center">
+                                <div className="flex flex-col justify-center w-24 items-center">
                                     <div className="flex flex-row justify-between items-center">
                                         <img
                                             src="./img/d20.png"
