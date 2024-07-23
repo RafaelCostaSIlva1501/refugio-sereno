@@ -13,59 +13,79 @@ const SectionExpertise = () => {
                 </h2>
 
                 <section className="flex flex-row justify-evenly">
-                    <div className="flex flex-row items-center gap-1 border-b">
-                        <img
-                            src="./img/d20-attribute.png"
-                            alt=""
-                            className="w-6"
-                        ></img>
-                        <span className="">
-                            AGI: {listNewCharacter[sheetIndex].attributes.agi}
-                        </span>
+                    <div className="flex flex-col justify-center w-28 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <img
+                                src="./img/d20-attribute.png"
+                                alt=""
+                                className="w-7"
+                            ></img>
+                            <span>
+                                {listNewCharacter[sheetIndex].attributes.agi}
+                            </span>
+                        </div>
+
+                        <span className="text-xs">Agilidade</span>
                     </div>
 
-                    <div className="flex flex-row items-center gap-1 border-b">
-                        <img
-                            src="./img/d20-attribute.png"
-                            alt=""
-                            className="w-6"
-                        ></img>
-                        <span className="">
-                            INT: {listNewCharacter[sheetIndex].attributes.int}
-                        </span>
+                    <div className="flex flex-col justify-center w-28 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <img
+                                src="./img/d20-attribute.png"
+                                alt=""
+                                className="w-7"
+                            ></img>
+                            <span>
+                                {listNewCharacter[sheetIndex].attributes.int}
+                            </span>
+                        </div>
+
+                        <span className="text-xs">Intelecto</span>
                     </div>
 
-                    <div className="flex flex-row items-center gap-1 border-b">
-                        <img
-                            src="./img/d20-attribute.png"
-                            alt=""
-                            className="w-6"
-                        ></img>
-                        <span className="">
-                            VIG: {listNewCharacter[sheetIndex].attributes.vig}
-                        </span>
+                    <div className="flex flex-col justify-center w-28 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <img
+                                src="./img/d20-attribute.png"
+                                alt=""
+                                className="w-7"
+                            ></img>
+                            <span>
+                                {listNewCharacter[sheetIndex].attributes.vig}
+                            </span>
+                        </div>
+
+                        <span className="text-xs">Vigor</span>
                     </div>
 
-                    <div className="flex flex-row items-center gap-1 border-b">
-                        <img
-                            src="./img/d20-attribute.png"
-                            alt=""
-                            className="w-6"
-                        ></img>
-                        <span className="">
-                            PRE: {listNewCharacter[sheetIndex].attributes.pre}
-                        </span>
+                    <div className="flex flex-col justify-center w-28 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <img
+                                src="./img/d20-attribute.png"
+                                alt=""
+                                className="w-7"
+                            ></img>
+                            <span>
+                                {listNewCharacter[sheetIndex].attributes.pre}
+                            </span>
+                        </div>
+
+                        <span className="text-xs">Presença</span>
                     </div>
 
-                    <div className="flex flex-row items-center gap-1 border-b">
-                        <img
-                            src="./img/d20-attribute.png"
-                            alt=""
-                            className="w-6"
-                        ></img>
-                        <span className="">
-                            FOR: {listNewCharacter[sheetIndex].attributes.for}
-                        </span>
+                    <div className="flex flex-col justify-center w-28 items-center">
+                        <div className="flex flex-row justify-between items-center">
+                            <img
+                                src="./img/d20-attribute.png"
+                                alt=""
+                                className="w-7"
+                            ></img>
+                            <span>
+                                {listNewCharacter[sheetIndex].attributes.for}
+                            </span>
+                        </div>
+
+                        <span className="text-xs">Força</span>
                     </div>
                 </section>
 
@@ -73,7 +93,7 @@ const SectionExpertise = () => {
                     <div className="grid grid-cols-4 gap-1 justify-center items-center h-full">
                         {listNewCharacter[sheetIndex].expertises.map(
                             (element, i) => (
-                                <div className="flex flex-col justify-center w-28 items-center ">
+                                <div className="flex flex-col justify-center w-28 items-center">
                                     <div className="flex flex-row justify-between items-center">
                                         <img
                                             src="./img/d20.png"
