@@ -13,44 +13,83 @@ const SectionExpertise = () => {
                 </h2>
 
                 <section className="flex flex-row justify-evenly">
-                    <span className="px-1 border rounded hover:bg-white-500 hover:text-black-500 cursor-pointer transition">
-                        AGI: {listNewCharacter[sheetIndex].attributes.agi}
-                    </span>
+                    <div className="flex flex-row items-center gap-1 border-b">
+                        <img
+                            src="./img/d20-attribute.png"
+                            alt=""
+                            className="w-6"
+                        ></img>
+                        <span className="">
+                            AGI: {listNewCharacter[sheetIndex].attributes.agi}
+                        </span>
+                    </div>
 
-                    <span className="px-1 border rounded hover:bg-white-500 hover:text-black-500 cursor-pointer transition">
-                        INT: {listNewCharacter[sheetIndex].attributes.int}
-                    </span>
+                    <div className="flex flex-row items-center gap-1 border-b">
+                        <img
+                            src="./img/d20-attribute.png"
+                            alt=""
+                            className="w-6"
+                        ></img>
+                        <span className="">
+                            INT: {listNewCharacter[sheetIndex].attributes.int}
+                        </span>
+                    </div>
 
-                    <span className="px-1 border rounded hover:bg-white-500 hover:text-black-500 cursor-pointer transition">
-                        VIG: {listNewCharacter[sheetIndex].attributes.vig}
-                    </span>
+                    <div className="flex flex-row items-center gap-1 border-b">
+                        <img
+                            src="./img/d20-attribute.png"
+                            alt=""
+                            className="w-6"
+                        ></img>
+                        <span className="">
+                            VIG: {listNewCharacter[sheetIndex].attributes.vig}
+                        </span>
+                    </div>
 
-                    <span className="px-1 border rounded hover:bg-white-500 hover:text-black-500 cursor-pointer transition">
-                        PRE: {listNewCharacter[sheetIndex].attributes.pre}
-                    </span>
+                    <div className="flex flex-row items-center gap-1 border-b">
+                        <img
+                            src="./img/d20-attribute.png"
+                            alt=""
+                            className="w-6"
+                        ></img>
+                        <span className="">
+                            PRE: {listNewCharacter[sheetIndex].attributes.pre}
+                        </span>
+                    </div>
 
-                    <span className="px-1 border rounded hover:bg-white-500 hover:text-black-500 cursor-pointer transition">
-                        FOR: {listNewCharacter[sheetIndex].attributes.for}
-                    </span>
+                    <div className="flex flex-row items-center gap-1 border-b">
+                        <img
+                            src="./img/d20-attribute.png"
+                            alt=""
+                            className="w-6"
+                        ></img>
+                        <span className="">
+                            FOR: {listNewCharacter[sheetIndex].attributes.for}
+                        </span>
+                    </div>
                 </section>
 
-                <section className="grid grid-cols-4 justify-center items-center h-full">
-                    {listNewCharacter[sheetIndex].expertises.map(
-                        (element, i) => (
-                            <div className="flex flex-col justify-center w-28 items-center">
-                                <div className="flex flex-row justify-between items-center">
-                                    <img
-                                        src="./img/d20.png"
-                                        alt=""
-                                        className="w-8"
-                                    ></img>
-                                    <span>+{element.expertise[2]}</span>
-                                </div>
+                <section className="flex justify-center items-center h-full">
+                    <div className="grid grid-cols-4 gap-1 justify-center items-center h-full">
+                        {listNewCharacter[sheetIndex].expertises.map(
+                            (element, i) => (
+                                <div className="flex flex-col justify-center w-28 items-center ">
+                                    <div className="flex flex-row justify-between items-center">
+                                        <img
+                                            src="./img/d20.png"
+                                            alt=""
+                                            className="w-7"
+                                        ></img>
+                                        <span>+{element.expertise[2]}</span>
+                                    </div>
 
-                                <span>{element.expertise[0]}</span>
-                            </div>
-                        )
-                    )}
+                                    <span className="text-xs">
+                                        {element.expertise[0]}
+                                    </span>
+                                </div>
+                            )
+                        )}
+                    </div>
                 </section>
             </>
         );
