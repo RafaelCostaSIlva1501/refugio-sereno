@@ -28,6 +28,8 @@ export const ModalProvider = ({ children }) => {
 
     const [statusModals, setStatusModals] = useState(0);
 
+    const [rollDiceModal, setRollDiceModal] = useState(false);
+
     //Informações básicas
     const addCharacter1 = () => {
         const Iplayer = document.getElementById("Iplayer");
@@ -138,34 +140,34 @@ export const ModalProvider = ({ children }) => {
         const Itecnologia = document.getElementById("Itecnologia");
         const Ivontade = document.getElementById("Ivontade");
 
-        character.expertises.acrobacias = Iacrobacias.value;
-        character.expertises.adestramento = Iadestramento.value;
-        character.expertises.artes = Iartes.value;
-        character.expertises.atletismo = Iatletismo.value;
-        character.expertises.atualidades = Iatualidades.value;
-        character.expertises.ciencias = Iciencias.value;
-        character.expertises.crime = Icrime.value;
-        character.expertises.diplomacia = Idiplomacia.value;
-        character.expertises.enganacao = Ienganacao.value;
-        character.expertises.fortitude = Ifortitude.value;
-        character.expertises.furtividade = Ifurtividade.value;
-        character.expertises.iniciativa = Iiniciativa.value;
-        character.expertises.intimidacao = Iintimidacao.value;
-        character.expertises.intuicao = Iintuicao.value;
-        character.expertises.investigacao = Iinvestigacao.value;
-        character.expertises.luta = Iluta.value;
-        character.expertises.medicina = Imedicina.value;
-        character.expertises.ocultismo = Iocultismo.value;
-        character.expertises.percepcao = Ipercepcao.value;
-        character.expertises.pilotagem = Ipilotagem.value;
-        character.expertises.pontaria = Ipontaria.value;
-        character.expertises.profissao = Iprofissao.value;
-        character.expertises.reflexos = Ireflexos.value;
-        character.expertises.religiao = Ireligiao.value;
-        character.expertises.sobrevivencia = Isobrevivencia.value;
-        character.expertises.tatica = Itatica.value;
-        character.expertises.tecnologia = Itecnologia.value;
-        character.expertises.vontade = Ivontade.value;
+        character.expertises[0].expertise[2] = Iacrobacias.value;
+        character.expertises[1].expertise[2] = Iadestramento.value;
+        character.expertises[2].expertise[2] = Iartes.value;
+        character.expertises[3].expertise[2] = Iatletismo.value;
+        character.expertises[4].expertise[2] = Iatualidades.value;
+        character.expertises[5].expertise[2] = Iciencias.value;
+        character.expertises[6].expertise[2] = Icrime.value;
+        character.expertises[7].expertise[2] = Idiplomacia.value;
+        character.expertises[8].expertise[2] = Ienganacao.value;
+        character.expertises[9].expertise[2] = Ifortitude.value;
+        character.expertises[10].expertise[2] = Ifurtividade.value;
+        character.expertises[11].expertise[2] = Iiniciativa.value;
+        character.expertises[12].expertise[2] = Iintimidacao.value;
+        character.expertises[13].expertise[2] = Iintuicao.value;
+        character.expertises[14].expertise[2] = Iinvestigacao.value;
+        character.expertises[15].expertise[2] = Iluta.value;
+        character.expertises[16].expertise[2] = Imedicina.value;
+        character.expertises[17].expertise[2] = Iocultismo.value;
+        character.expertises[18].expertise[2] = Ipercepcao.value;
+        character.expertises[19].expertise[2] = Ipilotagem.value;
+        character.expertises[20].expertise[2] = Ipontaria.value;
+        character.expertises[21].expertise[2] = Iprofissao.value;
+        character.expertises[22].expertise[2] = Ireflexos.value;
+        character.expertises[23].expertise[2] = Ireligiao.value;
+        character.expertises[24].expertise[2] = Isobrevivencia.value;
+        character.expertises[25].expertise[2] = Itatica.value;
+        character.expertises[26].expertise[2] = Itecnologia.value;
+        character.expertises[27].expertise[2] = Ivontade.value;
 
         character.resistences.block = Ifortitude.value;
 
@@ -201,7 +203,7 @@ export const ModalProvider = ({ children }) => {
                 document.getElementById("Ienganacao").value = 5;
                 break;
             case "Atleta":
-                document.getElementById("Iacrobacia").value = 5;
+                document.getElementById("Iacrobacias").value = 5;
                 document.getElementById("Iatletismo").value = 5;
                 break;
             case "Chef":
@@ -424,6 +426,8 @@ export const ModalProvider = ({ children }) => {
                 changeResistence,
                 characters,
                 setCharacters,
+                rollDiceModal,
+                setRollDiceModal,
             }}
         >
             {children}

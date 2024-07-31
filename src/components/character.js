@@ -18,115 +18,115 @@ let character = {
     },
     expertises: [
         {
-            expertise: ["Acrobacias", 0, 0],
+            expertise: ["Acrobacias", "agi", 0, 0],
         },
 
         {
-            expertise: ["Adestramento", 0, 0],
+            expertise: ["Adestramento", "pre",  0, 0],
         },
 
         {
-            expertise: ["Artes", 0, 0],
+            expertise: ["Artes", "pre", 0, 0],
         },
 
         {
-            expertise: ["Atletismo", 0, 0],
+            expertise: ["Atletismo", "for", 0, 0],
         },
 
         {
-            expertise: ["Atualidades", 0, 0],
+            expertise: ["Atualidades", "int", 0, 0],
         },
 
         {
-            expertise: ["Ciências", 0, 0],
+            expertise: ["Ciências", "int", 0, 0],
         },
 
         {
-            expertise: ["Crime", 0, 0],
+            expertise: ["Crime", "agi", 0, 0],
         },
 
         {
-            expertise: ["Diplomacia", 0, 0],
+            expertise: ["Diplomacia", "pre", 0, 0],
         },
 
         {
-            expertise: ["Enganação", 0, 0],
+            expertise: ["Enganação", "pre", 0, 0],
         },
 
         {
-            expertise: ["Fortitude", 0, 0],
+            expertise: ["Fortitude", "vig", 0, 0],
         },
 
         {
-            expertise: ["Furtividade", 0, 0],
+            expertise: ["Furtividade", "agi", 0, 0],
         },
 
         {
-            expertise: ["Iniciativa", 0, 0],
+            expertise: ["Iniciativa", "agi", 0, 0],
         },
 
         {
-            expertise: ["Intimidação", 0, 0],
+            expertise: ["Intimidação", "pre", 0, 0],
         },
 
         {
-            expertise: ["Intuição", 0, 0],
+            expertise: ["Intuição", "int", 0, 0],
         },
 
         {
-            expertise: ["Investigação", 0, 0],
+            expertise: ["Investigação", "int", 0, 0],
         },
 
         {
-            expertise: ["Luta", 0, 0],
+            expertise: ["Luta", "for", 0, 0],
         },
 
         {
-            expertise: ["Medicina", 0, 0],
+            expertise: ["Medicina", "int", 0, 0],
         },
 
         {
-            expertise: ["Ocultismo", 0, 0],
+            expertise: ["Ocultismo", "int", 0, 0],
         },
 
         {
-            expertise: ["Percepção", 0, 0],
+            expertise: ["Percepção", "pre", 0, 0],
         },
 
         {
-            expertise: ["Pilotagem", 0, 0],
+            expertise: ["Pilotagem", "agi", 0, 0],
         },
 
         {
-            expertise: ["Pontaria", 0, 0],
+            expertise: ["Pontaria", "agi", 0, 0],
         },
 
         {
-            expertise: ["Profissão", 0, 0],
+            expertise: ["Profissão", "int", 0, 0],
         },
 
         {
-            expertise: ["Reflexos", 0, 0],
+            expertise: ["Reflexos", "agi", 0, 0],
         },
 
         {
-            expertise: ["Religião", 0, 0],
+            expertise: ["Religião", "pre", 0, 0],
         },
 
         {
-            expertise: ["Sobrevivência", 0, 0],
+            expertise: ["Sobrevivência", "int", 0, 0],
         },
 
         {
-            expertise: ["Tática", 0, 0],
+            expertise: ["Tática", "int", 0, 0],
         },
 
         {
-            expertise: ["Tecnologia", 0, 0],
+            expertise: ["Tecnologia", "int", 0, 0],
         },
 
         {
-            expertise: ["Vontade", 0, 0],
+            expertise: ["Vontade", "pre", 0, 0],
         },
     ],
     pv: [0, 0],

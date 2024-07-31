@@ -1,5 +1,4 @@
-const expertises = [
-    
+const expertises = [ 
     {
         expertiseName: "Acrobacias",
         attribute: "agi",
