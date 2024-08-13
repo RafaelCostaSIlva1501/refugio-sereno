@@ -25,7 +25,7 @@ const RolldiceModal = (props) => {
                     Resultado:
                     {props.largerDie !== 0 && ` ${props.largerDie}`}
                     {props.training !== 0 && `, ${props.training}`}
-                    {props.bonus !== 0 && `, ${props.bonus}`} 
+                    {props.bonus !== 0 && `, ${props.bonus}`}
                     {props.result !== 0 && ( 
                         <span className="font-semibold"> = {props.result} </span>
                     )}

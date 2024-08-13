@@ -185,9 +185,11 @@ const SectionExpertise = () => {
                     {/*FORÇA*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button onClick={() =>
-                                        rollDiceAttribute("Força", "for")
-                                    }>
+                            <button
+                                onClick={() =>
+                                    rollDiceAttribute("Força", "for")
+                                }
+                            >
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -204,36 +206,32 @@ const SectionExpertise = () => {
                 </section>
 
                 {/*Dados de perícias*/}
-                <section className="flex justify-center items-center h-full">
-                    <div className="flex flex-row flex-wrap gap-1 justify-center items-center h-full">
-                        {listNewCharacter[sheetIndex].expertises.map(
-                            (element, i) => (
-                                <div
-                                    className="flex flex-col w-24 items-center"
-                                    key={i}
-                                >
-                                    <div className="flex flex-row items-center">
-                                        <button className="btn-dice">
-                                            <img
-                                                src="./img/d20.png"
-                                                alt=""
-                                                className="w-7"
-                                                onClick={() =>
-                                                    rollDiceExpertise(i)
-                                                }
-                                            ></img>
-                                        </button>
+                <section className="grid grid-cols-4 gap-4 h-full">
+                    {listNewCharacter[sheetIndex].expertises.map(
+                        (element, i) => (
+                            <div
+                                className="flex flex-col justify-center items-center w-24 items-center"
+                                key={i}
+                            >
+                                <div className="flex flex-row items-center">
+                                    <button className="btn-dice">
+                                        <img
+                                            src="./img/d20.png"
+                                            alt=""
+                                            className="w-7"
+                                            onClick={() => rollDiceExpertise(i)}
+                                        ></img>
+                                    </button>
 
-                                        <span>+{element.expertise[2]}</span>
-                                    </div>
-
-                                    <span className="text-xs">
-                                        {element.expertise[0]}
-                                    </span>
+                                    <span>+{element.expertise[2]}</span>
                                 </div>
-                            )
-                        )}
-                    </div>
+
+                                <span className="text-xs">
+                                    {element.expertise[0]}
+                                </span>
+                            </div>
+                        )
+                    )}
                 </section>
 
                 {/*Modal de rolagem de dados*/}
