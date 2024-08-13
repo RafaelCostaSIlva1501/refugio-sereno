@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import ModalContext from "../ModalContext";
 
 import RollDiceModal from "./RollDiceModal";
@@ -14,7 +14,7 @@ const SectionExpertise = () => {
 
     const [diceModalInfos, setDiceModalInfos] = useState({
         expertise: "",
-        attribute: ["", 0],
+        attribute: "",
         training: 0,
         bonus: 0,
         dice: [],
@@ -22,10 +22,9 @@ const SectionExpertise = () => {
         result: 0,
     });
 
-    /*
-    const randomNums = [];
-
     const randomNumber = (attribute) => {
+        const randomNums = [];
+
         for (let i = 0; i < attribute; i++) {
             const randomNum = Math.floor(Math.random() * 20) + 1;
             randomNums.push(randomNum);
@@ -33,48 +32,56 @@ const SectionExpertise = () => {
 
         return randomNums;
     };
-    */
 
-    const rollDice = (expertise, attribute, training, bonus) => {
-        diceModalInfos.expertise = expertise;
-        diceModalInfos.attribute = attribute.toUpperCase();
-        diceModalInfos.training = training;
-        diceModalInfos.bonus = bonus;
+    const rollDiceExpertise = (index) => {
+        let expertise =
+            listNewCharacter[sheetIndex].expertises[index].expertise[0];
 
-        console.log(
-            `${diceModalInfos.expertise} - ${diceModalInfos.attribute} - ${diceModalInfos.training} - ${diceModalInfos.bonus}`
-        );
-    };
+        let attribute =
+            listNewCharacter[sheetIndex].expertises[index].expertise[1];
 
-    useEffect(() => {
-        const btnDice = document.querySelectorAll(".btn-dice");
+        let training =
+            listNewCharacter[sheetIndex].expertises[index].expertise[2];
 
-        const handleDiceClick = (index) => {
-            let expertise =
-                listNewCharacter[sheetIndex].expertises[index].expertise[0];
-            let attribute =
-                listNewCharacter[sheetIndex].expertises[index].expertise[1];
-            let training =
-                listNewCharacter[sheetIndex].expertises[index].expertise[2];
-            let bonus =
-                listNewCharacter[sheetIndex].expertises[index].expertise[3];
+        let bonus = listNewCharacter[sheetIndex].expertises[index].expertise[3];
 
-            rollDice(expertise, attribute, training, bonus);
-            setRollDiceModal(true);
-        };
+        let attributeValue = listNewCharacter[sheetIndex].attributes[attribute];
 
-        btnDice.forEach((element, index) => {
-            element.addEventListener("click", () => handleDiceClick(index));
+        let diceNumbers = randomNumber(attributeValue).sort((a, b) => a - b);
+
+        setDiceModalInfos({
+            expertise: expertise,
+            attribute: `(${attribute.toUpperCase()})`,
+            training: training,
+            bonus: bonus,
+            dice: diceNumbers.join(", "),
+            largerDie: diceNumbers[diceNumbers.length - 1],
+            result:
+                Number(diceNumbers[diceNumbers.length - 1]) +
+                Number(training) +
+                Number(bonus),
         });
 
-        return () => {
-            btnDice.forEach((element, index) => {
-                element.removeEventListener("click", () =>
-                    handleDiceClick(index)
-                );
-            });
-        };
-    });
+        setRollDiceModal(true);
+    };
+
+    const rollDiceAttribute = (attribute, atr) => {
+        let attributeValue = listNewCharacter[sheetIndex].attributes[atr];
+
+        let diceNumbers = randomNumber(attributeValue).sort((a, b) => a - b);
+
+        setDiceModalInfos({
+            expertise: attribute,
+            attribute: "",
+            training: 0,
+            bonus: 0,
+            dice: diceNumbers.join(", "),
+            largerDie: diceNumbers[diceNumbers.length - 1],
+            result: 0,
+        });
+
+        setRollDiceModal(true);
+    };
 
     if (modalSheet === 2) {
         return (
@@ -86,9 +93,14 @@ const SectionExpertise = () => {
 
                 {/*Dados de atributos*/}
                 <section className="flex flex-row justify-evenly">
+                    {/*AGILIDADE*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button>
+                            <button
+                                onClick={() =>
+                                    rollDiceAttribute("Agilidade", "agi")
+                                }
+                            >
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -104,9 +116,14 @@ const SectionExpertise = () => {
                         <span className="text-xs">Agilidade</span>
                     </div>
 
+                    {/*INTELECTO*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button>
+                            <button
+                                onClick={() =>
+                                    rollDiceAttribute("Intelecto", "int")
+                                }
+                            >
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -121,9 +138,14 @@ const SectionExpertise = () => {
                         <span className="text-xs">Intelecto</span>
                     </div>
 
+                    {/*VIGOR*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button>
+                            <button
+                                onClick={() =>
+                                    rollDiceAttribute("Vigor", "vig")
+                                }
+                            >
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -138,9 +160,14 @@ const SectionExpertise = () => {
                         <span className="text-xs">Vigor</span>
                     </div>
 
+                    {/*PRESENÇA*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button>
+                            <button
+                                onClick={() =>
+                                    rollDiceAttribute("Presença", "pre")
+                                }
+                            >
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -155,9 +182,12 @@ const SectionExpertise = () => {
                         <span className="text-xs">Presença</span>
                     </div>
 
+                    {/*FORÇA*/}
                     <div className="flex flex-col justify-center w-24 items-center">
                         <div className="flex flex-row justify-between items-center">
-                            <button>
+                            <button onClick={() =>
+                                        rollDiceAttribute("Força", "for")
+                                    }>
                                 <img
                                     src="./img/d20-attribute.png"
                                     alt=""
@@ -178,13 +208,19 @@ const SectionExpertise = () => {
                     <div className="flex flex-row flex-wrap gap-1 justify-center items-center h-full">
                         {listNewCharacter[sheetIndex].expertises.map(
                             (element, i) => (
-                                <div className="flex flex-col w-24 items-center">
+                                <div
+                                    className="flex flex-col w-24 items-center"
+                                    key={i}
+                                >
                                     <div className="flex flex-row items-center">
                                         <button className="btn-dice">
                                             <img
                                                 src="./img/d20.png"
                                                 alt=""
                                                 className="w-7"
+                                                onClick={() =>
+                                                    rollDiceExpertise(i)
+                                                }
                                             ></img>
                                         </button>
 
@@ -200,10 +236,11 @@ const SectionExpertise = () => {
                     </div>
                 </section>
 
+                {/*Modal de rolagem de dados*/}
                 {rollDiceModal === true && (
                     <RollDiceModal
                         expertise={diceModalInfos.expertise}
-                        attributeName={diceModalInfos.attribute}
+                        attributeName={`${diceModalInfos.attribute}`}
                         training={diceModalInfos.training}
                         bonus={diceModalInfos.bonus}
                         largerDie={diceModalInfos.largerDie}
