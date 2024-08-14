@@ -206,14 +206,14 @@ const SectionExpertise = () => {
                 </section>
 
                 {/*Dados de perícias*/}
-                <section className="grid grid-cols-4 gap-4 h-full">
+                <section className="grid grid-cols-4 items-center h-full">
                     {listNewCharacter[sheetIndex].expertises.map(
                         (element, i) => (
                             <div
                                 className="flex flex-col justify-center items-center w-24 items-center"
                                 key={i}
                             >
-                                <div className="flex flex-row items-center">
+                                <div className="flex flex-row">
                                     <button className="btn-dice">
                                         <img
                                             src="./img/d20.png"
