@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ModalContext from "../ModalContext";
 
 import Progress from "./Progress";
@@ -66,47 +66,6 @@ const SectionStatus = () => {
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
     };
 
-    // Adiciona o evento para adicionar as condições
-    useEffect(() => {
-        // Chama os elementos com a classe conditions-btn
-        const conditionsBtn = document.querySelectorAll(".conditions-btn");
-
-        //Função que chama a função changeSkill (Para adicionar)
-        const handleAddCondition = (index) => {
-            changeCondition(index, "add");
-        };
-        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
-        conditionsBtn.forEach((element, i) => {
-            const boundAddCondition = () => handleAddCondition(i);
-            element.addEventListener("click", boundAddCondition);
-            element.boundAddCondition = boundAddCondition;
-        });
-
-        // Chama os elementos com a classe remove-conditions-btn
-        const removeConditionsBtn = document.querySelectorAll(".remove-conditions-btn");
-        //Função que chama a função changeSkill (Para remover)
-        const handleRemoveCondition = (index) => {
-            changeCondition(index, "remove");
-        };
-        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
-        removeConditionsBtn.forEach((element, i) => {
-            const boundRemoveCondition = () => handleRemoveCondition(i);
-            element.addEventListener("dblclick", boundRemoveCondition);
-            element.boundRemoveCondition = boundRemoveCondition;
-        });
-    
-        // Função de limpeza para remover event listeners
-        return () => {
-            conditionsBtn.forEach((element) => {
-                element.removeEventListener("click", element.boundAddCondition);
-            });
-    
-            removeConditionsBtn.forEach((element) => {
-                element.removeEventListener("dblclick", element.boundRemoveCondition);
-            });
-        };
-    }); 
-
     // Adiciona ou remove as habilidades
     const changeSkill = (index, change) => {
         // Cria uma cópia do estado atual
@@ -131,50 +90,6 @@ const SectionStatus = () => {
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
     };
 
-    // Adiciona o evento para adicionar as habilidades
-    useEffect(() => {
-        // Chama os elementos com a classe add-skills-btn
-        const skillBtns = document.querySelectorAll(".add-skills-btn");
-        //Função que chama a função changeSkill (Para adicionar)
-        const handleAddSkill = (index) => {
-            changeSkill(index, "add");
-        };
-        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
-        skillBtns.forEach((element, i) => {
-            const boundAddSkill = () => handleAddSkill(i);
-            element.addEventListener("click", boundAddSkill);
-
-            element.boundAddSkill = boundAddSkill;
-        });
-
-        // Chama os elementos com a classe remove-skills-btn
-        const removeSkillBtns = document.querySelectorAll(".remove-skills-btn");
-        //Função que chama a função changeSkill (Para remover)
-        const handleRemoveSkill = (index) => {
-            changeSkill(index, "remove");
-        };
-        //Iteração entre os elementos para adicionar os event listeners nos elementos corretos
-        removeSkillBtns.forEach((element, i) => {
-            const boundRemoveSkill = () => handleRemoveSkill(i);
-            element.addEventListener("dblclick", boundRemoveSkill);
-
-            element.boundRemoveSkill = boundRemoveSkill;
-        });
-
-        // Função de limpeza para remover event listeners
-        return () => {
-            skillBtns.forEach((element) => {
-                element.removeEventListener("click", element.boundAddSkill);
-            });
-
-            removeSkillBtns.forEach((element) => {
-                element.removeEventListener(
-                    "dblclick",
-                    element.boundRemoveSkill
-                );
-            });
-        };
-    });
 
     if (modalSheet === 1) {
         return (
@@ -223,8 +138,8 @@ const SectionStatus = () => {
                         >
                             {listNewCharacter[sheetIndex].conditions.map(
                                 (element, index) => (
-                                    <div className="p-1 bg-black-100 cursor-pointer remove-conditions-btn">
-                                        <p key={index}>
+                                    <div className="p-1 bg-black-100 cursor-pointer" key={index} onDoubleClick={() => changeCondition(index, "remove")}>
+                                        <p>
                                             <span className="text-red-500 font-semibold">
                                                 {element.condition[0]}:
                                             </span>{" "}
@@ -239,7 +154,7 @@ const SectionStatus = () => {
                         {statusModals === 1 && (
                             <ContainerModal title="Condições">
                                 {conditions.map((element, index) => (
-                                    <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                    <details className="flex flex-col w-full p-4 border border-white-500 rounded" key={index}>
                                         <summary className="text-red-500 text-sm font-bold cursor-pointer">
                                             {element.condition[0]}
                                         </summary>
@@ -248,7 +163,7 @@ const SectionStatus = () => {
                                             {element.condition[1]}
                                         </p>
 
-                                        <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition conditions-btn">
+                                        <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition" onClick={() => changeCondition(index, "add")}>
                                             <span className="material-symbols-outlined">
                                                 Add
                                             </span>
@@ -387,8 +302,8 @@ const SectionStatus = () => {
                         >
                             {listNewCharacter[sheetIndex].skills.map(
                                 (element, index) => (
-                                    <div className="p-1 bg-black-100 cursor-pointer remove-skills-btn">
-                                        <p key={index}>
+                                    <div className="p-1 bg-black-100 cursor-pointer" key={index} onDoubleClick={() => changeSkill(index, "remove")}>
+                                        <p>
                                             <span className="text-blue-600 font-semibold">
                                                 {element.skill[0]}:
                                             </span>{" "}
@@ -405,7 +320,7 @@ const SectionStatus = () => {
                                 {statusModals === 3 && (
                                     <ContainerModal title="Habilidades">
                                         {skills.map((element, index) => (
-                                            <details className="flex flex-col w-full p-4 border border-white-500 rounded">
+                                            <details className="flex flex-col w-full p-4 border border-white-500 rounded" key={index}>
                                                 <summary className="text-blue-600 text-sm font-bold cursor-pointer">
                                                     {element.skill[0]}
                                                 </summary>
@@ -415,11 +330,11 @@ const SectionStatus = () => {
                                                 </p>
 
                                                 <p className="mt-2 text-gray-500">
-                                                    Pré-requisitos:{" "}
+                                                    Pré-requisitos:
                                                     {element.skill[2]}
                                                 </p>
 
-                                                <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition add-skills-btn">
+                                                <button className="flex justify-center items-center w-full mt-1 border hover:bg-white-500 hover:text-black-500 transition" onClick={() => changeSkill(index, "add")}>
                                                     <span className="material-symbols-outlined">
                                                         Add
                                                     </span>
