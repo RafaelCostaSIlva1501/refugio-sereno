@@ -10,6 +10,7 @@ const SectionExpertise = () => {
         sheetIndex,
         rollDiceModal,
         setRollDiceModal,
+        soundEffect,
     } = useContext(ModalContext);
 
     const [diceModalInfos, setDiceModalInfos] = useState({
@@ -63,6 +64,8 @@ const SectionExpertise = () => {
         });
 
         setRollDiceModal(true);
+
+        soundEffect("rolling-dice");
     };
 
     const rollDiceAttribute = (attribute, atr) => {
@@ -81,6 +84,8 @@ const SectionExpertise = () => {
         });
 
         setRollDiceModal(true);
+
+        soundEffect("rolling-dice");
     };
 
     if (modalSheet === 2) {

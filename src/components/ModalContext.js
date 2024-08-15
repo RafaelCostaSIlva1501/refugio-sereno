@@ -389,14 +389,21 @@ export const ModalProvider = ({ children }) => {
         const updatedCharacters = [...characters];
 
         if (subOrAdd === "sub") {
-            updatedCharacters[sheetIndex].resistences[resistenceName] -= Number(1);
+            updatedCharacters[sheetIndex].resistences[resistenceName] -=
+                Number(1);
         } else if (subOrAdd === "add") {
-            updatedCharacters[sheetIndex].resistences[resistenceName] += Number(1);
+            updatedCharacters[sheetIndex].resistences[resistenceName] +=
+                Number(1);
         }
 
         setCharacters(updatedCharacters);
 
         localStorage.setItem("sheet", JSON.stringify(updatedCharacters));
+    };
+
+    const soundEffect = (sound) => {
+        var audio = new Audio(`./audio/${sound}.mp3`);
+        audio.play();
     };
 
     return (
@@ -428,6 +435,7 @@ export const ModalProvider = ({ children }) => {
                 setCharacters,
                 rollDiceModal,
                 setRollDiceModal,
+                soundEffect,
             }}
         >
             {children}
