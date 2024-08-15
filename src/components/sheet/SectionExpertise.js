@@ -96,148 +96,167 @@ const SectionExpertise = () => {
                     PERÍCIAS E ATRIBUTOS
                 </h2>
 
-                {/*Dados de atributos*/}
-                <section className="flex flex-row justify-evenly">
-                    {/*AGILIDADE*/}
-                    <div className="flex flex-col justify-center w-24 items-center">
-                        <div className="flex flex-row justify-between items-center">
-                            <button
-                                onClick={() =>
-                                    rollDiceAttribute("Agilidade", "agi")
-                                }
-                            >
-                                <img
-                                    src="./img/d20-attribute.png"
-                                    alt=""
-                                    className="w-7"
-                                ></img>
-                            </button>
+                <div className="flex flex-col flex-1 items-center">
+                    {/*Dados de atributos*/}
+                    <section className="flex flex-row justify-evenly">
+                        {/*AGILIDADE*/}
+                        <div className="flex flex-col justify-center w-24 items-center">
+                            <div className="flex flex-row justify-between items-center">
+                                <button
+                                    onClick={() =>
+                                        rollDiceAttribute("Agilidade", "agi")
+                                    }
+                                >
+                                    <img
+                                        src="./img/d20-attribute.png"
+                                        alt=""
+                                        className="w-7"
+                                    ></img>
+                                </button>
 
-                            <span>
-                                {listNewCharacter[sheetIndex].attributes.agi}
-                            </span>
-                        </div>
-
-                        <span className="text-xs">Agilidade</span>
-                    </div>
-
-                    {/*INTELECTO*/}
-                    <div className="flex flex-col justify-center w-24 items-center">
-                        <div className="flex flex-row justify-between items-center">
-                            <button
-                                onClick={() =>
-                                    rollDiceAttribute("Intelecto", "int")
-                                }
-                            >
-                                <img
-                                    src="./img/d20-attribute.png"
-                                    alt=""
-                                    className="w-7"
-                                ></img>
-                            </button>
-                            <span>
-                                {listNewCharacter[sheetIndex].attributes.int}
-                            </span>
-                        </div>
-
-                        <span className="text-xs">Intelecto</span>
-                    </div>
-
-                    {/*VIGOR*/}
-                    <div className="flex flex-col justify-center w-24 items-center">
-                        <div className="flex flex-row justify-between items-center">
-                            <button
-                                onClick={() =>
-                                    rollDiceAttribute("Vigor", "vig")
-                                }
-                            >
-                                <img
-                                    src="./img/d20-attribute.png"
-                                    alt=""
-                                    className="w-7"
-                                ></img>
-                            </button>
-                            <span>
-                                {listNewCharacter[sheetIndex].attributes.vig}
-                            </span>
-                        </div>
-
-                        <span className="text-xs">Vigor</span>
-                    </div>
-
-                    {/*PRESENÇA*/}
-                    <div className="flex flex-col justify-center w-24 items-center">
-                        <div className="flex flex-row justify-between items-center">
-                            <button
-                                onClick={() =>
-                                    rollDiceAttribute("Presença", "pre")
-                                }
-                            >
-                                <img
-                                    src="./img/d20-attribute.png"
-                                    alt=""
-                                    className="w-7"
-                                ></img>
-                            </button>
-                            <span>
-                                {listNewCharacter[sheetIndex].attributes.pre}
-                            </span>
-                        </div>
-
-                        <span className="text-xs">Presença</span>
-                    </div>
-
-                    {/*FORÇA*/}
-                    <div className="flex flex-col justify-center w-24 items-center">
-                        <div className="flex flex-row justify-between items-center">
-                            <button
-                                onClick={() =>
-                                    rollDiceAttribute("Força", "for")
-                                }
-                            >
-                                <img
-                                    src="./img/d20-attribute.png"
-                                    alt=""
-                                    className="w-7"
-                                ></img>
-                            </button>
-                            <span>
-                                {listNewCharacter[sheetIndex].attributes.for}
-                            </span>
-                        </div>
-
-                        <span className="text-xs">Força</span>
-                    </div>
-                </section>
-
-                {/*Dados de perícias*/}
-                <section className="grid grid-cols-4 items-center h-full">
-                    {listNewCharacter[sheetIndex].expertises.map(
-                        (element, i) => (
-                            <div
-                                className="flex flex-col justify-center items-center w-24 items-center"
-                                key={i}
-                            >
-                                <div className="flex flex-row">
-                                    <button className="btn-dice">
-                                        <img
-                                            src="./img/d20.png"
-                                            alt=""
-                                            className="w-7"
-                                            onClick={() => rollDiceExpertise(i)}
-                                        ></img>
-                                    </button>
-
-                                    <span>+{element.expertise[2]}</span>
-                                </div>
-
-                                <span className="text-xs">
-                                    {element.expertise[0]}
+                                <span>
+                                    {
+                                        listNewCharacter[sheetIndex].attributes
+                                            .agi
+                                    }
                                 </span>
                             </div>
-                        )
-                    )}
-                </section>
+
+                            <span className="text-xs">Agilidade</span>
+                        </div>
+
+                        {/*INTELECTO*/}
+                        <div className="flex flex-col justify-center w-24 items-center">
+                            <div className="flex flex-row justify-between items-center">
+                                <button
+                                    onClick={() =>
+                                        rollDiceAttribute("Intelecto", "int")
+                                    }
+                                >
+                                    <img
+                                        src="./img/d20-attribute.png"
+                                        alt=""
+                                        className="w-7"
+                                    ></img>
+                                </button>
+                                <span>
+                                    {
+                                        listNewCharacter[sheetIndex].attributes
+                                            .int
+                                    }
+                                </span>
+                            </div>
+
+                            <span className="text-xs">Intelecto</span>
+                        </div>
+
+                        {/*VIGOR*/}
+                        <div className="flex flex-col justify-center w-24 items-center">
+                            <div className="flex flex-row justify-between items-center">
+                                <button
+                                    onClick={() =>
+                                        rollDiceAttribute("Vigor", "vig")
+                                    }
+                                >
+                                    <img
+                                        src="./img/d20-attribute.png"
+                                        alt=""
+                                        className="w-7"
+                                    ></img>
+                                </button>
+                                <span>
+                                    {
+                                        listNewCharacter[sheetIndex].attributes
+                                            .vig
+                                    }
+                                </span>
+                            </div>
+
+                            <span className="text-xs">Vigor</span>
+                        </div>
+
+                        {/*PRESENÇA*/}
+                        <div className="flex flex-col justify-center w-24 items-center">
+                            <div className="flex flex-row justify-between items-center">
+                                <button
+                                    onClick={() =>
+                                        rollDiceAttribute("Presença", "pre")
+                                    }
+                                >
+                                    <img
+                                        src="./img/d20-attribute.png"
+                                        alt=""
+                                        className="w-7"
+                                    ></img>
+                                </button>
+                                <span>
+                                    {
+                                        listNewCharacter[sheetIndex].attributes
+                                            .pre
+                                    }
+                                </span>
+                            </div>
+
+                            <span className="text-xs">Presença</span>
+                        </div>
+
+                        {/*FORÇA*/}
+                        <div className="flex flex-col justify-center w-24 items-center">
+                            <div className="flex flex-row justify-between items-center">
+                                <button
+                                    onClick={() =>
+                                        rollDiceAttribute("Força", "for")
+                                    }
+                                >
+                                    <img
+                                        src="./img/d20-attribute.png"
+                                        alt=""
+                                        className="w-7"
+                                    ></img>
+                                </button>
+                                <span>
+                                    {
+                                        listNewCharacter[sheetIndex].attributes
+                                            .for
+                                    }
+                                </span>
+                            </div>
+
+                            <span className="text-xs">Força</span>
+                        </div>
+                    </section>
+
+                    {/*Dados de perícias*/}
+                    <section className="grid grid-cols-4 items-center h-full">
+                        {listNewCharacter[sheetIndex].expertises.map(
+                            (element, i) => (
+                                <div
+                                    className="flex flex-col justify-center items-center w-24 items-center"
+                                    key={i}
+                                >
+                                    <div className="flex flex-row">
+                                        <button className="btn-dice">
+                                            <img
+                                                src="./img/d20.png"
+                                                alt=""
+                                                className="w-7"
+                                                onClick={() =>
+                                                    rollDiceExpertise(i)
+                                                }
+                                            ></img>
+                                        </button>
+
+                                        <span>+{element.expertise[2]}</span>
+                                    </div>
+
+                                    <span className="text-xs">
+                                        {element.expertise[0]}
+                                    </span>
+                                </div>
+                            )
+                        )}
+                    </section>
+                </div>
 
                 {/*Modal de rolagem de dados*/}
                 {rollDiceModal === true && (
