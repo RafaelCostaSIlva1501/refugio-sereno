@@ -148,6 +148,14 @@ let character = {
     },
     conditions: [],
     skills: [],
+    invetory: [
+        {
+            itemName: "Faca",
+            itemImg: "./img/items-icons/kinfe.png"
+
+        },
+        {}
+    ],
 };
 
 export default character;

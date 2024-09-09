@@ -57,14 +57,18 @@ const Rules = () => {
                         a faixa etária de seu personagem. As faixas etárias e
                         seus modificadores são as seguintes
                     </p>
+
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
                 </details>
 
                 <br></br>
-                
+
                 <details>
-                    <summary className="text-xl">
-                        Classe: Mundano
-                    </summary>
+                    <summary className="text-xl">Classe: Mundano <em>(Ordem Paranormal Livro de Regras, pág 171):</em></summary>
                 </details>
             </section>
         );
