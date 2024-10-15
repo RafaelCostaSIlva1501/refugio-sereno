@@ -5,6 +5,7 @@ import FormCharacter from "./components/form/FormCharacter";
 import CharacterSheet from "./components/sheet/CharacterSheet";
 import Settings from "./components/settings/Settings";
 import Rules from "./components/rules/Rules"
+import Master from "./components/master/Master"
 
 import { ModalProvider } from "./components/ModalContext";
 
@@ -18,6 +19,7 @@ function App() {
                 <CharacterSheet />
                 <Settings />
                 <Rules />
+                <Master />
             </ModalProvider>
         </>
     );

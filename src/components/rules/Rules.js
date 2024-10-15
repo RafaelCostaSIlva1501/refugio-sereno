@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import ModalContext from "../ModalContext";
 
 const Rules = () => {
-    const { modalON } = useContext(ModalContext);
+    const { modalON, openModal } = useContext(ModalContext);
 
     if (modalON === 4) {
         return (
             <section className="h-full p-5 text-white-400 overflow-y-auto scrollbar">
-                <h2 className="text-2xl">Notas sobre a camapanha</h2>
+                <h2 className="text-2xl" onDoubleClick={() => openModal(5)}>Notas sobre a camapanha</h2>
                 <hr className="my-2"></hr>
                 <p>
                     <strong>Refúgio Sereno</strong> é uma campanha de RPG no
@@ -53,9 +53,8 @@ const Rules = () => {
                     </p>
 
                     <p>
-                        Se esta regra estiver em uso, cada jogador deve escolher
-                        a faixa etária de seu personagem. As faixas etárias e
-                        seus modificadores são as seguintes
+                        Com esta regra em uso, cada jogador deve escolher
+                        a faixa etária de seu personagem.
                     </p>
 
                     <p></p>

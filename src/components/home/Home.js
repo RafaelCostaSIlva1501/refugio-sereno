@@ -18,14 +18,14 @@ const Home = () => {
                     Criar Personagem
                 </button>
 
-                {/*Divisão*/}
-                <hr className=""></hr>
+                <hr></hr>
 
-                {/*Sessão com os cards dos personagens*/}
+                {/*Cards dos personagens*/}
                 <section className="flex flex-col my-2">
-                    <CharacterList />
+                    <CharacterList /> {/*Componente com personagens já criados*/}
                 </section>
 
+                {/*PopUp para confirmar exclusão dos personagens*/}
                 <PopUpDelete />
             </main>
         );

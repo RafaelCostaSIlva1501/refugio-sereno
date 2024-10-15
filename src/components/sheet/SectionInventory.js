@@ -17,8 +17,10 @@ const SectionInventory = () => {
                 <h2 className=" bg-white-100 text-center text-xl">
                     INVENTÁRIO
                 </h2>
-
+                
+                {/**/}
                 <section className="flex-1 p-1 bg-white-50">
+                    {/**/}
                     <header className="flex flex-row items-center gap-1.5 w-full p-1 bg-white-100">
                         <button className="flex flex-row justify-center gap-1 border hover:bg-white-500 hover:text-black-500 transition">
                             <span className="material-symbols-outlined">
@@ -27,6 +29,8 @@ const SectionInventory = () => {
                         </button>
                         <h2 className="text-sm">ADICIONAR ITEM</h2>
                     </header>
+
+                    {/**/}
                     <main className="flex flex-row flex-wrap gap-1 py-1">
                         <div style={boxShadow} className="w-12 h-12 shadow-inner cursor-pointer hover:border-white-100">
                             <img
@@ -37,6 +41,7 @@ const SectionInventory = () => {
                     </main>
                 </section>
 
+                {/**/}
                 <section className="flex-1 p-1 bg-white-50"></section>
             </div>
         );
