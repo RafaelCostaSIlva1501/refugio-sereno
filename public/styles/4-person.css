@@ -1,5 +1,6 @@
 .person {
   display: none;
+  flex-direction: column;
 }
 
 .person header {
@@ -26,4 +27,52 @@
   color: var(--cor02);
 
   transform: translateX(4px);
+}
+
+.person section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s12);
+  flex: 1;
+  padding-top: var(--s24);
+}
+
+.person article {
+  display: flex;
+  align-items: center;
+  gap: var(--s12);
+
+  width: 100%;
+  max-width: var(--s512);
+  padding: var(--s12);
+
+  background-color: var(--cor02);
+  border-left: 4px solid var(--cor05);
+  border-radius: 4px;
+  box-shadow: 0 0 10px #000000b7;
+
+  color: var(--cor04);
+
+  cursor: pointer;
+}
+
+.person article:hover {
+  background-color: var(--cor03);
+}
+
+.person article img {
+  width: var(--s64);
+  border-radius: 50%;
+}
+
+.person article div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.person article div h2 {
+}
+
+.person article div p {
 }

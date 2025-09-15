@@ -359,30 +359,29 @@ document.addEventListener("input", (e) => {
   }
 });
 
-const createSheetPerson = () => {
-  const finalSheet = {
-    urlPhoto: "",
-    name: "",
-    nationality: "",
-    age: "",
-    campaign: "",
-    history: "",
-    personality: "",
-    appearance: "",
+fetch("/api/characters")
+  .then((res) => res.json())
+  .then((characters) => {
+    characters.forEach((s) => {
+      const article = createElement("article");
 
-    pv: [0, 0],
-    pd: [0, 0],
+      const img = createElement("img");
+      img.src = s.photo;
+      img.alt = "Foto do personagem";
 
-    level: "",
-    origin: "",
-    attributes: {
-      agi: 1,
-      int: 1,
-      vig: 1,
-      pre: 1,
-      for: 1,
-    },
+      const div = createElement("div");
 
-    expertises: [],
-  };
-};
+      const h2 = createElement("h2");
+      h2.textContent = s.name;
+
+      const p = createElement("p");
+      p.textContent = s.name;
+
+      DOM.listCharacterPlayer.appendChild(article);
+      article.appendChild(img);
+      article.appendChild(div);
+      div.appendChild(h2);
+      div.appendChild(p);
+    });
+  })
+  .catch((err) => console.error(err));

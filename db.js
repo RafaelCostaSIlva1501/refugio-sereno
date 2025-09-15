@@ -30,4 +30,23 @@ db.serialize(() => {
   );
 });
 
+db.serialize(() => {
+  db.run(
+    `
+    CREATE TABLE IF NOT EXISTS characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    tag TEXT NOT NULL,
+    sheet TEXT NOT NULL
+    )
+    `,
+    (err) => {
+      if (err) {
+        console.error("Erro ao criar tabela", err.message);
+      } else {
+        console.log("Tabela 'Personagens' criada com sucesso");
+      }
+    }
+  );
+});
+
 module.exports = db;

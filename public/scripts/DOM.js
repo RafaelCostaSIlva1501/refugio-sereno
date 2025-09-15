@@ -60,5 +60,5 @@ export const DOM = {
 
   btnCSPDetails: document.querySelectorAll(".btn-CSP-details"),
 
-  btnCreateSheetPerson: document.getElementById("btn-create-sheet-person"),
+  listCharacterPlayer: document.getElementById("list-characters-players"),
 };

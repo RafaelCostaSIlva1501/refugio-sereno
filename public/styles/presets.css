@@ -112,8 +112,6 @@ body {
   max-height: 100vh;
 
   background-color: #121212;
-
-  overflow-y: hidden;
 }
 
 .pages {

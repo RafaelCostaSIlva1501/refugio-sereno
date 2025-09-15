@@ -106,12 +106,19 @@
           <span>Criar novo personagem</span>
         </button>
       </header>
+
+      <section id="list-characters-players"></section>
     </section>
 
     <!--================-->
 
     <!--Formulário para criação de ficha de personagem-->
-    <form class="modal create-sheet-player">
+    <form
+      class="modal create-sheet-player"
+      action="/createCharacter"
+      method="POST"
+      enctype="multipart/form-data"
+    >
       <!--Cabeçalho do formulário de criação de fichas-->
       <header>
         <button type="button">
@@ -133,6 +140,7 @@
             <input
               type="file"
               id="csp-photo"
+              name="photo"
               accept="image/*"
               class="hidden csp-inputs"
             />
@@ -147,7 +155,7 @@
         <!--Nome do personagem-->
         <div>
           <label for="csp-name">Nome:</label>
-          <input type="text" id="csp-name" class="csp-inputs" />
+          <input type="text" name="name" id="csp-name" class="csp-inputs" />
         </div>
 
         <!--Nacionalidade do personagem-->
@@ -165,7 +173,12 @@
         <!--Camapanha do personagem-->
         <div>
           <label for="csp-campaign">Campanha:</label>
-          <input type="text" id="csp-campaign" class="csp-inputs" />
+          <input
+            type="text"
+            name="campaign"
+            id="csp-campaign"
+            class="csp-inputs"
+          />
         </div>
       </section>
 
@@ -424,7 +437,7 @@
           <div id="preview-expertise"></div>
         </div>
 
-        <button type="button" id="create-sheet-person">CRIA PERSONAGEM</button>
+        <button type="submit">CRIA PERSONAGEM</button>
       </section>
 
       <!--Rodapé do formulário de criação de fichas-->
