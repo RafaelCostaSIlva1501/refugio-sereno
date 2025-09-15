@@ -1,2 +1,37 @@
+# ==========================
+# Node.js + SQLite .gitignore
+# ==========================
+
+# Dependências do Node
 node_modules/
+
+# Arquivo que você pediu para ignorar
 antigo.html
+
+# Banco de dados SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Variáveis de ambiente (senhas, tokens, configs)
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Arquivos temporários
+*.tmp
+*.swp
+*.swo
+
+# Sistema (Mac/Windows/Linux)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build/output (se usar ferramentas que geram dist)
+dist/
+build/
