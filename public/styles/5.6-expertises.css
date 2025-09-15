@@ -1,0 +1,54 @@
+.create-sheet-expertises {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s12);
+}
+
+.create-sheet-expertises abbr {
+  text-decoration: none;
+  min-width: 45%;
+  flex: 1;
+}
+
+.create-sheet-expertises article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-radius: var(--s4);
+
+  overflow: hidden;
+
+  transition: all 0.3s;
+}
+
+.create-sheet-expertises span {
+  width: 100%;
+  padding: var(--s4) var(--s12);
+
+  background-color: var(--cor03);
+
+  color: var(--cor04);
+  font-size: var(--s16);
+  font-weight: 500;
+  text-align: center;
+}
+
+.create-sheet-expertises select {
+  width: 100%;
+  padding: var(--s4);
+
+  outline: none;
+
+  color: var(--cor01);
+  font-weight: 500;
+  text-align: center;
+
+  cursor: pointer;
+}
+
+.create-sheet-expertises option {
+  color: var(--cor01);
+  font-weight: 500;
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+.person {
+  display: none;
+}
+
+.person header {
+  width: 100%;
+  padding-bottom: var(--s24);
+  border-bottom: 2px solid var(--cor03);
+}
+
+.person header button {
+  align-items: center;
+
+  padding: var(--s8);
+
+  border: 2px solid var(--cor04);
+  border-radius: var(--s4);
+
+  color: var(--cor04);
+  font-weight: bolder;
+}
+
+.person header button:hover {
+  background-color: var(--cor04);
+
+  color: var(--cor02);
+
+  transform: translateX(4px);
+}

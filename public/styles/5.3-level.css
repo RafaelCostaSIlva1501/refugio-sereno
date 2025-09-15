@@ -1,0 +1,55 @@
+.create-sheet-level {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s12);
+}
+
+.create-sheet-level label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s12);
+
+  padding: var(--s12);
+
+  background-color: var(--cor02);
+  border: 2px solid var(--cor02);
+  border-radius: var(--s8);
+}
+
+.create-sheet-level input[type="radio"] {
+  display: none;
+}
+
+.create-sheet-level label:has(input[type="radio"]:checked) {
+  border: 2px solid var(--cor05);
+}
+
+.create-sheet-level label.disabled-level {
+  pointer-events: none;
+  opacity: 0.5;
+  border: 2px solid #ef44449c !important; /* ganha até do checked */
+}
+
+.create-sheet-level label:has(input[type="radio"]:disabled) {
+  cursor: not-allowed;
+}
+
+.create-sheet-level h3 {
+  padding: var(--s8);
+
+  background-color: var(--cor03);
+  border-radius: var(--s4);
+
+  font-size: var(--s16);
+  text-align: center;
+}
+
+.create-sheet-level p {
+  color: var(--cor05);
+  font-weight: 700;
+}
+
+.create-sheet-level span {
+  color: var(--cor04);
+  font-weight: 300;
+}

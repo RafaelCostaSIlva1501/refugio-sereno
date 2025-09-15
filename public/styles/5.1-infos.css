@@ -1,0 +1,51 @@
+.create-sheet-info {
+  display: flex;
+  gap: var(--s12);
+}
+
+.csp-container-photo {
+  display: flex;
+  align-items: center;
+}
+
+.csp-container-photo label {
+  width: var(--s96);
+  height: var(--s96);
+  aspect-ratio: 1/1;
+
+  border: 2px solid var(--cor04);
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.csp-container-photo label:hover {
+  background-color: var(--cor03);
+   border: 2px solid var(--cor03);
+}
+
+.csp-container-photo img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.create-sheet-info div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.create-sheet-info div input {
+  padding: var(--s12);
+
+  background: var(--cor02);
+  border-radius: var(--s4);
+}
+
+.create-sheet-info input:hover {
+  background-color: var(--cor03);
+}
+
+.create-sheet-info input:focus {
+  background-color: var(--cor03);
+}

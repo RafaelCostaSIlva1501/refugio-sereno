@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --cor01: #121212;
+  --cor02: #1f1f1f;
+  --cor03: #494949;
+  --cor04: #e0e0e0;
+  --cor05: #362d85;
+  --cor06: #ef4444;
+  --cor07: #f4c430;
+  --cor08: #1faa52;
+
+  --s4: 4px;
+  --s8: 8px;
+  --s12: 12px;
+  --s16: 16px;
+  --s24: 24px;
+  --s32: 32px;
+  --s48: 48px;
+  --s64: 64px;
+  --s96: 96px;
+  --s128: 128px;
+  --s192: 192px;
+  --s256: 256px;
+  --s384: 384px;
+  --s512: 512px;
+  --s640: 640px;
+  --s768: 768px;
+}
+
+.light {
+  --cor01: #e0e0e0;
+  --cor02: #494949;
+  --cor03: #1f1f1f;
+  --cor04: #121212;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Raleway";
+
+  box-sizing: border-box;
+
+  transition: all 0.3s;
+}
+
+/* Barra de rolagem */
+::-webkit-scrollbar {
+  width: 12px;
+  background-color: var(--cor02);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--cor03);
+  border-radius: 5px;
+  border: 3px solid var(--cor02);
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--cor02);
+  border-radius: 5px;
+}
+
+button {
+  display: flex;
+
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+input,
+textarea {
+  background: none;
+  border: none;
+  outline: none;
+
+  color: var(--cor04);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  max-height: 100vh;
+
+  background-color: #121212;
+
+  overflow-y: hidden;
+}
+
+.pages {
+  padding: var(--s24);
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 95%;
+  height: 85%;
+  max-width: var(--s512);
+
+  background-color: var(--cor01);
+  border: 2px solid var(--cor03);
+  border-radius: var(--s4);
+}

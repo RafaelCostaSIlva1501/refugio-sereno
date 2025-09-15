@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Refúgio Sereno</title>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <link rel="stylesheet" href="styles/presets.css" />
+    <link rel="stylesheet" href="styles/2-header.css" />
+    <link rel="stylesheet" href="styles/3-home.css" />
+    <link rel="stylesheet" href="styles/4-person.css" />
+    <link rel="stylesheet" href="styles/5-create-sheet-player.css" />
+    <link rel="stylesheet" href="styles/5.1-infos.css" />
+    <link rel="stylesheet" href="styles/5.2-details.css" />
+    <link rel="stylesheet" href="styles/5.3-level.css" />
+    <link rel="stylesheet" href="styles/5.4-origins.css" />
+    <link rel="stylesheet" href="styles/5.5-attributes.css" />
+    <link rel="stylesheet" href="styles/5.6-expertises.css" />
+    <link rel="stylesheet" href="styles/6.7-preview.css" />
+  </head>
+  <body>
+    <!--Cabeçalho principal (visível em todas as seções)-->
+    <header class="home-header">
+      <!--Logo + botão para voltar a home-->
+      <button class="button-page" data-target="home">
+        <img src="img/refugio-sereno-logo.png" alt="Refúgio Sereno logo" />
+      </button>
+
+      <!--Botões para abrir o perfil e o menu-->
+      <div>
+        <button
+          class="material-symbols-outlined"
+          id="change-theme"
+          style="display: none"
+        >
+          light_mode
+        </button>
+
+        <button class="material-symbols-outlined">person</button>
+
+        <button class="material-symbols-outlined button-menu">menu</button>
+      </div>
+
+      <!--Menu de navegação -->
+      <nav class="menu">
+        <button class="button-menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+
+        <button class="button-section-menu">Personagens</button>
+
+        <button class="button-section-menu">Campanha</button>
+
+        <button class="button-section-menu">Sistema</button>
+
+        <button class="button-section-menu">Bestiário</button>
+
+        <button class="button-section-menu">Equipamentos</button>
+
+        <button class="button-section-menu">Configurações</button>
+      </nav>
+    </header>
+
+    <!--================-->
+
+    <!--Seção principal para navegação entre seções-->
+    <main class="pages home">
+      <button class="button-page" data-target="person">
+        <span class="material-symbols-outlined"> person_add </span>
+        <span>Personagem</span>
+      </button>
+
+      <button class="button-page" data-target="campaign">
+        <span class="material-symbols-outlined"> note_add </span>
+        <span>Campanha</span>
+      </button>
+
+      <button class="button-page" data-target="rules">
+        <span class="material-symbols-outlined"> import_contacts </span>
+        <span>Sistema</span>
+      </button>
+
+      <button class="button-page" data-target="bestiary">
+        <span class="material-symbols-outlined"> skull </span>
+        <span>Bestiário</span>
+      </button>
+
+      <button class="button-page" data-target="equipment">
+        <span class="material-symbols-outlined"> swords </span>
+        <span>Equipamentos</span>
+      </button>
+    </main>
+
+    <!--================-->
+
+    <!--Seção para criar uma ficha de personagem ou vizualizar os personagens pré-existente-->
+    <section class="pages person">
+      <header>
+        <button class="open-modal" data-target="create-sheet-player">
+          <span class="material-symbols-outlined">add</span>
+          <span>Criar novo personagem</span>
+        </button>
+      </header>
+    </section>
+
+    <!--================-->
+
+    <!--Formulário para criação de ficha de personagem-->
+    <form class="modal create-sheet-player">
+      <!--Cabeçalho do formulário de criação de fichas-->
+      <header>
+        <button type="button">
+          <span class="material-symbols-outlined">info</span>
+        </button>
+
+        <button class="close-modal" type="button">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </header>
+
+      <!--Seção de informações -->
+      <section class="create-sheet-person-content create-sheet-info">
+        <h2>INFORMAÇÕES</h2>
+
+        <!--Foto do personagem-->
+        <div class="csp-container-photo">
+          <label for="csp-photo">
+            <input
+              type="file"
+              id="csp-photo"
+              accept="image/*"
+              class="hidden csp-inputs"
+            />
+            <img
+              class="preview-photo"
+              src="img/camera-icon.png"
+              alt="Pré vizualização da foto do personagem"
+            />
+          </label>
+        </div>
+
+        <!--Nome do personagem-->
+        <div>
+          <label for="csp-name">Nome:</label>
+          <input type="text" id="csp-name" class="csp-inputs" />
+        </div>
+
+        <!--Nacionalidade do personagem-->
+        <div>
+          <label for="csp-nationality">Nacionalidade:</label>
+          <input type="text" id="csp-nationality" class="csp-inputs" />
+        </div>
+
+        <!--Idade do personagem-->
+        <div>
+          <label for="csp-age">Idade:</label>
+          <input type="number" id="csp-age" class="csp-inputs" />
+        </div>
+
+        <!--Camapanha do personagem-->
+        <div>
+          <label for="csp-campaign">Campanha:</label>
+          <input type="text" id="csp-campaign" class="csp-inputs" />
+        </div>
+      </section>
+
+      <!--Seção de detalhes -->
+      <section class="create-sheet-person-content create-sheet-details">
+        <h2>DETALHES</h2>
+
+        <div>
+          <label for="csp-history">História:</label>
+          <textarea id="csp-history" class="csp-inputs"></textarea>
+        </div>
+
+        <div>
+          <label for="csp-personality">Personalidade:</label>
+          <textarea id="csp-personality" class="csp-inputs"></textarea>
+        </div>
+
+        <div>
+          <label for="csp-appearance">Aparência:</label>
+          <textarea id="csp-appearance" class="csp-inputs"></textarea>
+        </div>
+      </section>
+
+      <!--Seção de level -->
+      <section class="create-sheet-person-content create-sheet-level">
+        <h2>NÍVEL</h2>
+      </section>
+
+      <!--Seção de origens -->
+      <section class="create-sheet-person-content create-sheet-origins">
+        <h2>ORIGENS</h2>
+      </section>
+
+      <!--Seção de atributos -->
+      <section class="create-sheet-person-content create-sheet-attribute">
+        <h2>ATRIBUTOS</h2>
+
+        <!--Agilidade-->
+        <div style="justify-content: center">
+          <label for="csp-agi">
+            <span>Agilidade</span>
+            <input type="number" id="csp-agi" class="csp-inputs" value="1" />
+          </label>
+        </div>
+
+        <!--Intelecto e Vigor-->
+        <div style="justify-content: space-between">
+          <label for="csp-int">
+            <span>Intelecto</span>
+            <input type="number" id="csp-int" class="csp-inputs" value="1" />
+          </label>
+
+          <label for="csp-vig">
+            <span>Vigor</span>
+            <input type="number" id="csp-vig" class="csp-inputs" value="1" />
+          </label>
+        </div>
+
+        <!--Presença e Força-->
+        <div style="justify-content: space-around">
+          <label for="csp-pre">
+            <span>Presença</span>
+            <input type="number" id="csp-pre" class="csp-inputs" value="1" />
+          </label>
+
+          <label for="csp-for">
+            <span>Força</span>
+            <input type="number" id="csp-for" class="csp-inputs" value="1" />
+          </label>
+        </div>
+      </section>
+
+      <!--Seção de perícias -->
+      <section class="create-sheet-person-content">
+        <h2>PERÍCIAS</h2>
+
+        <div class="create-sheet-expertises"></div>
+      </section>
+
+      <!--Seção de preview -->
+      <section class="create-sheet-person-content create-sheet-preview">
+        <h2>PREVIEW</h2>
+
+        <!-- Imagem e informações -->
+        <div class="create-sheet-preview-img-info">
+          <img
+            src="img/camera-icon.png"
+            class="preview-photo"
+            alt="Preview do foto do personagem"
+          />
+
+          <div>
+            <p>Personagem: <span id="preview-name"></span></p>
+
+            <p>Nacionalidade: <span id="preview-nationality"></span></p>
+
+            <p>Idade: <span id="preview-age"></span></p>
+
+            <p>Campanha: <span id="preview-campaign"></span></p>
+          </div>
+        </div>
+
+        <!-- Detalhes -->
+        <div class="create-sheet-preview-details">
+          <div>
+            <button
+              type="button"
+              class="btn-CSP-details"
+              id="btn-csp"
+              data-target="preview-hidden"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#121212"
+              >
+                <path
+                  d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"
+                />
+              </svg>
+            </button>
+
+            <button
+              type="button"
+              class="btn-CSP-details"
+              data-target="preview-history"
+            >
+              História
+            </button>
+
+            <button
+              type="button"
+              class="btn-CSP-details"
+              data-target="preview-personality"
+            >
+              Personalidade
+            </button>
+
+            <button
+              type="button"
+              class="btn-CSP-details"
+              data-target="preview-appearance"
+            >
+              Aparência
+            </button>
+          </div>
+
+          <section class="preview-details preview-hidden"></section>
+
+          <section
+            id="preview-history"
+            class="preview-details preview-history"
+          ></section>
+
+          <section
+            id="preview-personality"
+            class="preview-details preview-personality"
+          ></section>
+
+          <section
+            id="preview-appearance"
+            class="preview-details preview-appearance"
+          ></section>
+        </div>
+
+        <!-- Barra de status (vida e determinação) -->
+        <div class="create-sheet-preview-status-bar">
+          <div>
+            <span>PV</span>
+
+            <label for="preview-pv-bar">
+              <progress id="preview-pv-bar" value="0" max="0"></progress>
+              <span id="preview-pv-value">0/0</span>
+            </label>
+          </div>
+
+          <div>
+            <span>PD</span>
+
+            <label for="preview-pd-bar">
+              <progress id="preview-pd-bar" value="0" max="0"></progress>
+              <span id="preview-pd-value">0/0</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Atributos -->
+        <div class="create-sheet-preview-attributes">
+          <div>
+            <span id="preview-agi">1</span>
+            <span>AGI</span>
+          </div>
+
+          <div>
+            <span id="preview-int">1</span>
+            <span>INT</span>
+          </div>
+
+          <div>
+            <span id="preview-vig">1</span>
+            <span>VIG</span>
+          </div>
+
+          <div>
+            <span id="preview-pre">1</span>
+            <span>PRE</span>
+          </div>
+
+          <div>
+            <span id="preview-for">1</span>
+            <span>FOR</span>
+          </div>
+        </div>
+
+        <!-- Level e origem -->
+        <div class="create-sheet-preview-level-origin">
+          <details>
+            <summary>Nível</summary>
+            <div id="preview-level"></div>
+          </details>
+
+          <details>
+            <summary>Origem</summary>
+            <div id="preview-origin"></div>
+          </details>
+        </div>
+
+        <!-- Perícias -->
+        <div class="create-sheet-preview-expertises">
+          <div>
+            <span
+              >Destreinado:
+              <div></div
+            ></span>
+
+            <span
+              >Treinado:
+              <div></div
+            ></span>
+
+            <span
+              >Veterano:
+              <div></div
+            ></span>
+
+            <span
+              >Expert:
+              <div></div
+            ></span>
+          </div>
+
+          <hr />
+
+          <div id="preview-expertise"></div>
+        </div>
+
+        <button type="button" id="create-sheet-person">CRIA PERSONAGEM</button>
+      </section>
+
+      <!--Rodapé do formulário de criação de fichas-->
+      <footer>
+        <button class="change-section-create-sheet-person" type="button">
+          <span class="material-symbols-outlined">undo</span>
+        </button>
+
+        <button class="change-section-create-sheet-person" type="button">
+          <span class="material-symbols-outlined">redo</span>
+        </button>
+      </footer>
+    </form>
+
+    <script type="module" src="scripts/display.js"></script>
+    <script type="module" src="scripts/createSheet.js"></script>
+  </body>
+</html>

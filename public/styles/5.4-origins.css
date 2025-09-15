@@ -1,0 +1,60 @@
+.create-sheet-origins {
+  display: flex;
+  gap: var(--s12);
+}
+
+.create-sheet-origins label {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+
+  width: 100%;
+  padding: var(--s12);
+
+  background-color: var(--cor02);
+  border: 2px solid var(--cor03);
+  border-radius: var(--s8);
+  box-shadow: 0 0 4px #00000077;
+
+  cursor: pointer;
+}
+
+.create-sheet-origins input[type="radio"] {
+  margin-left: auto;
+
+  accent-color: var(--cor06);
+}
+
+.create-sheet-origins label:has(input[type="radio"]:checked) {
+  border: 2px solid var(--cor06);
+}
+
+.create-sheet-origins label:has(input[type="radio"]:disabled) {
+  cursor: not-allowed;
+}
+
+.create-sheet-origins summary {
+  display: flex;
+  gap: var(--s12);
+
+  color: white;
+  font-size: var(--s16);
+  font-weight: bold;
+}
+
+.create-sheet-origins p {
+  margin: var(--s12) 0;
+  font-size: var(--s12);
+}
+
+.create-sheet-origins details p:nth-of-type(1) {
+  color: var(--cor04);
+  font-size: var(--s12);
+  font-weight: thin;
+}
+
+.create-sheet-origins details p span {
+  color: var(--cor06);
+  font-size: var(--s12);
+  font-weight: 700;
+}

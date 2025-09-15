@@ -1,0 +1,32 @@
+.create-sheet-details {
+  display: flex;
+  gap: var(--s12);
+}
+
+.create-sheet-details div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  flex: 1;
+}
+
+.create-sheet-details textarea {
+  height: 100%;
+  padding: var(--s12);
+
+  background: var(--cor02);
+  border-radius: var(--s4);
+
+  color: var(--cor04);
+  font-size: var(--s12);
+
+  resize: none;
+}
+
+.create-sheet-details textarea:hover {
+  background-color: var(--cor03);
+}
+
+.create-sheet-details textarea:focus {
+  background-color: var(--cor03);
+}
