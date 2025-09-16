@@ -76,5 +76,7 @@ export const DOM = {
 
   btnCSPDetails: document.querySelectorAll(".btn-CSP-details"),
 
+  btnCreateCharacter: document.getElementById("btn-create-character"),
+
   listCharacterPlayer: document.getElementById("list-characters-players"),
 };

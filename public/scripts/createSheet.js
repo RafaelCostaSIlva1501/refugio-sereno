@@ -2,6 +2,17 @@ import { display, createElement } from "./utilities.js";
 import { levels, origins, expertises } from "./data.js";
 import { DOM } from "./DOM.js";
 
+// Verifica se já existe um localStorage chamado "characters"
+if (!localStorage.getItem("characters")) {
+  // Se não existe, inicializa com um objeto básico
+
+  const characters = [];
+
+  localStorage.setItem("characters", JSON.stringify(characters));
+}
+
+const characters = JSON.parse(localStorage.getItem("characters"));
+
 let sheet = {
   photo: "",
   name: "",
@@ -359,29 +370,54 @@ document.addEventListener("input", (e) => {
   }
 });
 
-fetch("/api/characters")
-  .then((res) => res.json())
-  .then((characters) => {
-    characters.forEach((s) => {
-      const article = createElement("article");
+DOM.btnCreateCharacter.addEventListener("click", () => {
+  const reader = new FileReader();
 
-      const img = createElement("img");
-      img.src = s.photo;
-      img.alt = "Foto do personagem";
+  reader.onload = () => {
+    const newCharacter = {
+      photo: reader.result,
+      name: sheet.name,
+      campaign: sheet.campaign,
+    };
 
-      const div = createElement("div");
+    characters.push(newCharacter); // adiciona ao array
+    localStorage.setItem("characters", JSON.stringify(characters));
 
-      const h2 = createElement("h2");
-      h2.textContent = s.name;
+    console.log("Personagem salvo com foto, nome e campanha!");
 
-      const p = createElement("p");
-      p.textContent = s.name;
+    document.querySelector(".create-sheet-player").style.display = "none";
+    renderCharacteres();
+  };
 
-      DOM.listCharacterPlayer.appendChild(article);
-      article.appendChild(img);
-      article.appendChild(div);
-      div.appendChild(h2);
-      div.appendChild(p);
-    });
-  })
-  .catch((err) => console.error(err));
+  if (sheet.photo) {
+    reader.readAsDataURL(sheet.photo);
+  }
+});
+
+const renderCharacteres = () => {
+  DOM.listCharacterPlayer.innerHTML = "";
+
+  characters.forEach((s) => {
+    const article = createElement("article");
+
+    const img = createElement("img");
+    img.src = s.photo;
+    img.alt = "Foto do personagem";
+
+    const div = createElement("div");
+
+    const h2 = createElement("h2");
+    h2.textContent = s.name;
+
+    const p = createElement("p");
+    p.textContent = s.campaign;
+
+    DOM.listCharacterPlayer.appendChild(article);
+    article.appendChild(img);
+    article.appendChild(div);
+    div.appendChild(h2);
+    div.appendChild(p);
+  });
+};
+
+renderCharacteres();

@@ -113,12 +113,7 @@
     <!--================-->
 
     <!--Formulário para criação de ficha de personagem-->
-    <form
-      class="modal create-sheet-player"
-      action="/createCharacter"
-      method="POST"
-      enctype="multipart/form-data"
-    >
+    <form class="modal create-sheet-player">
       <!--Cabeçalho do formulário de criação de fichas-->
       <header>
         <button type="button">
@@ -437,7 +432,7 @@
           <div id="preview-expertise"></div>
         </div>
 
-        <button type="submit">CRIA PERSONAGEM</button>
+        <button type="button" id="btn-create-character">CRIA PERSONAGEM</button>
       </section>
 
       <!--Rodapé do formulário de criação de fichas-->
