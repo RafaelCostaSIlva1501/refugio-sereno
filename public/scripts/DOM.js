@@ -1,9 +1,24 @@
 export const DOM = {
+  /* ================ LOGIN/REGISTER ================ */
+  register: document.getElementById("register"),
+  nameRegister: document.getElementById("name-register"),
+  emailRegister: document.getElementById("email-register"),
+  passwordRegister: document.getElementById("password-register"),
+  btnRegister: document.getElementById("btn-register"),
+
+  login: document.getElementById("login"),
+  emailLogin: document.getElementById("email-login"),
+  passwordLogin: document.getElementById("password-login"),
+  btnLogin: document.getElementById("btn-login"),
+
+  /* ================ CONFIGURAÇÕES ================ */
   theme: document.getElementById("change-theme"),
 
+  /* ================ MENU ================ */
   menu: document.querySelector(".menu"),
   btnMenu: document.querySelectorAll(".button-menu"),
 
+  /* ================ SEÇÕES/MODAIS ================ */
   pages: document.querySelectorAll(".pages"),
   btnPages: document.querySelectorAll(".button-page"),
 
@@ -18,9 +33,9 @@ export const DOM = {
     ".change-section-create-sheet-person"
   ),
 
-  // Inputs do formulário de criação de fichas de personagem
-  cspInputs: document.querySelectorAll(".csp-inputs"),
+  /* ================ INPUTS DE CRIAÇÃO DE PERSONAGEM ================ */
 
+  cspInputs: document.querySelectorAll(".csp-inputs"),
   cspPhoto: document.getElementById("csp-photo"),
   cspName: document.getElementById("csp-name"),
   cspNationality: document.getElementById("csp-nationality"),
@@ -35,6 +50,8 @@ export const DOM = {
   cspPre: document.getElementById("csp-pre"),
   cspFor: document.getElementById("csp-for"),
   cspExpertises: document.querySelectorAll(".csp-expertises"),
+
+  /* ================ PREVIEW DO FORMULÁRIO DE CRIAÇÃO DE PERSONAGEM ================ */
 
   previewPhoto: document.querySelectorAll(".preview-photo"),
   previewName: document.getElementById("preview-name"),
@@ -52,7 +69,6 @@ export const DOM = {
   previewPre: document.getElementById("preview-pre"),
   previewFor: document.getElementById("preview-for"),
   previewExpertise: document.getElementById("preview-expertise"),
-
   previewPVbar: document.getElementById("preview-pv-bar"),
   previewPVvalue: document.getElementById("preview-pv-value"),
   previewPDbar: document.getElementById("preview-pd-bar"),

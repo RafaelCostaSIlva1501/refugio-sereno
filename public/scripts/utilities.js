@@ -20,6 +20,11 @@ export const display = (sectionSelector, buttonSelector, state) => {
   }
 };
 
+export const displayToggle = (id, state) => {
+  const element = document.getElementById(id);
+  element.style.display = state;
+};
+
 //Função para criar elementos no DOM
 export const createElement = (tag) => {
   const element = document.createElement(tag);
