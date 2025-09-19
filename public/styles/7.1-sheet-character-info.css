@@ -1,0 +1,76 @@
+.sheet .sheet-info-img button {
+  height: fit-content;
+}
+
+.sheet .sheet-info-img {
+  display: flex;
+  gap: var(--s12);
+
+  width: 100%;
+  height: fit-content;
+}
+
+.sheet .sheet-info-img img {
+  width: var(--s96);
+
+  border: 1px solid var(--cor03);
+}
+
+.sheet .sheet-info-img div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.sheet .sheet-info-img div p {
+  font-size: 12px;
+  border-bottom: 1px solid var(--cor03);
+}
+
+.sheet-info-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s12);
+  flex: 1;
+}
+
+.sheet-info-details header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s12);
+
+  width: 100%;
+}
+
+.sheet-info-details button {
+  justify-content: center;
+  flex: 1;
+
+  padding: var(--s4);
+
+  background-color: var(--cor03);
+  border: 1px solid var(--cor03);
+
+  color: var(--cor04);
+}
+
+.sheet-info-details button:nth-child(1) {
+  border-bottom: 1px solid var(--cor04);
+}
+
+.sheet-tab-details {
+  display: none;
+  flex: 1;
+
+  padding: var(--s8);
+
+  background-color: var(--cor02);
+
+  color: #ffffffb4;
+  font-size: 12px;
+}
+
+.sheet-tab-history {
+  display: flex;
+}

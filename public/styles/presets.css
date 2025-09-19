@@ -82,6 +82,8 @@ textarea {
   border: none;
   outline: none;
 
+  resize: none;
+
   color: var(--cor04);
 }
 

@@ -1,0 +1,83 @@
+.sheet .sheet-stats .sheet-stats-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s12);
+}
+
+.sheet .sheet-stats .sheet-stats-bar > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s12);
+  flex: 1;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label {
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label div {
+  position: absolute;
+
+  display: flex;
+  flex-direction: row;
+  gap: var(--s8);
+
+  z-index: 10;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label div:nth-child(1) {
+  left: 4%;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label div:nth-child(1) button:hover {
+  transform: translateX(-4px);
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label div:nth-child(4) {
+  right: 4%;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label div:nth-child(4) button:hover {
+  transform: translateX(4px);
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label progress {
+  width: 100%;
+  height: 26px;
+  border: 1px solid var(--cor02);
+  border-radius: var(--s4);
+
+  overflow: hidden;
+}
+
+.sheet
+  .sheet-stats
+  .sheet-stats-bar
+  div:nth-child(1)
+  label
+  progress::-webkit-progress-value {
+  background-color: var(--cor06);
+}
+
+.sheet
+  .sheet-stats
+  .sheet-stats-bar
+  div:nth-child(2)
+  label
+  progress::-webkit-progress-value {
+  background-color: var(--cor05);
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label p {
+  position: absolute;
+}
+
+.sheet .sheet-stats .sheet-stats-bar div label progress::-webkit-progress-bar {
+  position: relative;
+  background-color: var(--cor03);
+}

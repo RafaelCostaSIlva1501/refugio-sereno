@@ -86,3 +86,27 @@ DOM.btnCSPDetails.forEach((e, i) => {
     e.style.color = "var(--cor01)";
   });
 });
+
+DOM.btnSheetSection.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    DOM.btnSheetSection.forEach((e) => {
+      e.style.filter = "none";
+      e.style.backgroundColor = "transparent";
+    });
+
+    btn.style.filter = "invert(100%)";
+    btn.style.backgroundColor = "#000000ff";
+    display("sheet-section", btn, "open");
+  });
+});
+
+DOM.btnSheetTabDetails.forEach((btn, i) => {
+  btn.addEventListener("click", () => {
+    DOM.btnSheetTabDetails.forEach((e) => {
+      e.style.borderBottom = "1px solid var(--cor01)";
+    });
+
+    btn.style.borderBottom = "1px solid var(--cor04)";
+    display("sheet-tab-details", btn, "open");
+  });
+});

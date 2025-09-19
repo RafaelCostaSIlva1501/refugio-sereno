@@ -233,6 +233,8 @@ const previewSheetLevel = () => {
   if (!selected) return; // nenhum selecionado
   const levelValue = selected.value;
 
+  sheet.level = levelValue;
+
   sheet.pv[0] = levels[levelValue].pv;
   sheet.pd[0] = levels[levelValue].pd;
 
@@ -367,6 +369,7 @@ document.addEventListener("input", (e) => {
     previewSheetOrigin();
     previewSheetAttributes();
     previewSheetExpertises();
+    //console.log(sheet);
   }
 });
 
@@ -377,7 +380,20 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
     const newCharacter = {
       photo: reader.result,
       name: sheet.name,
+      nationality: sheet.nationality,
+      age: sheet.age,
       campaign: sheet.campaign,
+      level: levels[sheet.level].level,
+      origin: origins[sheet.origin].origin[0],
+      history: sheet.history,
+      personality: sheet.personality,
+      appearance: sheet.appearance,
+
+      currentPV: Number(sheet.pv[0]) + Number(sheet.pv[1]),
+      totalPV: Number(sheet.pv[0]) + Number(sheet.pv[1]),
+
+      currentPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
+      totalPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
     };
 
     characters.push(newCharacter); // adiciona ao array
@@ -386,7 +402,7 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
     console.log("Personagem salvo com foto, nome e campanha!");
 
     document.querySelector(".create-sheet-player").style.display = "none";
-    renderCharacteres();
+    renderListPlayer();
   };
 
   if (sheet.photo) {
@@ -394,11 +410,17 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
   }
 });
 
-const renderCharacteres = () => {
+const renderListPlayer = () => {
   DOM.listCharacterPlayer.innerHTML = "";
 
-  characters.forEach((s) => {
+  characters.forEach((s, i) => {
     const article = createElement("article");
+    article.setAttribute("data-target", "sheet");
+    article.classList.add("button-page");
+    article.addEventListener("click", () => {
+      display("pages", article, "open");
+      renderSheetPlayer(i);
+    });
 
     const img = createElement("img");
     img.src = s.photo;
@@ -420,4 +442,27 @@ const renderCharacteres = () => {
   });
 };
 
-renderCharacteres();
+const renderSheetPlayer = (index) => {
+  DOM.sheetPlayerPhoto.src = characters[index].photo;
+  DOM.sheetPlayerName.textContent = characters[index].name;
+  DOM.sheetPlayerNationality.textContent = characters[index].nationality;
+  DOM.sheetPlayerAge.textContent = characters[index].age;
+  DOM.sheetPlayerCampaign.textContent = characters[index].campaign;
+  DOM.sheetPlayerLevel.textContent = characters[index].level;
+  DOM.sheetPlayerOrigin.textContent = characters[index].origin;
+  DOM.sheetPlayerHistory.value = characters[index].history;
+  DOM.sheetPlayerPersonality.value = characters[index].personality;
+  DOM.sheetPlayerAppearance.value = characters[index].appearance;
+
+  DOM.barPV.value = characters[index].currentPV;
+  DOM.barPV.max = characters[index].currentPV;
+  DOM.currentPV.textContent = characters[index].currentPV;
+  DOM.totalPV.textContent = characters[index].totalPV;
+
+  DOM.barPD.value = characters[index].currentPD;
+  DOM.barPD.max = characters[index].currentPD;
+  DOM.currentPD.textContent = characters[index].currentPD;
+  DOM.totalPD.textContent = characters[index].totalPD;
+};
+
+renderListPlayer();

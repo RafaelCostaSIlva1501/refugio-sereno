@@ -33,6 +33,12 @@ export const DOM = {
     ".change-section-create-sheet-person"
   ),
 
+  sheetSections: document.querySelectorAll(".sheet-section"),
+  btnSheetSection: document.querySelectorAll(".btn-sheet-section"),
+
+  sheetTabDetails: document.querySelectorAll(".sheet-tab-details"),
+  btnSheetTabDetails: document.querySelectorAll(".btn-sheet-tab-details"),
+
   /* ================ INPUTS DE CRIAÇÃO DE PERSONAGEM ================ */
 
   cspInputs: document.querySelectorAll(".csp-inputs"),
@@ -79,4 +85,25 @@ export const DOM = {
   btnCreateCharacter: document.getElementById("btn-create-character"),
 
   listCharacterPlayer: document.getElementById("list-characters-players"),
+
+  /* ================ FICHA DE PLAYER ================ */
+  sheetPlayerPhoto: document.getElementById("sheet-player-photo"),
+  sheetPlayerName: document.getElementById("sheet-player-name"),
+  sheetPlayerNationality: document.getElementById("sheet-player-nationality"),
+  sheetPlayerAge: document.getElementById("sheet-player-age"),
+  sheetPlayerCampaign: document.getElementById("sheet-player-campaign"),
+  sheetPlayerLevel: document.getElementById("sheet-player-level"),
+  sheetPlayerOrigin: document.getElementById("sheet-player-origin"),
+  sheetPlayerHistory: document.getElementById("sheet-player-history"),
+  sheetPlayerPersonality: document.getElementById("sheet-player-personality"),
+  sheetPlayerAppearance: document.getElementById("sheet-player-appearance"),
+  sheetPlayerNotes: document.getElementById("sheet-player-notes"),
+
+  barPV: document.getElementById("barPV"),
+  currentPV: document.getElementById("currentPV"),
+  totalPV: document.getElementById("totalPV"),
+  
+  barPD: document.getElementById("barPD"),
+  currentPD: document.getElementById("currentPD"),
+  totalPD: document.getElementById("totalPD"),
 };

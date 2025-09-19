@@ -1,0 +1,45 @@
+.sheet {
+  display: none;
+  flex-direction: column;
+  gap: var(--s24);
+  flex: 1;
+}
+
+.sheet > header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s12);
+
+  width: 100%;
+}
+
+.sheet > header > button {
+  justify-content: center;
+  flex: 1;
+
+  padding: var(--s4);
+
+  border-radius: var(--s4);
+
+  color: var(--cor04);
+}
+
+.sheet > header > button:nth-child(1) {
+  background-color: var(--cor01);
+  filter: invert(100%);
+}
+
+.sheet .sheet-section {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--s24);
+
+  height: 100%;
+
+  color: var(--cor04);
+}
+
+.sheet .sheet-info {
+  display: flex;
+}

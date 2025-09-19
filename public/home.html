@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="styles/5.5-attributes.css" />
     <link rel="stylesheet" href="styles/5.6-expertises.css" />
     <link rel="stylesheet" href="styles/6.7-preview.css" />
+    <link rel="stylesheet" href="styles/7-sheet-character.css" />
+    <link rel="stylesheet" href="styles/7.1-sheet-character-info.css" />
+    <link rel="stylesheet" href="styles/7.2-sheet-character-stats.css" />
   </head>
   <body>
     <!--Cabeçalho principal (visível em todas as seções)-->
@@ -446,6 +449,302 @@
         </button>
       </footer>
     </form>
+
+    <section class="pages sheet">
+      <header>
+        <button class="btn-sheet-section" data-target="sheet-info">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e6eef8"
+          >
+            <path
+              d="M200-200v-560 179-19 400Zm80-240h221q2-22 10-42t20-38H280v80Zm0 160h157q17-20 39-32.5t46-20.5q-4-6-7-13t-5-14H280v80Zm0-320h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v258q-14-26-34-46t-46-33v-179H200v560h202q-1 6-1.5 12t-.5 12v56H200Zm480-200q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM480-120v-56q0-24 12.5-44.5T528-250q36-15 74.5-22.5T680-280q39 0 77.5 7.5T832-250q23 9 35.5 29.5T880-176v56H480Z"
+            />
+          </svg>
+        </button>
+
+        <button class="btn-sheet-section" data-target="sheet-stats">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e6eef8"
+          >
+            <path
+              d="M420-340h120v-100h100v-120H540v-100H420v100H320v120h100v100Zm60 260q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"
+            />
+          </svg>
+        </button>
+
+        <button class="btn-sheet-section" data-target="sheet-dices">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            width="24"
+            viewBox="0 0 640 640"
+          >
+            <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              fill="#e0e0e0"
+              d="M292.2 53.8C309.8 45.3 330.3 45.3 347.9 53.8L351.6 55.8L543.6 164.6C562.4 175.3 574.4 194.6 575.9 216L576.1 220.3L576.1 435.8C576.1 457.4 565.2 477.5 547.3 489.2L543.6 491.4L351.6 600.2C332 611.3 308 611.3 288.5 600.2L96.4 491.4C76.4 480.1 64 458.8 64 435.8L64 220.3L64.2 216C65.6 194.6 77.7 175.3 96.5 164.6L288.5 55.8L292.2 53.8zM296 549.4L296 493.7L161 472.9L296 549.4zM344 493.7L344 549.4L478.9 473L344 493.8zM141.4 421.3L276.4 442.1L214.1 324.6L141.4 421.3zM363.6 442.1L498.6 421.3L425.9 324.6L363.6 442.1zM320 421.8L382.5 304L257.5 304L320 421.8zM112 380.5L183.2 285.8L112 238.1L112 380.5zM456.8 285.8L528 380.5L528 238.2L456.8 285.9zM256.9 256L383.1 256L320 133.1L256.9 256zM136.7 196.9L208.6 245.1L272.9 119.7L136.7 196.9zM431.5 245L503.3 196.9L367.1 119.7L431.4 245z"
+            />
+          </svg>
+        </button>
+
+        <button class="btn-sheet-section" data-target="sheet-inventory">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e6eef8"
+          >
+            <path
+              d="M280-80q-33 0-56.5-23.5T200-160v-320q0-85 44.5-152T360-732v-28q0-50 35-85t85-35q50 0 85 35t35 85v28q71 33 115.5 100T760-480v320q0 33-23.5 56.5T680-80H280Zm0-80h400v-320q0-83-58.5-141.5T480-680q-83 0-141.5 58.5T280-480v320Zm320-160q17 0 28.5-11.5T640-360v-120H320v80h240v40q0 17 11.5 28.5T600-320ZM440-756q11-2 20-3t20-1q11 0 20 1t20 3v-4q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v4ZM280-160h400-400Z"
+            />
+          </svg>
+        </button>
+
+        <button class="btn-sheet-section" data-target="sheet-box">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#e6eef8"
+          >
+            <path
+              d="M480-240q21 0 35.5-14.5T530-290q0-21-14.5-35.5T480-340q-21 0-35.5 14.5T430-290q0 21 14.5 35.5T480-240Zm-36-154h74q0-36 8-53t34-43q35-35 49.5-58.5T624-602q0-53-36-85.5T491-720q-55 0-93.5 27T344-618l66 26q7-27 28-43.5t49-16.5q27 0 45 14.5t18 38.5q0 17-11 36t-37 42q-33 29-45.5 55.5T444-394ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"
+            />
+          </svg>
+        </button>
+      </header>
+
+      <section class="sheet-section sheet-info">
+        <div class="sheet-info-img">
+          <img id="sheet-player-photo" />
+
+          <div>
+            <p>Nome: <span id="sheet-player-name"></span></p>
+
+            <p>Nacionalidade: <span id="sheet-player-nationality"></span></p>
+
+            <p>Idade: <span id="sheet-player-age"></span></p>
+          </div>
+
+          <div>
+            <p>Campanha: <span id="sheet-player-campaign"></span></p>
+            <p>Nível: <span id="sheet-player-level"></span></p>
+            <p>Origem: <span id="sheet-player-origin"></span></p>
+          </div>
+        </div>
+
+        <div class="sheet-info-details">
+          <header>
+            <button
+              class="btn-sheet-tab-details"
+              data-target="sheet-tab-history"
+            >
+              História
+            </button>
+            <button
+              class="btn-sheet-tab-details"
+              data-target="sheet-tab-personality"
+            >
+              Personalidade
+            </button>
+            <button
+              class="btn-sheet-tab-details"
+              data-target="sheet-tab-appearance"
+            >
+              Aparência
+            </button>
+            <button class="btn-sheet-tab-details" data-target="sheet-tab-notes">
+              Anotações
+            </button>
+          </header>
+
+          <textarea
+            class="sheet-tab-details sheet-tab-history"
+            id="sheet-player-history"
+          >
+          </textarea>
+
+          <textarea
+            class="sheet-tab-details sheet-tab-personality"
+            id="sheet-player-personality"
+          ></textarea>
+
+          <textarea
+            class="sheet-tab-details sheet-tab-appearance"
+            id="sheet-player-appearance"
+          ></textarea>
+
+          <textarea
+            class="sheet-tab-details sheet-tab-notes"
+            id="sheet-player-notes"
+          ></textarea>
+        </div>
+      </section>
+
+      <section class="sheet-section sheet-stats">
+        <div class="sheet-stats-bar">
+          <div>
+            <h3>Pontos de Vida</h3>
+            <label>
+              <div>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                    />
+                  </svg>
+                </button>
+
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <progress id="barPV"></progress>
+              <p>
+                <span id="currentPV"></span>
+                /
+                <span id="totalPV"></span>
+              </p>
+
+              <div>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                  </svg>
+                </button>
+
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </div>
+
+          <div>
+            <h3>Pontos de Determinação</h3>
+            <label>
+              <div>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                    />
+                  </svg>
+                </button>
+
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <progress id="barPD"></progress>
+              <p>
+                <span id="currentPD"></span>
+                /
+                <span id="totalPD"></span>
+              </p>
+
+              <div>
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                  </svg>
+                </button>
+
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <section class="sheet-section sheet-dices">3</section>
+
+      <section class="sheet-section sheet-inventory">4</section>
+
+      <section class="sheet-section sheet-box">5</section>
+    </section>
 
     <script type="module" src="scripts/display.js"></script>
     <script type="module" src="scripts/createSheet.js"></script>
