@@ -102,8 +102,10 @@ export const DOM = {
   barPV: document.getElementById("barPV"),
   currentPV: document.getElementById("currentPV"),
   totalPV: document.getElementById("totalPV"),
-  
+
   barPD: document.getElementById("barPD"),
   currentPD: document.getElementById("currentPD"),
   totalPD: document.getElementById("totalPD"),
+
+  sheetPlayerExpertises: document.getElementById("sheet-expertises"),
 };

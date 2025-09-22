@@ -33,7 +33,7 @@ let sheet = {
     pre: 1,
     for: 1,
   },
-  expertise: "",
+  expertises: [],
 };
 
 levels.forEach((e, i) => {
@@ -346,6 +346,9 @@ const previewSheetExpertises = () => {
 
     const value = Number(e.value);
 
+    // atualiza o sheet.expertises na posição correta
+    sheet.expertises[i] = value;
+
     if (value === 0) {
       span.style.color = "var(--cor04)";
     } else if (value === 5) {
@@ -394,6 +397,8 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
 
       currentPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
       totalPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
+
+      expertises: sheet.expertises,
     };
 
     characters.push(newCharacter); // adiciona ao array
@@ -463,6 +468,33 @@ const renderSheetPlayer = (index) => {
   DOM.barPD.max = characters[index].currentPD;
   DOM.currentPD.textContent = characters[index].currentPD;
   DOM.totalPD.textContent = characters[index].totalPD;
+
+  characters[index].expertises.forEach((e, i) => {
+    const button = createElement("button");
+
+    const span = createElement("span");
+    span.innerHTML = ` 
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            width="24"
+            viewBox="0 0 640 640"
+          >
+            <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+            <path
+              fill="#e0e0e0"
+              d="M292.2 53.8C309.8 45.3 330.3 45.3 347.9 53.8L351.6 55.8L543.6 164.6C562.4 175.3 574.4 194.6 575.9 216L576.1 220.3L576.1 435.8C576.1 457.4 565.2 477.5 547.3 489.2L543.6 491.4L351.6 600.2C332 611.3 308 611.3 288.5 600.2L96.4 491.4C76.4 480.1 64 458.8 64 435.8L64 220.3L64.2 216C65.6 194.6 77.7 175.3 96.5 164.6L288.5 55.8L292.2 53.8zM296 549.4L296 493.7L161 472.9L296 549.4zM344 493.7L344 549.4L478.9 473L344 493.8zM141.4 421.3L276.4 442.1L214.1 324.6L141.4 421.3zM363.6 442.1L498.6 421.3L425.9 324.6L363.6 442.1zM320 421.8L382.5 304L257.5 304L320 421.8zM112 380.5L183.2 285.8L112 238.1L112 380.5zM456.8 285.8L528 380.5L528 238.2L456.8 285.9zM256.9 256L383.1 256L320 133.1L256.9 256zM136.7 196.9L208.6 245.1L272.9 119.7L136.7 196.9zM431.5 245L503.3 196.9L367.1 119.7L431.4 245z"
+            />
+          </svg> 
+          + ${e}`;
+
+    const expertise = createElement("span");
+    expertise.textContent = expertises[i].name;
+
+    button.appendChild(span);
+    button.appendChild(expertise);
+    DOM.sheetPlayerExpertises.appendChild(button);
+  });
 };
 
 renderListPlayer();
