@@ -108,4 +108,10 @@ export const DOM = {
   totalPD: document.getElementById("totalPD"),
 
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
+
+  sheetPlayerAgi: document.getElementById("sheet-player-agi"),
+  sheetPlayerInt: document.getElementById("sheet-player-int"),
+  sheetPlayerVig: document.getElementById("sheet-player-vig"),
+  sheetPlayerPre: document.getElementById("sheet-player-pre"),
+  sheetPlayerFor: document.getElementById("sheet-player-for"),
 };

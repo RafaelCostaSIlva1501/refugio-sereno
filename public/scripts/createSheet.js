@@ -398,6 +398,12 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
       currentPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
       totalPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
 
+      agi: sheet.attributes.agi,
+      int: sheet.attributes.int,
+      vig: sheet.attributes.vig,
+      pre: sheet.attributes.pre,
+      for: sheet.attributes.for,
+
       expertises: sheet.expertises,
     };
 
@@ -468,6 +474,12 @@ const renderSheetPlayer = (index) => {
   DOM.barPD.max = characters[index].currentPD;
   DOM.currentPD.textContent = characters[index].currentPD;
   DOM.totalPD.textContent = characters[index].totalPD;
+
+  DOM.sheetPlayerAgi.textContent = characters[index].agi;
+  DOM.sheetPlayerInt.textContent = characters[index].int;
+  DOM.sheetPlayerVig.textContent = characters[index].vig;
+  DOM.sheetPlayerPre.textContent = characters[index].pre;
+  DOM.sheetPlayerFor.textContent = characters[index].for;
 
   characters[index].expertises.forEach((e, i) => {
     const button = createElement("button");
