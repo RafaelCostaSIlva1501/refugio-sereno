@@ -1,19 +1,20 @@
-import { display, createElement } from "./utilities.js";
-import { levels, origins, expertises } from "./data.js";
+/* ========== IMPORTAÇÕES ========== */
 import { DOM } from "./DOM.js";
 
-// Verifica se já existe um localStorage chamado "characters"
-if (!localStorage.getItem("characters")) {
-  // Se não existe, inicializa com um objeto básico
+import { levels, origins, attributes, expertises } from "./data.js";
 
-  const characters = [];
+import {
+  display,
+  createElement,
+  rollDiceAttribute,
+  rollDiceExpertise,
+} from "./utilities.js";
 
-  localStorage.setItem("characters", JSON.stringify(characters));
-}
+/* ========== INICIALIZAÇÃO DE VARIÁVEIS ========== */
 
 const characters = JSON.parse(localStorage.getItem("characters"));
 
-let sheet = {
+let tempCharacter = {
   photo: "",
   name: "",
   nationality: "",
@@ -33,9 +34,51 @@ let sheet = {
     pre: 1,
     for: 1,
   },
+
   expertises: [],
 };
 
+let newCharacter = {
+  photo: "",
+
+  name: "",
+  nationality: "",
+  age: "",
+  campaign: "",
+
+  level: "",
+
+  origin: "",
+
+  history: "",
+  personality: "",
+  appearance: "",
+  notes: "",
+
+  currentPV: "",
+  totalPV: "",
+
+  currentPD: "",
+  totalPD: "",
+
+  agi: "",
+  int: "",
+  vig: "",
+  pre: "",
+  for: "",
+
+  expertises: "",
+
+  defense: "",
+  displacement: "",
+  blocking: "",
+  counterattack: "",
+  dodging: "",
+};
+
+/* ========== RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO ========== */
+
+// Renderiza os níveis no formulário
 levels.forEach((e, i) => {
   const label = createElement("label");
   label.htmlFor = `csp-level${i}`;
@@ -110,6 +153,7 @@ levels.forEach((e, i) => {
   requirements.appendChild(requirementsSpan);
 });
 
+// Renderiza as origens no formulário
 origins.forEach((e, i) => {
   const label = createElement("label");
   label.htmlFor = `csp-origins${i}`;
@@ -144,6 +188,7 @@ origins.forEach((e, i) => {
   details.appendChild(p3);
 });
 
+// Renderiza as perícias no formulário
 expertises.forEach((e, i) => {
   const abbr = createElement("abbr");
   abbr.title = e.info;
@@ -195,51 +240,57 @@ expertises.forEach((e, i) => {
   select.appendChild(opt4);
 });
 
-const previewSheetImg = () => {
-  sheet.photo = DOM.cspPhoto.files[0];
-  if (!sheet.photo) return;
+/* ========== RECOLHIMENTO DAS INFORMAÇÕES + PREVIEW DA FICHA  ========== */
+
+// Atualiza a imagem da ficha
+const updateSheetImg = () => {
+  tempCharacter.photo = DOM.cspPhoto.files[0];
+  if (!tempCharacter.photo) return;
 
   DOM.previewPhoto.forEach((e) => {
-    e.src = URL.createObjectURL(sheet.photo);
+    e.src = URL.createObjectURL(tempCharacter.photo);
     console.log("Foi!");
   });
 };
 
-const previewSheetInfo = () => {
-  sheet.name = DOM.cspName.value;
-  sheet.nationality = DOM.cspNationality.value;
-  sheet.age = DOM.cspAge.value;
-  sheet.campaign = DOM.cspCampaign.value;
+// Atualiza a imagem da ficha
+const updateSheetInfo = () => {
+  tempCharacter.name = DOM.cspName.value;
+  tempCharacter.nationality = DOM.cspNationality.value;
+  tempCharacter.age = DOM.cspAge.value;
+  tempCharacter.campaign = DOM.cspCampaign.value;
 
-  DOM.previewName.textContent = sheet.name;
-  DOM.previewNationality.textContent = sheet.nationality;
-  DOM.previewAge.textContent = sheet.age;
-  DOM.previewCampaign.textContent = sheet.campaign;
+  DOM.previewName.textContent = tempCharacter.name;
+  DOM.previewNationality.textContent = tempCharacter.nationality;
+  DOM.previewAge.textContent = tempCharacter.age;
+  DOM.previewCampaign.textContent = tempCharacter.campaign;
 };
 
-const previewSheetDetails = () => {
-  sheet.history = DOM.cspHistory.value;
-  sheet.personality = DOM.cspPersonality.value;
-  sheet.appearance = DOM.cspAppearance.value;
+// Atualiza a imagem da ficha
+const updateSheetDetails = () => {
+  tempCharacter.history = DOM.cspHistory.value;
+  tempCharacter.personality = DOM.cspPersonality.value;
+  tempCharacter.appearance = DOM.cspAppearance.value;
 
-  DOM.previewHistory.textContent = sheet.history;
-  DOM.previewPersonality.textContent = sheet.personality;
-  DOM.previewAppearance.textContent = sheet.appearance;
+  DOM.previewHistory.textContent = tempCharacter.history;
+  DOM.previewPersonality.textContent = tempCharacter.personality;
+  DOM.previewAppearance.textContent = tempCharacter.appearance;
 };
 
-const previewSheetLevel = () => {
+// Atualiza a imagem da ficha
+const updateSheetLevel = () => {
   DOM.previewLevel.innerHTML = "";
   const selected = document.querySelector(".csp-levels:checked");
   if (!selected) return; // nenhum selecionado
   const levelValue = selected.value;
 
-  sheet.level = levelValue;
+  tempCharacter.level = levelValue;
 
-  sheet.pv[0] = levels[levelValue].pv;
-  sheet.pd[0] = levels[levelValue].pd;
+  tempCharacter.pv[0] = levels[levelValue].pv;
+  tempCharacter.pd[0] = levels[levelValue].pd;
 
-  const pvValue = Number(sheet.pv[0]) + Number(sheet.pv[1]);
-  const pdValue = Number(sheet.pd[0]) + Number(sheet.pd[1]);
+  const pvValue = Number(tempCharacter.pv[0]) + Number(tempCharacter.pv[1]);
+  const pdValue = Number(tempCharacter.pd[0]) + Number(tempCharacter.pd[1]);
 
   DOM.previewPVbar.max = pvValue;
   DOM.previewPVbar.value = pvValue;
@@ -279,13 +330,14 @@ const previewSheetLevel = () => {
   DOM.previewLevel.appendChild(requirements);
 };
 
-const previewSheetOrigin = () => {
+// Atualiza a imagem da ficha
+const updateSheetOrigin = () => {
   DOM.previewOrigin.innerHTML = "";
   const selected = document.querySelector(".csp-origins:checked");
   if (!selected) return;
   const originValue = selected.value;
 
-  sheet.origin = originValue;
+  tempCharacter.origin = originValue;
 
   const h4 = createElement("h4");
   h4.textContent = origins[originValue].origin[0];
@@ -307,18 +359,19 @@ const previewSheetOrigin = () => {
   DOM.previewOrigin.appendChild(power);
 };
 
-const previewSheetAttributes = () => {
-  sheet.attributes.agi = DOM.cspAgi.value;
-  sheet.attributes.int = DOM.cspInt.value;
-  sheet.attributes.vig = DOM.cspVig.value;
-  sheet.attributes.pre = DOM.cspPre.value;
-  sheet.attributes.for = DOM.cspFor.value;
+// Atualiza a imagem da ficha
+const updateSheetAttributes = () => {
+  tempCharacter.attributes.agi = DOM.cspAgi.value;
+  tempCharacter.attributes.int = DOM.cspInt.value;
+  tempCharacter.attributes.vig = DOM.cspVig.value;
+  tempCharacter.attributes.pre = DOM.cspPre.value;
+  tempCharacter.attributes.for = DOM.cspFor.value;
 
-  sheet.pv[1] = DOM.cspVig.value;
-  sheet.pd[1] = DOM.cspPre.value;
+  tempCharacter.pv[1] = DOM.cspVig.value;
+  tempCharacter.pd[1] = DOM.cspPre.value;
 
-  const pvValue = Number(sheet.pv[0]) + Number(sheet.pv[1]);
-  const pdValue = Number(sheet.pd[0]) + Number(sheet.pd[1]);
+  const pvValue = Number(tempCharacter.pv[0]) + Number(tempCharacter.pv[1]);
+  const pdValue = Number(tempCharacter.pd[0]) + Number(tempCharacter.pd[1]);
 
   DOM.previewPVbar.max = pvValue;
   DOM.previewPVbar.value = pvValue;
@@ -328,14 +381,15 @@ const previewSheetAttributes = () => {
   DOM.previewPDbar.value = pdValue;
   DOM.previewPDvalue.innerHTML = `${pdValue}/${pdValue}`;
 
-  DOM.previewAgi.innerHTML = sheet.attributes.agi;
-  DOM.previewInt.innerHTML = sheet.attributes.int;
-  DOM.previewVig.innerHTML = sheet.attributes.vig;
-  DOM.previewPre.innerHTML = sheet.attributes.pre;
-  DOM.previewFor.innerHTML = sheet.attributes.for;
+  DOM.previewAgi.innerHTML = tempCharacter.attributes.agi;
+  DOM.previewInt.innerHTML = tempCharacter.attributes.int;
+  DOM.previewVig.innerHTML = tempCharacter.attributes.vig;
+  DOM.previewPre.innerHTML = tempCharacter.attributes.pre;
+  DOM.previewFor.innerHTML = tempCharacter.attributes.for;
 };
 
-const previewSheetExpertises = () => {
+// Atualiza a imagem da ficha
+const updatewSheetExpertises = () => {
   const cspExpertises = document.querySelectorAll(".csp-expertises");
 
   DOM.previewExpertise.innerHTML = "";
@@ -347,7 +401,7 @@ const previewSheetExpertises = () => {
     const value = Number(e.value);
 
     // atualiza o sheet.expertises na posição correta
-    sheet.expertises[i] = value;
+    tempCharacter.expertises[i] = value;
 
     if (value === 0) {
       span.style.color = "var(--cor04)";
@@ -363,63 +417,129 @@ const previewSheetExpertises = () => {
   });
 };
 
-document.addEventListener("input", (e) => {
-  if (e.target.matches(".csp-inputs")) {
-    previewSheetImg();
-    previewSheetInfo();
-    previewSheetDetails();
-    previewSheetLevel();
-    previewSheetOrigin();
-    previewSheetAttributes();
-    previewSheetExpertises();
-    //console.log(sheet);
+// Atualiza todo o preview e a ficha
+document.addEventListener("input", (inputs) => {
+  if (inputs.target.matches(".csp-inputs")) {
+    updateSheetImg();
+    updateSheetInfo();
+    updateSheetDetails();
+    updateSheetLevel();
+    updateSheetOrigin();
+    updateSheetAttributes();
+    updatewSheetExpertises();
   }
 });
 
-DOM.btnCreateCharacter.addEventListener("click", () => {
-  const reader = new FileReader();
+/* ========== RECOLHIMENTO DAS INFORMAÇÕES + PREVIEW DA FICHA  ========== */
 
-  reader.onload = () => {
-    const newCharacter = {
-      photo: reader.result,
-      name: sheet.name,
-      nationality: sheet.nationality,
-      age: sheet.age,
-      campaign: sheet.campaign,
-      level: levels[sheet.level].level,
-      origin: origins[sheet.origin].origin[0],
-      history: sheet.history,
-      personality: sheet.personality,
-      appearance: sheet.appearance,
+const photoCharacter = () => {
+  return new Promise((resolve, reject) => {
+    if (!tempCharacter.photo) {
+      newCharacter.photo = "";
+      return resolve(); // se não houver foto, apenas resolve
+    }
 
-      currentPV: Number(sheet.pv[0]) + Number(sheet.pv[1]),
-      totalPV: Number(sheet.pv[0]) + Number(sheet.pv[1]),
+    const reader = new FileReader();
 
-      currentPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
-      totalPD: Number(sheet.pd[0]) + Number(sheet.pd[1]),
-
-      agi: sheet.attributes.agi,
-      int: sheet.attributes.int,
-      vig: sheet.attributes.vig,
-      pre: sheet.attributes.pre,
-      for: sheet.attributes.for,
-
-      expertises: sheet.expertises,
+    reader.onload = () => {
+      newCharacter.photo = reader.result;
+      resolve();
     };
 
-    characters.push(newCharacter); // adiciona ao array
+    reader.onerror = () => reject("Erro ao ler a foto");
+
+    reader.readAsDataURL(tempCharacter.photo);
+  });
+};
+
+const infosCharacter = () => {
+  newCharacter.name = tempCharacter.name;
+  newCharacter.nationality = tempCharacter.nationality;
+  newCharacter.age = tempCharacter.age;
+  newCharacter.campaign = tempCharacter.campaign;
+  newCharacter.level = levels[tempCharacter.level].level;
+  newCharacter.origin = origins[tempCharacter.origin].origin[0];
+};
+
+const detailsCharacter = () => {
+  newCharacter.history = tempCharacter.history;
+  newCharacter.personality = tempCharacter.personality;
+  newCharacter.appearance = tempCharacter.appearance;
+};
+
+const statsBarCharacter = () => {
+  newCharacter.currentPV =
+    Number(tempCharacter.pv[0]) + Number(tempCharacter.pv[1]);
+
+  newCharacter.totalPV =
+    Number(tempCharacter.pv[0]) + Number(tempCharacter.pv[1]);
+
+  newCharacter.currentPD =
+    Number(tempCharacter.pd[0]) + Number(tempCharacter.pd[1]);
+
+  newCharacter.totalPD =
+    Number(tempCharacter.pd[0]) + Number(tempCharacter.pd[1]);
+};
+
+const passivesCharacter = () => {
+  newCharacter.defense = Number(tempCharacter.attributes.agi) + 10;
+
+  newCharacter.displacement = 9;
+
+  newCharacter.blocking = tempCharacter.expertises[9];
+
+  newCharacter.counterattack = tempCharacter.expertises[15];
+
+  newCharacter.dodging = tempCharacter.expertises[22];
+};
+
+const attributesCharacter = () => {
+  newCharacter.agi = tempCharacter.attributes.agi;
+  newCharacter.int = tempCharacter.attributes.int;
+  newCharacter.vig = tempCharacter.attributes.vig;
+  newCharacter.pre = tempCharacter.attributes.pre;
+  newCharacter.for = tempCharacter.attributes.for;
+};
+
+const expertisesCharacter = () => {
+  newCharacter.expertises = tempCharacter.expertises;
+};
+
+const createCharacter = async () => {
+  // Verifica se já existe um localStorage chamado "characters"
+  if (!localStorage.getItem("characters")) {
+    // Se não existe, inicializa com um objeto básico
+    const characters = [];
+
     localStorage.setItem("characters", JSON.stringify(characters));
-
-    console.log("Personagem salvo com foto, nome e campanha!");
-
-    document.querySelector(".create-sheet-player").style.display = "none";
-    renderListPlayer();
-  };
-
-  if (sheet.photo) {
-    reader.readAsDataURL(sheet.photo);
   }
+
+  const character = { ...newCharacter };
+
+  await photoCharacter();
+  infosCharacter();
+  detailsCharacter();
+  statsBarCharacter();
+  passivesCharacter();
+  attributesCharacter();
+  expertisesCharacter();
+
+  characters.push(newCharacter);
+
+  localStorage.setItem("characters", JSON.stringify(characters));
+
+  console.log("Personagem salvo!");
+
+  document.querySelector(".create-sheet-player").style.display = "none";
+
+  renderListPlayer();
+};
+
+DOM.btnCreateCharacter.addEventListener("click", () => {
+  createCharacter();
 });
+
+/* ========== RENDERIZAR PERSONAGENS ========== */
 
 const renderListPlayer = () => {
   DOM.listCharacterPlayer.innerHTML = "";
@@ -453,7 +573,11 @@ const renderListPlayer = () => {
   });
 };
 
-const renderSheetPlayer = (index) => {
+renderListPlayer();
+
+/* ========== RENDERIZAR FICHA DO PERSONAGEM ========== */
+
+const renderSheetInfos = (index) => {
   DOM.sheetPlayerPhoto.src = characters[index].photo;
   DOM.sheetPlayerName.textContent = characters[index].name;
   DOM.sheetPlayerNationality.textContent = characters[index].nationality;
@@ -464,7 +588,9 @@ const renderSheetPlayer = (index) => {
   DOM.sheetPlayerHistory.value = characters[index].history;
   DOM.sheetPlayerPersonality.value = characters[index].personality;
   DOM.sheetPlayerAppearance.value = characters[index].appearance;
+};
 
+const renderSheetStats = (index) => {
   DOM.barPV.value = characters[index].currentPV;
   DOM.barPV.max = characters[index].currentPV;
   DOM.currentPV.textContent = characters[index].currentPV;
@@ -475,16 +601,63 @@ const renderSheetPlayer = (index) => {
   DOM.currentPD.textContent = characters[index].currentPD;
   DOM.totalPD.textContent = characters[index].totalPD;
 
-  DOM.sheetPlayerAgi.textContent = characters[index].agi;
-  DOM.sheetPlayerInt.textContent = characters[index].int;
-  DOM.sheetPlayerVig.textContent = characters[index].vig;
-  DOM.sheetPlayerPre.textContent = characters[index].pre;
-  DOM.sheetPlayerFor.textContent = characters[index].for;
+  DOM.sheetPlayerDefense.textContent = characters[index].defense;
+  DOM.sheetPlayerDisplacement.textContent = characters[index].displacement;
+  DOM.sheetPlayerBlocking.textContent = characters[index].blocking;
+  DOM.sheetPlayerCounterattack.textContent = characters[index].counterattack;
+  DOM.sheetPlayerDodging.textContent = characters[index].dodging;
+};
 
-  characters[index].expertises.forEach((e, i) => {
+const renderSheetRollDices = (index) => {
+  DOM.sheetPlayerAttributes.innerHTML = "";
+  DOM.sheetPlayerExpertises.innerHTML = "";
+
+  attributes.forEach((e, i) => {
+    const button = createElement("button");
+    button.dataset.mod = characters[index][e.toLowerCase()];
+
+    button.addEventListener("click", () => {
+      rollDiceAttribute(characters[index][e.toLocaleLowerCase()], i);
+    });
+
+    const name = createElement("span");
+    name.textContent = e.toLocaleUpperCase();
+
+    const value = createElement("span");
+    value.textContent = characters[index][e.toLocaleLowerCase()];
+
+    button.appendChild(name);
+    button.appendChild(value);
+    DOM.sheetPlayerAttributes.appendChild(button);
+  });
+
+  characters[index].expertises.forEach((exper, i) => {
     const button = createElement("button");
 
+    button.dataset.mod = characters[index][expertises[i].attribute];
+
+    button.dataset.bonus = exper;
+
+    button.addEventListener("click", () => {
+      rollDiceExpertise(
+        button,
+        characters[index][expertises[i].attribute],
+        expertises[i].name
+      );
+    });
+
+    let colorDice = "#e0e0e0";
+
+    if (exper === 5) {
+      colorDice = "var(--cor08)";
+    } else if (exper === 10) {
+      colorDice = "var(--cor06)";
+    } else if (exper === 15) {
+      colorDice = "var(--cor05)";
+    }
+
     const span = createElement("span");
+    span.style.color = colorDice;
     span.innerHTML = ` 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -494,13 +667,14 @@ const renderSheetPlayer = (index) => {
           >
             <!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
             <path
-              fill="#e0e0e0"
+              fill="${colorDice}"
               d="M292.2 53.8C309.8 45.3 330.3 45.3 347.9 53.8L351.6 55.8L543.6 164.6C562.4 175.3 574.4 194.6 575.9 216L576.1 220.3L576.1 435.8C576.1 457.4 565.2 477.5 547.3 489.2L543.6 491.4L351.6 600.2C332 611.3 308 611.3 288.5 600.2L96.4 491.4C76.4 480.1 64 458.8 64 435.8L64 220.3L64.2 216C65.6 194.6 77.7 175.3 96.5 164.6L288.5 55.8L292.2 53.8zM296 549.4L296 493.7L161 472.9L296 549.4zM344 493.7L344 549.4L478.9 473L344 493.8zM141.4 421.3L276.4 442.1L214.1 324.6L141.4 421.3zM363.6 442.1L498.6 421.3L425.9 324.6L363.6 442.1zM320 421.8L382.5 304L257.5 304L320 421.8zM112 380.5L183.2 285.8L112 238.1L112 380.5zM456.8 285.8L528 380.5L528 238.2L456.8 285.9zM256.9 256L383.1 256L320 133.1L256.9 256zM136.7 196.9L208.6 245.1L272.9 119.7L136.7 196.9zM431.5 245L503.3 196.9L367.1 119.7L431.4 245z"
             />
           </svg> 
-          + ${e}`;
+          + ${exper}`;
 
     const expertise = createElement("span");
+    expertise.style.color = colorDice;
     expertise.textContent = expertises[i].name;
 
     button.appendChild(span);
@@ -509,4 +683,18 @@ const renderSheetPlayer = (index) => {
   });
 };
 
+// const renderSheetInventory = (index) => {};
+
+// const renderSheetMistery = (index) => {};
+
+const renderSheetPlayer = (index) => {
+  renderSheetInfos(index);
+  renderSheetStats(index);
+  renderSheetRollDices(index);
+};
+
 renderListPlayer();
+
+/* ========== FUNCIONALIDADES DA FICHA ========== */
+
+

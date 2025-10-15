@@ -1,16 +1,4 @@
 export const DOM = {
-  /* ================ LOGIN/REGISTER ================ */
-  register: document.getElementById("register"),
-  nameRegister: document.getElementById("name-register"),
-  emailRegister: document.getElementById("email-register"),
-  passwordRegister: document.getElementById("password-register"),
-  btnRegister: document.getElementById("btn-register"),
-
-  login: document.getElementById("login"),
-  emailLogin: document.getElementById("email-login"),
-  passwordLogin: document.getElementById("password-login"),
-  btnLogin: document.getElementById("btn-login"),
-
   /* ================ CONFIGURAÇÕES ================ */
   theme: document.getElementById("change-theme"),
 
@@ -88,16 +76,26 @@ export const DOM = {
 
   /* ================ FICHA DE PLAYER ================ */
   sheetPlayerPhoto: document.getElementById("sheet-player-photo"),
+
   sheetPlayerName: document.getElementById("sheet-player-name"),
   sheetPlayerNationality: document.getElementById("sheet-player-nationality"),
   sheetPlayerAge: document.getElementById("sheet-player-age"),
   sheetPlayerCampaign: document.getElementById("sheet-player-campaign"),
   sheetPlayerLevel: document.getElementById("sheet-player-level"),
   sheetPlayerOrigin: document.getElementById("sheet-player-origin"),
+
   sheetPlayerHistory: document.getElementById("sheet-player-history"),
   sheetPlayerPersonality: document.getElementById("sheet-player-personality"),
   sheetPlayerAppearance: document.getElementById("sheet-player-appearance"),
   sheetPlayerNotes: document.getElementById("sheet-player-notes"),
+
+  sheetPlayerDefense: document.getElementById("sheet-player-defense"),
+  sheetPlayerDisplacement: document.getElementById("sheet-player-displacement"),
+  sheetPlayerBlocking: document.getElementById("sheet-player-blocking"),
+  sheetPlayerCounterattack: document.getElementById(
+    "sheet-player-counterattack"
+  ),
+  sheetPlayerDodging: document.getElementById("sheet-player-dodging"),
 
   barPV: document.getElementById("barPV"),
   currentPV: document.getElementById("currentPV"),
@@ -107,11 +105,9 @@ export const DOM = {
   currentPD: document.getElementById("currentPD"),
   totalPD: document.getElementById("totalPD"),
 
+  sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
 
-  sheetPlayerAgi: document.getElementById("sheet-player-agi"),
-  sheetPlayerInt: document.getElementById("sheet-player-int"),
-  sheetPlayerVig: document.getElementById("sheet-player-vig"),
-  sheetPlayerPre: document.getElementById("sheet-player-pre"),
-  sheetPlayerFor: document.getElementById("sheet-player-for"),
+  toast: document.querySelector(".toast"),
+  toastDice: document.getElementById("toast-dice"),
 };

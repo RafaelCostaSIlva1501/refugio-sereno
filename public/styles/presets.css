@@ -88,6 +88,10 @@ textarea {
   color: var(--cor04);
 }
 
+.w-full {
+  width: 100%;
+}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -96,6 +100,11 @@ textarea {
 .col {
   display: flex;
   flex-direction: column;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
 }
 
 .wrap {
@@ -134,4 +143,48 @@ body {
   background-color: var(--cor01);
   border: 2px solid var(--cor03);
   border-radius: var(--s4);
+}
+
+#toast-dice {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: none;
+  flex-direction: column;
+  gap: var(--s12);
+
+  width: var(--s256);
+  padding: var(--s12);
+
+  background-color: var(--cor02);
+  border: 2px solid var(--cor04);
+  border-radius: 4px;
+
+  color: var(--cor04);
+}
+
+#toast-dice h4 {
+  display: flex;
+  align-items: center;
+  font-size: var(--s16);
+}
+
+#toast-dice > div {
+  display: flex;
+}
+
+#toast-dice > div div {
+  display: flex;
+  flex-direction: row;
+}
+
+#toast-dice span {
+  font-size: var(--s16);
+}
+
+#toast-dice > span {
+  color: var(--cor07);
+  font-size: var(--s12);
 }

@@ -1,3 +1,17 @@
+.sheet-dices #sheet-attributes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.sheet-dices #sheet-attributes button {
+  flex-direction: column;
+  align-items: center;
+}
+
+.sheet-dices #sheet-attributes button:hover {
+  transform: scale(1.09);
+}
+
 .sheet-dices #sheet-expertises {
   display: flex;
   flex-wrap: wrap;
@@ -21,17 +35,4 @@
 .sheet-dices #sheet-expertises button span {
   display: flex;
   align-items: center;
-}
-
-.sheet-dices .sheet-attributes {
-  display: flex;
-  justify-content: space-around;
-}
-
-.sheet-dices .sheet-attributes button {
-  flex-direction: column;
-}
-
-.sheet-dices .sheet-attributes button:hover {
-  transform: scale(1.09);
 }

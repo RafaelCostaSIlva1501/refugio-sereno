@@ -459,6 +459,7 @@
       </footer>
     </form>
 
+    <!--Ficha de personagem-->
     <section class="pages sheet">
       <header>
         <button class="btn-sheet-section" data-target="sheet-info">
@@ -601,180 +602,213 @@
       </section>
 
       <section class="sheet-section sheet-stats">
-        <div class="sheet-stats-bar">
-          <div>
-            <h3>Pontos de Vida</h3>
-            <label>
-              <div>
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-                    />
-                  </svg>
-                </button>
+        <div class="row" style="gap: 8px;">
+          <!--Defesa-->
+          <div class="sheet-stats-defense">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="128px"
+              viewBox="0 -960 960 960"
+              width="128px"
+              fill="#e0e0e0"
+            >
+              <path
+                d="M480-81q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"
+              />
+            </svg>
 
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
-                    />
-                  </svg>
-                </button>
+            <span id="sheet-player-defense"></span>
+          </div>
+
+          <!--Passivas e Barras de status-->
+          <div class="col w-full" style="gap: 8px;">
+            <div class="sheet-stats-passive">
+              <div>
+                <span class="material-symbols-outlined">footprint</span>
+                <span id="sheet-player-displacement"></span>
+              </div>
+
+              <div>
+                <span class="material-symbols-outlined">block</span>
+                <span id="sheet-player-blocking"></span>
+              </div>
+
+              <div>
+                <span class="material-symbols-outlined">swords</span>
+                <span id="sheet-player-counterattack"></span>
+              </div>
+
+              <div>
+                <span class="material-symbols-outlined">sprint</span>
+                <span id="sheet-player-dodging"></span>
+              </div>
+            </div>
+
+            <!--Pontos de vida-->
+            <label class="sheet-stats-bar">
+              <div>
+                <!--Botões de subtração-->
+                <div>
+                  <!--Subtrai 5-->
+                  <button id="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                      />
+                    </svg>
+                  </button>
+
+                  <!--Subtrai 1-->
+                  <button id="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <!--Valor atual e valor total-->
+                <p>
+                  <span id="currentPV"></span>
+                  <span>/</span>
+                  <span id="totalPV"></span>
+                </p>
+
+                <!--Botões de adição-->
+                <div>
+                  <!--Adiciona 1-->
+                  <button id="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                      />
+                    </svg>
+                  </button>
+
+                  <!--Adiciona 5-->
+                  <button id="">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <progress id="barPV"></progress>
-              <p>
-                <span id="currentPV"></span>
-                /
-                <span id="totalPV"></span>
-              </p>
-
-              <div>
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                    />
-                  </svg>
-                </button>
-
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
-                    />
-                  </svg>
-                </button>
-              </div>
             </label>
-          </div>
 
-          <div>
-            <h3>Pontos de Determinação</h3>
-            <label>
+            <!--Pontos de determinação-->
+            <label class="sheet-stats-bar">
               <div>
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-                    />
-                  </svg>
-                </button>
+                <!--Botões de subtração-->
+                <div>
+                  <!--Subtrai 5-->
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                      />
+                    </svg>
+                  </button>
 
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
-                    />
-                  </svg>
-                </button>
+                  <!--Subtrai 1-->
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                <!--Valor atual e valor total-->
+                <p>
+                  <span id="currentPD"></span>
+                  /
+                  <span id="totalPD"></span>
+                </p>
+
+                <!--Botões de adição-->
+                <div>
+                  <!--Subtrai 1-->
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                      />
+                    </svg>
+                  </button>
+
+                  <!--Subtrai 5-->
+                  <button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      height="24px"
+                      viewBox="0 -960 960 960"
+                      width="24px"
+                      fill="#e6eef8"
+                    >
+                      <path
+                        d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
 
               <progress id="barPD"></progress>
-              <p>
-                <span id="currentPD"></span>
-                /
-                <span id="totalPD"></span>
-              </p>
-
-              <div>
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                    />
-                  </svg>
-                </button>
-
-                <button>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="24px"
-                    viewBox="0 -960 960 960"
-                    width="24px"
-                    fill="#e6eef8"
-                  >
-                    <path
-                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
-                    />
-                  </svg>
-                </button>
-              </div>
             </label>
           </div>
         </div>
       </section>
 
       <section class="sheet-section sheet-dices">
-        <div class="sheet-attributes">
-          <button>
-            <span>AGI</span>
-            <span id="sheet-player-agi"></span>
-          </button>
-
-          <button>
-            <span>INT</span>
-            <span id="sheet-player-int"></span>
-          </button>
-
-          <button>
-            <span>VIG</span>
-            <span id="sheet-player-vig"></span>
-          </button>
-
-          <button>
-            <span>PRE</span>
-            <span id="sheet-player-pre"></span>
-          </button>
-
-          <button>
-            <span>FOR</span>
-            <span id="sheet-player-for"></span>
-          </button>
-        </div>
+        <div id="sheet-attributes"></div>
 
         <div id="sheet-expertises"></div>
       </section>
@@ -784,7 +818,9 @@
       <section class="sheet-section sheet-box">5</section>
     </section>
 
+    <article id="toast-dice"></article>
+
     <script type="module" src="scripts/display.js"></script>
-    <script type="module" src="scripts/createSheet.js"></script>
+    <script type="module" src="scripts/playerSheet.js"></script>
   </body>
 </html>
