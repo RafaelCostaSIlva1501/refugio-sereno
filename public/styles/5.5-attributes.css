@@ -21,7 +21,7 @@
 .create-sheet-attribute span {
   padding: var(--s8);
 
-  background-color: var(--cor07);
+  background-color: var(--yellow);
 
   color: var(--cor01);
   font-size: var(--s16);

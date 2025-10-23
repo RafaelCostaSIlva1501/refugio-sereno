@@ -1,26 +1,39 @@
+/*========== IMPORTAÇÕES ==========*/
 import { DOM } from "./DOM.js";
-import { display } from "./utilities.js";
+import { display } from "./utils.js";
 
-DOM.theme.addEventListener("click", () => {
-  const body = document.body;
-  body.classList.toggle("light");
-});
+/*========== UIstate ==========*/
 
-let menuON = false;
+export const UIstate = {
+  menu: false,
+};
+
+/*========== MENUS ==========*/
 
 DOM.btnMenu.forEach((button) => {
   button.addEventListener("click", () => {
-    menuON = !menuON;
+    UIstate.menu = !UIstate.menu;
 
-    DOM.menu.style.width = menuON ? "220px" : "0px";
-    DOM.menu.style.padding = menuON ? "20px 20px" : "20px 0px";
+    DOM.menu.style.width = UIstate.menu ? "220px" : "0px";
+    DOM.menu.style.padding = UIstate.menu ? "20px 20px" : "20px 0px";
   });
 });
+
+/*========== IMPORTAÇÕES ==========*/
 
 DOM.btnPages.forEach((e) => {
   e.addEventListener("click", () => {
     display("pages", e, "open");
   });
+});
+
+/*========== IMPORTAÇÕES ==========*/
+
+/*========== IMPORTAÇÕES ==========*/
+
+DOM.theme.addEventListener("click", () => {
+  const body = document.body;
+  body.classList.toggle("light");
 });
 
 DOM.openModal.forEach((e) => {
@@ -103,10 +116,13 @@ DOM.btnSheetSection.forEach((btn, i) => {
 DOM.btnSheetTabDetails.forEach((btn, i) => {
   btn.addEventListener("click", () => {
     DOM.btnSheetTabDetails.forEach((e) => {
-      e.style.borderBottom = "1px solid var(--cor01)";
+      e.style.borderBottom = "4px solid var(--cor01)";
+      e.style.backgroundColor = "var(--cor02)";
     });
 
-    btn.style.borderBottom = "1px solid var(--cor04)";
+    btn.style.borderBottom = "4px solid var(--cor04)";
+    btn.style.backgroundColor = "var(--cor03)";
+
     display("sheet-tab-details", btn, "open");
   });
 });

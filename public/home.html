@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Refúgio Sereno</title>
 
+    <!--Google Fontes-->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
 
+    <!--Fonts Awesome-->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -31,12 +33,10 @@
     <link rel="stylesheet" href="styles/5.6-expertises.css" />
     <link rel="stylesheet" href="styles/6.7-preview.css" />
     <link rel="stylesheet" href="styles/7-sheet-character.css" />
-    <link rel="stylesheet" href="styles/7.1-sheet-character-info.css" />
-    <link rel="stylesheet" href="styles/7.2-sheet-character-stats.css" />
-    <link rel="stylesheet" href="styles/7.3-sheet-character-dices.css" />
   </head>
+
   <body>
-    <!--Cabeçalho principal (visível em todas as seções)-->
+    <!--CABEÇALHO-->
     <header class="home-header">
       <!--Logo + botão para voltar a home-->
       <button class="button-page" data-target="home">
@@ -78,9 +78,7 @@
       </nav>
     </header>
 
-    <!--================-->
-
-    <!--Seção principal para navegação entre seções-->
+    <!--HOME-->
     <main class="pages home">
       <button class="button-page" data-target="person">
         <span class="material-symbols-outlined"> person_add </span>
@@ -108,9 +106,7 @@
       </button>
     </main>
 
-    <!--================-->
-
-    <!--Seção para criar uma ficha de personagem ou vizualizar os personagens pré-existente-->
+    <!--SELECIONAR PERSONAGEM-->
     <section class="pages person">
       <header>
         <button class="open-modal" data-target="create-sheet-player">
@@ -122,9 +118,7 @@
       <section id="list-characters-players"></section>
     </section>
 
-    <!--================-->
-
-    <!--Formulário para criação de ficha de personagem-->
+    <!--CRIAR PERSONAGEM-->
     <form class="modal create-sheet-player">
       <!--Cabeçalho do formulário de criação de fichas-->
       <header>
@@ -459,9 +453,9 @@
       </footer>
     </form>
 
-    <!--Ficha de personagem-->
+    <!--FICHA DO PERSONAGEM-->
     <section class="pages sheet">
-      <header>
+      <nav>
         <button class="btn-sheet-section" data-target="sheet-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -532,51 +526,84 @@
             />
           </svg>
         </button>
-      </header>
+      </nav>
 
       <section class="sheet-section sheet-info">
+        <!--INFOS-->
         <div class="sheet-info-img">
+          <!--Imagem do personagem-->
           <img id="sheet-player-photo" />
 
+          <!--Infos do personagem-->
           <div>
-            <p>Nome: <span id="sheet-player-name"></span></p>
+            <!--Nome-->
+            <p>
+              <span>Nome:</span>
+              <span id="sheet-player-name"></span>
+            </p>
 
-            <p>Nacionalidade: <span id="sheet-player-nationality"></span></p>
+            <!--Nacionalidade-->
+            <p>
+              <span>Nacionalidade:</span>
+              <span id="sheet-player-nationality"></span>
+            </p>
 
-            <p>Idade: <span id="sheet-player-age"></span></p>
+            <!--Idade-->
+            <p>
+              <span>Idade:</span>
+              <span id="sheet-player-age"></span>
+            </p>
           </div>
 
           <div>
-            <p>Campanha: <span id="sheet-player-campaign"></span></p>
-            <p>Nível: <span id="sheet-player-level"></span></p>
-            <p>Origem: <span id="sheet-player-origin"></span></p>
+            <!--Campanha-->
+            <p>
+              <span>Campanha:</span>
+              <span id="sheet-player-campaign"></span>
+            </p>
+
+            <!--Nível-->
+            <p>
+              <span>Nível:</span>
+              <span id="sheet-player-level"></span>
+            </p>
+
+            <!--Origem-->
+            <p>
+              <span>Origem:</span>
+              <span id="sheet-player-origin"></span>
+            </p>
           </div>
         </div>
 
+        <!--DETALHES-->
         <div class="sheet-info-details">
-          <header>
+          <nav>
             <button
               class="btn-sheet-tab-details"
               data-target="sheet-tab-history"
             >
               História
             </button>
+
             <button
               class="btn-sheet-tab-details"
               data-target="sheet-tab-personality"
             >
               Personalidade
             </button>
+
             <button
               class="btn-sheet-tab-details"
               data-target="sheet-tab-appearance"
             >
               Aparência
             </button>
+
             <button class="btn-sheet-tab-details" data-target="sheet-tab-notes">
               Anotações
             </button>
-          </header>
+          </nav>
 
           <textarea
             class="sheet-tab-details sheet-tab-history"
@@ -601,15 +628,16 @@
         </div>
       </section>
 
+      <!--STATUS-->
       <section class="sheet-section sheet-stats">
-        <div class="row" style="gap: 8px;">
+        <div style="display: flex; align-items: center; gap: 12px">
           <!--Defesa-->
           <div class="sheet-stats-defense">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              height="128px"
+              height="96px"
               viewBox="0 -960 960 960"
-              width="128px"
+              width="96px"
               fill="#e0e0e0"
             >
               <path
@@ -621,7 +649,14 @@
           </div>
 
           <!--Passivas e Barras de status-->
-          <div class="col w-full" style="gap: 8px;">
+          <div
+            style="
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              gap: 12px;
+            "
+          >
             <div class="sheet-stats-passive">
               <div>
                 <span class="material-symbols-outlined">footprint</span>
@@ -805,20 +840,133 @@
             </label>
           </div>
         </div>
+
+        <div class="sheet-stats-attack">
+          <button data-dice="4">
+            <img src="img/dice/d4.png" alt="" />
+            <span>D4</span>
+          </button>
+
+          <button data-dice="6">
+            <img src="img/dice/d6.png" alt="" />
+            <span>D6</span>
+          </button>
+
+          <button data-dice="8">
+            <img src="img/dice/d8.png" alt="" />
+            <span>D8</span>
+          </button>
+
+          <button data-dice="10">
+            <img src="img/dice/d10.png" alt="" />
+            <span>D10</span>
+          </button>
+
+          <button data-dice="12">
+            <img src="img/dice/d12.png" alt="" />
+            <span>D12</span>
+          </button>
+
+          <button data-dice="20">
+            <img src="img/dice/d20.png" alt="" />
+            <span>D20</span>
+          </button>
+        </div>
+
+        <div class="sheet-stats-fight">
+          <nav>
+            <button>Armas</button>
+            <button>Equipamentos</button>
+            <button>Habilidades</button>
+            <button>Resistências</button>
+            <button>Condições</button>
+          </nav>
+
+          <section class="sheet-stats-fight-panel" id="sheet-stats-weapons">
+            <header>
+              <span>Armas</span>
+            </header>
+
+            <div>
+              <!--Imagem da Arma-->
+              <img src="img/pistola.png" alt="" />
+
+              <!--Informações sobre a arma-->
+              <div>
+                <!--Dano da arma-->
+                <p>
+                  <span>Dano:</span>
+                  <span>2d20</span>
+                </p>
+
+                <!--Crítico da arma-->
+                <p>
+                  <span>Critíco:</span>
+                  <span>3x</span>
+                </p>
+
+                <!--Alcance da arma-->
+                <p>
+                  <span>Alcance:</span>
+                  <span></span>
+                </p>
+              </div>
+
+              <!--Informações sobre a arma-->
+              <div>
+                <!--Tipo da arma-->
+                <p>
+                  <span>Tipo:</span>
+                  <span></span>
+                </p>
+
+                <!--Peso da arma-->
+                <p>
+                  <span>Peso:</span>
+                  <span></span>
+                </p>
+              </div>
+            </div>
+
+            <footer>
+
+            </footer>
+          </section>
+
+          <section
+            class="sheet-stats-fight-panel"
+            id="sheet-stats-equipment"
+          ></section>
+
+          <section
+            class="sheet-stats-fight-panel"
+            id="sheet-stats-skills"
+          ></section>
+
+          <section
+            class="sheet-stats-fight-panel"
+            id="sheet-stats-resistances"
+          ></section>
+
+          <section
+            class="sheet-stats-fight-panel"
+            id="sheet-stats-conditions"
+          ></section>
+        </div>
       </section>
 
+      <!--DADOS-->
       <section class="sheet-section sheet-dices">
         <div id="sheet-attributes"></div>
 
         <div id="sheet-expertises"></div>
       </section>
 
+      <!--INVENTÁRIO-->
       <section class="sheet-section sheet-inventory">4</section>
 
       <section class="sheet-section sheet-box">5</section>
     </section>
-
-    <article id="toast-dice"></article>
 
     <script type="module" src="scripts/display.js"></script>
     <script type="module" src="scripts/playerSheet.js"></script>

@@ -47,7 +47,7 @@
   padding: var(--s12);
 
   background-color: var(--cor02);
-  border-left: 4px solid var(--cor05);
+  border-left: 4px solid var(--blue);
   border-radius: 4px;
   box-shadow: 0 0 10px #000000b7;
 
@@ -71,8 +71,3 @@
   gap: var(--s4);
 }
 
-.person article div h2 {
-}
-
-.person article div p {
-}

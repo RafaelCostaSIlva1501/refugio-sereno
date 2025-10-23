@@ -22,11 +22,11 @@
 .create-sheet-origins input[type="radio"] {
   margin-left: auto;
 
-  accent-color: var(--cor06);
+  accent-color: var(--red);
 }
 
 .create-sheet-origins label:has(input[type="radio"]:checked) {
-  border: 2px solid var(--cor06);
+  border: 2px solid var(--red);
 }
 
 .create-sheet-origins label:has(input[type="radio"]:disabled) {
@@ -54,7 +54,7 @@
 }
 
 .create-sheet-origins details p span {
-  color: var(--cor06);
+  color: var(--red);
   font-size: var(--s12);
   font-weight: 700;
 }

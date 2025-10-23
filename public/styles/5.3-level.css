@@ -21,13 +21,13 @@
 }
 
 .create-sheet-level label:has(input[type="radio"]:checked) {
-  border: 2px solid var(--cor05);
+  border: 2px solid var(--blue);
 }
 
 .create-sheet-level label.disabled-level {
   pointer-events: none;
   opacity: 0.5;
-  border: 2px solid #ef44449c !important; /* ganha até do checked */
+  border: 2px solid var(--red) !important; /* ganha até do checked */
 }
 
 .create-sheet-level label:has(input[type="radio"]:disabled) {

@@ -6,9 +6,13 @@ export const DOM = {
   menu: document.querySelector(".menu"),
   btnMenu: document.querySelectorAll(".button-menu"),
 
-  /* ================ SEÇÕES/MODAIS ================ */
+  /* ================ TABS ================ */
   pages: document.querySelectorAll(".pages"),
   btnPages: document.querySelectorAll(".button-page"),
+
+  /* ================ TOGGLES ================ */
+
+  /* ================ SEÇÕES/MODAIS ================ */
 
   modal: document.querySelectorAll(".modal"),
   openModal: document.querySelectorAll(".open-modal"),
@@ -17,6 +21,7 @@ export const DOM = {
   createSheetPersonContent: document.querySelectorAll(
     ".create-sheet-person-content"
   ),
+  
   changeSectionCreateSheetPerson: document.querySelectorAll(
     ".change-section-create-sheet-person"
   ),

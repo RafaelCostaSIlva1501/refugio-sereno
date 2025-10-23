@@ -1,14 +1,11 @@
 /* ========== IMPORTAÇÕES ========== */
 import { DOM } from "./DOM.js";
 
-import { levels, origins, attributes, expertises } from "./data.js";
+import { display, createElement } from "./utils.js";
 
-import {
-  display,
-  createElement,
-  rollDiceAttribute,
-  rollDiceExpertise,
-} from "./utilities.js";
+import { rollDiceAttribute, rollDiceExpertise } from "./game.js";
+
+import { levels, origins, attributes, expertises } from "./data.js";
 
 /* ========== INICIALIZAÇÃO DE VARIÁVEIS ========== */
 
@@ -74,6 +71,14 @@ let newCharacter = {
   blocking: "",
   counterattack: "",
   dodging: "",
+
+  inventory: [
+    {
+      name: "",
+      img: "",
+      description: "",
+    },
+  ],
 };
 
 /* ========== RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO ========== */
@@ -406,11 +411,11 @@ const updatewSheetExpertises = () => {
     if (value === 0) {
       span.style.color = "var(--cor04)";
     } else if (value === 5) {
-      span.style.color = "var(--cor08)";
+      span.style.color = "var(--green)";
     } else if (value === 10) {
-      span.style.color = "var(--cor06)";
+      span.style.color = "var(--red)";
     } else if (value === 15) {
-      span.style.color = "var(--cor05)";
+      span.style.color = "var(--blue)";
     }
 
     DOM.previewExpertise.appendChild(span);
@@ -649,11 +654,11 @@ const renderSheetRollDices = (index) => {
     let colorDice = "#e0e0e0";
 
     if (exper === 5) {
-      colorDice = "var(--cor08)";
+      colorDice = "var(--green)";
     } else if (exper === 10) {
-      colorDice = "var(--cor06)";
+      colorDice = "var(--red)";
     } else if (exper === 15) {
-      colorDice = "var(--cor05)";
+      colorDice = "var(--blue)";
     }
 
     const span = createElement("span");
@@ -696,5 +701,3 @@ const renderSheetPlayer = (index) => {
 renderListPlayer();
 
 /* ========== FUNCIONALIDADES DA FICHA ========== */
-
-

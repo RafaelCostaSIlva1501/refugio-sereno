@@ -65,13 +65,13 @@
 .create-sheet-preview-status-bar
   div:nth-child(1)
   progress::-webkit-progress-value {
-  background-color: var(--cor06);
+  background-color: var(--red);
 }
 
 .create-sheet-preview-status-bar
   div:nth-child(2)
   progress::-webkit-progress-value {
-  background-color: var(--cor05);
+  background-color: var(--blue);
 }
 
 .create-sheet-preview-status-bar label progress::-webkit-progress-bar {
@@ -191,7 +191,7 @@
 
 .create-sheet-preview-level-origin details #preview-level p {
   font-weight: 600;
-  color: var(--cor05);
+  color: var(--blue);
 }
 .create-sheet-preview-level-origin details #preview-level span {
   color: var(--cor04);
@@ -199,7 +199,7 @@
 }
 
 .create-sheet-preview-level-origin details #preview-origin h4 {
-  color: var(--cor06);
+  color: var(--red);
 }
 
 .create-sheet-preview-level-origin details #preview-origin p {
@@ -207,7 +207,7 @@
   color: var(--cor04);
 }
 .create-sheet-preview-level-origin details #preview-origin span {
-  color: var(--cor06);
+  color: var(--red);
   font-weight: 600;
 }
 
@@ -240,17 +240,17 @@
 
 /* Segundo div dentro de cada span */
 .create-sheet-preview-expertises > div:nth-child(1) span:nth-child(2) div {
-  background-color: var(--cor08);
+  background-color: var(--green);
 }
 
 /* Terceiro div dentro de cada span */
 .create-sheet-preview-expertises > div:nth-child(1) span:nth-child(3) div {
-  background-color: var(--cor06);
+  background-color: var(--red);
 }
 
 /* Quarto div dentro de cada span */
 .create-sheet-preview-expertises > div:nth-child(1) span:nth-child(4) div {
-  background-color: var(--cor05);
+  background-color: var(--blue);
 }
 
 .create-sheet-preview-expertises hr {

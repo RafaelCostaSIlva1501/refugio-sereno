@@ -5,10 +5,13 @@
   --cor02: #1f1f1f;
   --cor03: #494949;
   --cor04: #e0e0e0;
-  --cor05: #362d85;
-  --cor06: #ef4444;
-  --cor07: #f4c430;
-  --cor08: #1faa52;
+  --red: #ef4444; /*cor06*/
+  --orange: #f97316;
+  --yellow: #f4c430; /*cor07*/
+  --green: #1faa52; /*cor08*/
+  --indigo: #46a0c8;
+  --blue: #362d85; /*cor05*/
+  --violet: #6b32c8;
 
   --s4: 4px;
   --s8: 8px;
