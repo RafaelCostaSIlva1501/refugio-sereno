@@ -5,12 +5,12 @@
   --cor02: #1f1f1f;
   --cor03: #494949;
   --cor04: #e0e0e0;
-  --red: #ef4444; /*cor06*/
+  --red: #ef4444;
   --orange: #f97316;
-  --yellow: #f4c430; /*cor07*/
-  --green: #1faa52; /*cor08*/
+  --yellow: #f4c430;
+  --green: #1faa52;
   --indigo: #46a0c8;
-  --blue: #362d85; /*cor05*/
+  --blue: #362d85;
   --violet: #6b32c8;
 
   --s4: 4px;
@@ -29,13 +29,6 @@
   --s512: 512px;
   --s640: 640px;
   --s768: 768px;
-}
-
-.light {
-  --cor01: #e0e0e0;
-  --cor02: #494949;
-  --cor03: #1f1f1f;
-  --cor04: #121212;
 }
 
 * {
@@ -78,6 +71,12 @@ button {
   cursor: pointer;
 
   transition: all 0.3s;
+}
+
+select {
+  border: none;
+  border-radius: 0;
+  outline: none;
 }
 
 input,
@@ -129,23 +128,25 @@ body {
   background-color: #121212;
 }
 
-.pages {
+.global-sections {
   padding: var(--s24);
 }
 
-.modal {
+dialog {
   position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 
-  width: 95%;
-  height: 85%;
-  max-width: var(--s512);
+  padding: var(--s12);
 
   background-color: var(--cor01);
   border: 2px solid var(--cor03);
   border-radius: var(--s4);
+
+  & > button {
+    margin-left: auto;
+  }
 }
 
 #toast-dice {

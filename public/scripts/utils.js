@@ -2,7 +2,7 @@ import { DOM } from "./DOM.js";
 import { expertises, attributes } from "./data.js";
 
 // Função que exibe uma seção específica com base no botão clicado
-export const display = (sectionSelector, buttonSelector, state) => {
+export const display = (sectionSelector, buttonSelector) => {
   // Seleciona todas as seções que correspondem à classe fornecida em sectionSelector
   const sections = document.querySelectorAll(`.${sectionSelector}`);
 
@@ -15,17 +15,19 @@ export const display = (sectionSelector, buttonSelector, state) => {
   const buttonTarget = buttonSelector.getAttribute("data-target");
 
   // Seleciona a seção correspondente ao valor de 'data-target'
-  const targetSection = document.querySelector(`.${buttonTarget}`);
+  const targetSection = document.getElementById(`${buttonTarget}`);
 
-  // Se a seção for encontrada, ela é exibida com display: flex
-  if (targetSection && state === "open") {
-    targetSection.style.display = "flex";
-  }
+  targetSection.style.display = "flex";
 };
 
-export const displayToggle = (id, state) => {
+export const displayToggle = (state, id) => {
+  const newState = !state;
+
   const element = document.getElementById(id);
-  element.style.display = state;
+
+  element.style.display = newState ? "flex" : "none";
+
+  return newState;
 };
 
 //Função para criar elementos no DOM
@@ -33,5 +35,3 @@ export const createElement = (tag) => {
   const element = document.createElement(tag);
   return element;
 };
-
-

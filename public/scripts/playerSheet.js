@@ -140,7 +140,7 @@ levels.forEach((e, i) => {
   requirements.textContent = `Requisitos: `;
   requirementsSpan.textContent = `${e.requirements[0]}`;
 
-  document.querySelector(".create-sheet-level").appendChild(label);
+  document.querySelector(".player-form-level").appendChild(label);
 
   label.appendChild(radio);
   label.appendChild(h3);
@@ -184,7 +184,7 @@ origins.forEach((e, i) => {
   const p3 = createElement("p");
   p3.innerHTML = `<span>${e.power[0]}:</span> ${e.power[1]}`;
 
-  document.querySelector(".create-sheet-origins").appendChild(label);
+  document.querySelector(".player-form-origins").appendChild(label);
   label.appendChild(details);
   details.appendChild(summary);
   summary.appendChild(radio);
@@ -194,7 +194,7 @@ origins.forEach((e, i) => {
 });
 
 // Renderiza as perícias no formulário
-expertises.forEach((e, i) => {
+expertises.forEach((e) => {
   const abbr = createElement("abbr");
   abbr.title = e.info;
 
@@ -235,7 +235,7 @@ expertises.forEach((e, i) => {
   opt4.textContent = "Expert";
   opt4.value = 15;
 
-  document.querySelector(".create-sheet-expertises").appendChild(abbr);
+  document.querySelector(".player-form-expertises").appendChild(abbr);
   abbr.appendChild(article);
   article.appendChild(span);
   article.appendChild(select);
@@ -435,7 +435,7 @@ document.addEventListener("input", (inputs) => {
   }
 });
 
-/* ========== RECOLHIMENTO DAS INFORMAÇÕES + PREVIEW DA FICHA  ========== */
+/* ========== CRIA A ESTRUTURA DO OBJETO DO PERSONAGEM ========== */
 
 const photoCharacter = () => {
   return new Promise((resolve, reject) => {
@@ -510,6 +510,8 @@ const expertisesCharacter = () => {
   newCharacter.expertises = tempCharacter.expertises;
 };
 
+const inventoryCharacter = () => {};
+
 const createCharacter = async () => {
   // Verifica se já existe um localStorage chamado "characters"
   if (!localStorage.getItem("characters")) {
@@ -535,7 +537,7 @@ const createCharacter = async () => {
 
   console.log("Personagem salvo!");
 
-  document.querySelector(".create-sheet-player").style.display = "none";
+  document.querySelector(".player-form").style.display = "none";
 
   renderListPlayer();
 };
@@ -549,33 +551,39 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
 const renderListPlayer = () => {
   DOM.listCharacterPlayer.innerHTML = "";
 
-  characters.forEach((s, i) => {
-    const article = createElement("article");
-    article.setAttribute("data-target", "sheet");
-    article.classList.add("button-page");
-    article.addEventListener("click", () => {
-      display("pages", article, "open");
-      renderSheetPlayer(i);
+  if (!characters) {
+    const span = createElement("span");
+    span.innerHTML = "Nenhum personagem foi criado!";
+
+    DOM.listCharacterPlayer.appendChild(span);
+  } else {
+    characters.forEach((s, i) => {
+      const article = createElement("article");
+      article.setAttribute("data-target", "sheet");
+      article.addEventListener("click", () => {
+        display("global-sections", article);
+        renderSheetPlayer(i);
+      });
+
+      const img = createElement("img");
+      img.src = s.photo;
+      img.alt = "Foto do personagem";
+
+      const div = createElement("div");
+
+      const h2 = createElement("h2");
+      h2.textContent = s.name;
+
+      const p = createElement("p");
+      p.textContent = s.campaign;
+
+      DOM.listCharacterPlayer.appendChild(article);
+      article.appendChild(img);
+      article.appendChild(div);
+      div.appendChild(h2);
+      div.appendChild(p);
     });
-
-    const img = createElement("img");
-    img.src = s.photo;
-    img.alt = "Foto do personagem";
-
-    const div = createElement("div");
-
-    const h2 = createElement("h2");
-    h2.textContent = s.name;
-
-    const p = createElement("p");
-    p.textContent = s.campaign;
-
-    DOM.listCharacterPlayer.appendChild(article);
-    article.appendChild(img);
-    article.appendChild(div);
-    div.appendChild(h2);
-    div.appendChild(p);
-  });
+  }
 };
 
 renderListPlayer();
@@ -688,7 +696,13 @@ const renderSheetRollDices = (index) => {
   });
 };
 
-// const renderSheetInventory = (index) => {};
+const renderSheetInventory = (index) => {
+  let inventoryLimit = characters[index].for * 5;
+
+  for (let i = 0; i < inventoryLimit; i++) {
+    const slot = createElement("div");
+  }
+};
 
 // const renderSheetMistery = (index) => {};
 
@@ -696,8 +710,11 @@ const renderSheetPlayer = (index) => {
   renderSheetInfos(index);
   renderSheetStats(index);
   renderSheetRollDices(index);
+  renderSheetInventory(index);
 };
 
 renderListPlayer();
 
 /* ========== FUNCIONALIDADES DA FICHA ========== */
+
+const addNewItem = () => {};

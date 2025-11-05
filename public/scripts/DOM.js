@@ -2,35 +2,45 @@ export const DOM = {
   /* ================ CONFIGURAÇÕES ================ */
   theme: document.getElementById("change-theme"),
 
-  /* ================ MENU ================ */
+  /* ================ TOGGLE - NAVIGATION - PAGINATION ================ */
+
+  // TOGGLE
   menu: document.querySelector(".menu"),
-  btnMenu: document.querySelectorAll(".button-menu"),
+  toggleMenu: document.querySelectorAll(".toggle-menu"),
 
-  /* ================ TABS ================ */
-  pages: document.querySelectorAll(".pages"),
-  btnPages: document.querySelectorAll(".button-page"),
+  togglePlayerForm: document.querySelectorAll(".toggle-player-form"),
 
-  /* ================ TOGGLES ================ */
+  modalAddItem: document.getElementById("modal-add-item"),
+  toggleModalAddItem: document.querySelectorAll(".toggle-modal-add-item"),
 
-  /* ================ SEÇÕES/MODAIS ================ */
+  // NAVIGATION
+  globalSections: document.querySelectorAll(".global-sections"),
+  navGlobalSections: document.querySelectorAll(".nav-global-sections"),
 
-  modal: document.querySelectorAll(".modal"),
-  openModal: document.querySelectorAll(".open-modal"),
-  closeModal: document.querySelectorAll(".close-modal"),
-
-  createSheetPersonContent: document.querySelectorAll(
-    ".create-sheet-person-content"
+  previewDetailsSections: document.querySelectorAll(
+    ".preview-details-sections"
   ),
-  
-  changeSectionCreateSheetPerson: document.querySelectorAll(
-    ".change-section-create-sheet-person"
+  navPreviewDetailsSections: document.querySelectorAll(
+    ".nav-preview-details-sections"
   ),
 
-  sheetSections: document.querySelectorAll(".sheet-section"),
-  btnSheetSection: document.querySelectorAll(".btn-sheet-section"),
+  sheetSections: document.querySelectorAll(".sheet-sections"),
+  navSheetSections: document.querySelectorAll(".nav-sheet-sections"),
 
-  sheetTabDetails: document.querySelectorAll(".sheet-tab-details"),
-  btnSheetTabDetails: document.querySelectorAll(".btn-sheet-tab-details"),
+  sheetDetailsSections: document.querySelectorAll(".sheet-details-sections"),
+  navSheetDetailsSections: document.querySelectorAll(
+    ".nav-sheet-details-sections"
+  ),
+
+  sheetFightSections: document.querySelectorAll(".sheet-fight-sections"),
+  navSheetFightSections: document.querySelectorAll(".nav-sheet-fight-sections"),
+
+  modalAddItemSections: document.querySelectorAll("modal-add-item-sections"),
+  navAddItemSections: document.querySelectorAll(".nav-add-item-sections"),
+
+  // PAGINATION
+  playerFormContent: document.querySelectorAll(".player-form-content"),
+  paginationPlayerForm: document.querySelectorAll(".pagination-player-form"),
 
   /* ================ INPUTS DE CRIAÇÃO DE PERSONAGEM ================ */
 
@@ -73,8 +83,6 @@ export const DOM = {
   previewPDbar: document.getElementById("preview-pd-bar"),
   previewPDvalue: document.getElementById("preview-pd-value"),
 
-  btnCSPDetails: document.querySelectorAll(".btn-CSP-details"),
-
   btnCreateCharacter: document.getElementById("btn-create-character"),
 
   listCharacterPlayer: document.getElementById("list-characters-players"),
@@ -112,6 +120,8 @@ export const DOM = {
 
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
+
+  sheetInventorySlots: document.getElementById("sheet-inventory-slots"),
 
   toast: document.querySelector(".toast"),
   toastDice: document.getElementById("toast-dice"),
