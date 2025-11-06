@@ -1103,3 +1103,29 @@ export const conditions = [
     description: "O personagem sofre –5 na Defesa.",
   },
 ];
+
+export const items = [
+  {
+    name: "Faca",
+    category: "Arma",
+    type: "Impacto",
+    damage: [1, 4],
+    critical: ["*"],
+    range: [],
+    weight: "",
+    img: "",
+  },
+];
+
+/*
+  {
+    name: "",
+    category: "",
+    type: "",
+    damage: "",
+    critical: "",
+    range: "",
+    weight: "",
+    img: "",
+  },
+*/

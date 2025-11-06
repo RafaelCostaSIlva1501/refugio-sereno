@@ -1,3 +1,198 @@
+/*========== CABEÇALHO ==========*/
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: var(--s24);
+
+  background-color: var(--cor02);
+  border-bottom: 2px solid var(--cor03);
+
+  & img {
+    width: var(--s96);
+    filter: invert(100%);
+    cursor: pointer;
+  }
+
+  & div {
+    display: flex;
+    gap: var(--s12);
+  }
+
+  & button {
+    padding: var(--s4);
+
+    border-radius: var(--s4);
+
+    color: #e0e0e0;
+    font-size: var(--s24);
+
+    transition: all 0.3s;
+  }
+
+  & button:hover {
+    background-color: var(--cor04);
+
+    color: var(--cor02);
+
+    transform: translateX(4px);
+  }
+
+  & span {
+    color: inherit;
+  }
+
+  & nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
+
+    width: 0;
+    height: 100%;
+    padding: var(--s24) 0px;
+
+    background-color: black;
+
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+
+    & button {
+      font-size: var(--s16);
+    }
+
+    & button:nth-child(1) {
+      width: fit-content;
+
+      margin-left: auto;
+    }
+  }
+}
+
+/*========== SESSÃO INICIAL (HOME) ==========*/
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  gap: var(--s24);
+
+  padding: var(--s12);
+
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: var(--s128);
+    padding: var(--s24);
+
+    background-color: var(--cor03);
+    border-radius: var(--s4);
+    box-shadow: 0 0 12px #00000063;
+
+    color: var(--cor04);
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+  }
+
+  & button:hover {
+    transform: translateX(4px);
+    background-color: var(--cor04);
+    color: var(--cor01);
+  }
+
+  & span {
+    color: inherit;
+  }
+}
+
+/*========== LISTA DE PERSONAGENS ==========*/
+.character-list {
+  display: none;
+  flex-direction: column;
+
+  & header {
+    width: 100%;
+    padding-bottom: var(--s24);
+    border-bottom: 2px solid var(--cor03);
+
+    & button {
+      align-items: center;
+
+      padding: var(--s8);
+
+      border: 2px solid var(--cor04);
+      border-radius: var(--s4);
+
+      color: var(--cor04);
+      font-weight: bolder;
+    }
+
+    & button:hover {
+      background-color: var(--cor04);
+
+      color: var(--cor02);
+
+      transform: translateX(4px);
+    }
+
+    & span {
+      color: inherit;
+    }
+  }
+
+  & section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s12);
+    flex: 1;
+    padding-top: var(--s24);
+
+    & article {
+      display: flex;
+      align-items: center;
+      gap: var(--s12);
+
+      width: 100%;
+      max-width: var(--s512);
+      padding: var(--s12);
+
+      background-color: var(--cor02);
+      border-left: 4px solid var(--blue);
+      border-radius: 4px;
+      box-shadow: 0 0 10px #000000b7;
+
+      color: var(--cor04);
+
+      cursor: pointer;
+
+      & img {
+        width: var(--s64);
+        border-radius: 50%;
+      }
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s4);
+      }
+    }
+
+    & article:hover {
+      background-color: var(--cor03);
+    }
+  }
+}
+
 /*========== CRIAÇÃO DE FICHA DE PLAYER ==========*/
 .player-form {
   display: none;
@@ -379,6 +574,277 @@
 
   & .player-form-preview {
     display: none;
+
+    & .PF-preview-img-info {
+      display: flex;
+      gap: var(--s12);
+
+      & img {
+        width: var(--s96);
+        height: var(--s96);
+
+        border: 1px solid var(--cor04);
+      }
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        width: 100%;
+      }
+
+      & p {
+        border-bottom: 1px solid var(--cor03);
+
+        color: var(--cor04);
+        font-weight: 500;
+      }
+
+      & span {
+        font-weight: 400;
+      }
+    }
+
+    & .PF-preview-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & > nav {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+
+        & button {
+          align-items: center;
+
+          padding: var(--s4) var(--s8);
+
+          background-color: var(--cor02);
+          border-width: 1px 1px 0px 1px;
+          border-style: solid;
+          border-color: var(--cor04);
+          border-radius: var(--s4) var(--s4) 0 0;
+
+          color: var(--cor04);
+          font-weight: 500;
+        }
+
+        & button:hover {
+          background-color: var(--cor03);
+        }
+
+        & button:nth-child(1) {
+          background-color: var(--cor04);
+        }
+      }
+
+      & section {
+        display: none;
+
+        padding: var(--s12);
+
+        border-top: 1px solid var(--cor04);
+        background-color: var(--cor02);
+      }
+
+      & section:nth-child(2) {
+        display: flex;
+        padding: 0;
+      }
+    }
+
+    & .PF-preview-status-bar {
+      display: flex;
+      gap: var(--s12);
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        & label {
+          position: relative;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          & progress {
+            width: 100%;
+            border: 1px solid var(--cor02);
+            border-radius: var(--s4);
+
+            overflow: hidden;
+          }
+
+          & progress::-webkit-progress-bar {
+            position: relative;
+            background-color: var(--cor03);
+          }
+
+          & span {
+            position: absolute;
+          }
+        }
+      }
+
+      & div:nth-child(1) progress::-webkit-progress-value {
+        background-color: var(--red);
+      }
+
+      & div:nth-child(2) progress::-webkit-progress-value {
+        background-color: var(--blue);
+      }
+    }
+
+    & .PF-preview-attributes {
+      display: flex;
+      justify-content: space-between;
+
+      & div {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+    }
+
+    & .PF-preview-level-origin {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s12);
+
+      & details {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+
+        padding: var(--s12);
+
+        background-color: var(--cor02);
+        box-shadow: 0 2px 4px #00000067;
+        border: 1px solid var(--cor03);
+        border-radius: var(--s8);
+
+        cursor: pointer;
+
+        transition: all 0.3s ease;
+
+        & div {
+          display: flex;
+          flex-direction: column;
+          gap: var(--s8);
+
+          padding: var(--s8) 0;
+        }
+
+        & #preview-level {
+          & p {
+            font-weight: 600;
+            color: var(--blue);
+          }
+
+          & span {
+            color: var(--cor04);
+            font-weight: 300;
+          }
+        }
+
+        & #preview-origin {
+          font-size: var(--s12);
+
+          & h4 {
+            color: var(--red);
+          }
+
+          & p {
+            font-weight: 300;
+            color: var(--cor04);
+          }
+
+          & span {
+            color: var(--red);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    & .PF-preview-expertises {
+      & div:nth-child(1) {
+        display: flex;
+        justify-content: space-between;
+
+        font-size: 12px;
+
+        & span {
+          display: flex;
+          align-items: center;
+          gap: var(--s4);
+        }
+
+        & div {
+          width: 12px;
+          height: 12px;
+        }
+
+        & span:nth-child(1) div {
+          background-color: var(--cor04);
+        }
+
+        & span:nth-child(2) div {
+          background-color: var(--green);
+        }
+
+        & span:nth-child(3) div {
+          background-color: var(--red);
+        }
+
+        & span:nth-child(4) div {
+          background-color: var(--blue);
+        }
+      }
+
+      & hr {
+        margin: var(--s12) 0;
+      }
+
+      & #preview-expertise {
+        display: flex;
+        flex-wrap: wrap;
+
+        padding: var(--s4) 0;
+
+        & span {
+          width: 25%;
+          margin: var(--s4) 0;
+
+          font-size: var(--s12);
+        }
+      }
+    }
+
+    & > button {
+      justify-content: center;
+      align-items: center;
+
+      padding: var(--s8);
+
+      border: 2px solid var(--cor04);
+      border-radius: var(--s4);
+
+      color: var(--cor04);
+      font-weight: 700;
+    }
+
+    & > button:hover {
+      background-color: var(--cor04);
+
+      color: var(--cor02);
+    }
   }
 }
 
@@ -821,14 +1287,32 @@
       align-items: center;
       gap: var(--s4);
 
-      & p {
-        font-size: var(--s24);
+      & button {
+        align-items: center;
+
+        padding: 2px var(--s4);
+
+        border: 2px solid var(--cor04);
+        border-radius: var(--s4);
+
+        & span {
+          color: inherit;
+          font-weight: 500;
+        }
+      }
+
+      & button:hover {
+        background-color: var(--cor04);
+        color: var(--cor02);
       }
     }
 
     & nav {
       display: flex;
       gap: var(--s8);
+
+      width: fit-content;
+      margin-left: auto;
 
       & button {
         padding: 2px;
@@ -868,6 +1352,7 @@
   }
 }
 
+/*========== ADICIONAR ITEM NA FICHA DE PLAYER ==========*/
 .modal-add-item {
   display: none;
   flex-direction: column;
