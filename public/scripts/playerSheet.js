@@ -9,7 +9,7 @@ import { levels, origins, attributes, expertises } from "./data.js";
 
 /* ========== INICIALIZAÇÃO DE VARIÁVEIS ========== */
 
-const characters = JSON.parse(localStorage.getItem("characters"));
+let characters = JSON.parse(localStorage.getItem("characters")) || [];
 
 let tempCharacter = {
   photo: "",
@@ -513,14 +513,6 @@ const expertisesCharacter = () => {
 const inventoryCharacter = () => {};
 
 const createCharacter = async () => {
-  // Verifica se já existe um localStorage chamado "characters"
-  if (!localStorage.getItem("characters")) {
-    // Se não existe, inicializa com um objeto básico
-    const characters = [];
-
-    localStorage.setItem("characters", JSON.stringify(characters));
-  }
-
   const character = { ...newCharacter };
 
   await photoCharacter();
