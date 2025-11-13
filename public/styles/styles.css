@@ -1137,7 +1137,7 @@
       display: flex;
       gap: var(--s12);
 
-      height: 100%;
+      height: fit-content;
 
       & nav {
         display: flex;
@@ -1181,8 +1181,6 @@
           display: flex;
           gap: var(--s12);
 
-          border: 1px solid white;
-
           & img {
             width: var(--s96);
           }
@@ -1198,7 +1196,6 @@
         }
 
         & footer {
-          border: 1px solid red;
         }
       }
 
