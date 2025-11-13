@@ -959,14 +959,15 @@
 
       & textarea {
         display: none;
-        flex: 1;
 
+        height: 50%;
         padding: var(--s8);
 
         background-color: var(--cor02);
 
         color: #ffffffb4;
         font-size: 12px;
+        line-height: 16px;
       }
 
       & .sheet-tab-history {
@@ -1098,6 +1099,7 @@
         border-radius: var(--s4);
 
         & span {
+          display: none;
           color: inherit;
         }
       }
