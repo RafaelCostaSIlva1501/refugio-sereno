@@ -72,13 +72,7 @@ let newCharacter = {
   counterattack: "",
   dodging: "",
 
-  inventory: [
-    {
-      name: "",
-      img: "",
-      description: "",
-    },
-  ],
+  inventory: [],
 };
 
 /* ========== RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO ========== */
@@ -538,7 +532,7 @@ DOM.btnCreateCharacter.addEventListener("click", () => {
   createCharacter();
 });
 
-/* ========== RENDERIZAR PERSONAGENS ========== */
+/* ========== RENDERIZA OS PERSONAGENS NA LISTA ========== */
 
 const renderListPlayer = () => {
   DOM.listCharacterPlayer.innerHTML = "";
@@ -580,7 +574,7 @@ const renderListPlayer = () => {
 
 renderListPlayer();
 
-/* ========== RENDERIZAR FICHA DO PERSONAGEM ========== */
+/* ========== RENDERIZA A FICHA DOS PERSONAGENS ========== */
 
 const renderSheetInfos = (index) => {
   DOM.sheetPlayerPhoto.src = characters[index].photo;
@@ -709,4 +703,8 @@ renderListPlayer();
 
 /* ========== FUNCIONALIDADES DA FICHA ========== */
 
-const addNewItem = () => {};
+const addNewItem = (index) => {
+  characters[index].inventory;
+};
+
+const renderNewItem = () => {};

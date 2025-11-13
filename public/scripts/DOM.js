@@ -1,5 +1,6 @@
 export const DOM = {
   /* ================ CONFIGURAÇÕES ================ */
+
   theme: document.getElementById("change-theme"),
 
   /* ================ TOGGLE - NAVIGATION - PAGINATION ================ */
@@ -121,7 +122,9 @@ export const DOM = {
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
 
-  sheetInventorySlots: document.getElementById("sheet-inventory-slots"),
+  addItemNameInput: document.getElementById("add-item-name-input"),
+  addItemDescInput: document.getElementById("add-item-desc-input"),
+  addItemBtn: document.getElementById("add-item-btn"),
 
   toast: document.querySelector(".toast"),
   toastDice: document.getElementById("toast-dice"),

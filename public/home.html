@@ -25,7 +25,7 @@
   </head>
 
   <body>
-    <!--CABEÇALHO-->
+    <!--Cabeçalho-->
     <header class="home-header">
       <!--Logo + botão para voltar a home-->
 
@@ -75,7 +75,7 @@
       </nav>
     </header>
 
-    <!--HOME-->
+    <!--Página Inicial-->
     <main class="global-sections home" id="home">
       <button class="nav-global-sections" data-target="character-list">
         <span class="material-symbols-outlined"> person_add </span>
@@ -101,9 +101,12 @@
         <span class="material-symbols-outlined"> swords </span>
         <span>Equipamentos</span>
       </button>
-    </main>
 
-    <!--========== SESSÕES PRINCIPAIS ==========-->
+      <button class="nav-global-sections" data-target="settings">
+        <span class="material-symbols-outlined"> settings </span>
+        <span>Configurações</span>
+      </button>
+    </main>
 
     <!--Lista de personagens-->
     <section class="global-sections character-list" id="character-list">
@@ -298,215 +301,193 @@
 
       <!--STATUS-->
       <section class="sheet-sections sheet-stats" id="sheet-stats">
-        <div style="display: flex; align-items: center; gap: 12px">
-          <!--Defesa-->
-          <div class="sheet-stats-defense">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="96px"
-              viewBox="0 -960 960 960"
-              width="96px"
-              fill="#e0e0e0"
-            >
-              <path
-                d="M480-81q-140-35-230-162.5T160-523v-238l320-120 320 120v238q0 152-90 279.5T480-81Z"
-              />
-            </svg>
-
+        <div class="sheet-stats-passive">
+          <div>
+            <span class="material-symbols-outlined">shield</span>
             <span id="sheet-player-defense"></span>
           </div>
 
-          <!--Passivas e Barras de status-->
-          <div
-            style="
-              display: flex;
-              flex-direction: column;
-              width: 100%;
-              gap: 12px;
-            "
-          >
-            <div class="sheet-stats-passive">
+          <div>
+            <span class="material-symbols-outlined">footprint</span>
+            <span id="sheet-player-displacement"></span>
+          </div>
+
+          <div>
+            <span class="material-symbols-outlined">block</span>
+            <span id="sheet-player-blocking"></span>
+          </div>
+
+          <div>
+            <span class="material-symbols-outlined">swords</span>
+            <span id="sheet-player-counterattack"></span>
+          </div>
+
+          <div>
+            <span class="material-symbols-outlined">sprint</span>
+            <span id="sheet-player-dodging"></span>
+          </div>
+        </div>
+
+        <div class="sheet-stats-bar">
+          <!--Pontos de vida-->
+          <label>
+            <div>
+              <!--Botões de subtração-->
               <div>
-                <span class="material-symbols-outlined">footprint</span>
-                <span id="sheet-player-displacement"></span>
+                <!--Subtrai 5-->
+                <button id="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                    />
+                  </svg>
+                </button>
+
+                <!--Subtrai 1-->
+                <button id="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                    />
+                  </svg>
+                </button>
               </div>
 
-              <div>
-                <span class="material-symbols-outlined">block</span>
-                <span id="sheet-player-blocking"></span>
-              </div>
+              <!--Valor atual e valor total-->
+              <p>
+                <span id="currentPV"></span>
+                <span>/</span>
+                <span id="totalPV"></span>
+              </p>
 
+              <!--Botões de adição-->
               <div>
-                <span class="material-symbols-outlined">swords</span>
-                <span id="sheet-player-counterattack"></span>
-              </div>
+                <!--Adiciona 1-->
+                <button id="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                  </svg>
+                </button>
 
-              <div>
-                <span class="material-symbols-outlined">sprint</span>
-                <span id="sheet-player-dodging"></span>
+                <!--Adiciona 5-->
+                <button id="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                    />
+                  </svg>
+                </button>
               </div>
             </div>
 
-            <!--Pontos de vida-->
-            <label class="sheet-stats-bar">
+            <progress id="barPV"></progress>
+          </label>
+
+          <!--Pontos de determinação-->
+          <label>
+            <div>
+              <!--Botões de subtração-->
               <div>
-                <!--Botões de subtração-->
-                <div>
-                  <!--Subtrai 5-->
-                  <button id="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-                      />
-                    </svg>
-                  </button>
+                <!--Subtrai 5-->
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+                    />
+                  </svg>
+                </button>
 
-                  <!--Subtrai 1-->
-                  <button id="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                <!--Valor atual e valor total-->
-                <p>
-                  <span id="currentPV"></span>
-                  <span>/</span>
-                  <span id="totalPV"></span>
-                </p>
-
-                <!--Botões de adição-->
-                <div>
-                  <!--Adiciona 1-->
-                  <button id="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                      />
-                    </svg>
-                  </button>
-
-                  <!--Adiciona 5-->
-                  <button id="">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                <!--Subtrai 1-->
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+                    />
+                  </svg>
+                </button>
               </div>
 
-              <progress id="barPV"></progress>
-            </label>
+              <!--Valor atual e valor total-->
+              <p>
+                <span id="currentPD"></span>
+                /
+                <span id="totalPD"></span>
+              </p>
 
-            <!--Pontos de determinação-->
-            <label class="sheet-stats-bar">
+              <!--Botões de adição-->
               <div>
-                <!--Botões de subtração-->
-                <div>
-                  <!--Subtrai 5-->
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
-                      />
-                    </svg>
-                  </button>
+                <!--Subtrai 1-->
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+                    />
+                  </svg>
+                </button>
 
-                  <!--Subtrai 1-->
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
-
-                <!--Valor atual e valor total-->
-                <p>
-                  <span id="currentPD"></span>
-                  /
-                  <span id="totalPD"></span>
-                </p>
-
-                <!--Botões de adição-->
-                <div>
-                  <!--Subtrai 1-->
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
-                      />
-                    </svg>
-                  </button>
-
-                  <!--Subtrai 5-->
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      height="24px"
-                      viewBox="0 -960 960 960"
-                      width="24px"
-                      fill="#e6eef8"
-                    >
-                      <path
-                        d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
-                      />
-                    </svg>
-                  </button>
-                </div>
+                <!--Subtrai 5-->
+                <button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24px"
+                    viewBox="0 -960 960 960"
+                    width="24px"
+                    fill="#e6eef8"
+                  >
+                    <path
+                      d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+                    />
+                  </svg>
+                </button>
               </div>
+            </div>
 
-              <progress id="barPD"></progress>
-            </label>
-          </div>
+            <progress id="barPD"></progress>
+          </label>
         </div>
 
         <div class="sheet-stats-attack">
@@ -724,46 +705,10 @@
             </svg>
           </button>
         </nav>
-
-        <div>
-          <details>
-            <summary>
-              <img src="img/pistola.png" alt="" />
-              <p>Arma</p>
-            </summary>
-
-            <div>
-              <span>Crítico:</span>
-              <span></span>
-            </div>
-
-            <div>
-              <span
-                >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti fugiat, repellendus eaque laudantium quos, id illum sit
-                praesentium, libero dicta mollitia numquam dolorum amet. Saepe
-                iste a voluptatem est iusto.</span
-              >
-              <span></span>
-            </div>
-
-            <div>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div>
-              <span></span>
-              <span></span>
-            </div>
-          </details>
-        </div>
       </section>
 
       <section class="sheet-sections sheet-box" id="sheet-box">5</section>
     </section>
-
-    <!--========== MODAIS ==========-->
 
     <!--Criação de ficha-->
     <dialog class="player-form" id="player-form">
@@ -1083,7 +1028,7 @@
           <div id="preview-expertise"></div>
         </div>
 
-        <button id="btn-create-character">CRIA PERSONAGEM</button>
+        <button id="btn-create-character">CRIAR PERSONAGEM</button>
       </section>
 
       <!--Rodapé do formulário de criação de fichas-->
@@ -1183,14 +1128,20 @@
       </nav>
 
       <section class="modal-add-item-sections" id="add-item-geral">
-        <!--Imagem do item-->
-        <label for="">
-          <input type="file" class="hidden" />
-          <img src="img/camera-icon.png" alt="" />
+        <!--Nome do item-->
+        <label for="add-item-name-input">
+          <span>Nome do item:</span>
+          <input type="text" id="add-item-name-input" />
         </label>
 
-        <!--Nome do item-->
-        <input type="text" placeholder="Nome do item" />
+        <!--Descrição do item-->
+        <label for="add-item-desc-input">
+          <span>Descrição do item:</span>
+          <textarea id="add-item-desc-input"></textarea>
+        </label>
+
+        <!--Botão para adicionar o item-->
+        <button id="add-item-btn">ADICIONAR ITEM</button>
       </section>
 
       <section class="modal-add-item-sections" id="add-item-gun">
