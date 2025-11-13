@@ -18,13 +18,12 @@ Instale as dependências:
 
 > npm install express express-session
 
-Executando o projeto 
-
-Modo desenvolvimento
+Executando o projeto em modo de desenvolvimento:
 
 > npm run dev
-> Você pode acessar o sistema localmente em: http://localhost:3000
 
-Modo produção
+Você pode acessar o sistema localmente em: http://localhost:3000
+
+Executando o projeto em modo de desenvolvimento em modo de produção:
 
 > npm start
