@@ -22,11 +22,23 @@ DOM.navGlobalSections.forEach((btn) => {
   });
 });
 
-
-
 DOM.navPreviewDetailsSections.forEach((btn, i) => {
   btn.addEventListener("click", () => {
     display("preview-details-sections", btn);
+
+    if (i === 0) {
+      btn.innerHTML = "visibility_off";
+    } else if (i > 0) {
+      DOM.navPreviewDetailsSections[0].innerHTML = "visibility";
+    }
+
+    DOM.navPreviewDetailsSections.forEach((e) => {
+      e.style.backgroundColor = "var(--cor02)";
+      e.style.color = "var(--cor04)";
+    });
+
+    btn.style.backgroundColor = "var(--cor04)";
+    btn.style.color = "var(--cor01)";
   });
 });
 
