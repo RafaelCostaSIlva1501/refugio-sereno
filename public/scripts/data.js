@@ -1104,18 +1104,217 @@ export const conditions = [
   },
 ];
 
-export const items = [
+export const weapons = [
+  // Coronhada
+  {
+    name: "Coronhada",
+    img: "",
+
+    category: "Arma Simples",
+
+    minDamage: [1, 4],
+    maxDamage: [1, 6],
+
+    critical: 2,
+    margin: 20,
+
+    range: "Curto",
+    type: "Impacto",
+
+    weight: "1",
+  },
+
+  // Faca
   {
     name: "Faca",
-    category: "Arma",
-    type: "Impacto",
-    damage: [1, 4],
-    critical: ["*"],
-    range: [],
-    weight: "",
     img: "",
+    category: "Arma Simples",
+    minDamage: [1, 4],
+    maxDamage: [1, 4],
+    critical: 2,
+    margin: 19,
+    range: "Curto",
+    type: "Corte",
+    weight: "1",
   },
+
+  // Martelo
+  {
+    name: "Martelo",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 6],
+    critical: 2,
+    margin: 20,
+    range: "",
+    type: "Impacto",
+    weight: "1",
+  },
+
+  // Punhal
+  {
+    name: "Punhal",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 4],
+    maxDamage: [1, 4],
+    critical: 3,
+    margin: 20,
+    range: "",
+    type: "Perfuração",
+    weight: "1",
+  },
+
+  // Bastão
+  {
+    name: "Bastão",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 8],
+    critical: 2,
+    margin: 20,
+    range: "",
+    type: "Impacto",
+    weight: "1",
+  },
+
+  // Machete
+  {
+    name: "Machete",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 6],
+    critical: 2,
+    margin: 20,
+    range: "",
+    type: "Corte",
+    weight: "1",
+  },
+
+  // Lança
+  {
+    name: "Lança",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 6],
+    critical: 2,
+    margin: 20,
+    range: "Curto",
+    type: "Perfuração",
+    weight: "1",
+  },
+
+  // Cajado
+  {
+    name: "Cajado",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 6],
+    critical: 2,
+    margin: 20,
+    range: "",
+    type: "Impacto",
+    weight: "2",
+  },
+
+  // Arco
+  {
+    name: "Arco",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 6],
+    maxDamage: [1, 6],
+    critical: 3,
+    margin: 20,
+    range: "Médio",
+    type: "Perfuração",
+    weight: "2",
+  },
+
+  // Besta
+  {
+    name: "Besta",
+    img: "",
+    category: "Arma Simples",
+    minDamage: [1, 8],
+    maxDamage: [1, 8],
+    critical: 2,
+    margin: 19,
+    range: "Médio",
+    type: "Perfuração",
+    weight: "2",
+  },
+
+  // Pistola
+  {
+    name: "Pistola",
+    img: "",
+    category: "Arma de Fogo — Leve",
+    minDamage: [1, 12],
+    maxDamage: [1, 12],
+    critical: 2,
+    margin: 18,
+    range: "Curto",
+    type: "Balístico",
+    weight: "1",
+  },
+
+  // Revólver
+  {
+    name: "Revólver",
+    img: "",
+    category: "Arma de Fogo — Leve",
+    minDamage: [2, 6],
+    maxDamage: [2, 6],
+    critical: 3,
+    margin: 19,
+    range: "Curto",
+    type: "Balístico",
+    weight: "1",
+  },
+
+  // Fuzil de Caça
+  {
+    name: "Fuzil de caça",
+    img: "",
+    category: "Arma de Fogo — Duas Mãos",
+    minDamage: [2, 8],
+    maxDamage: [2, 8],
+    critical: 3,
+    margin: 19,
+    range: "Médio",
+    type: "Balístico",
+    weight: "2",
+  },
+
+  //
 ];
+
+/*
+// 
+  {
+    name: "",
+    img: "",
+
+    category: "",
+
+    minDamage: [, ],
+    maxDamage: [, ],
+
+    critical: ["", ""],
+    margin: "",
+
+    range: "",
+    type: "",
+
+    weight: "",
+  },
+*/
 
 /*
   {

@@ -5,9 +5,11 @@ import { display, createElement } from "./utils.js";
 
 import { rollDiceAttribute, rollDiceExpertise } from "./game.js";
 
-import { levels, origins, attributes, expertises } from "./data.js";
+import { levels, origins, attributes, expertises, weapons } from "./data.js";
 
 /* ========== INICIALIZAÇÃO DE VARIÁVEIS ========== */
+
+let characterActive = null;
 
 let characters = JSON.parse(localStorage.getItem("characters")) || [];
 
@@ -71,6 +73,8 @@ let newCharacter = {
   blocking: "",
   counterattack: "",
   dodging: "",
+
+  itemLimit: 5,
 
   inventory: [],
 };
@@ -504,7 +508,9 @@ const expertisesCharacter = () => {
   newCharacter.expertises = tempCharacter.expertises;
 };
 
-const inventoryCharacter = () => {};
+const inventoryCharacter = () => {
+  newCharacter.itemLimit = tempCharacter.attributes.for * 5;
+};
 
 const createCharacter = async () => {
   const character = { ...newCharacter };
@@ -516,6 +522,7 @@ const createCharacter = async () => {
   passivesCharacter();
   attributesCharacter();
   expertisesCharacter();
+  inventoryCharacter();
 
   characters.push(newCharacter);
 
@@ -549,6 +556,7 @@ const renderListPlayer = () => {
       article.addEventListener("click", () => {
         display("global-sections", article);
         renderSheetPlayer(i);
+        renderInventoryItems(i);
       });
 
       const img = createElement("img");
@@ -693,6 +701,7 @@ const renderSheetInventory = (index) => {
 // const renderSheetMistery = (index) => {};
 
 const renderSheetPlayer = (index) => {
+  characterActive = index;
   renderSheetInfos(index);
   renderSheetStats(index);
   renderSheetRollDices(index);
@@ -703,8 +712,42 @@ renderListPlayer();
 
 /* ========== FUNCIONALIDADES DA FICHA ========== */
 
+weapons.forEach((weapon, i) => {
+  const option = createElement("option");
+  option.value = i;
+  option.textContent = `${weapon.name} (${weapon.minDamage[0]}d${weapon.minDamage[1]})` ;
+
+  DOM.listWeapons.appendChild(option);
+});
+
 const addNewItem = (index) => {
-  characters[index].inventory;
+  const name = document.getElementById("add-item-name-input").value;
+  const desc = document.getElementById("add-item-desc-input").value;
+
+  characters[index].inventory.push({ name, desc });
+
+  localStorage.setItem("characters", JSON.stringify(characters));
 };
 
-const renderNewItem = () => {};
+const renderInventoryItems = (index) => {
+  characters[index].inventory.forEach((item) => {
+    const details = createElement("details");
+
+    const name = createElement("summary");
+    name.textContent = item.name;
+
+    const desc = createElement("p");
+    desc.textContent = item.desc;
+
+    DOM.SPinventorySlots.appendChild(details);
+    details.appendChild(name);
+    details.appendChild(desc);
+  });
+};
+
+DOM.addItemBtn.addEventListener("click", () => {
+  DOM.SPinventorySlots.innerHTML = "";
+
+  addNewItem(characterActive);
+  renderInventoryItems(characterActive);
+});

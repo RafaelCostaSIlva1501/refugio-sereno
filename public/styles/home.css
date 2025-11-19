@@ -1,0 +1,141 @@
+/*========== CABEÇALHO ==========*/
+.home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  padding: var(--s24);
+
+  background-color: var(--cor02);
+  border-bottom: 2px solid var(--cor03);
+
+  & img {
+    width: var(--s96);
+    filter: invert(100%);
+    cursor: pointer;
+  }
+
+  & div {
+    display: flex;
+    gap: var(--s12);
+  }
+
+  & button {
+    padding: var(--s4);
+
+    border-radius: var(--s4);
+
+    color: #e0e0e0;
+    font-size: var(--s24);
+
+    transition: all 0.3s;
+  }
+
+  & button:hover {
+    background-color: var(--cor04);
+
+    color: var(--cor02);
+
+    transform: translateX(4px);
+  }
+
+  & span {
+    color: inherit;
+  }
+
+  & nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
+
+    width: 0;
+    height: 100%;
+    padding: var(--s24) 0px;
+
+    background-color: black;
+
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    z-index: 100;
+
+    & button {
+      align-items: center;
+      font-size: var(--s16);
+    }
+
+    & button:nth-child(1) {
+      width: fit-content;
+
+      margin-left: auto;
+    }
+
+    & div {
+      display: flex;
+      justify-content: center;
+
+      margin-top: auto;
+
+      & a {
+        color: var(--cor03);
+        font-size: var(--s12);
+        font-weight: 700;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/*========== SESSÃO INICIAL (HOME) ==========*/
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s24);
+
+  margin: auto 0;
+  padding: var(--s12);
+
+  @media (min-width: 550px) {
+    margin: 0;
+  }
+
+  & button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: var(--s128);
+    padding: var(--s24);
+
+    background-color: var(--cor03);
+    border-radius: var(--s4);
+    box-shadow: 0 0 12px #00000063;
+
+    color: var(--cor04);
+
+    cursor: pointer;
+
+    transition: all 0.3s;
+  }
+
+  & button:hover {
+    transform: translateX(4px);
+    background-color: var(--cor04);
+    color: var(--cor01);
+  }
+
+  & span {
+    color: inherit;
+  }
+}

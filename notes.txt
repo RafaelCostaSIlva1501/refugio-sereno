@@ -1,0 +1,165 @@
+Os módulos foram organizados em categorias de acordo com suas responsabilidades
+
+### data.js
+
+Esse módulo serve para guardar informações fixas do sistema, como nome de pericias, atributos, níveis além das descrições desses mesmos elementos
+
+Nesse módulo eu tenho isso aqui ó
+
+export const levels = [
+  {
+    level: "I",
+    pv: 8,
+    pd: 8,
+    expertise: 1,
+    power: 2,
+    attributes: 4,
+    requirements: ["Nenhum", 0],
+  },
+
+  {
+    level: "II",
+    pv: 10,
+    pd: 9,
+    expertise: 2,
+    power: 2,
+    attributes: 4,
+    requirements: ["Ter 17 anos ou mais.", 17],
+  },
+
+  {
+    level: "III",
+    pv: 10,
+    pd: 10,
+    expertise: 2,
+    power: 2,
+    attributes: 5,
+    requirements: ["Ter 24 anos ou mais.", 24],
+  },
+
+  {
+    level: "IV",
+    pv: 11,
+    pd: 11,
+    expertise: 3,
+    power: 3,
+    attributes: 6,
+    requirements: ["Ter 30 anos ou mais.", 30],
+  },
+];
+
+export const origins = [
+  {
+    origin: [
+      "Acadêmico",
+      "Você era um pesquisador ou professor universitário. De forma proposital ou não, seus estudos tocaram em assuntos misteriosos e chamaram a atenção da Ordo Realitas.",
+    ],
+
+    expertises: ["Ciências", "Investigação"],
+
+    power: [
+      "Saber é Poder",
+      "Quando faz um teste usando Intelecto, você pode gastar 2 PE para receber +5 nesse teste.",
+    ],
+  },
+
+  {
+    origin: [
+      "Agente de Saúde",
+      "Você era um profissional da saúde como um enfermeiro, farmacêutico, médico, psicólogo ou socorrista, treinado no atendimento e cuidado de pessoas. Você pode ter sido surpreendido por um evento paranormal durante o trabalho ou mesmo cuidado de um agente da Ordem em uma emergência, que ficou surpreso com o quão bem você lidou com a situação.",
+    ],
+    expertises: ["Intuição", "Medicina"],
+    power: [
+      "Técnica Medicinal",
+      "Sempre que cura um personagem, você adiciona seu Intelecto no total de PV curados.",
+    ],
+  },
+
+  {
+    origin: [
+      "Amnésico",
+      "Você perdeu a maior parte da memória. Sabe apenas o próprio nome, ou nem isso. Sua amnésia pode ser resultado de um trauma paranormal ou mesmo de um ritual. Talvez você tenha sido vítima de cultistas? Talvez você tenha sido um cultista? Seja como for, hoje a Ordem é a única família que conhece. Quem sabe, cumprindo missões, você descubra algo sobre seu passado.",
+    ],
+    expertises: ["Duas à escolha do mestre"],
+    power: [
+      "Vislumbres do Passado",
+      "Uma vez por missão, você pode fazer um teste de Intelecto (DT 10) para reconhecer pessoas ou lugares familiares, que tenha encontrado antes de perder a memória. Se passar, recebe 1d4 PE temporários e, a critério do mestre, uma informação útil.",
+    ],
+  },
+
+  {
+    origin: [
+      "Artista",
+      "Você era um ator, músico, escritor, dançarino, influenciador... Seu trabalho pode ter sido inspirado por uma experiência paranormal do passado e o que o público acha que é pura criatividade, a Ordem sabe que tem um lado mais sombrio.",
+    ],
+    expertises: ["Artes", "Enganação"],
+    power: [
+      "Magnum Opus",
+      "Você é famoso por uma de suas obras. Uma vez por missão, pode determinar que um personagem envolvido em uma cena de interação o reconheça. Você recebe +5 em testes de Presença e de perícias baseadas em Presença contra aquele personagem. A critério do mestre, pode receber esses bônus em outras situações nas quais seria reconhecido.",
+    ],
+  },
+
+export const attributes = ["Agi", "Int", "Vig", "Pre", "For"];
+
+export const expertises = [
+  // 0
+  {
+    name: "Acrobacias",
+    attribute: "agi",
+    info: "Você consegue fazer proezas acrobáticas.",
+  },
+
+  // 1
+  {
+    name: "Adestramento",
+    attribute: "pre",
+    info: "Você sabe lidar com animais.",
+  },
+
+  // 2
+  {
+    name: "Artes",
+    attribute: "pre",
+    info: "Você sabe se expressar com diversas formas de arte, como música, dança, escrita, pintura, atuação entre outras.",
+  },
+
+  // 3
+  {
+    name: "Atletismo",
+    attribute: "for",
+    info: "Você pode realizar façanhas atléticas.",
+  },
+
+  // 4
+  {
+    name: "Atualidades",
+    attribute: "int",
+    info: "Você é um conhecedor de assuntos gerais, como política, esporte e entretenimento, e pode responder dúvidas relativas a esses assuntos.",
+  },
+
+export const conditions = [
+  {
+    title: "Abalado",
+    description:
+      "O personagem sofre -1d20 O em testes. Se ficar abalado novamente, em vez disso fica apavorado. Condição de medo.",
+  },
+
+  {
+    title: "Agarrado",
+    description:
+      "O personagem fica desprevenido e imóvel, sofre -1d20 em testes de ataque e só pode atacar com armas leves. Um personagem fazendo um ataque à distância contra um alvo envolvido na manobra agarrar tem 50% de chance de acertar o alvo errado. Condição de paralisia.",
+  },
+
+  {
+    title: "Alquebrado",
+    description:
+      "O custo em pontos de esforço das habilidades e dos rituais do personagem aumenta em +1. Condição mental.",
+  },
+
+  {
+    title: "Apavorado",
+    description:
+      "O personagem sofre –2d20 em testes de perícia e deve fugir da fonte do medo da maneira mais eficiente possível (mas pode parar de fazê-lo assim que a perder de vista ou se afastar mais do que alcance médio). Se não puder, poderá agir, mas não poderá se aproximar voluntariamente da fonte do medo. Condição de medo.",
+  },
+
+Os elementos estão cortados pq é muito informação e não caberia tudo aqui, mas o restante segue a mesma estrutura. Baseado nisso, melhore o texto que explica o que esse módulo faz, aliás cabe dizer que muitos desses elementos servem também para renderizar essas informações nas telas necessarias 

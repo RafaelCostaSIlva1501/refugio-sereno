@@ -1,0 +1,77 @@
+/*========== LISTA DE PERSONAGENS ==========*/
+.character-list {
+  display: none;
+  flex-direction: column;
+
+  & header {
+    width: 100%;
+    padding-bottom: var(--s24);
+    border-bottom: 2px solid var(--cor03);
+
+    & button {
+      align-items: center;
+
+      padding: var(--s8);
+
+      border: 2px solid var(--cor04);
+      border-radius: var(--s4);
+
+      color: var(--cor04);
+      font-weight: bolder;
+    }
+
+    & button:hover {
+      background-color: var(--cor04);
+
+      color: var(--cor02);
+
+      transform: translateX(4px);
+    }
+
+    & span {
+      color: inherit;
+    }
+  }
+
+  & section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s12);
+    flex: 1;
+    padding-top: var(--s24);
+
+    & article {
+      display: flex;
+      align-items: center;
+      gap: var(--s12);
+
+      width: 100%;
+      max-width: var(--s512);
+      padding: var(--s12);
+
+      background-color: var(--cor02);
+      border-left: 4px solid var(--blue);
+      border-radius: 4px;
+      box-shadow: 0 0 10px #000000b7;
+
+      color: var(--cor04);
+
+      cursor: pointer;
+
+      & img {
+        width: var(--s64);
+        border-radius: 50%;
+      }
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s4);
+      }
+    }
+
+    & article:hover {
+      background-color: var(--cor03);
+    }
+  }
+}

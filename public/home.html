@@ -20,8 +20,16 @@
       referrerpolicy="no-referrer"
     />
 
+    <!--PRÉ CONFIGURAÇÕES-->
     <link rel="stylesheet" href="styles/presets.css" />
-    <link rel="stylesheet" href="styles/styles.css" />
+
+    <!--SESSÕES-->
+    <link rel="stylesheet" href="styles/home.css" />
+    <link rel="stylesheet" href="styles/list-character.css" />
+    <link rel="stylesheet" href="styles/player-sheet.css" />
+
+    <!--MODAIS-->
+    <link rel="stylesheet" href="styles/player-form.css" />
   </head>
 
   <body>
@@ -72,6 +80,18 @@
         <button class="toggle-menu">Equipamentos</button>
 
         <button class="toggle-menu">Configurações</button>
+
+        <button class="toggle-menu">Documentação</button>
+
+        <div>
+          <a
+            target="_blank"
+            href="https://github.com/RafaelCostaSIlva1501/refugio-sereno"
+          >
+            Github
+            <!--<i class="fa-brands fa-github" style="color: #e0e0e0"></i>-->
+          </a>
+        </div>
       </nav>
     </header>
 
@@ -105,6 +125,11 @@
       <button class="nav-global-sections" data-target="settings">
         <span class="material-symbols-outlined"> settings </span>
         <span>Configurações</span>
+      </button>
+
+      <button class="nav-global-sections" data-target="documentation">
+        <span class="material-symbols-outlined"> article </span>
+        <span>Documentação</span>
       </button>
     </main>
 
@@ -645,66 +670,20 @@
       <!--INVENTÁRIO-->
       <section class="sheet-sections sheet-inventory" id="sheet-inventory">
         <header>
-          <div>
-            <span>Inventário</span>
-            <span>3</span>
-            <span>/</span>
-            <span>20</span>
-          </div>
+          <button class="toggle-modal-add-item">
+            <span class="material-symbols-outlined">add</span>
+          </button>
 
           <div>
-            <button class="toggle-modal-add-item">
-              <span class="material-symbols-outlined">add</span>
-              <span>Adicionar item</span>
-            </button>
+            <span class="SP-inventory-current-items">3</span>
+            <span>/</span>
+            <span class="SP-inventory-total-items">10</span>
           </div>
         </header>
 
-        <nav>
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="16"
-              viewBox="0 0 640 640"
-            >
-              <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-              <path
-                fill="#e0e0e0"
-                d="M119.7 263.7L150.6 294.6C156.6 300.6 164.7 304 173.2 304L194.7 304C203.2 304 211.3 307.4 217.3 313.4L246.6 342.7C252.6 348.7 256 356.8 256 365.3L256 402.8C256 411.3 259.4 419.4 265.4 425.4L278.7 438.7C284.7 444.7 288.1 452.8 288.1 461.3L288.1 480C288.1 497.7 302.4 512 320.1 512C337.8 512 352.1 497.7 352.1 480L352.1 477.3C352.1 468.8 355.5 460.7 361.5 454.7L406.8 409.4C412.8 403.4 416.2 395.3 416.2 386.8L416.2 352.1C416.2 334.4 401.9 320.1 384.2 320.1L301.5 320.1C293 320.1 284.9 316.7 278.9 310.7L262.9 294.7C258.7 290.5 256.3 284.7 256.3 278.7C256.3 266.2 266.4 256.1 278.9 256.1L313.6 256.1C326.1 256.1 336.2 246 336.2 233.5C336.2 227.5 333.8 221.7 329.6 217.5L309.9 197.8C306 194 304 189.1 304 184C304 178.9 306 174 309.7 170.3L327 153C332.8 147.2 336.1 139.3 336.1 131.1C336.1 123.9 333.7 117.4 329.7 112.2C326.5 112.1 323.3 112 320.1 112C224.7 112 144.4 176.2 119.8 263.7zM528 320C528 285.4 519.6 252.8 504.6 224.2C498.2 225.1 491.9 228.1 486.7 233.3L473.3 246.7C467.3 252.7 463.9 260.8 463.9 269.3L463.9 304C463.9 321.7 478.2 336 495.9 336L520 336C522.5 336 525 335.7 527.3 335.2C527.7 330.2 527.8 325.1 527.8 320zM64 320C64 178.6 178.6 64 320 64C461.4 64 576 178.6 576 320C576 461.4 461.4 576 320 576C178.6 576 64 461.4 64 320z"
-              />
-            </svg>
-          </button>
+        <hr />
 
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="16"
-              viewBox="0 0 640 640"
-            >
-              <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-              <path
-                fill="#e0e0e0"
-                d="M560 120C560 106.7 549.3 96 536 96C522.7 96 512 106.7 512 120L512 128L64 128C46.3 128 32 142.3 32 160L32 272C32 289.7 46.3 304 64 304L74 304C94.8 304 110.1 323.6 105 343.8L65 504.2C62.6 513.8 64.8 523.9 70.8 531.7C76.8 539.5 86.1 544 96 544L192 544C206.7 544 219.5 534 223 519.8L249 416L353.4 416C377.1 416 398.2 401.1 406.1 378.8L432.8 304L463.9 304C472.4 304 480.5 300.6 486.5 294.6L509.1 272L575.8 272C593.5 272 607.8 257.7 607.8 240L607.8 160C607.8 142.3 593.5 128 575.8 128L559.8 128L559.8 120zM353.4 368L260.9 368L276.9 304L381.9 304L360.9 362.7C359.8 365.9 356.7 368 353.4 368zM112 192L496 192C504.8 192 512 199.2 512 208C512 216.8 504.8 224 496 224L112 224C103.2 224 96 216.8 96 208C96 199.2 103.2 192 112 192z"
-              />
-            </svg>
-          </button>
-
-          <button>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16px"
-              viewBox="0 -960 960 960"
-              width="16px"
-              fill="#e0e0e0"
-            >
-              <path
-                d="M288-168v-432q0-30 21-51t51-21h432q30 0 51 21t21 51v312L672-96H360q-30 0-51-21t-21-51ZM98-703q-5-29 12.5-54t46.5-30l425-76q29-5 53.5 12.5T665-804l11 60H360q-60 0-102 42t-42 102v375q-16-7-27.5-21T174-278L98-703Zm694 367H624v168l168-168Z"
-              />
-            </svg>
-          </button>
-        </nav>
+        <div id="SP-inventory-slots"></div>
       </section>
 
       <section class="sheet-sections sheet-box" id="sheet-box">5</section>
@@ -1059,7 +1038,7 @@
           </svg>
         </button>
 
-        <button class="nav-add-item-sections" data-target="add-item-gun">
+        <button class="nav-add-item-sections" data-target="add-item-weapons">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16"
@@ -1117,6 +1096,7 @@
         </button>
       </nav>
 
+      <!--Items Gerais-->
       <section class="modal-add-item-sections" id="add-item-geral">
         <!--Nome do item-->
         <label for="add-item-name-input">
@@ -1131,18 +1111,127 @@
         </label>
 
         <!--Botão para adicionar o item-->
-        <button id="add-item-btn">ADICIONAR ITEM</button>
+        <button id="add-item-btn" class="toggle-modal-add-item">
+          ADICIONAR ITEM
+        </button>
       </section>
 
-      <section class="modal-add-item-sections" id="add-item-gun">
-        <textarea id=""></textarea>
-        <button>Adicionar</button>
+      <!--Armas-->
+      <section class="modal-add-item-sections" id="add-item-weapons">
+        <select id="list-weapons">
+          <option value="-">-Nenhum-</option>
+        </select>
+
+        <!--Nome e Categoria-->
+        <div class="">
+          <label for="">
+            <span>Nome:</span>
+            <input type="text" />
+          </label>
+
+          <label for="">
+            <span>Categoria:</span>
+            <select id="">
+              <option value="">Arma Simples</option>
+              <option value="">Arma Tática</option>
+              <option value="">Arma Pesada</option>
+            </select>
+          </label>
+        </div>
+
+        <!--Dano Mínimo e Máximo-->
+        <div class="add-item-weapon-damage">
+          <label for="">
+            <span>Dano Mínimo:</span>
+
+            <div>
+              <input type="number" value="0" max="99" />
+
+              <select id="">
+                <option value="0">0</option>
+                <option value="4">d4</option>
+                <option value="6">d6</option>
+                <option value="8">d8</option>
+                <option value="10">d10</option>
+                <option value="12">d12</option>
+                <option value="20">d20</option>
+              </select>
+            </div>
+          </label>
+
+          <label for="">
+            <span>Dano Máximo:</span>
+
+            <div>
+              <input type="number" value="0" max="99" />
+              <select id="">
+                <option value="0">0</option>
+                <option value="4">d4</option>
+                <option value="6">d6</option>
+                <option value="8">d8</option>
+                <option value="10">d10</option>
+                <option value="12">d12</option>
+                <option value="20">d20</option>
+              </select>
+            </div>
+          </label>
+        </div>
+
+        <!--Tipo e Alcance-->
+        <div>
+          <label for="">
+            <span>Tipo:</span>
+            <select id="">
+              <option value="C">Corte</option>
+              <option value="I">Impacto</option>
+              <option value="P">Perfuração</option>
+              <option value="B">Balístico</option>
+              <option value="F">Fogo</option>
+            </select>
+          </label>
+
+          <label for="">
+            <span>Alcance:</span>
+            <select id="">
+              <option value="">Curto (9m)</option>
+              <option value="">Médio (18m)</option>
+              <option value="">Longo (36m)</option>
+              <option value="">Extremo (90m)</option>
+            </select>
+          </label>
+        </div>
+
+        <!--Margem e Multiplicador-->
+        <div>
+          <label for="">
+            <span>Margem:</span>
+            <select id="">
+              <option value="">20</option>
+              <option value="">19</option>
+              <option value="">18</option>
+            </select>
+          </label>
+
+          <label for="">
+            <span>Multiplicador:</span>
+            <select id="">
+              <option value="2">x2</option>
+              <option value="3">x3</option>
+              <option value="4">x4</option>
+            </select>
+          </label>
+        </div>
+
+        <button>ADICIONAR ARMA</button>
       </section>
 
+      <!--Equipamentos-->
       <section class="modal-add-item-sections" id="add-item-equip"></section>
 
+      <!--Kits-->
       <section class="modal-add-item-sections" id="add-item-kit"></section>
 
+      <!--Notas-->
       <section class="modal-add-item-sections" id="add-item-note"></section>
     </dialog>
 

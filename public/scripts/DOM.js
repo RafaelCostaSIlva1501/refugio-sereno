@@ -43,7 +43,7 @@ export const DOM = {
   playerFormContent: document.querySelectorAll(".player-form-content"),
   paginationPlayerForm: document.querySelectorAll(".pagination-player-form"),
 
-  /* ================ INPUTS DE CRIAÇÃO DE PERSONAGEM ================ */
+  /* ================ FORMULÁRIO DE CRIAÇÃO DE FICHA DE PLAYER ================ */
 
   cspInputs: document.querySelectorAll(".csp-inputs"),
   cspPhoto: document.getElementById("csp-photo"),
@@ -89,6 +89,8 @@ export const DOM = {
   listCharacterPlayer: document.getElementById("list-characters-players"),
 
   /* ================ FICHA DE PLAYER ================ */
+  SPinventory: document.getElementById("sheet-inventory"),
+
   sheetPlayerPhoto: document.getElementById("sheet-player-photo"),
 
   sheetPlayerName: document.getElementById("sheet-player-name"),
@@ -121,6 +123,10 @@ export const DOM = {
 
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
+
+  listWeapons: document.getElementById("list-weapons"),
+
+  SPinventorySlots: document.getElementById("SP-inventory-slots"),
 
   addItemNameInput: document.getElementById("add-item-name-input"),
   addItemDescInput: document.getElementById("add-item-desc-input"),

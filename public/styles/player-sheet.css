@@ -1,0 +1,625 @@
+/*========== FICHA DOS PLAYERS ==========*/
+.sheet {
+  display: none;
+  flex-direction: column;
+  gap: var(--s24);
+  flex: 1;
+
+  /*========== Navegação da ficha ==========*/
+  & > nav {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s12);
+
+    width: 100%;
+
+    & > button {
+      justify-content: center;
+      flex: 1;
+
+      padding: var(--s4);
+
+      border-radius: var(--s4);
+
+      color: var(--cor04);
+    }
+
+    & > button:nth-child(1) {
+      background-color: var(--cor01);
+      filter: invert(100%);
+    }
+  }
+
+  /*========== Seções  ==========*/
+  & > .sheet-sections {
+    display: none;
+    flex-direction: column;
+    flex: 1;
+
+    height: 100%;
+
+    color: var(--cor04);
+  }
+
+  /*========== INFORMAÇÕES ==========*/
+  & > .sheet-info {
+    display: flex;
+    gap: var(--s16);
+
+    & .sheet-info-img {
+      display: flex;
+      gap: var(--s16);
+
+      width: 100%;
+      height: fit-content;
+
+      & img {
+        width: var(--s96);
+        border: 1px solid var(--cor03);
+      }
+
+      & div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1;
+      }
+
+      & p {
+        font-size: 12px;
+        border-bottom: 1px solid var(--cor03);
+      }
+    }
+
+    & .sheet-info-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s16);
+      flex: 1;
+
+      & nav {
+        display: flex;
+        justify-content: space-between;
+        gap: var(--s12);
+
+        width: 100%;
+      }
+
+      & button {
+        justify-content: center;
+        flex: 1;
+
+        padding: var(--s4);
+
+        background-color: var(--cor02);
+        border-bottom: 4px solid var(--cor02);
+
+        color: var(--cor04);
+        font-size: var(--s12);
+      }
+
+      & button:nth-child(1) {
+        border-bottom: 4px solid var(--cor04);
+      }
+
+      & textarea {
+        display: none;
+
+        height: 50%;
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+
+        color: #ffffffb4;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      & .sheet-tab-history {
+        display: flex;
+      }
+    }
+  }
+
+  /*========== STATUS ==========*/
+  & > .sheet-stats {
+    display: none;
+    flex-direction: column;
+    gap: var(--s12);
+
+    width: 100%;
+    height: fit-content;
+
+    & .sheet-stats-passive {
+      display: flex;
+      gap: var(--s12);
+      width: 100%;
+
+      height: var(--s24);
+
+      & div {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: var(--s24);
+        height: var(--s24);
+      }
+
+      & span:nth-child(1) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 24px;
+        height: 24px;
+
+        background-color: var(--cor04);
+        border-radius: var(--s4);
+
+        color: var(--cor02);
+        font-size: 24px;
+        font-weight: 500;
+      }
+
+      & span:nth-child(2) {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 20px;
+        height: 20px;
+
+        background-color: var(--cor02);
+        border: 1px solid var(--cor04);
+        border-radius: 50%;
+
+        color: var(--cor04);
+        font-size: 12px;
+      }
+    }
+
+    & .sheet-stats-bar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s12);
+
+      & label {
+        position: relative;
+        width: 100%;
+
+        & > div {
+          position: absolute;
+
+          display: flex;
+          justify-content: space-between;
+
+          width: 100%;
+          padding: 0 32px;
+        }
+
+        & > div > div {
+          display: flex;
+          gap: 8px;
+        }
+
+        & progress {
+          width: 100%;
+          height: var(--s24);
+
+          border: 1px solid var(--cor02);
+          border-radius: var(--s4);
+
+          overflow: hidden;
+        }
+
+        & #barPV::-webkit-progress-value {
+          background-color: var(--green);
+        }
+
+        & #barPD::-webkit-progress-value {
+          background-color: var(--blue);
+        }
+      }
+    }
+
+    & .sheet-stats-attack {
+      display: flex;
+      justify-content: space-between;
+      gap: var(--s12);
+
+      & button {
+        align-items: center;
+        gap: var(--s4);
+
+        padding: var(--s4);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+
+        & span {
+          display: none;
+          color: inherit;
+        }
+      }
+
+      & img {
+        width: 24px;
+      }
+
+      & button:nth-child(1) {
+        color: var(--red);
+      }
+
+      & button:nth-child(2) {
+        color: var(--orange);
+      }
+
+      & button:nth-child(3) {
+        color: var(--yellow);
+      }
+
+      & button:nth-child(4) {
+        color: var(--green);
+      }
+
+      & button:nth-child(5) {
+        color: var(--blue);
+      }
+
+      & button:nth-child(6) {
+        color: var(--violet);
+      }
+    }
+
+    & .sheet-stats-fight {
+      display: flex;
+      gap: var(--s12);
+
+      height: fit-content;
+
+      & nav {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s12);
+
+        & button {
+          padding: var(--s4);
+          background-color: var(--cor02);
+          border-left: 4px solid var(--cor03);
+        }
+
+        & button:hover {
+          background-color: var(--cor03);
+          border-left: 4px solid var(--cor04);
+          transform: translateX(-4px);
+        }
+      }
+
+      & section {
+        display: none;
+        flex-direction: column;
+
+        width: 100%;
+        height: 100%;
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+      }
+
+      & #sheet-stats-weapons {
+        display: flex;
+        gap: var(--s4);
+
+        & header {
+          display: flex;
+        }
+
+        & > div {
+          display: flex;
+          gap: var(--s12);
+
+          & img {
+            width: var(--s96);
+          }
+
+          & div {
+            display: flex;
+            flex-direction: column;
+          }
+
+          & span {
+            font-size: var(--s12);
+          }
+        }
+
+        & footer {
+        }
+      }
+
+      & #sheet-stats-equipment {
+        display: none;
+      }
+
+      & #sheet-stats-skills {
+        display: none;
+      }
+
+      & #sheet-stats-resistances {
+        display: none;
+      }
+
+      & #sheet-stats-conditions {
+        display: none;
+      }
+    }
+  }
+
+  /*========== ROLAGEM DE DADOS ==========*/
+  & > .sheet-dices {
+    & #sheet-attributes {
+      display: flex;
+      justify-content: space-around;
+
+      & button {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      & button:hover {
+        transform: scale(1.09);
+      }
+    }
+
+    & #sheet-expertises {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--s4);
+      flex: 1;
+
+      & button {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+        width: 24%;
+      }
+
+      & button:hover {
+        transform: scale(1.09);
+      }
+
+      & span {
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  /*========== INVENTÁRIO ==========*/
+  & > .sheet-inventory {
+    display: none;
+    flex-direction: column;
+    gap: var(--s8);
+
+    & header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--s4);
+
+      & button {
+        align-items: center;
+
+        padding: 2px;
+
+        border-radius: var(--s4);
+
+        & span {
+          color: inherit;
+          font-weight: 500;
+        }
+      }
+
+      & button:hover {
+        background-color: var(--cor04);
+        color: var(--cor02);
+      }
+
+      & div {
+        display: flex;
+
+        & span {
+          font-size: var(--s16);
+        }
+      }
+    }
+
+    & hr {
+      border: 1px solid var(--cor03);
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s8);
+
+      & details {
+        display: flex;
+        flex-direction: column;
+
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+
+        transition: all 0.3s;
+      }
+
+      & summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--s4);
+
+        transition: all 0.3s;
+      }
+    }
+  }
+}
+
+/*========== ADICIONAR ITEM NA FICHA DE PLAYER ==========*/
+.modal-add-item {
+  display: none;
+  flex-direction: column;
+  gap: var(--s8);
+
+  width: 100%;
+  max-width: var(--s384);
+  height: fit-content;
+
+  & header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & nav {
+    display: flex;
+    gap: var(--s4);
+
+    & button {
+      padding: var(--s4);
+
+      background-color: var(--cor01);
+      border-radius: var(--s4);
+    }
+
+    & button:nth-child(1) {
+      filter: invert(100%);
+    }
+  }
+
+  & section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
+
+    & label {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s4);
+
+      width: 100%;
+
+      & input {
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+      }
+
+      & textarea {
+        height: var(--s128);
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+      }
+    }
+
+    & button {
+      justify-content: center;
+      align-items: center;
+
+      margin-top: auto;
+      padding: var(--s4);
+
+      border: 2px solid var(--cor04);
+      border-radius: var(--s4);
+
+      font-weight: bold;
+
+      &:hover {
+        background-color: var(--cor04);
+        color: var(--cor01);
+      }
+    }
+
+    & select {
+      padding: var(--s4);
+      background-color: var(--cor02);
+
+      & option {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  & #add-item-weapons {
+    display: none;
+    height: 100%;
+
+    & > div {
+      display: flex;
+      gap: var(--s12);
+
+      & select {
+        height: 100%;
+      }
+    }
+
+    & .add-item-weapon-damage {
+      & div {
+        display: flex;
+        align-items: end;
+        gap: var(--s8);
+      }
+
+      & input {
+        width: var(--s24);
+
+        padding: var(--s4);
+
+        background: none;
+        border-bottom: 1px solid var(--cor04);
+        border-radius: 0px;
+
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  & > section:nth-child(5) {
+    display: none;
+  }
+
+  & > section:nth-child(6) {
+    display: none;
+  }
+
+  & > section:nth-child(7) {
+    display: none;
+  }
+
+  & > section:nth-child(8) {
+    display: none;
+  }
+}
