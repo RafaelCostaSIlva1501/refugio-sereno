@@ -103,6 +103,18 @@ DOM.navAddItemSections.forEach((btn) => {
   });
 });
 
+DOM.navEquipmentSections.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    DOM.navEquipmentSections.forEach((e) => {
+      e.style.filter = "invert(0%)";
+    });
+
+    btn.style.filter = "invert(100%)";
+
+    display("equipment-sections", btn);
+  });
+});
+
 /*========== TOGGLE ==========*/
 
 DOM.toggleMenu.forEach((button) => {

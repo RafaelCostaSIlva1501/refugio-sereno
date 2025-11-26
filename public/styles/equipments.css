@@ -1,0 +1,59 @@
+#equipment {
+  flex-direction: column;
+  gap: var(--s8);
+
+  height: 100%;
+
+  overflow: auto;
+
+  & nav {
+    display: flex;
+    gap: var(--s8);
+
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: var(--s24);
+      height: var(--s24);
+
+      padding: var(--s4);
+
+      background-color: var(--cor01);
+      border-radius: var(--s4);
+    }
+
+    & button:nth-child(1) {
+      filter: invert(100%);
+    }
+  }
+
+  & div {
+    display: none;
+    flex-direction: column;
+    gap: var(--s8);
+  }
+
+  & #equipment-weapons {
+    display: flex;
+  }
+
+  & details {
+    display: flex;
+    flex-direction: column;
+    padding: var(--s8);
+
+    background-color: var(--cor02);
+
+    & summary {
+      display: flex;
+      align-items: center;
+      gap: var(--s8);
+    }
+  }
+
+  & img {
+    width: var(--s32);
+  }
+}

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="styles/home.css" />
     <link rel="stylesheet" href="styles/list-character.css" />
     <link rel="stylesheet" href="styles/player-sheet.css" />
+    <link rel="stylesheet" href="styles/equipments.css" />
 
     <!--MODAIS-->
     <link rel="stylesheet" href="styles/player-form.css" />
@@ -79,9 +80,9 @@
 
         <button class="toggle-menu">Equipamentos</button>
 
-        <button class="toggle-menu">Configurações</button>
-
         <button class="toggle-menu">Documentação</button>
+
+        <button class="toggle-menu">Configurações</button>
 
         <div>
           <a
@@ -122,14 +123,14 @@
         <span>Equipamentos</span>
       </button>
 
-      <button class="nav-global-sections" data-target="settings">
-        <span class="material-symbols-outlined"> settings </span>
-        <span>Configurações</span>
-      </button>
-
       <button class="nav-global-sections" data-target="documentation">
         <span class="material-symbols-outlined"> article </span>
         <span>Documentação</span>
+      </button>
+
+      <button class="nav-global-sections" data-target="settings">
+        <span class="material-symbols-outlined"> settings </span>
+        <span>Configurações</span>
       </button>
     </main>
 
@@ -689,6 +690,46 @@
       <section class="sheet-sections sheet-box" id="sheet-box">5</section>
     </section>
 
+    <!--Equipamentos-->
+    <section class="global-sections equipment" id="equipment">
+      <nav>
+        <button class="nav-equipment-sections" data-target="equipment-weapons">
+          <i class="fa-solid fa-gun" style="color: #e0e0e0"></i>
+        </button>
+
+        <button
+          class="nav-equipment-sections"
+          data-target="equipment-protections"
+        >
+          <i class="fa-solid fa-shirt" style="color: #e0e0e0"></i>
+        </button>
+
+        <button class="nav-equipment-sections" data-target="equipment-kits">
+          <i class="fa-solid fa-briefcase-medical" style="color: #e0e0e0"></i>
+        </button>
+
+        <button class="nav-equipment-sections" data-target="equipment-geral">
+          <i class="fa-solid fa-binoculars" style="color: #e0e0e0"></i>
+        </button>
+      </nav>
+
+      <div class="equipment-sections" id="equipment-weapons">
+        <h3>Armas</h3>
+      </div>
+
+      <div class="equipment-sections" id="equipment-protections">
+        <h3>Proteções</h3>
+      </div>
+
+      <div class="equipment-sections" id="equipment-kits">
+        <h3>Kits</h3>
+      </div>
+
+      <div class="equipment-sections" id="equipment-geral">
+        <h3>Itens Gerais</h3>
+      </div>
+    </section>
+
     <!--Criação de ficha-->
     <dialog class="player-form" id="player-form">
       <!--Cabeçalho do formulário de criação de fichas-->
@@ -1024,7 +1065,7 @@
 
       <!--Item, Arma, Equipamento, Kit e Notas-->
       <nav>
-        <button class="nav-add-item-sections" data-target="add-item-geral">
+        <button class="nav-add-item-sections" data-target="add-item">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16px"
@@ -1038,7 +1079,7 @@
           </svg>
         </button>
 
-        <button class="nav-add-item-sections" data-target="add-item-weapons">
+        <button class="nav-add-item-sections" data-target="add-weapons">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             height="16"
@@ -1052,61 +1093,30 @@
             />
           </svg>
         </button>
-
-        <button class="nav-add-item-sections" data-target="add-item-equip">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16px"
-            viewBox="0 -960 960 960"
-            width="16px"
-            fill="#e0e0e0"
-          >
-            <path
-              d="m240-522-40 22q-14 8-30 4t-24-18L66-654q-8-14-4-30t18-24l230-132h70q9 0 14.5 5.5T400-820v20q0 33 23.5 56.5T480-720q33 0 56.5-23.5T560-800v-20q0-9 5.5-14.5T580-840h70l230 132q14 8 18 24t-4 30l-80 140q-8 14-23.5 17.5T760-501l-40-20v361q0 17-11.5 28.5T680-120H280q-17 0-28.5-11.5T240-160v-362Z"
-            />
-          </svg>
-        </button>
-
-        <button class="nav-add-item-sections" data-target="add-item-kit">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16px"
-            viewBox="0 -960 960 960"
-            width="16px"
-            fill="#e0e0e0"
-          >
-            <path
-              d="M160-80q-33 0-56.5-23.5T80-160v-480q0-33 23.5-56.5T160-720h160v-80q0-33 23.5-56.5T400-880h160q33 0 56.5 23.5T640-800v80h160q33 0 56.5 23.5T880-640v480q0 33-23.5 56.5T800-80H160Zm240-640h160v-80H400v80Zm40 360v120h80v-120h120v-80H520v-120h-80v120H320v80h120Z"
-            />
-          </svg>
-        </button>
-
-        <button class="nav-add-item-sections" data-target="add-item-note">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16px"
-            viewBox="0 -960 960 960"
-            width="16px"
-            fill="#e0e0e0"
-          >
-            <path
-              d="M240-80q-50 0-85-35t-35-85v-120h120v-560h600v680q0 50-35 85t-85 35H240Zm480-80q17 0 28.5-11.5T760-200v-600H320v480h360v120q0 17 11.5 28.5T720-160ZM360-600v-80h360v80H360Zm0 120v-80h360v80H360Z"
-            />
-          </svg>
-        </button>
       </nav>
 
       <!--Items Gerais-->
-      <section class="modal-add-item-sections" id="add-item-geral">
-        <!--Nome do item-->
-        <label for="add-item-name-input">
-          <span>Nome do item:</span>
-          <input type="text" id="add-item-name-input" />
-        </label>
+      <section class="modal-add-item-sections" id="add-item">
+        <select id="">
+          <option value="-">-Nenhum-</option>
+        </select>
+        <div>
+          <!--Nome do item-->
+          <label for="add-item-name-input">
+            <span>Nome:</span>
+            <input type="text" id="add-item-name-input" />
+          </label>
+
+          <!--Peso do item-->
+          <label for="add-item-weight-input">
+            <span>Peso:</span>
+            <input type="number" id="add-item-weight-input" />
+          </label>
+        </div>
 
         <!--Descrição do item-->
         <label for="add-item-desc-input">
-          <span>Descrição do item:</span>
+          <span>Descrição:</span>
           <textarea id="add-item-desc-input"></textarea>
         </label>
 
@@ -1117,7 +1127,7 @@
       </section>
 
       <!--Armas-->
-      <section class="modal-add-item-sections" id="add-item-weapons">
+      <section class="modal-add-item-sections" id="add-weapons">
         <select id="list-weapons">
           <option value="-">-Nenhum-</option>
         </select>
@@ -1224,18 +1234,10 @@
 
         <button>ADICIONAR ARMA</button>
       </section>
-
-      <!--Equipamentos-->
-      <section class="modal-add-item-sections" id="add-item-equip"></section>
-
-      <!--Kits-->
-      <section class="modal-add-item-sections" id="add-item-kit"></section>
-
-      <!--Notas-->
-      <section class="modal-add-item-sections" id="add-item-note"></section>
     </dialog>
 
     <script type="module" src="scripts/display.js"></script>
     <script type="module" src="scripts/playerSheet.js"></script>
+    <script type="module" src="scripts/renderElements.js"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 /* ========== IMPORTAÇÕES ========== */
+
 import { DOM } from "./DOM.js";
 
 import { display, createElement } from "./utils.js";
@@ -11,7 +12,12 @@ import { levels, origins, attributes, expertises, weapons } from "./data.js";
 
 let characterActive = null;
 
-let characters = JSON.parse(localStorage.getItem("characters")) || [];
+let characters = JSON.parse(localStorage.getItem("characters"));
+
+if (!Array.isArray(characters)) {
+  characters = [];
+  localStorage.setItem("characters", JSON.stringify(characters));
+}
 
 let tempCharacter = {
   photo: "",
@@ -715,19 +721,22 @@ renderListPlayer();
 weapons.forEach((weapon, i) => {
   const option = createElement("option");
   option.value = i;
-  option.textContent = `${weapon.name} (${weapon.minDamage[0]}d${weapon.minDamage[1]})` ;
+  option.textContent = `${weapon.name} (${weapon.minDamage[0]}d${weapon.minDamage[1]})`;
 
   DOM.listWeapons.appendChild(option);
 });
 
-const addNewItem = (index) => {
+const addItem = (index) => {
   const name = document.getElementById("add-item-name-input").value;
+  const weight = document.getElementById("add-item-weight-input").value;
   const desc = document.getElementById("add-item-desc-input").value;
 
-  characters[index].inventory.push({ name, desc });
+  characters[index].inventory.push({ name, weight, desc });
 
   localStorage.setItem("characters", JSON.stringify(characters));
 };
+
+const addWeapon = (index) => {};
 
 const renderInventoryItems = (index) => {
   characters[index].inventory.forEach((item) => {

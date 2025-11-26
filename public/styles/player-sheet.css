@@ -509,7 +509,7 @@
   }
 
   & section {
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: var(--s12);
 
@@ -565,7 +565,16 @@
     }
   }
 
-  & #add-item-weapons {
+  & #add-item {
+    display: flex;
+
+    & > div {
+      display: flex;
+      gap: var(--s12);
+    }
+  }
+
+  & #add-weapons {
     display: none;
     height: 100%;
 
@@ -605,21 +614,5 @@
         }
       }
     }
-  }
-
-  & > section:nth-child(5) {
-    display: none;
-  }
-
-  & > section:nth-child(6) {
-    display: none;
-  }
-
-  & > section:nth-child(7) {
-    display: none;
-  }
-
-  & > section:nth-child(8) {
-    display: none;
   }
 }

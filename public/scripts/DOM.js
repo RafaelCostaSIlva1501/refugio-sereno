@@ -39,6 +39,9 @@ export const DOM = {
   modalAddItemSections: document.querySelectorAll("modal-add-item-sections"),
   navAddItemSections: document.querySelectorAll(".nav-add-item-sections"),
 
+  equipmentSections: document.querySelectorAll(".equipment-sections"),
+  navEquipmentSections: document.querySelectorAll(".nav-equipment-sections"),
+
   // PAGINATION
   playerFormContent: document.querySelectorAll(".player-form-content"),
   paginationPlayerForm: document.querySelectorAll(".pagination-player-form"),
@@ -134,4 +137,8 @@ export const DOM = {
 
   toast: document.querySelector(".toast"),
   toastDice: document.getElementById("toast-dice"),
+
+  /* ================ RENDER ================ */
+  equipmentWeapons: document.getElementById("equipment-weapons"),
+  equipmentKit: document.getElementById("equipment-kits"),
 };

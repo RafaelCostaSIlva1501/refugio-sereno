@@ -134,6 +134,10 @@ body {
   padding: var(--s24);
 }
 
+#character-list, #sheet, #equipment {
+  display: none;
+}
+
 dialog {
   position: fixed;
   left: 50%;
