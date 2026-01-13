@@ -412,7 +412,6 @@
 
     & header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       gap: var(--s4);
 
@@ -434,17 +433,37 @@
         color: var(--cor02);
       }
 
-      & div {
-        display: flex;
-
-        & span {
-          font-size: var(--s16);
-        }
+      & span {
+        font-size: var(--s16);
       }
     }
 
     & hr {
       border: 1px solid var(--cor03);
+    }
+
+    & nav {
+      display: flex;
+      gap: var(--s8);
+
+      & button {
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        gap: var(--s4);
+
+        padding: var(--s4);
+        border: 2px solid var(--cor04);
+        border-radius: var(--s4);
+
+        font-weight: 600;
+
+        &:hover {
+          background-color: var(--cor01);
+          border-color: var(--cor01);
+          filter: invert(100%);
+        }
+      }
     }
 
     & > div {
@@ -462,56 +481,94 @@
         border-radius: var(--s4);
 
         transition: all 0.3s;
+
+        cursor: pointer;
       }
 
       & summary {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         gap: var(--s4);
 
         transition: all 0.3s;
+
+        & img {
+          width: var(--s24);
+        }
       }
     }
   }
 }
 
 /*========== ADICIONAR ITEM NA FICHA DE PLAYER ==========*/
-.modal-add-item {
+
+#modalSheetItem {
   display: none;
   flex-direction: column;
-  gap: var(--s8);
+  gap: var(--s12);
 
   width: 100%;
   max-width: var(--s384);
-  height: fit-content;
 
   & header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  & nav {
-    display: flex;
-    gap: var(--s4);
 
     & button {
-      padding: var(--s4);
-
-      background-color: var(--cor01);
       border-radius: var(--s4);
-    }
 
-    & button:nth-child(1) {
-      filter: invert(100%);
+      &:hover {
+        background-color: var(--cor04);
+        color: var(--cor01);
+      }
     }
   }
 
   & section {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: var(--s12);
+
+    & select {
+      padding: var(--s4);
+      background-color: var(--cor02);
+
+      & option {
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+
+    & div {
+      display: flex;
+      gap: var(--s12);
+      width: 100%;
+
+      & input {
+        width: 100%;
+      }
+    }
+
+    & label[for="SP-image-item-input"] {
+      width: min-content;
+
+      & img {
+        width: var(--s32);
+        padding: var(--s4);
+
+        aspect-ratio: 1/1;
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+
+        cursor: pointer;
+      }
+
+      & #SP-image-item-input {
+        display: none;
+      }
+    }
 
     & label {
       display: flex;
@@ -553,66 +610,148 @@
         color: var(--cor01);
       }
     }
+  }
+}
+
+#modalSheetWeapon {
+  display: none;
+  flex-direction: column;
+  gap: var(--s12);
+
+  width: 100%;
+  max-width: var(--s384);
+
+  & header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & button {
+      border-radius: var(--s4);
+
+      &:hover {
+        background-color: var(--cor04);
+        color: var(--cor01);
+      }
+    }
+  }
+
+  & section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
 
     & select {
       padding: var(--s4);
       background-color: var(--cor02);
+      height: 100%;
 
       & option {
         display: flex;
         justify-content: space-between;
       }
     }
-  }
 
-  & #add-item {
-    display: flex;
-
-    & > div {
+    & div {
       display: flex;
       gap: var(--s12);
-    }
-  }
-
-  & #add-weapons {
-    display: none;
-    height: 100%;
-
-    & > div {
-      display: flex;
-      gap: var(--s12);
-
-      & select {
-        height: 100%;
-      }
-    }
-
-    & .add-item-weapon-damage {
-      & div {
-        display: flex;
-        align-items: end;
-        gap: var(--s8);
-      }
+      width: 100%;
 
       & input {
-        width: var(--s24);
+        width: 100%;
+      }
+    }
 
+    & label {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s4);
+
+      width: 100%;
+
+      & input {
+        padding: var(--s8);
+
+        background-color: var(--cor02);
+        border-radius: var(--s4);
+      }
+    }
+
+    & label[for="SP-image-weapon-input"] {
+      width: fit-content;
+
+      & img {
+        width: var(--s32);
         padding: var(--s4);
 
-        background: none;
-        border-bottom: 1px solid var(--cor04);
-        border-radius: 0px;
+        aspect-ratio: 1/1;
 
-        &::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
+        background-color: var(--cor02);
+        border-radius: var(--s4);
 
-        &::-webkit-outer-spin-button {
-          -webkit-appearance: none;
-          margin: 0;
-        }
+        cursor: pointer;
+      }
+
+      & #SP-image-weapon-input {
+        display: none;
+      }
+    }
+
+    & #SP-damageQTY-weapon-input {
+      width: 50%;
+    }
+
+    & #SP-damage-dice-weapon-input {
+      width: 50%;
+    }
+
+    & button {
+      justify-content: center;
+      align-items: center;
+
+      margin-top: auto;
+      padding: var(--s4);
+
+      border: 2px solid var(--cor04);
+      border-radius: var(--s4);
+
+      font-weight: bold;
+
+      &:hover {
+        background-color: var(--cor04);
+        color: var(--cor01);
       }
     }
   }
 }
+
+/*
+& .add-item-weapon-damage {
+    & div {
+      display: flex;
+      align-items: end;
+      gap: var(--s8);
+    }
+
+    & input {
+      width: var(--s24);
+
+      padding: var(--s4);
+
+      background: none;
+      border-bottom: 1px solid var(--cor04);
+      border-radius: 0px;
+
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    }
+  }
+
+*/

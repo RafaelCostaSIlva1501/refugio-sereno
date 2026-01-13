@@ -11,8 +11,13 @@ export const DOM = {
 
   togglePlayerForm: document.querySelectorAll(".toggle-player-form"),
 
+  toggleSheetPlayerItem: document.querySelectorAll(".toggle-sheet-player-item"),
+
+  toggleSheetPlayerWeapon: document.querySelectorAll(
+    ".toggle-sheet-player-weapon"
+  ),
+
   modalAddItem: document.getElementById("modal-add-item"),
-  toggleModalAddItem: document.querySelectorAll(".toggle-modal-add-item"),
 
   // NAVIGATION
   globalSections: document.querySelectorAll(".global-sections"),
@@ -127,13 +132,33 @@ export const DOM = {
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
 
-  listWeapons: document.getElementById("list-weapons"),
-
   SPinventorySlots: document.getElementById("SP-inventory-slots"),
+  SPinventoryCurrent: document.getElementById("SP-inventory-current-items"),
+  SPinventoryTotal: document.getElementById("SP-inventory-total-items"),
 
-  addItemNameInput: document.getElementById("add-item-name-input"),
-  addItemDescInput: document.getElementById("add-item-desc-input"),
-  addItemBtn: document.getElementById("add-item-btn"),
+  SPlistItemsInput: document.getElementById("SP-list-items-input"),
+  SPitemImageInput: document.getElementById("SP-image-item-input"),
+  SPitemImagePreview: document.getElementById("SP-image-item-preview"),
+  SPitemNameInput: document.getElementById("SP-name-item-input"),
+  SPitemWeightInput: document.getElementById("SP-weight-item-input"),
+  SPitemDescInput: document.getElementById("SP-desc-item-input"),
+  SPaddItemBtn: document.getElementById("SP-add-item-btn"),
+
+  SPlistWeaponsInput: document.getElementById("SP-list-weapons-input"),
+  SPweaponImageInput: document.getElementById("SP-image-weapon-input"),
+  SPweaponImagePreview: document.getElementById("SP-image-weapon-preview"),
+  SPweaponNameInput: document.getElementById("SP-name-weapon-input"),
+  SPweaponWeightInput: document.getElementById("SP-weight-weapon-input"),
+  SPweaponCategoryInput: document.getElementById("SP-category-weapon-input"),
+  SPweaponDamageQtyInput: document.getElementById("SP-damage-qty-weapon-input"),
+  SPweaponDamageDiceInput: document.getElementById(
+    "SP-damage-dice-weapon-input"
+  ),
+  SPweaponTypeInput: document.getElementById("SP-type-weapon-input"),
+  SPweaponRangeInput: document.getElementById("SP-range-weapon-input"),
+  SPweaponMarginInput: document.getElementById("SP-margin-weapon-input"),
+  SPweaponMultiplierInput: document.getElementById("SP-multiplier-weapon-input"),
+  SPaddWeaponBtn: document.getElementById("SP-add-weapon-btn"),
 
   toast: document.querySelector(".toast"),
   toastDice: document.getElementById("toast-dice"),

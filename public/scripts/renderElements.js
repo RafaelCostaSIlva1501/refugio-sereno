@@ -8,7 +8,7 @@ import {
   attributes,
   expertises,
   weapons,
-  kits,
+  items,
 } from "./data.js";
 
 weapons.forEach((weapon, i) => {
@@ -48,13 +48,13 @@ weapons.forEach((weapon, i) => {
   details.appendChild(type);
 });
 
-kits.forEach((kit, i) => {
+/*
+items.forEach((kit, i) => {
   const details = createElement("details");
 
   const summary = createElement("summary");
 
   const img = createElement("img");
-  img.src = `./img/assets/kit/${kit.img}.png`;
 
   const span = createElement("span");
   span.textContent = kit.name;
@@ -68,3 +68,4 @@ kits.forEach((kit, i) => {
   summary.appendChild(span);
   details.appendChild(p);
 });
+*/

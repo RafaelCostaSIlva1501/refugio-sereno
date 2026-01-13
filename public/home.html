@@ -198,10 +198,10 @@
             height="24px"
             viewBox="0 -960 960 960"
             width="24px"
-            fill="#e6eef8"
+            fill="#e0e0e0"
           >
             <path
-              d="M280-80q-33 0-56.5-23.5T200-160v-320q0-85 44.5-152T360-732v-28q0-50 35-85t85-35q50 0 85 35t35 85v28q71 33 115.5 100T760-480v320q0 33-23.5 56.5T680-80H280Zm0-80h400v-320q0-83-58.5-141.5T480-680q-83 0-141.5 58.5T280-480v320Zm320-160q17 0 28.5-11.5T640-360v-120H320v80h240v40q0 17 11.5 28.5T600-320ZM440-756q11-2 20-3t20-1q11 0 20 1t20 3v-4q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v4ZM280-160h400-400Z"
+              d="M120-80q-33 0-56.5-23.5T40-160v-440h80v440h680v80H120Zm160-160q-33 0-56.5-23.5T200-320v-440h200v-80q0-33 23.5-56.5T480-920h160q33 0 56.5 23.5T720-840v80h200v440q0 33-23.5 56.5T840-240H280Zm0-80h560v-360H280v360Zm200-440h160v-80H480v80ZM280-320v-360 360Z"
             />
           </svg>
         </button>
@@ -328,30 +328,46 @@
       <!--STATUS-->
       <section class="sheet-sections sheet-stats" id="sheet-stats">
         <div class="sheet-stats-passive">
-          <div>
-            <span class="material-symbols-outlined">shield</span>
-            <span id="sheet-player-defense"></span>
-          </div>
+          <abbr title="Defesa">
+            <div>
+              <span class="material-symbols-outlined">shield</span>
+              <span id="sheet-player-defense"></span>
+            </div>
+          </abbr>
 
-          <div>
-            <span class="material-symbols-outlined">footprint</span>
-            <span id="sheet-player-displacement"></span>
-          </div>
+          <abbr title="Deslocamento">
+            <div>
+              <span class="material-symbols-outlined">footprint</span>
+              <span id="sheet-player-displacement"></span>
+            </div>
+          </abbr>
 
-          <div>
-            <span class="material-symbols-outlined">block</span>
-            <span id="sheet-player-blocking"></span>
-          </div>
+          <abbr title="Bloqueio">
+            <div>
+              <span class="material-symbols-outlined">block</span>
+              <span id="sheet-player-blocking"></span>
+            </div>
+          </abbr>
 
-          <div>
-            <span class="material-symbols-outlined">swords</span>
-            <span id="sheet-player-counterattack"></span>
-          </div>
+          <abbr title="Contra Ataque">
+            <div>
+              <span class="material-symbols-outlined">swords</span>
+              <span id="sheet-player-counterattack"></span></div
+          ></abbr>
 
-          <div>
-            <span class="material-symbols-outlined">sprint</span>
-            <span id="sheet-player-dodging"></span>
-          </div>
+          <abbr title="Esquiva">
+            <div>
+              <span class="material-symbols-outlined">sprint</span>
+              <span id="sheet-player-dodging"></span>
+            </div>
+          </abbr>
+
+          <abbr title="Percepeção">
+            <div>
+              <span class="material-symbols-outlined"> psychology_alt </span>
+              <span id="sheet-player-dodging"></span>
+            </div>
+          </abbr>
         </div>
 
         <div class="sheet-stats-bar">
@@ -671,18 +687,25 @@
       <!--INVENTÁRIO-->
       <section class="sheet-sections sheet-inventory" id="sheet-inventory">
         <header>
-          <button class="toggle-modal-add-item">
-            <span class="material-symbols-outlined">add</span>
-          </button>
-
-          <div>
-            <span class="SP-inventory-current-items">3</span>
-            <span>/</span>
-            <span class="SP-inventory-total-items">10</span>
-          </div>
+          <span>Capacidade de Carga</span>
+          <span id="SP-inventory-current-items"></span>
+          <span>/</span>
+          <span id="SP-inventory-total-items"></span>
         </header>
 
         <hr />
+
+        <nav>
+          <button class="toggle-sheet-player-item">
+            <i class="fa-solid fa-binoculars" style="color: #e0e0e0"></i>
+            <span>Adicionar item</span>
+          </button>
+
+          <button class="toggle-sheet-player-weapon">
+            <i class="fa-solid fa-gun" style="color: #e0e0e0"></i>
+            <span>Adicionar arma</span>
+          </button>
+        </nav>
 
         <div id="SP-inventory-slots"></div>
       </section>
@@ -1054,110 +1077,116 @@
     </dialog>
 
     <!--Adicionar item ao inventário do personagem-->
-    <dialog class="modal-add-item" id="modal-add-item">
+    <dialog class="modal-add-items" id="modalSheetItem">
       <header>
         <span>Adicionar Item</span>
 
-        <button class="toggle-modal-add-item">
+        <button class="toggle-sheet-player-item">
           <span class="material-symbols-outlined">close</span>
         </button>
       </header>
 
-      <!--Item, Arma, Equipamento, Kit e Notas-->
-      <nav>
-        <button class="nav-add-item-sections" data-target="add-item">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16px"
-            viewBox="0 -960 960 960"
-            width="16px"
-            fill="#e0e0e0"
-          >
-            <path
-              d="M120-80q-33 0-56.5-23.5T40-160v-440h80v440h680v80H120Zm160-160q-33 0-56.5-23.5T200-320v-440h200v-80q0-33 23.5-56.5T480-920h160q33 0 56.5 23.5T720-840v80h200v440q0 33-23.5 56.5T840-240H280Zm200-520h160v-80H480v80Z"
-            />
-          </svg>
-        </button>
-
-        <button class="nav-add-item-sections" data-target="add-weapons">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="16"
-            width="16"
-            viewBox="0 0 640 640"
-          >
-            <!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
-            <path
-              fill="#e0e0e0"
-              d="M560 120C560 106.7 549.3 96 536 96C522.7 96 512 106.7 512 120L512 128L64 128C46.3 128 32 142.3 32 160L32 272C32 289.7 46.3 304 64 304L74 304C94.8 304 110.1 323.6 105 343.8L65 504.2C62.6 513.8 64.8 523.9 70.8 531.7C76.8 539.5 86.1 544 96 544L192 544C206.7 544 219.5 534 223 519.8L249 416L353.4 416C377.1 416 398.2 401.1 406.1 378.8L432.8 304L463.9 304C472.4 304 480.5 300.6 486.5 294.6L509.1 272L575.8 272C593.5 272 607.8 257.7 607.8 240L607.8 160C607.8 142.3 593.5 128 575.8 128L559.8 128L559.8 120zM353.4 368L260.9 368L276.9 304L381.9 304L360.9 362.7C359.8 365.9 356.7 368 353.4 368zM112 192L496 192C504.8 192 512 199.2 512 208C512 216.8 504.8 224 496 224L112 224C103.2 224 96 216.8 96 208C96 199.2 103.2 192 112 192z"
-            />
-          </svg>
-        </button>
-      </nav>
-
       <!--Items Gerais-->
-      <section class="modal-add-item-sections" id="add-item">
-        <select id="">
+      <section class="modal-add-item-sections">
+        <!--Lista de Itens-->
+        <select id="SP-list-items-input">
           <option value="-">-Nenhum-</option>
         </select>
+
         <div>
-          <!--Nome do item-->
-          <label for="add-item-name-input">
-            <span>Nome:</span>
-            <input type="text" id="add-item-name-input" />
+          <!--Foto-->
+          <label for="SP-image-item-input">
+            <span>Foto:</span>
+            <img
+              src="img/camera-icon.png"
+              alt="Item Icon"
+              id="SP-image-item-preview"
+            />
+            <input type="file" accept="/image" id="SP-image-item-input" />
           </label>
 
-          <!--Peso do item-->
-          <label for="add-item-weight-input">
+          <!--Nome-->
+          <label for="SP-name-item-input">
+            <span>Nome:</span>
+            <input type="text" id="SP-name-item-input" />
+          </label>
+
+          <!--Peso-->
+          <label for="SP-weight-item-input">
             <span>Peso:</span>
-            <input type="number" id="add-item-weight-input" />
+            <input type="number" id="SP-weight-item-input" />
           </label>
         </div>
 
         <!--Descrição do item-->
-        <label for="add-item-desc-input">
+        <label for="SP-desc-item-input">
           <span>Descrição:</span>
-          <textarea id="add-item-desc-input"></textarea>
+          <textarea id="SP-desc-item-input"></textarea>
         </label>
 
         <!--Botão para adicionar o item-->
-        <button id="add-item-btn" class="toggle-modal-add-item">
+        <button id="SP-add-item-btn" class="toggle-sheet-player-item">
           ADICIONAR ITEM
         </button>
       </section>
+    </dialog>
 
-      <!--Armas-->
-      <section class="modal-add-item-sections" id="add-weapons">
-        <select id="list-weapons">
+    <!--Adicionar arma ao inventário do personagem-->
+    <dialog id="modalSheetWeapon">
+      <header>
+        <span>Adicionar Arma</span>
+
+        <button class="toggle-sheet-player-weapon">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </header>
+
+      <section>
+        <!--Lista de Armas-->
+        <select id="SP-list-weapons-input">
           <option value="-">-Nenhum-</option>
         </select>
 
-        <!--Nome e Categoria-->
-        <div class="">
-          <label for="">
-            <span>Nome:</span>
-            <input type="text" />
+        <!--Nome e Peso-->
+        <div>
+          <!--Foto-->
+          <label for="SP-image-weapon-input">
+            <span>Foto:</span>
+            <img
+              src="img/camera-icon.png"
+              alt="Item Icon"
+              id="SP-image-weapon-preview"
+            />
+            <input type="file" accept="/image" id="SP-image-weapon-input" />
           </label>
 
-          <label for="">
-            <span>Categoria:</span>
-            <select id="">
-              <option value="">Arma Simples</option>
-              <option value="">Arma Tática</option>
-              <option value="">Arma Pesada</option>
-            </select>
+          <!--Nome-->
+          <label for="SP-name-weapon-input">
+            <span>Nome:</span>
+            <input type="text" id="SP-name-weapon-input" />
+          </label>
+
+          <!--Peso-->
+          <label for="SP-weight-weapon-input">
+            <span>Peso:</span>
+            <input type="text" id="SP-weight-weapon-input" />
           </label>
         </div>
 
-        <!--Dano Mínimo e Máximo-->
-        <div class="add-item-weapon-damage">
-          <label for="">
+        <!--Dano e Categoria-->
+        <div>
+          <label for="SP-damage-qty-weapon-input">
             <span>Dano Mínimo:</span>
 
             <div>
-              <input type="number" value="0" max="99" />
+              <input
+                type="number"
+                value="0"
+                max="99"
+                id="SP-damage-qty-weapon-input"
+              />
 
-              <select id="">
+              <select id="SP-damage-dice-weapon-input">
                 <option value="0">0</option>
                 <option value="4">d4</option>
                 <option value="6">d6</option>
@@ -1169,29 +1198,21 @@
             </div>
           </label>
 
-          <label for="">
-            <span>Dano Máximo:</span>
-
-            <div>
-              <input type="number" value="0" max="99" />
-              <select id="">
-                <option value="0">0</option>
-                <option value="4">d4</option>
-                <option value="6">d6</option>
-                <option value="8">d8</option>
-                <option value="10">d10</option>
-                <option value="12">d12</option>
-                <option value="20">d20</option>
-              </select>
-            </div>
+          <label for="SP-category-weapon-input">
+            <span>Categoria:</span>
+            <select id="SP-category-weapon-input">
+              <option value="Arma Simples">Arma Simples</option>
+              <option value="Arma Tática">Arma Tática</option>
+              <option value="Arma Pesada">Arma Pesada</option>
+            </select>
           </label>
         </div>
 
         <!--Tipo e Alcance-->
         <div>
-          <label for="">
+          <label for="SP-type-weapon-input">
             <span>Tipo:</span>
-            <select id="">
+            <select id="SP-type-weapon-input">
               <option value="C">Corte</option>
               <option value="I">Impacto</option>
               <option value="P">Perfuração</option>
@@ -1200,31 +1221,31 @@
             </select>
           </label>
 
-          <label for="">
+          <label for="SP-range-weapon-input">
             <span>Alcance:</span>
-            <select id="">
-              <option value="">Curto (9m)</option>
-              <option value="">Médio (18m)</option>
-              <option value="">Longo (36m)</option>
-              <option value="">Extremo (90m)</option>
+            <select id="SP-range-weapon-input">
+              <option value="Curto (9m)">Curto (9m)</option>
+              <option value="Médio (18m)">Médio (18m)</option>
+              <option value="Longo (36m)">Longo (36m)</option>
+              <option value="Extremo (90m)">Extremo (90m)</option>
             </select>
           </label>
         </div>
 
         <!--Margem e Multiplicador-->
         <div>
-          <label for="">
+          <label for="SP-margin-weapon-input">
             <span>Margem:</span>
-            <select id="">
+            <select id="SP-margin-weapon-input">
               <option value="">20</option>
               <option value="">19</option>
               <option value="">18</option>
             </select>
           </label>
 
-          <label for="">
+          <label for="SP-multiplier-weapon-input">
             <span>Multiplicador:</span>
-            <select id="">
+            <select id="SP-multiplier-weapon-input">
               <option value="2">x2</option>
               <option value="3">x3</option>
               <option value="4">x4</option>
@@ -1232,7 +1253,9 @@
           </label>
         </div>
 
-        <button>ADICIONAR ARMA</button>
+        <button id="SP-add-weapon-btn" class="toggle-sheet-player-weapon">
+          ADICIONAR ARMA
+        </button>
       </section>
     </dialog>
 

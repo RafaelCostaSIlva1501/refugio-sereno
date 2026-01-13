@@ -7,12 +7,48 @@ import { display, displayToggle } from "./utils.js";
 export const toggle = {
   menu: false,
   playerForm: false,
-  modalAddItem: false,
+  modalSheetItem: false,
+  modalSheetWeapon: false,
 
   playerFormIndex: 0,
 
   theme: false,
 };
+
+/*========== TOGGLE ==========*/
+
+DOM.toggleMenu.forEach((button) => {
+  button.addEventListener("click", () => {
+    toggle.menu = !toggle.menu;
+
+    DOM.menu.style.width = toggle.menu ? "220px" : "0px";
+    DOM.menu.style.padding = toggle.menu ? "20px 20px" : "20px 0px";
+  });
+});
+
+DOM.togglePlayerForm.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    toggle.playerForm = displayToggle(toggle.playerForm, "player-form");
+  });
+});
+
+DOM.toggleSheetPlayerItem.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    toggle.modalSheetItem = displayToggle(
+      toggle.modalSheetItem,
+      "modalSheetItem"
+    );
+  });
+});
+
+DOM.toggleSheetPlayerWeapon.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    toggle.modalSheetWeapon = displayToggle(
+      toggle.modalSheetWeapon,
+      "modalSheetWeapon"
+    );
+  });
+});
 
 /*========== NAVIGATION ==========*/
 
@@ -112,29 +148,6 @@ DOM.navEquipmentSections.forEach((btn) => {
     btn.style.filter = "invert(100%)";
 
     display("equipment-sections", btn);
-  });
-});
-
-/*========== TOGGLE ==========*/
-
-DOM.toggleMenu.forEach((button) => {
-  button.addEventListener("click", () => {
-    toggle.menu = !toggle.menu;
-
-    DOM.menu.style.width = toggle.menu ? "220px" : "0px";
-    DOM.menu.style.padding = toggle.menu ? "20px 20px" : "20px 0px";
-  });
-});
-
-DOM.togglePlayerForm.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    toggle.playerForm = displayToggle(toggle.playerForm, "player-form");
-  });
-});
-
-DOM.toggleModalAddItem.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    toggle.modalAddItem = displayToggle(toggle.modalAddItem, "modal-add-item");
   });
 });
 

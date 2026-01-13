@@ -1,16 +1,24 @@
-/* ========== IMPORTAÇÕES ========== */
-
+// #region (IMPORTAÇÕES)
 import { DOM } from "./DOM.js";
 
 import { display, createElement } from "./utils.js";
 
 import { rollDiceAttribute, rollDiceExpertise } from "./game.js";
 
-import { levels, origins, attributes, expertises, weapons } from "./data.js";
+import {
+  levels,
+  origins,
+  attributes,
+  expertises,
+  items,
+  weapons,
+} from "./data.js";
+// #endregion
 
-/* ========== INICIALIZAÇÃO DE VARIÁVEIS ========== */
-
+// #region (INICIALIZAÇÃO DE VARIÁVEIS)
 let characterActive = null;
+let itemImage = "";
+let weaponImage = "";
 
 let characters = JSON.parse(localStorage.getItem("characters"));
 
@@ -85,8 +93,12 @@ let newCharacter = {
   inventory: [],
 };
 
-/* ========== RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO ========== */
+const saveLocalStorage = (storage) => {
+  localStorage.setItem("characters", JSON.stringify(storage));
+};
+// #endregion
 
+// #region (RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO)
 // Renderiza os níveis no formulário
 levels.forEach((e, i) => {
   const label = createElement("label");
@@ -248,9 +260,9 @@ expertises.forEach((e) => {
   select.appendChild(opt3);
   select.appendChild(opt4);
 });
+// #endregion
 
-/* ========== RECOLHIMENTO DAS INFORMAÇÕES + PREVIEW DA FICHA  ========== */
-
+// #region (RECOLHIMENTO DAS INFORMAÇÕES + PREVIEW DA FICHA)
 // Atualiza a imagem da ficha
 const updateSheetImg = () => {
   tempCharacter.photo = DOM.cspPhoto.files[0];
@@ -258,7 +270,6 @@ const updateSheetImg = () => {
 
   DOM.previewPhoto.forEach((e) => {
     e.src = URL.createObjectURL(tempCharacter.photo);
-    console.log("Foi!");
   });
 };
 
@@ -438,9 +449,9 @@ document.addEventListener("input", (inputs) => {
     updatewSheetExpertises();
   }
 });
+// #endregion
 
-/* ========== CRIA A ESTRUTURA DO OBJETO DO PERSONAGEM ========== */
-
+// #region (CRIA A ESTRUTURA DO OBJETO DO PERSONAGEM)
 const photoCharacter = () => {
   return new Promise((resolve, reject) => {
     if (!tempCharacter.photo) {
@@ -532,7 +543,7 @@ const createCharacter = async () => {
 
   characters.push(newCharacter);
 
-  localStorage.setItem("characters", JSON.stringify(characters));
+  saveLocalStorage(characters);
 
   console.log("Personagem salvo!");
 
@@ -544,13 +555,13 @@ const createCharacter = async () => {
 DOM.btnCreateCharacter.addEventListener("click", () => {
   createCharacter();
 });
+// #endregion
 
-/* ========== RENDERIZA OS PERSONAGENS NA LISTA ========== */
-
+// #region (RENDERIZA OS PERSONAGENS NA LISTA)
 const renderListPlayer = () => {
   DOM.listCharacterPlayer.innerHTML = "";
 
-  if (!characters) {
+  if (characters.length === 0) {
     const span = createElement("span");
     span.innerHTML = "Nenhum personagem foi criado!";
 
@@ -562,7 +573,7 @@ const renderListPlayer = () => {
       article.addEventListener("click", () => {
         display("global-sections", article);
         renderSheetPlayer(i);
-        renderInventoryItems(i);
+        renderSheetInventory(i);
       });
 
       const img = createElement("img");
@@ -587,9 +598,9 @@ const renderListPlayer = () => {
 };
 
 renderListPlayer();
+// #endregion
 
-/* ========== RENDERIZA A FICHA DOS PERSONAGENS ========== */
-
+// #region (RENDERIZA A FICHA DO PERSONAGEM)
 const renderSheetInfos = (index) => {
   DOM.sheetPlayerPhoto.src = characters[index].photo;
   DOM.sheetPlayerName.textContent = characters[index].name;
@@ -601,6 +612,7 @@ const renderSheetInfos = (index) => {
   DOM.sheetPlayerHistory.value = characters[index].history;
   DOM.sheetPlayerPersonality.value = characters[index].personality;
   DOM.sheetPlayerAppearance.value = characters[index].appearance;
+  DOM.sheetPlayerNotes.value = characters[index].notes;
 };
 
 const renderSheetStats = (index) => {
@@ -697,11 +709,44 @@ const renderSheetRollDices = (index) => {
 };
 
 const renderSheetInventory = (index) => {
-  let inventoryLimit = characters[index].for * 5;
+  DOM.SPinventorySlots.innerHTML = "";
 
-  for (let i = 0; i < inventoryLimit; i++) {
-    const slot = createElement("div");
-  }
+  DOM.SPinventoryCurrent.textContent = characters[index].inventory.length;
+  DOM.SPinventoryTotal.textContent = characters[index].itemLimit;
+
+  characters[index].inventory.forEach((item, i) => {
+    if (item.typeItem === "item") {
+      const details = createElement("details");
+      details.addEventListener("dblclick", () => {
+        // remove do array
+        characters[index].inventory.splice(i, 1);
+        saveLocalStorage(characters);
+        details.remove();
+      });
+
+      const summary = createElement("summary");
+
+      const name = createElement("span");
+      name.textContent = item.name;
+
+      const image = createElement("img");
+      image.src = item.image;
+      image.alt = `Ícone de ${item.name}`;
+
+      const desc = createElement("p");
+      desc.textContent = item.desc;
+
+      DOM.SPinventorySlots.appendChild(details);
+      details.appendChild(summary);
+      summary.appendChild(image);
+      summary.appendChild(name);
+      details.appendChild(desc);
+    } else if (item.typeItem === "weapon") {
+      const details = createElement("details");
+      const summary = createElement("summary");
+      const title = createElement("span");
+    }
+  });
 };
 
 // const renderSheetMistery = (index) => {};
@@ -715,48 +760,174 @@ const renderSheetPlayer = (index) => {
 };
 
 renderListPlayer();
+// #endregion
 
-/* ========== FUNCIONALIDADES DA FICHA ========== */
+// #region (FUNCIONALIDADES DA FICHA)
+
+// Atualiza o campo de texto de história
+DOM.sheetPlayerHistory.addEventListener("input", (event) => {
+  const element = event.target.value;
+
+  characters[characterActive].history = element;
+
+  saveLocalStorage(characters);
+});
+
+// Atualiza o campo de texto de personalidade
+DOM.sheetPlayerPersonality.addEventListener("input", (event) => {
+  const element = event.target.value;
+
+  characters[characterActive].personality = element;
+
+  saveLocalStorage(characters);
+});
+
+// Atualiza o campo de texto de aparência
+DOM.sheetPlayerAppearance.addEventListener("input", (event) => {
+  const element = event.target.value;
+
+  characters[characterActive].appearance = element;
+
+  saveLocalStorage(characters);
+});
+
+// Atualiza o campo de texto de anotações
+DOM.sheetPlayerNotes.addEventListener("input", (event) => {
+  const element = event.target.value;
+
+  characters[characterActive].notes = element;
+
+  saveLocalStorage(characters);
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+// Renderiza a lista de itens
+items.forEach((item, i) => {
+  const option = createElement("option");
+  option.value = i;
+  option.textContent = `${item.name}`;
+
+  DOM.SPlistItemsInput.appendChild(option);
+});
+
+DOM.SPitemImageInput.addEventListener("input", () => {
+  const file = DOM.SPitemImageInput.files[0];
+
+  if (!file) {
+    itemImage = null;
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = () => {
+    itemImage = reader.result;
+
+    DOM.SPitemImagePreview.src = itemImage;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+// Adiciona um novo item ao inventário
+const addItem = (index) => {
+  const newItem = {
+    image: itemImage,
+    name: DOM.SPitemNameInput.value,
+    weight: Number(DOM.SPitemWeightInput.value),
+    desc: DOM.SPitemDescInput.value,
+    typeItem: "item",
+  };
+
+  characters[index].inventory.push(newItem);
+
+  saveLocalStorage(characters);
+
+  DOM.SPitemNameInput.value = "";
+  DOM.SPitemWeightInput.value = "";
+  DOM.SPitemDescInput.value = "";
+  DOM.SPitemImageInput.value = "";
+  DOM.SPitemImagePreview.src = "./img/camera-icon.png";
+  itemImage = "";
+};
+
+DOM.SPaddItemBtn.addEventListener("click", () => {
+  addItem(characterActive);
+  renderSheetInventory(characterActive);
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 weapons.forEach((weapon, i) => {
   const option = createElement("option");
   option.value = i;
   option.textContent = `${weapon.name} (${weapon.minDamage[0]}d${weapon.minDamage[1]})`;
 
-  DOM.listWeapons.appendChild(option);
+  DOM.SPlistWeaponsInput.appendChild(option);
 });
 
-const addItem = (index) => {
-  const name = document.getElementById("add-item-name-input").value;
-  const weight = document.getElementById("add-item-weight-input").value;
-  const desc = document.getElementById("add-item-desc-input").value;
+DOM.SPweaponImageInput.addEventListener("input", () => {
+  const file = DOM.SPweaponImageInput.files[0];
 
-  characters[index].inventory.push({ name, weight, desc });
+  if (!file) {
+    weaponImage = null;
+    return;
+  }
 
-  localStorage.setItem("characters", JSON.stringify(characters));
-};
+  const reader = new FileReader();
 
-const addWeapon = (index) => {};
+  reader.onload = () => {
+    weaponImage = reader.result;
 
-const renderInventoryItems = (index) => {
-  characters[index].inventory.forEach((item) => {
-    const details = createElement("details");
+    DOM.SPweaponImagePreview.src = weaponImage;
+  };
 
-    const name = createElement("summary");
-    name.textContent = item.name;
-
-    const desc = createElement("p");
-    desc.textContent = item.desc;
-
-    DOM.SPinventorySlots.appendChild(details);
-    details.appendChild(name);
-    details.appendChild(desc);
-  });
-};
-
-DOM.addItemBtn.addEventListener("click", () => {
-  DOM.SPinventorySlots.innerHTML = "";
-
-  addNewItem(characterActive);
-  renderInventoryItems(characterActive);
+  reader.readAsDataURL(file);
 });
+
+const addWeapon = (index) => {
+  const newWeapon = {
+    image: weaponImage,
+    name: DOM.SPweaponNameInput.value,
+    weight: DOM.SPweaponWeightInput.value,
+    damage: [
+      DOM.SPweaponDamageQtyInput.value,
+      DOM.SPweaponDamageDiceInput.value,
+    ],
+    category: DOM.SPweaponCategoryInput.value,
+    type: DOM.SPweaponTypeInput.value,
+    range: DOM.SPweaponRangeInput.value,
+    margin: DOM.SPweaponMarginInput.value,
+    multiplier: DOM.SPweaponMultiplierInput.value,
+    typeItem: "weapon",
+  };
+
+  characters[index].inventory.push(newWeapon);
+
+  saveLocalStorage(characters);
+
+  DOM.SPweaponNameInput.value = "";
+  DOM.SPweaponWeightInput.value = "";
+  DOM.SPweaponDamageQtyInput.value = "";
+  DOM.SPweaponDamageDiceInput.value = "";
+  DOM.SPweaponCategoryInput.value = "";
+  DOM.SPweaponTypeInput.value = "";
+  DOM.SPweaponRangeInput.value = "";
+  DOM.SPweaponMarginInput.value = "";
+  DOM.SPweaponMultiplierInput.value = "";
+  DOM.SPweaponImageInput.value = "";
+  DOM.SPweaponImagePreview.src = "./img/camera-icon.png";
+  weaponImage = "";
+};
+
+DOM.SPaddWeaponBtn.addEventListener("click", () => {
+  addWeapon(characterActive);
+  renderSheetInventory(characterActive);
+});
+
+// #endregion
