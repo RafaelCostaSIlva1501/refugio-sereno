@@ -84,6 +84,7 @@ let newCharacter = {
 
   defense: "",
   displacement: "",
+  perception: "",
   blocking: "",
   counterattack: "",
   dodging: "",
@@ -506,6 +507,9 @@ const passivesCharacter = () => {
 
   newCharacter.displacement = 9;
 
+  newCharacter.perception =
+    Number(tempCharacter.attributes.pre) + Number(tempCharacter.expertises[18]);
+
   newCharacter.blocking = tempCharacter.expertises[9];
 
   newCharacter.counterattack = tempCharacter.expertises[15];
@@ -617,17 +621,18 @@ const renderSheetInfos = (index) => {
 
 const renderSheetStats = (index) => {
   DOM.barPV.value = characters[index].currentPV;
-  DOM.barPV.max = characters[index].currentPV;
+  DOM.barPV.max = characters[index].totalPV;
   DOM.currentPV.textContent = characters[index].currentPV;
   DOM.totalPV.textContent = characters[index].totalPV;
 
   DOM.barPD.value = characters[index].currentPD;
-  DOM.barPD.max = characters[index].currentPD;
+  DOM.barPD.max = characters[index].totalPD;
   DOM.currentPD.textContent = characters[index].currentPD;
   DOM.totalPD.textContent = characters[index].totalPD;
 
   DOM.sheetPlayerDefense.textContent = characters[index].defense;
   DOM.sheetPlayerDisplacement.textContent = characters[index].displacement;
+  DOM.sheetPlayerPerception.textContent = characters[index].perception;
   DOM.sheetPlayerBlocking.textContent = characters[index].blocking;
   DOM.sheetPlayerCounterattack.textContent = characters[index].counterattack;
   DOM.sheetPlayerDodging.textContent = characters[index].dodging;
@@ -802,7 +807,25 @@ DOM.sheetPlayerNotes.addEventListener("input", (event) => {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+// Atualiza a vida/determinação
+DOM.barStatusBtn.forEach((e, i) => {
+  e.addEventListener("click", () => {
+    const value = e.dataset.value;
+    const action = e.dataset.action;
+    const bar = e.dataset.bar;
 
+    if (action === "sub") {
+      characters[characterActive][bar] =
+        Number(characters[characterActive][bar]) - Number(value);
+    } else if (action === "add") {
+      characters[characterActive][bar] =
+        Number(characters[characterActive][bar]) + Number(value);
+    }
+
+    saveLocalStorage(characters);
+    renderSheetPlayer(characterActive);
+  });
+});
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 

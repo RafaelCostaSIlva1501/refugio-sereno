@@ -342,6 +342,13 @@
             </div>
           </abbr>
 
+          <abbr title="Percepeção">
+            <div>
+              <span class="material-symbols-outlined"> psychology_alt </span>
+              <span id="sheet-player-perception"></span>
+            </div>
+          </abbr>
+
           <abbr title="Bloqueio">
             <div>
               <span class="material-symbols-outlined">block</span>
@@ -361,13 +368,6 @@
               <span id="sheet-player-dodging"></span>
             </div>
           </abbr>
-
-          <abbr title="Percepeção">
-            <div>
-              <span class="material-symbols-outlined"> psychology_alt </span>
-              <span id="sheet-player-dodging"></span>
-            </div>
-          </abbr>
         </div>
 
         <div class="sheet-stats-bar">
@@ -377,7 +377,12 @@
               <!--Botões de subtração-->
               <div>
                 <!--Subtrai 5-->
-                <button id="">
+                <button
+                  class="bar-status-btn"
+                  data-value="5"
+                  data-action="sub"
+                  data-bar="currentPV"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -392,7 +397,12 @@
                 </button>
 
                 <!--Subtrai 1-->
-                <button id="">
+                <button
+                  class="bar-status-btn"
+                  data-value="1"
+                  data-action="sub"
+                  data-bar="currentPV"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -417,7 +427,12 @@
               <!--Botões de adição-->
               <div>
                 <!--Adiciona 1-->
-                <button id="">
+                <button
+                  class="bar-status-btn"
+                  data-value="1"
+                  data-action="add"
+                  data-bar="currentPV"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -432,7 +447,12 @@
                 </button>
 
                 <!--Adiciona 5-->
-                <button id="">
+                <button
+                  class="bar-status-btn"
+                  data-value="5"
+                  data-action="add"
+                  data-bar="currentPV"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -457,7 +477,12 @@
               <!--Botões de subtração-->
               <div>
                 <!--Subtrai 5-->
-                <button>
+                <button
+                  class="bar-status-btn"
+                  data-value="5"
+                  data-action="sub"
+                  data-bar="currentPD"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -472,7 +497,10 @@
                 </button>
 
                 <!--Subtrai 1-->
-                <button>
+                <button class="bar-status-btn"
+                  data-value="1"
+                  data-action="sub"
+                  data-bar="currentPD">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -496,8 +524,11 @@
 
               <!--Botões de adição-->
               <div>
-                <!--Subtrai 1-->
-                <button>
+                <!--Adiciona 1-->
+                <button class="bar-status-btn"
+                  data-value="1"
+                  data-action="add"
+                  data-bar="currentPD">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -511,8 +542,11 @@
                   </svg>
                 </button>
 
-                <!--Subtrai 5-->
-                <button>
+                <!--Adiciona 5-->
+                <button class="bar-status-btn"
+                  data-value="5"
+                  data-action="add"
+                  data-bar="currentPD">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"

@@ -115,6 +115,7 @@ export const DOM = {
 
   sheetPlayerDefense: document.getElementById("sheet-player-defense"),
   sheetPlayerDisplacement: document.getElementById("sheet-player-displacement"),
+  sheetPlayerPerception: document.getElementById("sheet-player-perception"),
   sheetPlayerBlocking: document.getElementById("sheet-player-blocking"),
   sheetPlayerCounterattack: document.getElementById(
     "sheet-player-counterattack"
@@ -128,6 +129,8 @@ export const DOM = {
   barPD: document.getElementById("barPD"),
   currentPD: document.getElementById("currentPD"),
   totalPD: document.getElementById("totalPD"),
+
+  barStatusBtn: document.querySelectorAll(".bar-status-btn"),
 
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),

@@ -191,6 +191,8 @@
       gap: var(--s12);
 
       & label {
+        display: flex;
+        align-items: center;
         position: relative;
         width: 100%;
 
@@ -199,6 +201,7 @@
 
           display: flex;
           justify-content: space-between;
+          align-items: center;
 
           width: 100%;
           padding: 0 32px;
@@ -217,14 +220,17 @@
           border-radius: var(--s4);
 
           overflow: hidden;
+          
         }
 
         & #barPV::-webkit-progress-value {
           background-color: var(--green);
+          transition: all 0.3s ease;
         }
 
         & #barPD::-webkit-progress-value {
           background-color: var(--blue);
+          transition: all 0.3s ease;
         }
       }
     }
