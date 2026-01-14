@@ -220,7 +220,6 @@
           border-radius: var(--s4);
 
           overflow: hidden;
-          
         }
 
         & #barPV::-webkit-progress-value {
@@ -288,7 +287,7 @@
       display: flex;
       gap: var(--s12);
 
-      height: fit-content;
+      height: 100%;
 
       & nav {
         display: flex;
@@ -322,36 +321,65 @@
 
       & #sheet-stats-weapons {
         display: flex;
-        gap: var(--s4);
+
+        gap: var(--s12);
+        height: fit-content;
 
         & header {
           display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
         & > div {
           display: flex;
-          gap: var(--s12);
+          align-items: center;
+          gap: var(--s8);
 
           & img {
-            width: var(--s96);
+            width: var(--s64);
+            height: var(--s64);
           }
 
-          & div {
-            display: flex;
-            flex-direction: column;
-          }
+          & ul {
+            list-style-type: none;
 
-          & span {
-            font-size: var(--s12);
+            & li {
+              margin: 4px;
+              font-size: var(--s12);
+            }
           }
         }
 
         & footer {
-        }
-      }
+          display: flex;
+          gap: var(--s12);
 
-      & #sheet-stats-equipment {
-        display: none;
+          & button {
+            align-items: center;
+            gap: var(--s4);
+
+            padding: var(--s4) 8px;
+
+            border-radius: var(--s4);
+          }
+
+          & span {
+            font-weight: 400;
+          }
+
+          & .material-symbols-outlined {
+            font-weight: 100;
+          }
+
+          & button:nth-child(1) {
+            background-color: var(--red);
+          }
+
+          & button:nth-child(2) {
+            background-color: var(--yellow);
+          }
+        }
       }
 
       & #sheet-stats-skills {

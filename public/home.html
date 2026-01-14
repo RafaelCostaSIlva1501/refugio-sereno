@@ -497,10 +497,12 @@
                 </button>
 
                 <!--Subtrai 1-->
-                <button class="bar-status-btn"
+                <button
+                  class="bar-status-btn"
                   data-value="1"
                   data-action="sub"
-                  data-bar="currentPD">
+                  data-bar="currentPD"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -525,10 +527,12 @@
               <!--Botões de adição-->
               <div>
                 <!--Adiciona 1-->
-                <button class="bar-status-btn"
+                <button
+                  class="bar-status-btn"
                   data-value="1"
                   data-action="add"
-                  data-bar="currentPD">
+                  data-bar="currentPD"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -543,10 +547,12 @@
                 </button>
 
                 <!--Adiciona 5-->
-                <button class="bar-status-btn"
+                <button
+                  class="bar-status-btn"
                   data-value="5"
                   data-action="add"
-                  data-bar="currentPD">
+                  data-bar="currentPD"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     height="24px"
@@ -566,38 +572,6 @@
           </label>
         </div>
 
-        <div class="sheet-stats-attack">
-          <button data-dice="4">
-            <img src="img/dice/d4.png" alt="" />
-            <span>D4</span>
-          </button>
-
-          <button data-dice="6">
-            <img src="img/dice/d6.png" alt="" />
-            <span>D6</span>
-          </button>
-
-          <button data-dice="8">
-            <img src="img/dice/d8.png" alt="" />
-            <span>D8</span>
-          </button>
-
-          <button data-dice="10">
-            <img src="img/dice/d10.png" alt="" />
-            <span>D10</span>
-          </button>
-
-          <button data-dice="12">
-            <img src="img/dice/d12.png" alt="" />
-            <span>D12</span>
-          </button>
-
-          <button data-dice="20">
-            <img src="img/dice/d20.png" alt="" />
-            <span>D20</span>
-          </button>
-        </div>
-
         <div class="sheet-stats-fight">
           <nav>
             <button
@@ -605,13 +579,6 @@
               data-target="sheet-stats-weapons"
             >
               Armas
-            </button>
-
-            <button
-              class="nav-sheet-fight-sections"
-              data-target="sheet-stats-equipment"
-            >
-              Equipamentos
             </button>
 
             <button
@@ -636,73 +603,95 @@
             </button>
           </nav>
 
+          <!--Armas-->
           <section class="sheet-fight-sections" id="sheet-stats-weapons">
             <header>
-              <span>Armas</span>
+              <span id="SP-stats-weapon-title">Revólver</span>
             </header>
 
             <div>
-              <!--Imagem da Arma-->
+              <button>
+                <span class="material-symbols-outlined"> arrow_back_ios </span>
+              </button>
+
+              <!--Imagem da arma-->
               <img src="img/pistola.png" alt="" />
 
               <!--Informações sobre a arma-->
-              <div>
+              <ul>
                 <!--Dano da arma-->
-                <p>
+                <li>
                   <span>Dano:</span>
-                  <span>2d20</span>
-                </p>
+                  <span id="SP-stats-weapon-damage">2d20</span>
+                </li>
 
                 <!--Crítico da arma-->
-                <p>
+                <li>
                   <span>Critíco:</span>
-                  <span>3x</span>
-                </p>
+                  <span id="SP-stats-weapon-critical">3x</span>
+                </li>
+
+                <!--Margem da arma-->
+                <li>
+                  <span>Margem:</span>
+                  <span id="SP-stats-weapon-margin">18</span>
+                </li>
+              </ul>
+
+              <ul>
+                <!--Tipo da arma-->
+                <li>
+                  <span>Tipo:</span>
+                  <span id="SP-stats-weapon-type">Arma de Fogo</span>
+                </li>
+
+                <!--Categoria da arma-->
+                <li>
+                  <span>Categoria:</span>
+                  <span id="SP-stats-weapon-category">Balístico</span>
+                </li>
 
                 <!--Alcance da arma-->
-                <p>
+                <li>
                   <span>Alcance:</span>
-                  <span></span>
-                </p>
-              </div>
+                  <span id="SP-stats-weapon-range">Médio</span>
+                </li>
+              </ul>
 
-              <!--Informações sobre a arma-->
-              <div>
-                <!--Tipo da arma-->
-                <p>
-                  <span>Tipo:</span>
-                  <span></span>
-                </p>
-
-                <!--Peso da arma-->
-                <p>
-                  <span>Peso:</span>
-                  <span></span>
-                </p>
-              </div>
+              <button>
+                <span class="material-symbols-outlined">arrow_forward_ios</span>
+              </button>
             </div>
 
-            <footer></footer>
+            <!--Botões de ataque-->
+            <footer>
+              <button>
+                <span>Luta/Pontaria</span>
+                <span class="material-symbols-outlined"> target </span>
+              </button>
+
+              <button>
+                <span>Dano</span>
+                <span class="material-symbols-outlined"> destruction </span>
+              </button>
+            </footer>
           </section>
 
-          <section class="sheet-fight-sections" id="sheet-stats-equipment">
-            <header>
-              <span>Equipamentos</span>
-            </header>
-          </section>
-
+          <!--Habilidades-->
           <section class="sheet-fight-sections" id="sheet-stats-skills">
             <header>
               <span>Habilidades</span>
             </header>
           </section>
 
+          <!--Resistências-->
           <section class="sheet-fight-sections" id="sheet-stats-resistances">
             <header>
               <span>Resistências</span>
             </header>
           </section>
 
+          <!--Condições-->
           <section class="sheet-fight-sections" id="sheet-stats-conditions">
             <header>
               <span>Condições</span>

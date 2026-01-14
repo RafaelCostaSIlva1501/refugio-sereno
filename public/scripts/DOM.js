@@ -132,6 +132,16 @@ export const DOM = {
 
   barStatusBtn: document.querySelectorAll(".bar-status-btn"),
 
+  SPstatsWeaponsName: document.getElementById(""),
+  SPstatsWeaponsWeight: document.getElementById(""),
+  SPstatsWeaponsImg: document.getElementById(""),
+  SPstatsWeaponsCategory: document.getElementById(""),
+  SPstatsWeaponsDamage: document.getElementById(""),
+  SPstatsWeaponsCritical: document.getElementById(""),
+  SPstatsWeaponsMargin: document.getElementById(""),
+  SPstatsWeaponsRange: document.getElementById(""),
+  SPstatsWeaponsType: document.getElementById(""),
+
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
 
@@ -160,7 +170,9 @@ export const DOM = {
   SPweaponTypeInput: document.getElementById("SP-type-weapon-input"),
   SPweaponRangeInput: document.getElementById("SP-range-weapon-input"),
   SPweaponMarginInput: document.getElementById("SP-margin-weapon-input"),
-  SPweaponMultiplierInput: document.getElementById("SP-multiplier-weapon-input"),
+  SPweaponMultiplierInput: document.getElementById(
+    "SP-multiplier-weapon-input"
+  ),
   SPaddWeaponBtn: document.getElementById("SP-add-weapon-btn"),
 
   toast: document.querySelector(".toast"),
