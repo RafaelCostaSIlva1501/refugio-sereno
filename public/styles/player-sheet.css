@@ -321,37 +321,38 @@
 
       & #sheet-stats-weapons {
         display: flex;
-
         gap: var(--s12);
+
         height: fit-content;
 
         & header {
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
+          gap: var(--s12);
+        }
+
+        & ul {
+          list-style: none;
+          columns: 2;
+
+          padding: 0 var(--s12);
+
+          font-size: var(--s12);
+
+          & span:nth-child(1) {
+            font-size: var(--s12);
+            font-weight: 600;
+          }
+
+          & span:nth-child(2) {
+            opacity: 90%;
+            font-size: var(--s12);
+            font-weight: 400;
+          }
         }
 
         & > div {
-          display: flex;
-          align-items: center;
-          gap: var(--s8);
-
-          & img {
-            width: var(--s64);
-            height: var(--s64);
-          }
-
-          & ul {
-            list-style-type: none;
-
-            & li {
-              margin: 4px;
-              font-size: var(--s12);
-            }
-          }
-        }
-
-        & footer {
           display: flex;
           gap: var(--s12);
 
@@ -359,25 +360,26 @@
             align-items: center;
             gap: var(--s4);
 
-            padding: var(--s4) 8px;
+            margin: var(--s4) 0;
+            padding: var(--s4) var(--s8);
 
+            background-color: var(--cor03);
             border-radius: var(--s4);
-          }
 
-          & span {
-            font-weight: 400;
-          }
-
-          & .material-symbols-outlined {
-            font-weight: 100;
+            color: var(--cor04);
+            font-weight: 700;
           }
 
           & button:nth-child(1) {
-            background-color: var(--red);
+            background-color: var(--yellow);
           }
 
           & button:nth-child(2) {
-            background-color: var(--yellow);
+            background-color: var(--orange);
+          }
+
+          & button:nth-child(3) {
+            background-color: var(--red);
           }
         }
       }

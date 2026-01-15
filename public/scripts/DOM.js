@@ -132,15 +132,23 @@ export const DOM = {
 
   barStatusBtn: document.querySelectorAll(".bar-status-btn"),
 
-  SPstatsWeaponsName: document.getElementById(""),
-  SPstatsWeaponsWeight: document.getElementById(""),
-  SPstatsWeaponsImg: document.getElementById(""),
-  SPstatsWeaponsCategory: document.getElementById(""),
-  SPstatsWeaponsDamage: document.getElementById(""),
-  SPstatsWeaponsCritical: document.getElementById(""),
-  SPstatsWeaponsMargin: document.getElementById(""),
-  SPstatsWeaponsRange: document.getElementById(""),
-  SPstatsWeaponsType: document.getElementById(""),
+  SPstatsWeaponsTitle: document.getElementById("SP-stats-weapon-title"),
+  SPstatsWeaponsPagination: document.querySelectorAll(
+    "SP-stats-weapon-pagination"
+  ),
+  SPstatsWeaponsDamage: document.getElementById("SP-stats-weapon-damage"),
+  SPstatsWeaponsCritical: document.getElementById("SP-stats-weapon-critical"),
+  SPstatsWeaponsMargin: document.getElementById("SP-stats-weapon-margin"),
+  SPstatsWeaponsType: document.getElementById("SP-stats-weapon-type"),
+  SPstatsWeaponsCategory: document.getElementById("SP-stats-weapon-category"),
+  SPstatsWeaponsRange: document.getElementById("SP-stats-weapon-range"),
+  SPstatsWeaponsDiceAim: document.getElementById("SP-stats-weapon-dice-aim"),
+  SPstatsWeaponsDiceDamage: document.getElementById(
+    "SP-stats-weapon-dice-damage"
+  ),
+  SPstatsWeaponsDiceCritical: document.getElementById(
+    "SP-stats-weapon-dice-critical"
+  ),
 
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),

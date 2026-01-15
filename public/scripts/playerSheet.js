@@ -16,11 +16,12 @@ import {
 // #endregion
 
 // #region (INICIALIZAÇÃO DE VARIÁVEIS)
+let characters = JSON.parse(localStorage.getItem("characters"));
+
 let characterActive = null;
 let itemImage = "";
 let weaponImage = "";
-
-let characters = JSON.parse(localStorage.getItem("characters"));
+let weaponIventory = null;
 
 if (!Array.isArray(characters)) {
   characters = [];
@@ -97,6 +98,7 @@ let newCharacter = {
 const saveLocalStorage = (storage) => {
   localStorage.setItem("characters", JSON.stringify(storage));
 };
+
 // #endregion
 
 // #region (RENDERIZAÇÃO DE ELEMENTOS NO FORMULÁRIO)
@@ -620,6 +622,13 @@ const renderSheetInfos = (index) => {
 };
 
 const renderSheetStats = (index) => {
+  DOM.sheetPlayerDefense.textContent = characters[index].defense;
+  DOM.sheetPlayerDisplacement.textContent = characters[index].displacement;
+  DOM.sheetPlayerPerception.textContent = characters[index].perception;
+  DOM.sheetPlayerBlocking.textContent = characters[index].blocking;
+  DOM.sheetPlayerCounterattack.textContent = characters[index].counterattack;
+  DOM.sheetPlayerDodging.textContent = characters[index].dodging;
+
   DOM.barPV.value = characters[index].currentPV;
   DOM.barPV.max = characters[index].totalPV;
   DOM.currentPV.textContent = characters[index].currentPV;
@@ -630,12 +639,30 @@ const renderSheetStats = (index) => {
   DOM.currentPD.textContent = characters[index].currentPD;
   DOM.totalPD.textContent = characters[index].totalPD;
 
-  DOM.sheetPlayerDefense.textContent = characters[index].defense;
-  DOM.sheetPlayerDisplacement.textContent = characters[index].displacement;
-  DOM.sheetPlayerPerception.textContent = characters[index].perception;
-  DOM.sheetPlayerBlocking.textContent = characters[index].blocking;
-  DOM.sheetPlayerCounterattack.textContent = characters[index].counterattack;
-  DOM.sheetPlayerDodging.textContent = characters[index].dodging;
+  weaponIventory = characters[index].inventory.filter(
+    (i) => i.typeItem === "weapon"
+  );
+
+  weaponIventory.forEach((e) => {
+    DOM.SPstatsWeaponsDamage.innerHTML = `${e.damage[0]}d${e.damage[1]}`;
+    DOM.SPstatsWeaponsCritical.innerHTML = `${e.multiplier}x`;
+    DOM.SPstatsWeaponsMargin.innerHTML = e.margin;
+    DOM.SPstatsWeaponsType.innerHTML = e.type;
+    DOM.SPstatsWeaponsCategory.innerHTML = e.category;
+    DOM.SPstatsWeaponsRange.innerHTML = e.range;
+
+    DOM.SPstatsWeaponsDiceAim.dataset.multiplier = characters[index].agi;
+    DOM.SPstatsWeaponsDiceAim.dataset.training =
+      characters[index].expertises[20];
+    DOM.SPstatsWeaponsDiceAim.dataset.margin = e.margin;
+
+    DOM.SPstatsWeaponsDiceDamage.dataset.qty = e.damage[0];
+    DOM.SPstatsWeaponsDiceDamage.dataset.dice = e.damage[1];
+
+    DOM.SPstatsWeaponsDiceCritical.dataset.qty = e.damage[0];
+    DOM.SPstatsWeaponsDiceCritical.dataset.dice = e.damage[1];
+    DOM.SPstatsWeaponsDiceCritical.dataset.multiplier = e.multiplier;
+  });
 };
 
 const renderSheetRollDices = (index) => {
@@ -889,7 +916,7 @@ DOM.SPaddItemBtn.addEventListener("click", () => {
 weapons.forEach((weapon, i) => {
   const option = createElement("option");
   option.value = i;
-  option.textContent = `${weapon.name} (${weapon.minDamage[0]}d${weapon.minDamage[1]})`;
+  option.textContent = `${weapon.name} (${weapon.damage[0]}d${weapon.damage[1]})`;
 
   DOM.SPlistWeaponsInput.appendChild(option);
 });
