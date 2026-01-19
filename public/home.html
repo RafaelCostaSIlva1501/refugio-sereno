@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
@@ -734,10 +734,42 @@
           </section>
 
           <!--Dados-->
-          <section
-            class="sheet-fight-sections"
-            id="sheet-stats-dices"
-          ></section>
+          <section class="sheet-fight-sections" id="sheet-stats-dices">
+            <div>
+              <button class="stats-dices-rolls" data-dice="4">
+                <img src="img/dice/d4.png" alt="Dado de 4 faces" />
+              </button>
+
+              <button class="stats-dices-rolls" data-dice="6">
+                <img src="img/dice/d6.png" alt="Dado de 6 faces" />
+              </button>
+
+              <button class="stats-dices-rolls" data-dice="8">
+                <img src="img/dice/d8.png" alt="Dado de 8 faces" />
+              </button>
+
+              <button class="stats-dices-rolls" data-dice="10">
+                <img src="img/dice/d10.png" alt="Dado de 10 faces" />
+              </button>
+
+              <button class="stats-dices-rolls" data-dice="12">
+                <img src="img/dice/d12.png" alt="Dado de 12 faces" />
+              </button>
+
+              <button class="stats-dices-rolls" data-dice="20">
+                <img src="img/dice/d20.png" alt="Dado de 20 faces" />
+              </button>
+            </div>
+
+            <div id="showDices"></div>
+
+            <p id="resultRollDices"></p>
+
+            <div>
+              <button id="rollDicesBtn">Rolar</button>
+              <button id="resetRollDicesBtn">Resetar</button>
+            </div>
+          </section>
 
           <!--Habilidades-->
           <section class="sheet-fight-sections" id="sheet-stats-skills">

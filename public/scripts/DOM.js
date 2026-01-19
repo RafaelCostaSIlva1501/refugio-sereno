@@ -14,7 +14,7 @@ export const DOM = {
   toggleSheetPlayerItem: document.querySelectorAll(".toggle-sheet-player-item"),
 
   toggleSheetPlayerWeapon: document.querySelectorAll(
-    ".toggle-sheet-player-weapon"
+    ".toggle-sheet-player-weapon",
   ),
 
   modalAddItem: document.getElementById("modal-add-item"),
@@ -24,10 +24,10 @@ export const DOM = {
   navGlobalSections: document.querySelectorAll(".nav-global-sections"),
 
   previewDetailsSections: document.querySelectorAll(
-    ".preview-details-sections"
+    ".preview-details-sections",
   ),
   navPreviewDetailsSections: document.querySelectorAll(
-    ".nav-preview-details-sections"
+    ".nav-preview-details-sections",
   ),
 
   sheetSections: document.querySelectorAll(".sheet-sections"),
@@ -35,7 +35,7 @@ export const DOM = {
 
   sheetDetailsSections: document.querySelectorAll(".sheet-details-sections"),
   navSheetDetailsSections: document.querySelectorAll(
-    ".nav-sheet-details-sections"
+    ".nav-sheet-details-sections",
   ),
 
   sheetFightSections: document.querySelectorAll(".sheet-fight-sections"),
@@ -118,7 +118,7 @@ export const DOM = {
   sheetPlayerPerception: document.getElementById("sheet-player-perception"),
   sheetPlayerBlocking: document.getElementById("sheet-player-blocking"),
   sheetPlayerCounterattack: document.getElementById(
-    "sheet-player-counterattack"
+    "sheet-player-counterattack",
   ),
   sheetPlayerDodging: document.getElementById("sheet-player-dodging"),
 
@@ -134,7 +134,7 @@ export const DOM = {
 
   SPstatsWeaponsTitle: document.getElementById("SP-stats-weapon-title"),
   SPstatsWeaponsPagination: document.querySelectorAll(
-    "SP-stats-weapon-pagination"
+    "SP-stats-weapon-pagination",
   ),
   SPstatsWeaponsDamage: document.getElementById("SP-stats-weapon-damage"),
   SPstatsWeaponsCritical: document.getElementById("SP-stats-weapon-critical"),
@@ -144,11 +144,17 @@ export const DOM = {
   SPstatsWeaponsRange: document.getElementById("SP-stats-weapon-range"),
   SPstatsWeaponsDiceAim: document.getElementById("SP-stats-weapon-dice-aim"),
   SPstatsWeaponsDiceDamage: document.getElementById(
-    "SP-stats-weapon-dice-damage"
+    "SP-stats-weapon-dice-damage",
   ),
   SPstatsWeaponsDiceCritical: document.getElementById(
-    "SP-stats-weapon-dice-critical"
+    "SP-stats-weapon-dice-critical",
   ),
+
+  SPstatsDicesRolls: document.querySelectorAll(".stats-dices-rolls"),
+  SProllDicseBtn: document.getElementById("rollDicesBtn"),
+  SPshowDices: document.getElementById("showDices"),
+  SPresetRollDicesBtn: document.getElementById("resetRollDicesBtn"),
+  SPresultRollDices: document.getElementById("resultRollDices"),
 
   sheetPlayerAttributes: document.getElementById("sheet-attributes"),
   sheetPlayerExpertises: document.getElementById("sheet-expertises"),
@@ -173,17 +179,16 @@ export const DOM = {
   SPweaponCategoryInput: document.getElementById("SP-category-weapon-input"),
   SPweaponDamageQtyInput: document.getElementById("SP-damage-qty-weapon-input"),
   SPweaponDamageDiceInput: document.getElementById(
-    "SP-damage-dice-weapon-input"
+    "SP-damage-dice-weapon-input",
   ),
   SPweaponTypeInput: document.getElementById("SP-type-weapon-input"),
   SPweaponRangeInput: document.getElementById("SP-range-weapon-input"),
   SPweaponMarginInput: document.getElementById("SP-margin-weapon-input"),
   SPweaponMultiplierInput: document.getElementById(
-    "SP-multiplier-weapon-input"
+    "SP-multiplier-weapon-input",
   ),
   SPaddWeaponBtn: document.getElementById("SP-add-weapon-btn"),
 
- 
   toastRolls: document.getElementById("toastRolls"),
 
   /* ================ RENDER ================ */

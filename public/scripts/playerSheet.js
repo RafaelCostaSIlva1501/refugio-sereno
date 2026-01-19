@@ -22,6 +22,7 @@ let characterActive = null;
 let itemImage = "";
 let weaponImage = "";
 let weaponIventory = null;
+let diceRolls = [];
 
 if (!Array.isArray(characters)) {
   characters = [];
@@ -977,6 +978,55 @@ DOM.SPstatsWeaponsDiceCritical.addEventListener("click", (event) => {
 
   DOM.toastRolls.appendChild(h3);
   DOM.toastRolls.appendChild(p);
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+DOM.SPstatsDicesRolls.forEach((e) => {
+  e.addEventListener("click", () => {
+    const dice = e.dataset.dice;
+
+    diceRolls.push(dice);
+
+    const img = createElement("img");
+    img.src = `./img/dice/d${dice}.png`;
+
+    img.addEventListener("click", () => {
+      // remove UMA ocorrência desse dado do array
+      const index = diceRolls.indexOf(dice);
+      if (index !== -1) {
+        diceRolls.splice(index, 1);
+      }
+
+      // remove visualmente
+      img.remove();
+    });
+
+    DOM.SPshowDices.appendChild(img);
+  });
+});
+
+DOM.SProllDicseBtn.addEventListener("click", () => {
+  DOM.SPresultRollDices.innerHTML = "";
+
+  const result = [];
+
+  diceRolls.forEach((dice, i) => {
+    const value = rollDice(dice, 1);
+    result.push(value);
+  });
+
+  const total = result.reduce(
+    (total, current) => Number(total) + Number(current),
+  );
+
+  DOM.SPresultRollDices.innerHTML += `${result.join(", ")} = <strong>${total}</strong><br>`;
+});
+
+DOM.SPresetRollDicesBtn.addEventListener("click", () => {
+  diceRolls = [];
+  DOM.SPshowDices.innerHTML = "";
+  DOM.SPresultRollDices.innerHTML = "";
 });
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
