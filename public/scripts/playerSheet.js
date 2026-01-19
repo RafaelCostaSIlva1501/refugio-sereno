@@ -3,7 +3,7 @@ import { DOM } from "./DOM.js";
 
 import { display, createElement } from "./utils.js";
 
-import { rollDiceAttribute, rollDiceExpertise } from "./game.js";
+import { rollDice, rollDiceAttribute, rollDiceExpertise } from "./game.js";
 
 import {
   levels,
@@ -547,7 +547,7 @@ const createCharacter = async () => {
   expertisesCharacter();
   inventoryCharacter();
 
-  characters.push(newCharacter);
+  characters.push({ ...newCharacter });
 
   saveLocalStorage(characters);
 
@@ -640,7 +640,7 @@ const renderSheetStats = (index) => {
   DOM.totalPD.textContent = characters[index].totalPD;
 
   weaponIventory = characters[index].inventory.filter(
-    (i) => i.typeItem === "weapon"
+    (i) => i.typeItem === "weapon",
   );
 
   weaponIventory.forEach((e) => {
@@ -651,7 +651,7 @@ const renderSheetStats = (index) => {
     DOM.SPstatsWeaponsCategory.innerHTML = e.category;
     DOM.SPstatsWeaponsRange.innerHTML = e.range;
 
-    DOM.SPstatsWeaponsDiceAim.dataset.multiplier = characters[index].agi;
+    DOM.SPstatsWeaponsDiceAim.dataset.mod = characters[index].agi;
     DOM.SPstatsWeaponsDiceAim.dataset.training =
       characters[index].expertises[20];
     DOM.SPstatsWeaponsDiceAim.dataset.margin = e.margin;
@@ -699,7 +699,7 @@ const renderSheetRollDices = (index) => {
       rollDiceExpertise(
         button,
         characters[index][expertises[i].attribute],
-        expertises[i].name
+        expertises[i].name,
       );
     });
 
@@ -775,8 +775,22 @@ const renderSheetInventory = (index) => {
       details.appendChild(desc);
     } else if (item.typeItem === "weapon") {
       const details = createElement("details");
+      details.addEventListener("dblclick", () => {
+        // remove do array
+        characters[index].inventory.splice(i, 1);
+        saveLocalStorage(characters);
+        details.remove();
+      });
+
       const summary = createElement("summary");
-      const title = createElement("span");
+
+      const name = createElement("span");
+      name.textContent = item.name;
+
+      DOM.SPinventorySlots.appendChild(details);
+      details.appendChild(summary);
+
+      summary.appendChild(name);
     }
   });
 };
@@ -852,6 +866,117 @@ DOM.barStatusBtn.forEach((e, i) => {
     saveLocalStorage(characters);
     renderSheetPlayer(characterActive);
   });
+});
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+// Rolagem de pontaria
+DOM.SPstatsWeaponsDiceAim.addEventListener("click", (event) => {
+  const training = event.currentTarget.dataset.training;
+  const mod = event.currentTarget.dataset.mod;
+  const margin = event.currentTarget.dataset.margin;
+
+  const values = rollDice(20, mod);
+  const max = Math.max(...values);
+  const result = Number(max) + Number(training);
+
+  DOM.toastRolls.innerHTML = "";
+  DOM.toastRolls.style.opacity = "1";
+  DOM.toastRolls.style.pointerEvents = "auto";
+
+  // remove classes para reset
+  DOM.toastRolls.classList.remove("toast-show", "toast-critical");
+  void DOM.toastRolls.offsetWidth; // força reflow
+
+  // ativa animação base
+  DOM.toastRolls.classList.add("toast-show");
+
+  if (max >= margin) {
+    DOM.toastRolls.classList.add("toast-critical");
+  }
+
+  DOM.toastRolls.style.opacity = "0";
+
+  const h3 = createElement("h3");
+  h3.textContent = "Pontaria (AGI)";
+
+  const p = createElement("p");
+  p.innerHTML = `${max} + ${training} = <strong>${result}</strong>`;
+
+  const div = createElement("div");
+  div.textContent = `(${values.sort((a, b) => a - b).join(", ")})`;
+
+  DOM.toastRolls.appendChild(h3);
+  DOM.toastRolls.appendChild(p);
+  DOM.toastRolls.appendChild(div);
+});
+
+// Rolagem de dano
+DOM.SPstatsWeaponsDiceDamage.addEventListener("click", (event) => {
+  const qty = event.currentTarget.dataset.qty;
+  const dice = event.currentTarget.dataset.dice;
+
+  const values = rollDice(dice, qty);
+
+  const result = values.reduce((total, current) => {
+    return total + current;
+  });
+
+  DOM.toastRolls.innerHTML = "";
+  DOM.toastRolls.style.opacity = "1";
+  DOM.toastRolls.style.pointerEvents = "auto";
+
+  // remove classes para reset
+  DOM.toastRolls.classList.remove("toast-show", "toast-critical");
+  void DOM.toastRolls.offsetWidth; // força reflow
+
+  // ativa animação base
+  DOM.toastRolls.classList.add("toast-show");
+
+  DOM.toastRolls.style.opacity = "0";
+
+  const h3 = createElement("h3");
+  h3.textContent = `Dano Comum (${qty}d${dice})`;
+
+  const p = createElement("p");
+  p.innerHTML = `${values} = <strong>${result}</strong>`;
+
+  DOM.toastRolls.appendChild(h3);
+  DOM.toastRolls.appendChild(p);
+});
+
+// Rolagem de dano crítico
+DOM.SPstatsWeaponsDiceCritical.addEventListener("click", (event) => {
+  const qty = event.currentTarget.dataset.qty;
+  const dice = event.currentTarget.dataset.dice;
+  const multiplier = event.currentTarget.dataset.multiplier;
+
+  const values = rollDice(dice, qty);
+  const result = values.reduce((total, current) => {
+    return total + current;
+  });
+
+  DOM.toastRolls.innerHTML = "";
+  DOM.toastRolls.style.opacity = "1";
+  DOM.toastRolls.style.pointerEvents = "auto";
+
+  // remove classes para reset
+  DOM.toastRolls.classList.remove("toast-show", "toast-critical");
+  void DOM.toastRolls.offsetWidth; // força reflow
+
+  // ativa animação base
+  DOM.toastRolls.classList.add("toast-show");
+
+  DOM.toastRolls.style.opacity = "0";
+
+  const h3 = createElement("h3");
+  h3.textContent = `Dano Crítico (${qty}d${dice} x${multiplier})`;
+
+  const p = createElement("p");
+  p.innerHTML = `(${values}) x${multiplier} = <strong>${result * multiplier}</strong>`;
+
+  DOM.toastRolls.appendChild(h3);
+  DOM.toastRolls.appendChild(p);
 });
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/

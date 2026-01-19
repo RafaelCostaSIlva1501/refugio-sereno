@@ -68,7 +68,7 @@ export const rollDiceAttribute = (mod, attribute) => {
 };
 
 
-export const rollDiceExpertise = (btn, mod, expertise) => {
+export const rollDiceExpertise = (btn,  mod, expertise) => {
   DOM.toastDice.innerHTML = "";
   DOM.toastDice.style.display = "flex";
 

@@ -163,46 +163,116 @@ dialog {
   }
 }
 
-#toast-dice {
+#toastRolls {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 0;
+  left: 0;
 
-  display: none;
+  display: flex;
   flex-direction: column;
-  gap: var(--s12);
+  gap: var(--s8);
+
+  opacity: 0;
 
   width: var(--s256);
+
+  margin: var(--s12);
   padding: var(--s12);
 
   background-color: var(--cor02);
-  border: 2px solid var(--cor04);
+  border: 2px solid var(--cor03);
   border-radius: 4px;
 
   color: var(--cor04);
+
+  & h3 {
+    font-size: var(--s16);
+  }
+
+  & p {
+    font-size: var(--s12);
+  }
+
+  & div {
+    font-size: var(--s12);
+  }
 }
 
-#toast-dice h4 {
-  display: flex;
-  align-items: center;
-  font-size: var(--s16);
+.toast-show {
+  animation: showToast 5s ease forwards;
 }
 
-#toast-dice > div {
-  display: flex;
+.toast-critical {
+  animation: toastCritical 5s ease-in-out;
 }
 
-#toast-dice > div div {
-  display: flex;
-  flex-direction: row;
+@keyframes showToast {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
-#toast-dice span {
-  font-size: var(--s16);
-}
-
-#toast-dice > span {
-  color: var(--cor07);
-  font-size: var(--s12);
+@keyframes toastCritical {
+  0% {
+    box-shadow: 0px 0px 5px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 0;
+  }
+  10% {
+    box-shadow: 0px 0px 10px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  20% {
+    box-shadow: 0px 0px 5px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  30% {
+    box-shadow: 0px 0px 10px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  40% {
+    box-shadow: 0px 0px 5px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0px 0px 10px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0px 0px 5px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0px 0px 10px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  80% {
+    box-shadow: 0px 0px 5px 1px var(--red);
+    border: 2px solid var(--red);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0px 0px 10px 1px var(--red);
+    border: 2px solid var(--red); 
+    opacity: 0;
+  }
 }

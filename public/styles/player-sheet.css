@@ -36,7 +36,7 @@
     flex-direction: column;
     flex: 1;
 
-    height: 100%;
+    height: fit-content;
 
     color: var(--cor04);
   }
@@ -128,7 +128,6 @@
     gap: var(--s12);
 
     width: 100%;
-    height: fit-content;
 
     & .sheet-stats-passive {
       display: flex;

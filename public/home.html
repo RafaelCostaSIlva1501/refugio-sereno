@@ -583,6 +583,13 @@
 
             <button
               class="nav-sheet-fight-sections"
+              data-target="sheet-stats-dices"
+            >
+              Dados
+            </button>
+
+            <button
+              class="nav-sheet-fight-sections"
               data-target="sheet-stats-skills"
             >
               Habilidades
@@ -606,11 +613,35 @@
           <!--Armas-->
           <section class="sheet-fight-sections" id="sheet-stats-weapons">
             <header>
-              <button class="SP-stats-weapon-pagination"></button>
+              <button class="SP-stats-weapon-pagination">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16px"
+                  viewBox="0 -960 960 960"
+                  width="16px"
+                  fill="#e0e0e0"
+                >
+                  <path
+                    d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z"
+                  />
+                </svg>
+              </button>
 
               <span id="SP-stats-weapon-title">Revólver</span>
 
-              <button class="SP-stats-weapon-pagination"></button>
+              <button class="SP-stats-weapon-pagination">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="16px"
+                  viewBox="0 -960 960 960"
+                  width="16px"
+                  fill="#e0e0e0"
+                >
+                  <path
+                    d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z"
+                  />
+                </svg>
+              </button>
             </header>
 
             <ul>
@@ -701,6 +732,12 @@
               </button>
             </div>
           </section>
+
+          <!--Dados-->
+          <section
+            class="sheet-fight-sections"
+            id="sheet-stats-dices"
+          ></section>
 
           <!--Habilidades-->
           <section class="sheet-fight-sections" id="sheet-stats-skills">
@@ -1285,9 +1322,9 @@
           <label for="SP-margin-weapon-input">
             <span>Margem:</span>
             <select id="SP-margin-weapon-input">
-              <option value="">20</option>
-              <option value="">19</option>
-              <option value="">18</option>
+              <option value="20">20</option>
+              <option value="19">19</option>
+              <option value="18">18</option>
             </select>
           </label>
 
@@ -1306,6 +1343,8 @@
         </button>
       </section>
     </dialog>
+
+    <div id="toastRolls"></div>
 
     <script type="module" src="scripts/display.js"></script>
     <script type="module" src="scripts/playerSheet.js"></script>

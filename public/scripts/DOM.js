@@ -183,8 +183,8 @@ export const DOM = {
   ),
   SPaddWeaponBtn: document.getElementById("SP-add-weapon-btn"),
 
-  toast: document.querySelector(".toast"),
-  toastDice: document.getElementById("toast-dice"),
+ 
+  toastRolls: document.getElementById("toastRolls"),
 
   /* ================ RENDER ================ */
   equipmentWeapons: document.getElementById("equipment-weapons"),
