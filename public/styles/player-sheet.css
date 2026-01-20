@@ -356,7 +356,9 @@
           gap: var(--s12);
 
           & button {
+            justify-content: center;
             align-items: center;
+            flex: 1;
             gap: var(--s4);
 
             margin: var(--s4) 0;
@@ -390,6 +392,16 @@
           display: flex;
           justify-content: center;
           gap: var(--s8);
+
+          & button {
+            padding: var(--s4) var(--s8);
+
+            background-color: var(--cor04);
+            border-radius: var(--s4);
+
+            color: var(--cor02);
+            font-weight: 600;
+          }
         }
 
         & .stats-dices-rolls {
@@ -416,6 +428,12 @@
           & img {
             width: var(--s24);
             height: var(--s24);
+
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.1);
+            }
           }
         }
       }

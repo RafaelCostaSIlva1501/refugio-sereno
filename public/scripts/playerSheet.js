@@ -19,9 +19,19 @@ import {
 let characters = JSON.parse(localStorage.getItem("characters"));
 
 let characterActive = null;
+let timer;
 let itemImage = "";
 let weaponImage = "";
 let weaponIventory = null;
+let weaponIndex = 0;
+const diceColors = {
+  4: "#ef4444",
+  6: "#f97316",
+  8: "#e7b828",
+  10: "#1faa52",
+  12: "#362d85",
+  20: "#6b32c8",
+};
 let diceRolls = [];
 
 if (!Array.isArray(characters)) {
@@ -622,7 +632,7 @@ const renderSheetInfos = (index) => {
   DOM.sheetPlayerNotes.value = characters[index].notes;
 };
 
-const renderSheetStats = (index) => {
+const renderSheetStats = (index, weaponIndex) => {
   DOM.sheetPlayerDefense.textContent = characters[index].defense;
   DOM.sheetPlayerDisplacement.textContent = characters[index].displacement;
   DOM.sheetPlayerPerception.textContent = characters[index].perception;
@@ -644,26 +654,29 @@ const renderSheetStats = (index) => {
     (i) => i.typeItem === "weapon",
   );
 
-  weaponIventory.forEach((e) => {
-    DOM.SPstatsWeaponsDamage.innerHTML = `${e.damage[0]}d${e.damage[1]}`;
-    DOM.SPstatsWeaponsCritical.innerHTML = `${e.multiplier}x`;
-    DOM.SPstatsWeaponsMargin.innerHTML = e.margin;
-    DOM.SPstatsWeaponsType.innerHTML = e.type;
-    DOM.SPstatsWeaponsCategory.innerHTML = e.category;
-    DOM.SPstatsWeaponsRange.innerHTML = e.range;
+  DOM.SPstatsWeaponsTitle.innerHTML = `${weaponIventory[weaponIndex].name}`;
+  DOM.SPstatsWeaponsDamage.innerHTML = `${weaponIventory[weaponIndex].damage[0]}d${weaponIventory[weaponIndex].damage[1]}`;
+  DOM.SPstatsWeaponsCritical.innerHTML = `${weaponIventory[weaponIndex].multiplier}x`;
+  DOM.SPstatsWeaponsMargin.innerHTML = weaponIventory[weaponIndex].margin;
+  DOM.SPstatsWeaponsType.innerHTML = weaponIventory[weaponIndex].type;
+  DOM.SPstatsWeaponsCategory.innerHTML = weaponIventory[weaponIndex].category;
+  DOM.SPstatsWeaponsRange.innerHTML = weaponIventory[weaponIndex].range;
 
-    DOM.SPstatsWeaponsDiceAim.dataset.mod = characters[index].agi;
-    DOM.SPstatsWeaponsDiceAim.dataset.training =
-      characters[index].expertises[20];
-    DOM.SPstatsWeaponsDiceAim.dataset.margin = e.margin;
+  DOM.SPstatsWeaponsDiceAim.dataset.mod = characters[index].agi;
+  DOM.SPstatsWeaponsDiceAim.dataset.training = characters[index].expertises[20];
+  DOM.SPstatsWeaponsDiceAim.dataset.margin = weaponIventory[weaponIndex].margin;
 
-    DOM.SPstatsWeaponsDiceDamage.dataset.qty = e.damage[0];
-    DOM.SPstatsWeaponsDiceDamage.dataset.dice = e.damage[1];
+  DOM.SPstatsWeaponsDiceDamage.dataset.qty =
+    weaponIventory[weaponIndex].damage[0];
+  DOM.SPstatsWeaponsDiceDamage.dataset.dice =
+    weaponIventory[weaponIndex].damage[1];
 
-    DOM.SPstatsWeaponsDiceCritical.dataset.qty = e.damage[0];
-    DOM.SPstatsWeaponsDiceCritical.dataset.dice = e.damage[1];
-    DOM.SPstatsWeaponsDiceCritical.dataset.multiplier = e.multiplier;
-  });
+  DOM.SPstatsWeaponsDiceCritical.dataset.qty =
+    weaponIventory[weaponIndex].damage[0];
+  DOM.SPstatsWeaponsDiceCritical.dataset.dice =
+    weaponIventory[weaponIndex].damage[1];
+  DOM.SPstatsWeaponsDiceCritical.dataset.multiplier =
+    weaponIventory[weaponIndex].multiplier;
 };
 
 const renderSheetRollDices = (index) => {
@@ -801,7 +814,7 @@ const renderSheetInventory = (index) => {
 const renderSheetPlayer = (index) => {
   characterActive = index;
   renderSheetInfos(index);
-  renderSheetStats(index);
+  renderSheetStats(index, 0);
   renderSheetRollDices(index);
   renderSheetInventory(index);
 };
@@ -871,6 +884,25 @@ DOM.barStatusBtn.forEach((e, i) => {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+// Paginação das armas
+DOM.SPstatsWeaponsPagination.forEach((btns, i) => {
+  btns.addEventListener("click", () => {
+    const direction = i === 0 ? -1 : 1;
+
+    weaponIndex += direction;
+
+    // Loop circular
+    if (weaponIndex < 0) {
+      weaponIndex = weaponIventory.length - 1;
+    } else if (weaponIndex >= weaponIventory.length) {
+      weaponIndex = 0;
+    }
+
+    renderSheetStats(characterActive, weaponIndex);
+    console.log("Foi!");
+  });
+});
+
 // Rolagem de pontaria
 DOM.SPstatsWeaponsDiceAim.addEventListener("click", (event) => {
   const training = event.currentTarget.dataset.training;
@@ -884,6 +916,15 @@ DOM.SPstatsWeaponsDiceAim.addEventListener("click", (event) => {
   DOM.toastRolls.innerHTML = "";
   DOM.toastRolls.style.opacity = "1";
   DOM.toastRolls.style.pointerEvents = "auto";
+  DOM.toastRolls.style.display = "flex";
+
+  if (timer) {
+    clearTimeout(timer);
+  }
+
+  timer = setTimeout(() => {
+    DOM.toastRolls.style.display = "none";
+  }, 5000);
 
   // remove classes para reset
   DOM.toastRolls.classList.remove("toast-show", "toast-critical");
@@ -982,6 +1023,7 @@ DOM.SPstatsWeaponsDiceCritical.addEventListener("click", (event) => {
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
+// Adiciona o dado na lista de rolagem
 DOM.SPstatsDicesRolls.forEach((e) => {
   e.addEventListener("click", () => {
     const dice = e.dataset.dice;
@@ -990,6 +1032,7 @@ DOM.SPstatsDicesRolls.forEach((e) => {
 
     const img = createElement("img");
     img.src = `./img/dice/d${dice}.png`;
+    img.classList.add("dices");
 
     img.addEventListener("click", () => {
       // remove UMA ocorrência desse dado do array
@@ -1006,23 +1049,43 @@ DOM.SPstatsDicesRolls.forEach((e) => {
   });
 });
 
+// Executa a rolagem e soma dos dados
 DOM.SProllDicseBtn.addEventListener("click", () => {
   DOM.SPresultRollDices.innerHTML = "";
 
   const result = [];
 
-  diceRolls.forEach((dice, i) => {
+  // rolagem dos dados
+  diceRolls.forEach((dice) => {
     const value = rollDice(dice, 1);
     result.push(value);
   });
 
+  // soma total
   const total = result.reduce(
     (total, current) => Number(total) + Number(current),
+    0,
   );
 
-  DOM.SPresultRollDices.innerHTML += `${result.join(", ")} = <strong>${total}</strong><br>`;
+  // exibição com cores conforme o dado de origem
+  DOM.SPresultRollDices.innerHTML += `${result
+    .map((value, i) => {
+      const diceType = diceRolls[i];
+      const color = diceColors[diceType];
+      return `<span style="color:${color};">${value}</span>`;
+    })
+    .join(", ")} = <strong>${total}</strong><br>`;
+
+  // animação de vibração (mantida)
+  document.querySelectorAll(".dices").forEach((dice) => {
+    dice.classList.add("vibrate-dice");
+    setTimeout(() => {
+      dice.classList.remove("vibrate-dice");
+    }, 250);
+  });
 });
 
+// Reseta a lista de rolagem
 DOM.SPresetRollDicesBtn.addEventListener("click", () => {
   diceRolls = [];
   DOM.SPshowDices.innerHTML = "";

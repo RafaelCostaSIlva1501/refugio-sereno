@@ -134,7 +134,7 @@ export const DOM = {
 
   SPstatsWeaponsTitle: document.getElementById("SP-stats-weapon-title"),
   SPstatsWeaponsPagination: document.querySelectorAll(
-    "SP-stats-weapon-pagination",
+    ".SP-stats-weapon-pagination",
   ),
   SPstatsWeaponsDamage: document.getElementById("SP-stats-weapon-damage"),
   SPstatsWeaponsCritical: document.getElementById("SP-stats-weapon-critical"),

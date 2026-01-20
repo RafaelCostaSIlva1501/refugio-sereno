@@ -36,7 +36,7 @@ DOM.toggleSheetPlayerItem.forEach((btn) => {
   btn.addEventListener("click", () => {
     toggle.modalSheetItem = displayToggle(
       toggle.modalSheetItem,
-      "modalSheetItem"
+      "modalSheetItem",
     );
   });
 });
@@ -45,7 +45,7 @@ DOM.toggleSheetPlayerWeapon.forEach((btn) => {
   btn.addEventListener("click", () => {
     toggle.modalSheetWeapon = displayToggle(
       toggle.modalSheetWeapon,
-      "modalSheetWeapon"
+      "modalSheetWeapon",
     );
   });
 });

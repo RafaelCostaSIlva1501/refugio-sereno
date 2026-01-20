@@ -1171,7 +1171,7 @@ export const weapons = [
     damage: [1, 6],
     critical: 2,
     margin: 20,
-    range: "",
+    range: "Curto",
     type: "Impacto",
     weight: "1",
   },
